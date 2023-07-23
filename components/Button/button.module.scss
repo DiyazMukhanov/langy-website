@@ -1,0 +1,21 @@
+.button {
+    display: inline-flex;
+    justify-content: center;
+    cursor: pointer;
+    outline: none;
+    transition: all .25s ease-in-out;
+}
+
+.contained {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+}
+
+.outlined {
+    background-color: transparent;
+}
+
+.yellow {
+    background-color: var(--color-yellow);
+}
