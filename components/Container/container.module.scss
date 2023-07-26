@@ -1,0 +1,8 @@
+@import "styles/breakpoints";
+
+.container {
+
+    @include size-laptop {
+        font-size: 14px;
+    }
+}

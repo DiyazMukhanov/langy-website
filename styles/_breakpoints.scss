@@ -1,0 +1,22 @@
+$breakpoint-phone-large: 768px;
+$breakpoint-laptop: 1370px;
+$breakpoint-desktop: 1700px;
+
+@mixin size-phone-large {
+    @media (max-width: $breakpoint-phone-large) {
+        @content;
+    }
+}
+
+@mixin size-laptop {
+    @media (max-width: $breakpoint-laptop) {
+        @content;
+    }
+}
+
+@mixin size-desktop {
+    @media (max-width: $breakpoint-desktop) {
+        @content;
+    }
+}
+
