@@ -7,14 +7,43 @@ import Laptop from '../../public/images/Laptop.svg'
 import DropOne from '../../public/images/drop-1.svg'
 import DropTwo from '../../public/images/drop-2.svg'
 import Man from '../../public/images/Man.svg'
+import Plus from '../../public/images/Plus.svg'
+import X from '../../public/images/X.svg'
 import { Typography } from '@/components/Typography'
 import { Button } from '@/components/Button'
 import Advantage from './Advantage'
 import Container from '@/components/Container'
 import AdvantageCard from './AdvantageCard'
 import HowCard from './HowCard'
+import { useState } from 'react'
 
 export default function Landing() {
+  const [frequentOpenedId, setFrequentOpenedId] = useState(null)
+  const frequentQuestions = [
+    {
+      id: 1,
+      question: 'Как проходят занятия?',
+      answer: 'Все очень легко! Шаг за шагом вы переходите от урока к уроку выполняя упражнения по грамматике, чтению, письму, чтению и переходите к тесту.'
+    },
+    {
+      id: 2,
+      question: 'Есть ли у вас рассрочка?',
+      answer: 'Рассрочки нет. Но стоимость подписки доступна широкой массе студентов'
+    },
+    {
+      id: 3,
+      question: 'Как с вами связаться?',
+      answer: 'Перейдите по ссылке "Служба поддержки" внизу или в личном кабинете. Оставьте заявку, администратор обязательно ответит вам'
+    }
+  ]
+
+  const questionHandler = (id) => {
+    if(frequentOpenedId === id) {
+      setFrequentOpenedId(null)
+    } else {
+      setFrequentOpenedId(id)
+    }
+  }
   
     return (
       <Container>
@@ -143,19 +172,45 @@ export default function Landing() {
 
         <div className={styles.howcardTwo}>
         <HowCard 
-          number='2' 
+          number='3' 
           text='Доступ открыт!
           Наслаждайтесь обучением!'
           color='purple'
+          type='small'
           />
         </div>
           
            <HowCard 
-          number='3' 
+          number='2' 
           text='После успешного пробного урока и определения  своего уровня знания языка. Вам нужно выбрать произвести оплату для дальнейшего обучения'
           color='orange'
           />
           
+        </div>
+      </section>
+
+      <section className={styles.frequentQuestionsSection}>
+        <div className={styles.questionsHeading}>
+          <Typography size='small' element='h2'>Часто задаваемые вопросы </Typography>
+        </div>
+        <div className={styles.questionsContainer}>
+          {frequentQuestions.map(item => (
+            <div className={styles.questionBlock}>
+              <div className={styles.questionWithPlus}>
+              <p className={styles.question}>{item.question}</p>
+              
+              <Image
+                priority
+                src={frequentOpenedId === item.id ? X: Plus}
+                className={styles.questionButton}
+                onClick={() => questionHandler(item.id)}
+              />
+              </div>
+              {frequentOpenedId === item.id && (
+                <p className={styles.answer}>{item.answer}</p>
+              )}
+            </div>
+          ))}
         </div>
       </section>
       
