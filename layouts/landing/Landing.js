@@ -6,12 +6,16 @@ import Cards from '../../public/images/Cards.svg'
 import Laptop from '../../public/images/Laptop.svg'
 import DropOne from '../../public/images/drop-1.svg'
 import DropTwo from '../../public/images/drop-2.svg'
+import Man from '../../public/images/Man.svg'
 import { Typography } from '@/components/Typography'
 import { Button } from '@/components/Button'
 import Advantage from './Advantage'
 import Container from '@/components/Container'
+import AdvantageCard from './AdvantageCard'
+import HowCard from './HowCard'
 
 export default function Landing() {
+  
     return (
       <Container>
       
@@ -85,6 +89,74 @@ export default function Landing() {
            className={styles.cards}
            />
       </div>
+      </section>
+      <section className={styles.advantagesSection}>
+        <div className={styles.advantagesHeadingContainer}>
+          <Typography size='small' element='h2'>Наши преимущества</Typography>
+        </div>
+        <div className={styles.advantagesMain}>
+          <div className={styles.advantageCards}>
+            <AdvantageCard 
+             iconType='tick' 
+             textLineOne='Погрузитесь'
+             textLineTwo='в интерактивность'
+             textLineThree='обучения!'
+             />
+
+            <AdvantageCard 
+             iconType='tick' 
+             textLineOne='Вы освоите'
+             textLineTwo='4 основных'
+             textLineThree='языковых навыка!'
+             />
+               
+            <AdvantageCard 
+             iconType='tick' 
+             textLineOne='Занимайтесь в'
+             textLineTwo='удобное для вас'
+             textLineThree='время!'
+             />
+          </div>
+          <Button variant='contained' className={styles.tryButton}>Попробуйте сейчас</Button>
+        </div>
+      </section>
+
+      <section className={styles.howWorks}>
+        <div className={styles.howHeading}>
+        <Typography size='small' element='h2'>Как работает платформа</Typography>
+        </div>
+
+        <div className={styles.manSection}>
+          <HowCard 
+          number='1' 
+          text='Для того, чтобы взять бесплатный пробный урок вам не понадобиться ничего, кроме собственного желания. 
+          Вам нужно пройти регистрацию и по желанию пройти тест для определения уровня знания языка.'
+          color='blue'
+          />
+          <Image
+           priority
+           src={Man}
+           className={styles.man}
+           />
+        </div>
+        <div className={styles.twoThreeSection}>
+
+        <div className={styles.howcardTwo}>
+        <HowCard 
+          number='2' 
+          text='Доступ открыт!
+          Наслаждайтесь обучением!'
+          color='purple'
+          />
+        </div>
+          
+           <HowCard 
+          number='3' 
+          text='После успешного пробного урока и определения  своего уровня знания языка. Вам нужно выбрать произвести оплату для дальнейшего обучения'
+          color='orange'
+          />
+          
+        </div>
       </section>
       
       </Container>

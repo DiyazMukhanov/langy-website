@@ -1,0 +1,35 @@
+.card {
+    width: 38.9375em;
+    height: 9.5em;
+    border: solid 4px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    gap: 20px;
+}
+
+.blue {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.purple {
+    border-color: var(--color-purple);
+    color: var(--color-purple);
+}
+
+.orange {
+    border-color: var(--color-orange);
+    color: var(--color-orange);
+}
+
+.number {
+    font-size: 3.5625em;
+}
+
+.text {
+    color: var(--color-black);
+    font-weight: bold;
+}
