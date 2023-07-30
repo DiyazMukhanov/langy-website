@@ -176,6 +176,7 @@
     height: 3.1875em;
     border-radius: 40px;
     margin-bottom: 3.125em;
+    font-weight: bold;
 }
 
 .howHeading {
@@ -219,6 +220,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 8.125em;
 }
 
 .questionsContainer {
@@ -246,5 +248,32 @@
 }
 
 .questionButton {
+    cursor: pointer;
+}
+
+.footer {
+    height: 13.875em;
+    background-color: var(--color-primary);
+}
+
+.footerTop {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 50px;
+}
+
+.service {
+    display: flex;
+    // align-items: center;
+    justify-content: center;
+    gap: 10px;
+    & p {
+        color: var(--color-white);
+        margin-top: 0;
+        cursor: pointer;
+    }
+}
+
+.up {
     cursor: pointer;
 }

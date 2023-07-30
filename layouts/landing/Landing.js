@@ -9,6 +9,8 @@ import DropTwo from '../../public/images/drop-2.svg'
 import Man from '../../public/images/Man.svg'
 import Plus from '../../public/images/Plus.svg'
 import X from '../../public/images/X.svg'
+import Service from '../../public/images/Service.svg'
+import Up from '../../public/images/Up.svg'
 import { Typography } from '@/components/Typography'
 import { Button } from '@/components/Button'
 import Advantage from './Advantage'
@@ -48,7 +50,7 @@ export default function Landing() {
     return (
       <Container>
       
-      <header className={styles.header}>
+      <header className={styles.header} id='top'>
         <div className={styles.logo}>
            <Image
            priority
@@ -213,7 +215,33 @@ export default function Landing() {
           ))}
         </div>
       </section>
-      
+
+      <footer className={styles.footer}>
+        <div className={styles.footerTop}>
+        <Image
+           priority
+           src={Logo}
+           height={44}
+           width={101}
+           />
+           <div className={styles.service}>
+           <Image
+           priority
+           src={Service}
+           />
+           <p>Служба поддержки</p>
+           </div>
+           <Button variant='contained' className={styles.tryButton}>Действуй!</Button>
+           <a href='#top'>
+           <Image
+           priority
+           src={Up}
+           className={styles.up}
+           />
+           </a>
+        </div>
+      </footer>
+     
       </Container>
     )
   }
