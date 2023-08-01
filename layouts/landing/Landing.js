@@ -11,17 +11,24 @@ import Man from '../../public/images/Man.svg'
 import Plus from '../../public/images/Plus.svg'
 import X from '../../public/images/X.svg'
 import Service from '../../public/images/Service.svg'
+import ServiceBlue from '../../public/images/Service-blue.svg'
 import Up from '../../public/images/Up.svg'
 import Sandwich from '../../public/images/Sandwich.svg'
+import ButtonClose from '../../public/images/Button-close.svg'
+import LogoBlue from '../../public/images/Logo-blue.svg'
+import LogoBlueBottom from '../../public/images/Logo-blue-bottom.svg'
 import { Typography } from '@/components/Typography'
 import { Button } from '@/components/Button'
 import Advantage from './Advantage'
 import AdvantageCard from './AdvantageCard'
 import HowCard from './HowCard'
 import { useState } from 'react'
+import Modal from './Modal'
+import classNames from 'classnames'
 
 export default function Landing() {
   const [frequentOpenedId, setFrequentOpenedId] = useState(null)
+  const [isModalOpened, setIsModalOpened] = useState(true)
   const frequentQuestions = [
     {
       id: 1,
@@ -47,9 +54,50 @@ export default function Landing() {
       setFrequentOpenedId(id)
     }
   }
+
+  const modalCloseHandler = () => {
+    setIsModalOpened(false)
+  }
+
+  const modalOpenHandler = () => {
+    setIsModalOpened(true)
+  }
   
     return (
-      <>
+      <div className={styles.overlay}>
+        <Modal isOpen={isModalOpened} onClose={modalCloseHandler}>
+          <div className={styles.modalContainer}>
+          <div className={styles.modalLogos}>
+        <Image
+           priority
+           src={LogoBlue}
+           height={38}
+           width={80}
+           />
+           <Image
+           priority
+           src={LogoBlueBottom}
+           />
+          </div>
+          <Image
+           priority
+           src={ButtonClose}
+           onClick={modalCloseHandler}
+           />
+           </div>
+           <div className={styles.serviceModal}>
+           <Image
+           priority
+           src={ServiceBlue}
+           />
+           <p>Служба поддержки</p>
+           </div>
+
+           <div className={styles.modalButtons}>
+            <Button variant='standardLargeContained'>Регистрация</Button>
+            <Button variant='standardLargeOutlined'>Войти</Button>
+           </div>
+        </Modal>
       
       <header className={styles.header} id='top'>
         <div>
@@ -69,6 +117,7 @@ export default function Landing() {
            priority
            src={Sandwich}
            className={styles.sandwich}
+           onClick={modalOpenHandler}
           //  height={44}
           //  width={101}
            />
@@ -121,7 +170,12 @@ export default function Landing() {
         И вы можете учиться в любом удобном для вас месте.
         </div>    
       </div>
-      <div className={styles.imageContainer}>
+      <div className={classNames(
+         {
+          [styles.imageContainer]: !isModalOpened,
+          [styles.noShow]: isModalOpened
+         }
+        )}>
       <Image
            priority
            src={Laptop}
@@ -264,7 +318,7 @@ export default function Landing() {
         </div>
       </footer>
      
-      </>
+      </div>
     )
   }
   

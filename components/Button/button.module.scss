@@ -14,3 +14,23 @@
 .yellow {
     background-color: var(--color-yellow);
 }
+
+.standardLargeContained {
+   width: 259px;
+   height: 51px;
+   background-color: var(--color-primary);
+   color: var(--color-white);
+   font-size: 18px;
+   border-radius: 10px;
+   border: none;
+}
+
+.standardLargeOutlined {
+    width: 259px;
+    height: 51px;
+    background-color: transparent;
+    color: var(--color-primary);
+    font-size: 18px;
+    border-radius: 10px;
+    border: solid var(--color-primary) 1px;
+ }

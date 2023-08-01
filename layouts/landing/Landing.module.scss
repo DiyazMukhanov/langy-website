@@ -1,7 +1,41 @@
 @import "styles/breakpoints";
 
-// $header-padding-vertical: 2em;
-// $header-padding-horizontal: 3.75em;
+.noShow {
+    display: none;
+   
+    @include size-tablet {
+        display: none;
+    }
+}
+
+.modalContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modalLogos {
+    display: flex;
+    flex-direction: column;
+}
+
+.serviceModal {
+    display: flex;
+    // border: solid red 1px;
+    align-items: center;
+    font-weight: bold;
+    gap: 10px;
+    cursor: pointer;
+    margin-top: 40px;
+}
+
+.modalButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 400px;
+}
 
 .header {
     // border: solid red 1px;
@@ -13,14 +47,14 @@
     justify-content: space-between;
     // margin-bottom: 0;
     // width: 200vw;
-    @include size-phone-large {
+    @include size-tablet {
         padding-left: 20px;
         padding-right: 20px;
     }
 }
 
 .logo {
-    @include size-phone-large {
+    @include size-tablet {
         width: 80px;
     }
 }
@@ -34,7 +68,7 @@
     align-items: center;
     justify-content: flex-start;
 
-    @include size-phone-large {
+    @include size-tablet {
         display: none;
     }
 }
@@ -42,7 +76,7 @@
 .sandwich {
     display: none;
 
-    @include size-phone-large {
+    @include size-tablet {
         display: flex;
     }
 }
@@ -70,7 +104,7 @@
     flex-direction: column;
     align-items: center;
 
-    @include size-phone-large {
+    @include size-tablet {
         padding: 20px 0 0 0;
     }
 }
@@ -81,7 +115,7 @@
     font-size: 3.75em;
     color: var(--color-white);
 
-    @include size-phone-large {
+    @include size-tablet {
         font-size: 2em;
         font-weight: normal;
         // border: solid red 1px;
@@ -95,7 +129,7 @@
     width: 90vw;
     justify-content: space-between;
 
-    @include size-phone-large {
+    @include size-tablet {
         flex-direction: column;
         padding-bottom: 70px;
      }
@@ -105,7 +139,7 @@
 .dropOne {
     margin-top: 5em;
 
-    @include size-phone-large {
+    @include size-tablet {
        display: none;
     }
 
@@ -114,7 +148,7 @@
 .dropTwo {
     margin-top: 7.5em;
 
-    @include size-phone-large {
+    @include size-tablet {
         display: none;
      }
 }
@@ -138,7 +172,7 @@
     margin-bottom: 0.9375em;
     margin-top: 1.25em;
 
-    @include size-phone-large {
+    @include size-tablet {
         width: 200px;
      }
 }
