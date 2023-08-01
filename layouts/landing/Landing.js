@@ -28,7 +28,7 @@ import classNames from 'classnames'
 
 export default function Landing() {
   const [frequentOpenedId, setFrequentOpenedId] = useState(null)
-  const [isModalOpened, setIsModalOpened] = useState(true)
+  const [isModalOpened, setIsModalOpened] = useState(false)
   const frequentQuestions = [
     {
       id: 1,
