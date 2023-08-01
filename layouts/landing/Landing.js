@@ -11,10 +11,10 @@ import Plus from '../../public/images/Plus.svg'
 import X from '../../public/images/X.svg'
 import Service from '../../public/images/Service.svg'
 import Up from '../../public/images/Up.svg'
+import Sandwich from '../../public/images/Sandwich.svg'
 import { Typography } from '@/components/Typography'
 import { Button } from '@/components/Button'
 import Advantage from './Advantage'
-import Container from '@/components/Container'
 import AdvantageCard from './AdvantageCard'
 import HowCard from './HowCard'
 import { useState } from 'react'
@@ -48,24 +48,38 @@ export default function Landing() {
   }
   
     return (
-      <Container>
+      <>
       
       <header className={styles.header} id='top'>
-        <div className={styles.logo}>
+        <div>
            <Image
            priority
            src={Logo}
            height={44}
            width={101}
+           className={styles.logo}
            />
         </div>
         <div className={styles.topButtons}>
          <Typography element='p' className={styles.enterBtn}>Войти</Typography>
          <Button variant='outlined' className={styles.registrationBtn}>Регистрация</Button>
         </div>
+        <Image
+           priority
+           src={Sandwich}
+           className={styles.sandwich}
+          //  height={44}
+          //  width={101}
+           />
+        
       </header>
       
       <main className={styles.main}>
+          <Image
+           priority
+           src={DropOne}
+           className={styles.dropOneMobile}
+           />
          <Typography element='h1' className={styles.mainHeading}>Онлайн - платформа для изучения английского языка</Typography>
          <div className={styles.headerBottomBlock}>
          <Image
@@ -197,7 +211,7 @@ export default function Landing() {
         </div>
         <div className={styles.questionsContainer}>
           {frequentQuestions.map(item => (
-            <div className={styles.questionBlock}>
+            <div className={styles.questionBlock} key={item.id}>
               <div className={styles.questionWithPlus}>
               <p className={styles.question}>{item.question}</p>
               
@@ -242,7 +256,7 @@ export default function Landing() {
         </div>
       </footer>
      
-      </Container>
+      </>
     )
   }
   

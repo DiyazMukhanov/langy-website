@@ -1,12 +1,28 @@
 @import "styles/breakpoints";
 
+// $header-padding-vertical: 2em;
+// $header-padding-horizontal: 3.75em;
+
 .header {
+    // border: solid red 1px;
     background-color: var(--color-primary);
+    // padding: $header-padding-vertical $header-padding-horizontal;
     padding: 2em 3.75em;
     display: flex;
     align-items: center;
     justify-content: space-between;
     // margin-bottom: 0;
+    // width: 200vw;
+    @include size-phone-large {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.logo {
+    @include size-phone-large {
+        width: 80px;
+    }
 }
 
 .topButtons {
@@ -17,6 +33,18 @@
     gap: 3em;
     align-items: center;
     justify-content: flex-start;
+
+    @include size-phone-large {
+        display: none;
+    }
+}
+
+.sandwich {
+    display: none;
+
+    @include size-phone-large {
+        display: flex;
+    }
 }
 
 .registrationBtn {
@@ -41,6 +69,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @include size-phone-large {
+        padding: 20px 0 0 0;
+    }
 }
 
 .mainHeading {
@@ -48,23 +80,43 @@
     width: fit-content;
     font-size: 3.75em;
     color: var(--color-white);
+
+    @include size-phone-large {
+        font-size: 2em;
+        font-weight: normal;
+        // border: solid red 1px;
+        width: 300px;
+        text-align: center;
+    }
 }
 
 .headerBottomBlock {
-    // border: solid red 1px;
     display: flex;
     width: 90vw;
     justify-content: space-between;
-    // padding-left: 100px;
-    // padding-right: 100px;
+
+    @include size-phone-large {
+        flex-direction: column;
+        padding-bottom: 70px;
+     }
+    
 }
 
 .dropOne {
     margin-top: 5em;
+
+    @include size-phone-large {
+       display: none;
+    }
+
 }
 
 .dropTwo {
     margin-top: 7.5em;
+
+    @include size-phone-large {
+        display: none;
+     }
 }
 
 .btnBlock {
@@ -85,6 +137,10 @@
     font-weight: bold;
     margin-bottom: 0.9375em;
     margin-top: 1.25em;
+
+    @include size-phone-large {
+        width: 200px;
+     }
 }
 
 .haveAccountBtn {
@@ -102,6 +158,11 @@
     display: flex;
     justify-content: center;
     gap: 30px;
+
+    @include size-phone-large {
+        flex-direction: column;
+        align-items: center;
+     }
 }
 
 .imageContainer {
@@ -122,15 +183,15 @@
 
 .laptop {
     z-index: 1;
-    left: 100px;
-    top: 40px;
+    left: 6.25em;
+    top: 2.5em;
 }
 
 .middleSection {
     display: flex;
     justify-content: center;
-    gap: 100px;
-    padding-top: 70px;
+    gap: 6.25em;
+    padding-top: 4.375em;
 }
 
 .leftSideOfMiddleSection {
@@ -139,12 +200,12 @@
 
 .leftSideText {
     // border: solid red 1px;
-    width: 300px;
+    width: 18.75em;
     font-weight: bold;
 }
 
 .logoTwo {
-    margin-left: -70px;
+    margin-left: -4.375em;
 }
 
 .advantagesHeadingContainer {
@@ -171,7 +232,7 @@
 
 .tryButton {
     background-color: var(--color-yellow);
-    font-size: 16px;
+    font-size: 1em;
     width: 14.1875em;
     height: 3.1875em;
     border-radius: 40px;
@@ -182,7 +243,7 @@
 .howHeading {
     display: flex;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 6.25em;
 }
 
 .manSection {
@@ -190,16 +251,16 @@
     // border: solid red 1px;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    gap: 2.5em;
 }
 
 .man {
-    margin-top: -50px;
+    margin-top: -3.125em;
 }
 
 .twoThreeSection {
     display: flex;
-    gap: 60px;
+    gap: 3.75em;
     justify-content: center;
 }
 
@@ -208,7 +269,7 @@
 }
 
 .howcardTwo {
-    margin-top: 70px;
+    margin-top: 4.375em;
 }
 
 .questionsHeading {
@@ -259,14 +320,14 @@
 .footerTop {
     display: flex;
     justify-content: space-evenly;
-    padding-top: 50px;
+    padding-top: 3.125em;
 }
 
 .service {
     display: flex;
     // align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 0.625em;
     & p {
         color: var(--color-white);
         margin-top: 0;

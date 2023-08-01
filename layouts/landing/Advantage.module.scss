@@ -1,13 +1,23 @@
+@import "styles/breakpoints";
+
 .advantage {
-    // border: solid red 1px;
     width: fit-content;
     display: flex;
     gap: 20px;
+
+    @include size-phone-large {
+        color: var(--color-primary);
+        width: 300px;
+     }
 }
 
 .text {
     width: 186px;
-    // border: solid red 1px;
     font-size: 1.25em;
     font-weight: bold;
+
+    @include size-phone-large {
+        color: var(--color-primary);
+        width: fit-content;
+     }
 }
