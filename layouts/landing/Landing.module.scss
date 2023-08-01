@@ -152,14 +152,13 @@
 }
 
 .advantages {
-    // border: solid red 1px;
     padding-top: 3.125em;
     padding-bottom: 3.125em;
     display: flex;
     justify-content: center;
     gap: 30px;
 
-    @include size-phone-large {
+    @include size-tablet {
         flex-direction: column;
         align-items: center;
      }
@@ -167,24 +166,54 @@
 
 .imageContainer {
     position: relative;
-    // border: solid red 1px;
     width: 600px;
     height: 400px;
+
+    @include size-tablet {
+        width: auto;
+        height: auto;
+        display: flex;
+        gap: 20px;
+     }
 }
 
 .laptop, 
 .cards {
     position: absolute;
+
+    @include size-tablet {
+        position: static;
+     }
 }
 
 .cards {
     z-index: 2;
+
+    @include size-tablet {
+        display: none;
+     }
+}
+
+.cardsMobile {
+    display: none;
+
+    @include size-tablet {
+        display: block;
+        padding-top: 50px;
+     }
+
 }
 
 .laptop {
     z-index: 1;
     left: 6.25em;
     top: 2.5em;
+
+    @include size-tablet {
+        width: 200px;
+        left: 0;
+        top: 0;
+     }
 }
 
 .middleSection {
@@ -192,6 +221,13 @@
     justify-content: center;
     gap: 6.25em;
     padding-top: 4.375em;
+
+    @include size-tablet {
+        flex-direction: column;
+        align-items: center;
+        font-size: 1.125em;
+        gap: 0;
+     }
 }
 
 .leftSideOfMiddleSection {
@@ -202,16 +238,27 @@
     // border: solid red 1px;
     width: 18.75em;
     font-weight: bold;
+
+    @include size-tablet {
+        margin-bottom: 0;
+     }
 }
 
 .logoTwo {
     margin-left: -4.375em;
+
+    @include size-tablet {
+        margin: 0;
+     }
 }
 
 .advantagesHeadingContainer {
     display: flex;
     justify-content: center;
-    // border: solid red 1px;
+    
+    @include size-tablet {
+        margin-top: 50px;
+     }
 }
 
 .advantagesMain {
@@ -220,6 +267,11 @@
     flex-direction: column;
     align-items: center;
     border-radius: 20px;
+
+    @include size-tablet {
+        // border: solid red 1px;
+        background-color: var(--color-white);
+     }
 }
 
 .advantageCards {
@@ -228,6 +280,10 @@
     gap: 3.125em;
     padding-top: 3.125em;
     padding-bottom: 3.125em;
+
+    @include size-tablet {
+        flex-direction: column;
+     }
 }
 
 .tryButton {
@@ -238,12 +294,20 @@
     border-radius: 40px;
     margin-bottom: 3.125em;
     font-weight: bold;
+
+    @include size-tablet {
+        margin-bottom: 10px;
+     }
 }
 
 .howHeading {
     display: flex;
     justify-content: center;
     margin-top: 6.25em;
+
+    @include size-tablet {
+        margin-top: 0;
+     }
 }
 
 .manSection {
@@ -256,16 +320,30 @@
 
 .man {
     margin-top: -3.125em;
+
+    @include size-tablet {
+        display: none;
+     }
 }
 
 .twoThreeSection {
     display: flex;
     gap: 3.75em;
     justify-content: center;
+
+    @include size-tablet {
+        flex-direction: column;
+        align-items: center;
+      }
 }
 
 .howWorks {
     padding-bottom: 6.25em;
+
+    @include size-tablet {
+       display: flex;
+       flex-direction: column;
+     }
 }
 
 .howcardTwo {
@@ -275,6 +353,12 @@
 .questionsHeading {
     display: flex;
     justify-content: center;
+
+    @include size-tablet {
+        // border: solid red 1px;
+        width: 300px;
+        text-align: center;
+      }
 }
 
 .frequentQuestionsSection {
@@ -287,6 +371,14 @@
 .questionsContainer {
     // border: solid red 1px;
     width: 71.9375em;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    @include size-tablet {
+        width: 90vw;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
 }
 
 .questionBlock {
@@ -315,12 +407,23 @@
 .footer {
     height: 13.875em;
     background-color: var(--color-primary);
+
+    @include size-tablet {
+        height: auto;
+        padding-bottom: 30px;
+      }
 }
 
 .footerTop {
     display: flex;
     justify-content: space-evenly;
     padding-top: 3.125em;
+
+    @include size-tablet {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
 }
 
 .service {

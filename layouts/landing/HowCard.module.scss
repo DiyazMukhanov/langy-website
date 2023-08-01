@@ -1,3 +1,5 @@
+@import "styles/breakpoints";
+
 .card {
     width: 38.9375em;
     height: 9.5em;
@@ -8,6 +10,13 @@
     padding-left: 30px;
     padding-right: 30px;
     gap: 20px;
+
+    @include size-tablet {
+        width: 300px;
+        height: 200px;
+        padding-left: 10px;
+        padding-right: 10px;
+     }
 }
 
 .blue {
@@ -36,4 +45,8 @@
 
 .small {
     width: 31.625em;
+
+    @include size-tablet {
+        width: 300px;
+     }
 }

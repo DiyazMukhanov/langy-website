@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Logo from '../../public/images/Logo.svg'
 import LogoTwo from '../../public/images/Logo-2.svg'
 import Cards from '../../public/images/Cards.svg'
+import CardsVertical from '../../public/images/Cards-vertical.svg'
 import Laptop from '../../public/images/Laptop.svg'
 import DropOne from '../../public/images/drop-1.svg'
 import DropTwo from '../../public/images/drop-2.svg'
@@ -132,6 +133,13 @@ export default function Landing() {
            src={Cards}
            width={500}
            className={styles.cards}
+           />
+
+       <Image
+           priority
+           src={CardsVertical}
+          //  width={500}
+           className={styles.cardsMobile}
            />
       </div>
       </section>

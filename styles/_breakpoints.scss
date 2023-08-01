@@ -1,4 +1,5 @@
 $breakpoint-phone-large: 768px;
+$breakpoint-tablet: 992px;
 $breakpoint-laptop: 1370px;
 $breakpoint-desktop: 1700px;
 
@@ -19,4 +20,11 @@ $breakpoint-desktop: 1700px;
         @content;
     }
 }
+
+@mixin size-tablet {
+    @media (max-width: $breakpoint-tablet) {
+        @content;
+    }
+}
+
 
