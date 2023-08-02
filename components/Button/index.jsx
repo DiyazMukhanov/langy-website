@@ -15,14 +15,8 @@ export const Button = ({
         },
         className
         )
-
-        const handleClick = (event) => {
-            if ( ! disabled && onClick !== undefined) {
-                onClick(event)
-            }
-        }
     
-    return <button className={classes} onClick={handleClick}>
+    return <button className={classes} onClick={onClick}>
         {children}
     </button>
 }

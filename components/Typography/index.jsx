@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import styles from './typography.module.scss'
 
-export const Typography = ({element, children, size, className }) => {
+export const Typography = ({element, children, size, onClick, className }) => {
     const classes = classNames(
         className,
         styles[size]
@@ -9,6 +9,6 @@ export const Typography = ({element, children, size, className }) => {
 
     const Component = element
     return (
-        <Component className={classes}>{children}</Component>
+        <Component className={classes} onClick={onClick}>{children}</Component>
     )
 }

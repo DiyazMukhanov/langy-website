@@ -25,10 +25,12 @@ import HowCard from './HowCard'
 import { useState } from 'react'
 import Modal from './Modal'
 import classNames from 'classnames'
+import {useRouter} from "next/router"
 
 export default function Landing() {
   const [frequentOpenedId, setFrequentOpenedId] = useState(null)
   const [isModalOpened, setIsModalOpened] = useState(false)
+  const router = useRouter()
   const frequentQuestions = [
     {
       id: 1,
@@ -62,6 +64,18 @@ export default function Landing() {
   const modalOpenHandler = () => {
     setIsModalOpened(true)
   }
+
+  const loginHandler = () => {
+    router.push('authorization/login')
+  };
+
+  const registrationHandler = () => {
+    router.push('authorization/registration')
+  };
+
+  const continueHandler = () => {
+    router.push('authorization/registration')
+  };
   
     return (
       <div className={styles.overlay}>
@@ -94,7 +108,7 @@ export default function Landing() {
            </div>
 
            <div className={styles.modalButtons}>
-            <Button variant='standardLargeContained'>Регистрация</Button>
+            <Button>Регистрация</Button>
             <Button variant='standardLargeOutlined'>Войти</Button>
            </div>
         </Modal>
@@ -110,8 +124,8 @@ export default function Landing() {
            />
         </div>
         <div className={styles.topButtons}>
-         <Typography element='p' className={styles.enterBtn}>Войти</Typography>
-         <Button variant='outlined' className={styles.registrationBtn}>Регистрация</Button>
+         <Typography element='p' className={styles.enterBtn} onClick={loginHandler}>Войти</Typography>
+         <Button variant='outlined' className={styles.registrationBtn} onClick={registrationHandler}>Регистрация</Button>
         </div>
         <Image
            priority
@@ -138,7 +152,7 @@ export default function Landing() {
            className={styles.dropOne}
            />
          <div className={styles.btnBlock}>
-         <Button variant='contained' className={styles.startBtn}>Начать обучение</Button>
+         <Button variant='contained' className={styles.startBtn} onClick={continueHandler}>Начать обучение</Button>
          <p className={styles.haveAccountBtn}>У меня уже есть аккаунт</p>
          </div>
          <Image
@@ -224,7 +238,7 @@ export default function Landing() {
              textLineThree='время!'
              />
           </div>
-          <Button variant='contained' className={styles.tryButton}>Попробуйте сейчас</Button>
+          <Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Попробуйте сейчас</Button>
         </div>
       </section>
 
@@ -307,7 +321,7 @@ export default function Landing() {
            />
            <p>Служба поддержки</p>
            </div>
-           <Button variant='contained' className={styles.tryButton}>Действуй!</Button>
+           <Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Действуй!</Button>
            <a href='#top'>
            <Image
            priority
