@@ -1,0 +1,44 @@
+@import "styles/breakpoints";
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 150px;
+
+    & h3 {
+        margin: 0;
+    }
+}
+
+.levelBtn {
+ width: 380px;
+ font-size: 16px;
+ height: 51px;
+ border-radius: 40px;
+
+ @include size-tablet {
+    width: 300px;
+}
+}
+
+.levelBtnTwo {
+ width: 380px;
+ font-size: 16px;
+ height: 51px;
+ border-radius: 40px;
+ color: var(--color-black);
+ font-weight: 600;
+
+ @include size-tablet {
+    width: 300px;
+}
+}
+
+.text {
+    @include size-tablet {
+        font-size: 20px;
+    }
+}
