@@ -108,7 +108,7 @@ export default function Landing() {
            </div>
 
            <div className={styles.modalButtons}>
-            <Button>Регистрация</Button>
+            <Button variant='standardLargeContained'>Регистрация</Button>
             <Button variant='standardLargeOutlined'>Войти</Button>
            </div>
         </Modal>

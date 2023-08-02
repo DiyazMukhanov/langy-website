@@ -32,16 +32,21 @@
 }
 
 .whiteContainer {
-    border: solid red 1px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 
     & p {
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 700;
+    }
+
+    @include size-tablet {
+        display: none;
     }
 }
 
@@ -70,4 +75,30 @@
     font-size: 22px;
     font-weight: 700;
 }
+
+.modalContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.modalLogos {
+    display: flex;
+    flex-direction: column;
+}
+
+.whiteContainerMobile {
+    display: none;
+
+    @include size-tablet {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+    }
+}
+
 

@@ -4,8 +4,21 @@ import Logo from '../../public/images/Logo.svg'
 import styles from './Header.module.scss'
 import Image from 'next/image'
 import ButtonClose from '../../public/images/Button-close.svg'
+import SandwichBlack from '../../public/images/Sandwich-black.svg'
+import Modal from '../../layouts/landing/Modal'
+import { useState } from 'react'
 
 export default function Header({ variant }) {
+    const [isModalOpened, setIsModalOpened] = useState(false)
+
+    const modalCloseHandler = () => {
+        setIsModalOpened(false)
+      }
+
+      const modalOpenHandler = () => {
+        setIsModalOpened(true)
+      }
+
     if(variant === 'blue') {
         return (
             <>
@@ -50,7 +63,7 @@ export default function Header({ variant }) {
                 <Image
                     priority
                     src={LogoBlue}
-                    width={80}
+                    width={60}
                 />
                 <Image
                     priority
@@ -64,6 +77,50 @@ export default function Header({ variant }) {
                       D
                    </div>
                 </div>
+                </div>
+
+                <div className={styles.whiteContainerMobile}>
+                <Modal isOpen={isModalOpened} onClose={modalCloseHandler}>
+                <div className={styles.modalContainer}>
+                  <div className={styles.modalLogos}>
+                    <Image
+                    priority
+                    src={LogoBlue}
+                    height={38}
+                    width={80}
+                    />
+                    <Image
+                    priority
+                    src={LogoBlueBottom}
+                    />
+                    </div>
+                    <Image
+                    priority
+                    src={ButtonClose}
+                    onClick={modalCloseHandler}
+                    />
+                  </div>
+                </Modal>
+
+                <Image
+                    priority
+                    src={SandwichBlack}
+                    width={35}
+                    onClick={modalOpenHandler}
+                />
+                 <div className={styles.modalLogos}>
+                    <Image
+                    priority
+                    src={LogoBlue}
+                    height={38}
+                    width={80}
+                    />
+                    <Image
+                    priority
+                    src={LogoBlueBottom}
+                    />
+                    </div>
+
                 </div>
               
             </>
