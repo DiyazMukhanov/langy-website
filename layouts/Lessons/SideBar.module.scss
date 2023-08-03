@@ -1,3 +1,5 @@
+@import "styles/breakpoints";
+
 .sideBar {
     width: 300px;
     padding: 40px 0 40px 40px;
@@ -12,6 +14,10 @@
 
     & h3 {
         margin: 0;
+    }
+
+    @include size-tablet {
+        display: none;
     }
 }
 

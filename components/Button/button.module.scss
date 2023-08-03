@@ -47,6 +47,16 @@
     border: solid var(--color-dark-grey) 1px;
  }
 
+ .standardNextOutlined {
+    width: 130px;
+    height: 40px;
+    background-color: transparent;
+    color: var(--color-primary);
+    font-size: 16px;
+    border-radius: 40px;
+    border: solid var(--color-primary) 1px;  
+ }
+
  .authLargeContained {
     width: 305px;
     height: 45px;

@@ -10,7 +10,7 @@ export default function SideBar({ lessonsSummary }) {
     <p>подписка действует до 30.07.23</p>
     <div className={styles.lessonsListContainer}>
        {lessonsSummary.map(lessonBlock => (
-        <div className={styles.lessonBlock}>
+        <div className={styles.lessonBlock} key={lessonBlock.chapter}>
            <div className={classNames(
             styles.title,
             {[styles.current]: lessonBlock.isCurrent}

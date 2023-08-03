@@ -1,3 +1,4 @@
+@import "styles/breakpoints";
 
 .container {
     display: flex;
@@ -7,6 +8,10 @@
     width: 80%;
     height: 20px;
     border: solid var(--color-grey) 1px;
+
+    @include size-tablet {
+        width: 80vw;
+    }
 }
 
 .rightSide {
@@ -24,6 +29,15 @@
         margin: 0;
         font-weight: 600;
         cursor: pointer;
+    }
+
+    @include size-tablet {
+        & p {
+            margin: 0;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
     }
 }
 
