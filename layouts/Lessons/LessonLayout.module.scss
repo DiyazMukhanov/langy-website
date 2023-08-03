@@ -1,0 +1,32 @@
+
+.container {
+    display: flex;
+}
+
+.progressContainer {
+    width: 80%;
+    height: 20px;
+    border: solid var(--color-grey) 1px;
+}
+
+.rightSide {
+    width: 80vw;
+    padding-top: 40px;
+    padding-left: 40px;
+}
+
+.links {
+    margin-top: 20px;
+    display: flex;
+    gap: 30px;
+
+    & p {
+        margin: 0;
+        font-weight: 600;
+        cursor: pointer;
+    }
+}
+
+.currentLink {
+    color: var(--color-primary);
+}

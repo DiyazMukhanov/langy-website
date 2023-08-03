@@ -1,6 +1,6 @@
 .sideBar {
-    border: solid red 1px;
-    padding: 40px;
+    width: 300px;
+    padding: 40px 0 40px 40px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -20,7 +20,7 @@
 }
 
 .lessonsListContainer {
-    width: 300px;
+    // width: 300px;
     border: solid var(--color-grey) 1px;
     height: 80vh;
     overflow: auto;
