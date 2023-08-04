@@ -67,7 +67,7 @@ export default function VideoLessonLayout() {
                             <p>{currentQuestion}/{totalQuestions}</p>
                        </div>
                        {videoTasks[currentQuestion - 1].answers.map(answer => (
-                        <div className={styles.answerContainer}>
+                        <div className={styles.answerContainer} key={answer.id}>
                             
                                 <div className={styles.rectangle} onClick={() => clickHandler(answer.id)}>
                                     {wasClicked === answer.id && answer.isCorrect === true && (

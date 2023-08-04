@@ -7,8 +7,12 @@ import styles from "./AudioLessonLayout.module.scss";
 import Pause from "../../public/images/Pause.svg";
 import Play from "../../public/images/Play.svg";
 import ButtonClose from "../../public/images/Button-close.svg";
+import Mistake from "../../public/images/Mistake.svg";
+import Right from "../../public/images/Right.svg";
 import Image from "next/image";
 import { Button } from "@/components/Button";
+import {videoTasks} from '../../utils/videoTasks'
+import {useRouter} from "next/router"
 
 const AudioLessonLayout = () => {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -17,6 +21,12 @@ const AudioLessonLayout = () => {
   const [hasWindow, setHasWindow] = useState(false)
   const [isShowingEn, setIsShowingEn] = useState(false)
   const [isShowingRu, setIsShowingRu] = useState(false)
+  const [currentQuestion, setCurrentQuestion] = useState(1)
+  const [wasClicked, setWasClicked] = useState(null)
+
+  const router = useRouter()
+
+    const totalQuestions = videoTasks.length
   
   useEffect(() => {
     if(typeof window !== 'undefined') {
@@ -116,14 +126,30 @@ const AudioLessonLayout = () => {
     setIsShowingRu(false)
   }
 
+  const nextQuestionHandler = () => {
+    if(currentQuestion < totalQuestions) {
+        if(wasClicked) {
+            setCurrentQuestion(currentQuestion + 1)
+            setWasClicked(null)
+        } else {
+            alert('Пожалуйста выберите ваш вариант')
+        }
+    }
+
+    if(currentQuestion === totalQuestions) {
+        router.push('lessons/lesson1/writing')
+    }
+}
+
+const clickHandler = (id) => {
+    setWasClicked(id)
+ }
+
   return (
     <>
       <LessonLayout lessonsSummary={lessonsSummary} chapter="audio">
         
          {hasWindow && <audio src="/audio/one.mp3" ref={audioRef} preload="metadata" onLoadedMetadata={onLoadedMetadata}/>}
-         
-
-         
          
          <div className={styles.progress}>
             <div className={styles.time}>
@@ -151,9 +177,6 @@ const AudioLessonLayout = () => {
             </div>
          </div>
 
-         
-        
-
          <div className={styles.textButtons}>
             {isShowingEn ? <div className={styles.textShowEn}>
                     <p>{text.en}</p>
@@ -176,8 +199,47 @@ const AudioLessonLayout = () => {
                         className={styles.cancel}
                     />
             </div> : <Button variant="standardMiddleOutlined" onClick={showTranslationHandler}>Показать перевод</Button>}
-            
          </div>
+
+         <div className={styles.bottom}>
+                    <p>Выполните тест:</p>
+                    <div className={styles.questions}>
+                       <div className={styles.questionContainer}>
+                            <p className={styles.questionText}>{videoTasks[currentQuestion - 1].title}</p>
+                            <p>{currentQuestion}/{totalQuestions}</p>
+                       </div>
+                       {videoTasks[currentQuestion - 1].answers.map(answer => (
+                        <div className={styles.answerContainer} key={answer.id}>
+                            
+                                <div className={styles.rectangle} onClick={() => clickHandler(answer.id)}>
+                                    {wasClicked === answer.id && answer.isCorrect === true && (
+                                        <Image
+                                        priority
+                                        src={Right}
+                                        width={20}
+                                        className={styles.tick}
+                                        />
+                                    )}
+                                    {wasClicked === answer.id && answer.isCorrect === false && (
+                                        <Image
+                                        priority
+                                        src={Mistake}
+                                        
+                                        width={20}
+                                        className={styles.tick}
+                                        />
+                                    )}
+                                </div>
+                           
+                           <p>{answer.answer}</p>
+                        </div>    
+                       ))}
+                
+                    </div>
+                    <div className={styles.btnContainer}>
+                    <Button onClick={nextQuestionHandler} variant="standardNextOutlined" className={styles.nextButton}>Далее</Button>
+                    </div>
+                </div>
            
         
       </LessonLayout>
