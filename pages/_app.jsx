@@ -1,6 +1,9 @@
 import '../styles/globals.scss'
 import React from 'react'
 import Head from "next/head";
+import { DndProvider } from "react-dnd";
+import { TouchBackend } from "react-dnd-touch-backend";
+
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -9,7 +12,9 @@ function MyApp({ Component, pageProps }) {
               <title>Langy</title>
               <meta name="описание" content="Уроки английского языка"/>
           </Head>
-      <Component {...pageProps} />
+      <DndProvider backend={TouchBackend}>    
+        <Component {...pageProps} />
+      </DndProvider>
       </>
         )
 }
