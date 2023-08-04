@@ -1,7 +1,4 @@
-
-.progress {
-    // border: solid red 1px;
-}
+@import "styles/breakpoints";
 
 .time {
     display: flex;
@@ -23,6 +20,10 @@
     display: flex;
     align-items: center;
     gap: 10px;
+
+    @include size-tablet {
+        width: 80vw;
+    }
 }
 
 .rangeSlider {
@@ -34,6 +35,10 @@
     outline: none;
     background-image: linear-gradient(to right, #007bff 0%, #007bff calc((100% * var(--current-time)) / var(--duration)), var(--color-white) calc((100% * var(--current-time)) / var(--duration)), var(--color-white) 100%);
     cursor: pointer;
+
+    @include size-tablet {
+        width: 80vw;
+    }
   }
 
 .rangeSlider::-webkit-slider-thumb {
@@ -79,7 +84,41 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    @include size-tablet {
+        align-items: center;
+    }
 }
+
+.textShowEn {
+  display: flex;
+  gap: 10px;
+  width: 50vw;
+  background-color: var(--color-light-blue);
+  padding: 10px;
+  border-radius: 12px;
+
+  @include size-tablet {
+    width: 80vw;
+}
+}
+
+.textShowRu {
+    display: flex;
+    gap: 10px;
+    width: 50vw;
+    border: solid var(--color-grey) 1px;
+    padding: 10px;
+    border-radius: 12px;
+
+    @include size-tablet {
+        width: 80vw;
+    }
+  }
+
+  .cancel {
+    cursor: pointer;
+  }
 
 
   

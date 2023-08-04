@@ -2,9 +2,11 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import LessonLayout from "./LessonLayout";
 import { lessonsSummary } from "../../utils/lessonsSummary";
+import {text} from '../../utils/text'
 import styles from "./AudioLessonLayout.module.scss";
 import Pause from "../../public/images/Pause.svg";
 import Play from "../../public/images/Play.svg";
+import ButtonClose from "../../public/images/Button-close.svg";
 import Image from "next/image";
 import { Button } from "@/components/Button";
 
@@ -13,7 +15,9 @@ const AudioLessonLayout = () => {
   const [timeProgress, setTimeProgress] = useState(0);
   const [duration, setDuration] = useState(0);
   const [hasWindow, setHasWindow] = useState(false)
-
+  const [isShowingEn, setIsShowingEn] = useState(false)
+  const [isShowingRu, setIsShowingRu] = useState(false)
+  
   useEffect(() => {
     if(typeof window !== 'undefined') {
         setHasWindow(true);
@@ -96,6 +100,22 @@ const AudioLessonLayout = () => {
     audioRef.current.currentTime = progressBarRef.current.value;
   };
 
+  const showEnglishHandler = () => {
+    setIsShowingEn(true)
+  }
+
+  const showTranslationHandler = () => {
+    setIsShowingRu(true)
+  }
+
+  const cancelShowEnHandler = () => {
+    setIsShowingEn(false)
+  }
+
+  const cancelShowRuHandler = () => {
+    setIsShowingRu(false)
+  }
+
   return (
     <>
       <LessonLayout lessonsSummary={lessonsSummary} chapter="audio">
@@ -131,9 +151,32 @@ const AudioLessonLayout = () => {
             </div>
          </div>
 
+         
+        
+
          <div className={styles.textButtons}>
-            <Button variant="standardMiddleOutlined">Показать текст</Button>
-            <Button variant="standardMiddleOutlined">Показать перевод</Button>
+            {isShowingEn ? <div className={styles.textShowEn}>
+                    <p>{text.en}</p>
+                    <Image
+                        priority
+                        src={ButtonClose}
+                        width={30}
+                        onClick={cancelShowEnHandler}
+                        className={styles.cancel}
+                    />
+            </div> : <Button variant="standardMiddleOutlined" onClick={showEnglishHandler}>Показать текст</Button>}
+            
+            {isShowingRu ? <div className={styles.textShowRu}>
+                    <p>{text.ru}</p>
+                    <Image
+                        priority
+                        src={ButtonClose}
+                        width={30}
+                        onClick={cancelShowRuHandler}
+                        className={styles.cancel}
+                    />
+            </div> : <Button variant="standardMiddleOutlined" onClick={showTranslationHandler}>Показать перевод</Button>}
+            
          </div>
            
         
