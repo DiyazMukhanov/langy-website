@@ -1,8 +1,8 @@
 import Header from "@/components/Header";
 import styles from './LessonLayout.module.scss';
-import SideBar from "./SideBar";
 import { useEffect, useRef } from "react";
 import classNames from "classnames";
+import SideBarDesktop from "./SideBarDesktop";
 
 export default function LessonLayout({ children, lessonsSummary }) {
     const progress = 10
@@ -12,9 +12,9 @@ export default function LessonLayout({ children, lessonsSummary }) {
     console.log(currentChapter[0].ru)
 
     return (<>
-    <Header variant='white'/>
+    <Header variant='white' lessonsSummary={lessonsSummary}/>
     <div className={styles.container}>
-        <SideBar lessonsSummary={lessonsSummary}/>
+        <SideBarDesktop lessonsSummary={lessonsSummary}/>
         <div className={styles.rightSide}>
             <div className={styles.progressContainer}>
                 <div style={{

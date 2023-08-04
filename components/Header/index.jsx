@@ -7,8 +7,9 @@ import ButtonClose from '../../public/images/Button-close.svg'
 import SandwichBlack from '../../public/images/Sandwich-black.svg'
 import Modal from '../../layouts/landing/Modal'
 import { useState } from 'react'
+import Sidebar from '../Sidebar'
 
-export default function Header({ variant }) {
+export default function Header({ variant, lessonsSummary }) {
     const [isModalOpened, setIsModalOpened] = useState(false)
 
     const modalCloseHandler = () => {
@@ -99,6 +100,9 @@ export default function Header({ variant }) {
                     src={ButtonClose}
                     onClick={modalCloseHandler}
                     />
+                  </div>
+                  <div className={styles.sidebarContainer}>
+                    <Sidebar lessonsSummary={lessonsSummary}/>
                   </div>
                 </Modal>
 
