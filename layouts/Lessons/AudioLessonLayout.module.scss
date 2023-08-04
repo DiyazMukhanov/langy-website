@@ -1,33 +1,42 @@
 
-.audioContainer {
-    border: solid red 1px;
+.progress {
+    // border: solid red 1px;
 }
 
-.progressBarContainer {
-    width: 300px; /* Set your desired width for the progress bar */
-    height: 10px; /* Set the height of the progress bar */
-    background-color: #ddd; /* Set the background color of the progress bar container */
+.time {
+    display: flex;
+    width: 54vw;
+    justify-content: flex-end;
+
+    & span {
+        margin-right: 30px;
+    }
+    
+}
+
+.play {
     cursor: pointer;
-  }
+}
 
-  .progressBar {
-    height: 100%;
-    background-color: #007bff; /* Set the color of the progress bar */
-    width: 0; /* The width will be updated dynamically using JavaScript */
-  }
+.rangeContainer {
+    width: 54vw;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-  .rangeSlider {
-    width: 80vw;
+.rangeSlider {
+    width: 50vw;
     height: 17px;
     border: solid var(--color-grey) 1px;
     background-color: var(--color-white);
     appearance: none;
     outline: none;
-    background-image: linear-gradient(to right, #007bff 0%, #007bff calc((100% * var(--current-time)) / var(--duration)), #ddd calc((100% * var(--current-time)) / var(--duration)), #ddd 100%);
-    
+    background-image: linear-gradient(to right, #007bff 0%, #007bff calc((100% * var(--current-time)) / var(--duration)), var(--color-white) calc((100% * var(--current-time)) / var(--duration)), var(--color-white) 100%);
+    cursor: pointer;
   }
 
-  .rangeSlider::-webkit-slider-thumb {
+.rangeSlider::-webkit-slider-thumb {
     appearance: none;
     width: 16px;
     height: 16px;
@@ -46,7 +55,7 @@
   border: none;
   }
 
-  .rangeSlider::-moz-range-thumb {
+.rangeSlider::-moz-range-thumb {
     width: 16px;
     height: 16px;
     border: none;
@@ -64,6 +73,13 @@
   background: transparent;
   border: none;
   }
+
+.textButtons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
 
   

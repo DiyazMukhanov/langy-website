@@ -6,6 +6,7 @@ import styles from "./AudioLessonLayout.module.scss";
 import Pause from "../../public/images/Pause.svg";
 import Play from "../../public/images/Play.svg";
 import Image from "next/image";
+import { Button } from "@/components/Button";
 
 const AudioLessonLayout = () => {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -35,7 +36,7 @@ const AudioLessonLayout = () => {
     return '00:00';
   };
 
-  //Pause
+  //Pause correction
   const progressUpdate = useCallback(() => {
     const currentTime = audioRef.current.currentTime;
     setTimeProgress(currentTime);
@@ -58,7 +59,7 @@ const AudioLessonLayout = () => {
       }
     }
   }, [isPlaying, audioRef, progressUpdate, hasWindow]);
-  //End Pause
+  //End Pause correction
 
   const repeat = useCallback(() => {
     const currentTime = audioRef.current.currentTime;
@@ -100,28 +101,39 @@ const AudioLessonLayout = () => {
       <LessonLayout lessonsSummary={lessonsSummary} chapter="audio">
         
          {hasWindow && <audio src="/audio/one.mp3" ref={audioRef} preload="metadata" onLoadedMetadata={onLoadedMetadata}/>}
-         <div className={styles.controls}>
-         <Image
-            priority
-            src={isPlaying ? Pause : Play}
-            onClick={togglePlayPause}
-            />
-         </div>
+         
+
+         
+         
          <div className={styles.progress}>
-         <span>{formatTime(timeProgress)}</span>
-         <div className={styles.rangeContainer}>
-         <input 
-         type="range" 
-         className={styles.rangeSlider} 
-         ref={progressBarRef} 
-         onChange={handleProgressChange}
-         style = {{
-            '--current-time': timeProgress,
-            '--duration': duration
-          }}
-         />
+            <div className={styles.time}>
+            <span>{formatTime(timeProgress)} / {formatTime(duration)}</span>
+            </div>
+
+            <div className={styles.rangeContainer}>
+                <Image
+                priority
+                src={isPlaying ? Pause : Play}
+                width={30}
+                onClick={togglePlayPause}
+                className={styles.play}
+                />
+                <input 
+                type="range" 
+                className={styles.rangeSlider} 
+                ref={progressBarRef} 
+                onChange={handleProgressChange}
+                style = {{
+                    '--current-time': timeProgress,
+                    '--duration': duration
+                }}
+                />
+            </div>
          </div>
-         <span>{formatTime(duration)}</span>
+
+         <div className={styles.textButtons}>
+            <Button variant="standardMiddleOutlined">Показать текст</Button>
+            <Button variant="standardMiddleOutlined">Показать перевод</Button>
          </div>
            
         
