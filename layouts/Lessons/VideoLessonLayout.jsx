@@ -74,7 +74,6 @@ export default function VideoLessonLayout() {
                                         <Image
                                         priority
                                         src={Right}
-                                        
                                         width={20}
                                         className={styles.tick}
                                         />

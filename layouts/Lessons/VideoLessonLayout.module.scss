@@ -48,7 +48,6 @@
 
    @include size-tablet {
     width: 75vw;
-    // height: 270px;
     justify-content: center;
     padding-left: 15px;
 }
@@ -83,12 +82,11 @@
     display: flex;
     justify-content: flex-end;
     padding-right: 350px;    
-    margin-bottom: 150px;
+    margin-bottom: 50px;
     margin-top: -30px;
 
     @include size-tablet {
         width: 80vw;
-        height: 270px;
         justify-content: center;
     }
 }

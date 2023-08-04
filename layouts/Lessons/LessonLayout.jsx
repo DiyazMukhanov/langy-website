@@ -5,7 +5,12 @@ import classNames from "classnames";
 import SideBarDesktop from "./SideBarDesktop";
 
 export default function LessonLayout({ children, lessonsSummary, chapter }) {
-    const progress = 10
+    const progress = {
+        grammar: 25,
+        audio: 50,
+        writing: 75,
+        test: 100
+    }
 
     const currentLesson = lessonsSummary.filter(lesson => lesson.isCurrent === true)
     const currentChapter = currentLesson[0].lessons.filter(chapter => chapter.isCurrent === true)
@@ -18,7 +23,7 @@ export default function LessonLayout({ children, lessonsSummary, chapter }) {
         <div className={styles.rightSide}>
             <div className={styles.progressContainer}>
                 <div style={{
-            width: `${progress}%`,
+            width: `${progress[chapter]}%`,
             height: '100%',
             background: '#48C61C'
             }}/>
