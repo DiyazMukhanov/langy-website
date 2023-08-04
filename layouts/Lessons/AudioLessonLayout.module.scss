@@ -2,3 +2,68 @@
 .audioContainer {
     border: solid red 1px;
 }
+
+.progressBarContainer {
+    width: 300px; /* Set your desired width for the progress bar */
+    height: 10px; /* Set the height of the progress bar */
+    background-color: #ddd; /* Set the background color of the progress bar container */
+    cursor: pointer;
+  }
+
+  .progressBar {
+    height: 100%;
+    background-color: #007bff; /* Set the color of the progress bar */
+    width: 0; /* The width will be updated dynamically using JavaScript */
+  }
+
+  .rangeSlider {
+    width: 80vw;
+    height: 17px;
+    border: solid var(--color-grey) 1px;
+    background-color: var(--color-white);
+    appearance: none;
+    outline: none;
+    background-image: linear-gradient(to right, #007bff 0%, #007bff calc((100% * var(--current-time)) / var(--duration)), #ddd calc((100% * var(--current-time)) / var(--duration)), #ddd 100%);
+    
+  }
+
+  .rangeSlider::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #007bff;
+    cursor: pointer;
+
+    /* Hide the thumb */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+
+  /* Custom transparent background and no border for the thumb */
+  background: transparent;
+  border: none;
+  }
+
+  .rangeSlider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border: none;
+    border-radius: 50%;
+    background-color: #007bff;
+    cursor: pointer;
+
+       /* Hide the thumb */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+
+  /* Custom transparent background and no border for the thumb */
+  background: transparent;
+  border: none;
+  }
+
+
+  

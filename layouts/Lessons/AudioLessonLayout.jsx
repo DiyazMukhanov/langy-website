@@ -1,92 +1,133 @@
 // AudioPlayer.js
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import LessonLayout from "./LessonLayout";
-import {lessonsSummary} from '../../utils/lessonsSummary'
-import styles from './AudioLessonLayout.module.scss'
-import Pause from '../../public/images/Pause.svg'
-import Image from 'next/image'
+import { lessonsSummary } from "../../utils/lessonsSummary";
+import styles from "./AudioLessonLayout.module.scss";
+import Pause from "../../public/images/Pause.svg";
+import Play from "../../public/images/Play.svg";
+import Image from "next/image";
 
-const AudioPlayer = () => {
-  const audioRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
+const AudioLessonLayout = () => {
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [timeProgress, setTimeProgress] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
+  const [hasWindow, setHasWindow] = useState(false)
 
-  const toggleAudio = () => {
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
+  useEffect(() => {
+    if(typeof window !== 'undefined') {
+        setHasWindow(true);
     }
-    setIsPlaying(!isPlaying);
+    }, [])
+  const audioRef = useRef()
+  const progressBarRef = useRef()
+  const playAnimationRef = useRef();
+
+  const formatTime = (time) => {
+    if (time && !isNaN(time)) {
+      const minutes = Math.floor(time / 60);
+      const formatMinutes =
+        minutes < 10 ? `0${minutes}` : `${minutes}`;
+      const seconds = Math.floor(time % 60);
+      const formatSeconds =
+        seconds < 10 ? `0${seconds}` : `${seconds}`;
+      return `${formatMinutes}:${formatSeconds}`;
+    }
+    return '00:00';
   };
 
-  const onTimeUpdate = () => {
+  //Pause
+  const progressUpdate = useCallback(() => {
     const currentTime = audioRef.current.currentTime;
-    setCurrentTime(currentTime);
-    setProgress((currentTime / duration) * 100);
-  };
+    setTimeProgress(currentTime);
+    progressBarRef.current.value = currentTime;
+
+    if (isPlaying || currentTime < duration) {
+      // Continue updating progress during the pause state if audio hasn't ended
+      playAnimationRef.current = requestAnimationFrame(progressUpdate);
+    }
+  }, [audioRef, duration, isPlaying, progressBarRef]);
+
+  useEffect(() => {
+    if (hasWindow) {
+      if (isPlaying) {
+        audioRef.current.play();
+        playAnimationRef.current = requestAnimationFrame(progressUpdate);
+      } else {
+        audioRef.current.pause();
+        cancelAnimationFrame(playAnimationRef.current);
+      }
+    }
+  }, [isPlaying, audioRef, progressUpdate, hasWindow]);
+  //End Pause
+
+  const repeat = useCallback(() => {
+    const currentTime = audioRef.current.currentTime;
+    setTimeProgress(currentTime);
+    progressBarRef.current.value = currentTime;
+
+    playAnimationRef.current = requestAnimationFrame(repeat);
+  }, [audioRef, duration, progressBarRef, setTimeProgress]);
+
+  useEffect(() => {
+    if(hasWindow) {
+        if (isPlaying) {
+            audioRef.current.play();
+            playAnimationRef.current = requestAnimationFrame(repeat);
+          } else {
+            audioRef.current.pause();
+            cancelAnimationFrame(playAnimationRef.current);
+          }
+    }
+   
+  }, [isPlaying, audioRef, repeat])
 
   const onLoadedMetadata = () => {
-    setDuration(audioRef.current.duration);
+    const seconds = audioRef.current.duration;
+    setDuration(seconds);
+    progressBarRef.current.max = seconds;
   };
 
-  const onProgressClick = (event) => {
-    const progressBar = event.target;
-    const newProgress = (event.nativeEvent.offsetX / progressBar.clientWidth) * 100;
-    const newTime = (newProgress / 100) * duration;
-    setProgress(newProgress);
-    setCurrentTime(newTime);
-    audioRef.current.currentTime = newTime;
-  };
+  const togglePlayPause = () => {
+    setIsPlaying((prev) => !prev);
+  }
 
-  const onSpeedChange = (speed) => {
-    audioRef.current.playbackRate = speed;
-  };
-
-  const formatTime = (timeInSeconds) => {
-    const minutes = Math.floor(timeInSeconds / 60);
-    const seconds = Math.floor(timeInSeconds % 60);
-    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+  const handleProgressChange = () => {
+    audioRef.current.currentTime = progressBarRef.current.value;
   };
 
   return (
     <>
-    <LessonLayout lessonsSummary={lessonsSummary} chapter='audio'>
-    <div className={styles.audioContainer}>
-      <audio
-        ref={audioRef}
-        src="/audio/one.mp3"
-        onTimeUpdate={onTimeUpdate}
-        onLoadedMetadata={onLoadedMetadata}
-      />
-      <button onClick={toggleAudio}>{isPlaying ? "Pause" : "Play"}</button>
-      <div>
-        <div>
-          <span>{formatTime(currentTime)}</span> / <span>{formatTime(duration)}</span>
-        </div>
-        <progress
-          value={progress}
-          max="100"
-          onClick={onProgressClick}
-          style={{ cursor: "pointer" }}
-        />
-        <div>
-          <button onClick={() => onSpeedChange(0.5)}>0.5x</button>
-          <button onClick={() => onSpeedChange(1)}>1x</button>
-          <button onClick={() => onSpeedChange(1.5)}>1.5x</button>
-          <button onClick={() => onSpeedChange(2)}>2x</button>
-        </div>
-      </div>
-    </div>
-      <Image
-        priority
-        src={Pause}
-        />
-    </LessonLayout>
+      <LessonLayout lessonsSummary={lessonsSummary} chapter="audio">
+        
+         {hasWindow && <audio src="/audio/one.mp3" ref={audioRef} preload="metadata" onLoadedMetadata={onLoadedMetadata}/>}
+         <div className={styles.controls}>
+         <Image
+            priority
+            src={isPlaying ? Pause : Play}
+            onClick={togglePlayPause}
+            />
+         </div>
+         <div className={styles.progress}>
+         <span>{formatTime(timeProgress)}</span>
+         <div className={styles.rangeContainer}>
+         <input 
+         type="range" 
+         className={styles.rangeSlider} 
+         ref={progressBarRef} 
+         onChange={handleProgressChange}
+         style = {{
+            '--current-time': timeProgress,
+            '--duration': duration
+          }}
+         />
+         </div>
+         <span>{formatTime(duration)}</span>
+         </div>
+           
+        
+      </LessonLayout>
     </>
   );
 };
 
-export default AudioPlayer;
+export default AudioLessonLayout
