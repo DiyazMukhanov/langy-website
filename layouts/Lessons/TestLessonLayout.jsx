@@ -104,7 +104,6 @@ const WordContainer = ({ word, isCorrect }) => {
         ref={dragRef}
         className={styles.wordContainer}
         draggable='true'
-        // onDragStart={onDragStart}
         >
       {word}
    </div>
@@ -117,17 +116,6 @@ export default function TestLessonLayout() {
     const [isCorrect, setIsCorrect] = useState('neutral')
     const [droppedWord, setDroppedWord] = useState(null)
 
-    // const handleDragStart = (event, word, isCorrect) => {
-    //     // Set the data to be transferred during the drag
-    //     event.dataTransfer.setData("word", word);
-    //     event.dataTransfer.setData("isCorrect", isCorrect);
-    //   };
-
-    //   const handleDragOver = (event) => {
-    //     // Allow the drop
-    //     event.preventDefault();
-    //   };
-
     const handleDrop = (word, isCorrect) => {
         setDroppedWord(word);
         setIsCorrect(isCorrect ? 'correct' : 'mistake');
@@ -137,8 +125,6 @@ export default function TestLessonLayout() {
         accept: "WORD_CONTAINER",
         drop: (item) => handleDrop(item.word, item.isCorrect),
       });
-
-    
 
      return (
      <>
@@ -172,7 +158,6 @@ export default function TestLessonLayout() {
                 key={answer.id}
                 word={answer.answer}
                 isCorrect={answer.isCorrect}
-                // onDragStart={(event) => handleDragStart(event, answer.answer, answer.isCorrect)}
                 />
                ))}
             </div>

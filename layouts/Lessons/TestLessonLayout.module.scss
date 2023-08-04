@@ -12,6 +12,14 @@
     cursor: pointer;
 }
 
+.touch-drag-layer {
+    pointer-events: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+  }
+
 .dropZone {
     width: 130px;
     height: 44px;
@@ -38,4 +46,8 @@
 
 .green {
     background-color: var(--color-green);
+}
+
+.red {
+    background-color: var(--color-red);
 }
