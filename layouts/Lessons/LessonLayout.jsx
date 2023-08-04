@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import classNames from "classnames";
 import SideBarDesktop from "./SideBarDesktop";
 
-export default function LessonLayout({ children, lessonsSummary }) {
+export default function LessonLayout({ children, lessonsSummary, chapter }) {
     const progress = 10
 
     const currentLesson = lessonsSummary.filter(lesson => lesson.isCurrent === true)
@@ -25,10 +25,10 @@ export default function LessonLayout({ children, lessonsSummary }) {
             </div>
          
         <div className={styles.links}>
-           <p className={classNames({[styles.currentLink]: currentChapter[0].ru === 'Грамматика'})}>Грамматика</p>
-           <p className={classNames({[styles.currentLink]: currentChapter[0].ru === 'Аудио/Чтение'})}>Аудио/Чтение</p>
-           <p className={classNames({[styles.currentLink]: currentChapter[0].ru === 'Письмо'})}>Письмо</p>
-           <p className={classNames({[styles.currentLink]: currentChapter[0].ru === 'Тест'})}>Тест</p>
+           {chapter === 'grammar' && <p className={styles.currentLink}>Грамматика</p>}
+           {chapter === 'audio' && <p className={styles.currentLink}>Аудио/Чтение</p>}
+           {chapter === 'writing' && <p className={styles.currentLink}>Письмо</p>}
+           {chapter === 'test' && <p className={styles.currentLink}>Тест</p>}
         </div>
         {children}
         </div>

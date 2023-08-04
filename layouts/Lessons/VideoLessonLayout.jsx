@@ -43,11 +43,11 @@ export default function VideoLessonLayout() {
     }
     
     return (
-        <LessonLayout lessonsSummary={lessonsSummary}>
+        <LessonLayout lessonsSummary={lessonsSummary} chapter='grammar'>
             <div className={styles.container}>
                 <div className={styles.top}>
                     <p className={styles.topic}>Тема: Present Simple/Настоящее время</p>
-                    <p className={styles.task}>Посмотрите следующее видео:</p>
+                    {/* <p className={styles.task}>Посмотрите следующее видео:</p> */}
                     <div className={styles.wrapper}>
                     {hasWindow && <ReactPlayer
                         url='https://www.youtube.com/watch?v=TD-WPyKQy9o'
