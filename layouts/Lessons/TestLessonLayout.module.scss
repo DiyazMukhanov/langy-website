@@ -114,7 +114,11 @@
 }
 
 .next {
-    margin-top: -5px;
+
+    @include size-tablet {
+        margin-top: -20px;
+        margin-bottom: 10px;
+    }
 }
 
 .resultsContainer {
