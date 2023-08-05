@@ -67,6 +67,16 @@
     border: solid var(--color-primary) 1px;  
  }
 
+ .standardNextContained {
+    width: 200px;
+    height: 51px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-size: 16px;
+    border-radius: 40px;
+    border: none;
+ }
+
  .authLargeContained {
     width: 305px;
     height: 45px;

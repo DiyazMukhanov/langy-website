@@ -3,6 +3,7 @@ import styles from './LessonLayout.module.scss';
 import { useEffect, useRef } from "react";
 import classNames from "classnames";
 import SideBarDesktop from "./SideBarDesktop";
+import { Typography } from "@/components/Typography";
 
 export default function LessonLayout({ children, lessonsSummary, chapter }) {
     const progress = {
@@ -21,6 +22,10 @@ export default function LessonLayout({ children, lessonsSummary, chapter }) {
     <div className={styles.container}>
         <SideBarDesktop lessonsSummary={lessonsSummary}/>
         <div className={styles.rightSide}>
+            <div>
+            <Typography size='small' element='h3' className={styles.text}>Beginner</Typography>
+            <p>подписка действует до 30.07.23</p>
+            </div>
             <div className={styles.progressContainer}>
                 <div style={{
             width: `${progress[chapter]}%`,

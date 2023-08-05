@@ -7,7 +7,8 @@ import NextButton from '../../public/images/Next-button.svg'
 import RightTick from '../../public/images/Right-tick.svg'
 import WrongTick from '../../public/images/Wrong-tick.svg'
 import Image from 'next/image'
-import { Typography } from "@/components/Typography";
+import { Typography } from "@/components/Typography"
+import { Button } from "@/components/Button";
 
 const questions = [
     {
@@ -139,21 +140,22 @@ const ResultsShowing = ({rightAnswers, totalQuestions, questionsArr }) => {
                 {!checkIsRight(question, question.chosenAnswer) &&  
                 // if the answer was wrong we show the right answer to user
                 <div className={styles.answerResult}>
-                
-                <Image
-                        priority
-                        src={RightTick}
-                    /> 
-                    
-                <p>{question.firstPart}</p>
-                <div className={styles.resultWordCardRight}>{findRightAnswer(question)}</div>
-                <p>{question.secondPart}</p>
+                    <p className={styles.secondShow}><span className={styles.board}>|</span><span className={styles.questionNumberMobile}>{question.id}.&nbsp;</span> {question.firstPart}</p>
+                    <div className={styles.resultWordCardRight}>{findRightAnswer(question)}</div>
+                    <p>{question.secondPart}</p>
                 </div>
                 }
                 </div>
             </div>
-            <div></div></>
+            <div className={styles.description}>
+                <p>{question.description}</p>
+                </div>
+                </>
            ))}
+        </div>
+
+        <div className={styles.buttonNextBottom}>
+           <Button variant="standardNextContained">Следующий урок</Button>
         </div>
         </div>
         )
@@ -169,7 +171,6 @@ const WordContainer = ({ word, isCorrect, onClick, droppedWord }) => {
             {[styles.disabled]: droppedWord}
             )}    
         onClick={onClick}
-        
         >
       {word}
    </div>
@@ -259,10 +260,6 @@ export default function TestLessonLayout() {
             </div>
 
             <div className={styles.buttonsContainer}>
-                {/* <Image
-                    priority
-                    src={PreviousButton}
-                /> */}
                 <Image
                     priority
                     src={NextButton}
