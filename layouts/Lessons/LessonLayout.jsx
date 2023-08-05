@@ -15,8 +15,7 @@ export default function LessonLayout({ children, lessonsSummary, chapter, withou
 
     const currentLesson = lessonsSummary.filter(lesson => lesson.isCurrent === true)
     const currentChapter = currentLesson[0].lessons.filter(chapter => chapter.isCurrent === true)
-    console.log(currentChapter[0].ru)
-
+    
     return (<>
     <Header variant='white' lessonsSummary={lessonsSummary}/>
     <div className={styles.container}>

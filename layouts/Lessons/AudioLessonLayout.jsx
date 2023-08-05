@@ -14,6 +14,23 @@ import { Button } from "@/components/Button";
 import {videoTasks} from '../../utils/videoTasks'
 import {useRouter} from "next/router"
 
+const TranslationCard = ({ word, translation, onRemove, innerRef }) => {
+
+    return (
+    <div className={styles.translationCard} ref={innerRef}>
+       <p>{word}</p>
+       <Image
+            priority
+            src={ButtonClose}
+            width={20}
+            className={styles.cancel}
+            onClick={onRemove}
+        />
+    </div>
+    )
+
+}
+
 const AudioLessonLayout = () => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [timeProgress, setTimeProgress] = useState(0);
@@ -23,8 +40,14 @@ const AudioLessonLayout = () => {
   const [isShowingRu, setIsShowingRu] = useState(false)
   const [currentQuestion, setCurrentQuestion] = useState(1)
   const [wasClicked, setWasClicked] = useState(null)
-
+  const [hoveredWord, setHoveredWord] = useState(null)
+  const [hoveredWordIndex, setHoveredWordIndex] = useState(-1);
+  
+//   const [showTranslationCard, setShowTranslationCard] = useState(false)
+  const innerRef = useRef(null)
   const router = useRouter()
+
+  
 
     const totalQuestions = videoTasks.length
   
@@ -145,6 +168,39 @@ const clickHandler = (id) => {
     setWasClicked(id)
  }
 
+ const handleWordClick= (e) => {
+    const wordWithPunctuation = e.target.textContent
+    const wordWithoutPunctuation = wordWithPunctuation.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").trim()
+    setHoveredWord(wordWithoutPunctuation)
+
+    // Find the index of the hovered word in the textByWords array
+    const index = textByWords.indexOf(wordWithoutPunctuation);
+    setHoveredWordIndex(index);
+ }
+
+ const handleTranslationClose = () => {
+    setHoveredWord(null);
+  }
+
+ const textByWords = text.en.split(" ")
+
+  // Add an effect to handle clicks outside the inner div
+//   useEffect(() => {
+//     const handleClickOutside = (event) => {
+//       // Check if the click is outside the inner div
+//       if (innerRef.current && !innerRef.current.contains(event.target)) {
+//         // setHoveredWord(null);
+//         setTestOutside(true)
+//       }
+//     };
+
+//     document.addEventListener("click", handleClickOutside);
+
+//     return () => {
+//       document.removeEventListener("click", handleClickOutside);
+//     };
+//   }, []);
+
   return (
     <>
       <LessonLayout lessonsSummary={lessonsSummary} chapter="audio">
@@ -179,7 +235,22 @@ const clickHandler = (id) => {
 
          <div className={styles.textButtons}>
             {isShowingEn ? <div className={styles.textShowEn}>
-                    <p>{text.en}</p>
+                    {hoveredWord && <div className={styles.cardContainer}><TranslationCard word={hoveredWord} onRemove={handleTranslationClose} innerRef={innerRef}/></div>}
+                       <p>
+                            {textByWords.map((word, index) => (
+                                
+                                <span 
+                                key={index} 
+                                // onMouseEnter={handleWordHover}
+                                // onMouseLeave={handleMouseLeave}
+                                onClick={handleWordClick}
+                                className={styles.span}
+                                >
+                                    {/* {hoveredWord === word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").trim() && index === hoveredWordIndex && <TranslationCard word={word}/>} */}
+                                    {word}{" "}
+                                </span>
+                        ))}
+                        </p>
                     <Image
                         priority
                         src={ButtonClose}
