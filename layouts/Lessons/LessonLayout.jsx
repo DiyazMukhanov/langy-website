@@ -5,7 +5,7 @@ import classNames from "classnames";
 import SideBarDesktop from "./SideBarDesktop";
 import { Typography } from "@/components/Typography";
 
-export default function LessonLayout({ children, lessonsSummary, chapter }) {
+export default function LessonLayout({ children, lessonsSummary, chapter, withoutProgress }) {
     const progress = {
         grammar: 25,
         audio: 50,
@@ -26,13 +26,14 @@ export default function LessonLayout({ children, lessonsSummary, chapter }) {
             <Typography size='small' element='h3' className={styles.text}>Beginner</Typography>
             <p>подписка действует до 30.07.23</p>
             </div>
-            <div className={styles.progressContainer}>
+            {!withoutProgress && (<div className={styles.progressContainer}>
                 <div style={{
             width: `${progress[chapter]}%`,
             height: '100%',
             background: '#48C61C'
             }}/>
-            </div>
+            </div>)}
+            
          
         <div className={styles.links}>
            {chapter === 'grammar' && <p className={styles.currentLink}>Грамматика</p>}

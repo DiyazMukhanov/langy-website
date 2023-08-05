@@ -184,6 +184,7 @@ export default function TestLessonLayout() {
     const [droppedWord, setDroppedWord] = useState(null)
     const [results, setResults] = useState([])
     const [isCompleted, setIsCompleted] = useState(false)
+    const [progress, setProgress] = useState(10)
 
     console.log(questionsArr)
 
@@ -207,6 +208,8 @@ export default function TestLessonLayout() {
 
       useEffect(() => {
          setDroppedWord(null)
+         const updatedProgress = currentQuestion/totalQuestions*100
+         setProgress(updatedProgress)
       }, [currentQuestion])
 
       const nextHandler = () => {
@@ -222,13 +225,22 @@ export default function TestLessonLayout() {
             setIsCompleted(true)
         }
       }
-    
+     
      return (
      <>
      
-       <LessonLayout lessonsSummary={lessonsSummary} chapter='test'>
+       <LessonLayout lessonsSummary={lessonsSummary} chapter='test' withoutProgress={true}>
         {!isCompleted ? (
+            <>
+            <div className={styles.progressContainer}>
+            <div style={{
+            width: `${progress}%`,
+            height: '100%',
+            background: '#48C61C'
+            }}/>
+            </div>
             <div className={styles.questionContainer}>
+            
             <div className={styles.top}>
             <p className={styles.questionTitle}>Вопрос {currentQuestion}</p>
             <p>{currentQuestion}/{totalQuestions}</p>
@@ -268,7 +280,7 @@ export default function TestLessonLayout() {
                 />
             </div>
             </div>
-        ) : (
+            </>) : (
             <ResultsShowing rightAnswers={rightAnswers} totalQuestions={totalQuestions} questionsArr={questionsArr} />
         )}
         
