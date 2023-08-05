@@ -41,7 +41,7 @@
     cursor: pointer;
 
     @include size-tablet {
-        width: 100px;
+        width: 130px;
         border: solid var(--color-primary) 2px;
     }
 }
@@ -72,9 +72,9 @@
     @include size-tablet {
         gap: 10px;
         height: 200px;
+        align-items: center;
+        justify-content: center;
         flex-wrap: wrap;
-        padding-left: 40px;
-        padding-right: 40px;
     }
 }
 
@@ -96,7 +96,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-left: 20px;
     margin-right: 20px;
     cursor: pointer;
