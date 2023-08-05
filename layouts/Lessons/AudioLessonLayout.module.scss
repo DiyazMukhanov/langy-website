@@ -202,12 +202,27 @@
     border-radius: 10px;
     padding: 10px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    font-weight: bold;
 
     @include size-tablet {
         left: 30px;
     }
+}
+
+.cardTop {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cardMiddle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 .cardContainer {
@@ -218,6 +233,10 @@
 
 .span {
     cursor: pointer;
+}
+
+.bold {
+    font-weight: bold;
 }
 
 

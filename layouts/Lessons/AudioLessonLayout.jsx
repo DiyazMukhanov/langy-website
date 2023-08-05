@@ -13,22 +13,27 @@ import Image from "next/image";
 import { Button } from "@/components/Button";
 import {videoTasks} from '../../utils/videoTasks'
 import {useRouter} from "next/router"
+import {wordsWithTranslations} from '../../utils/textWordsArr'
 
 const TranslationCard = ({ word, translation, onRemove, innerRef }) => {
 
     return (
     <div className={styles.translationCard} ref={innerRef}>
-       <p>{word}</p>
-       <Image
+        <div className={styles.cardTop}>
+        <Image
             priority
             src={ButtonClose}
             width={20}
             className={styles.cancel}
             onClick={onRemove}
         />
+        </div>
+        <div className={styles.cardMiddle}>
+       <p>{word} - {translation}</p>
+       </div>
+       
     </div>
     )
-
 }
 
 const AudioLessonLayout = () => {
@@ -47,9 +52,7 @@ const AudioLessonLayout = () => {
   const innerRef = useRef(null)
   const router = useRouter()
 
-  
-
-    const totalQuestions = videoTasks.length
+  const totalQuestions = videoTasks.length
   
   useEffect(() => {
     if(typeof window !== 'undefined') {
@@ -184,22 +187,14 @@ const clickHandler = (id) => {
 
  const textByWords = text.en.split(" ")
 
-  // Add an effect to handle clicks outside the inner div
-//   useEffect(() => {
-//     const handleClickOutside = (event) => {
-//       // Check if the click is outside the inner div
-//       if (innerRef.current && !innerRef.current.contains(event.target)) {
-//         // setHoveredWord(null);
-//         setTestOutside(true)
-//       }
-//     };
-
-//     document.addEventListener("click", handleClickOutside);
-
-//     return () => {
-//       document.removeEventListener("click", handleClickOutside);
-//     };
-//   }, []);
+ const findTranslation = (englishWord) => {
+    const searchedWord = wordsWithTranslations.filter(word => word.en === englishWord)
+    if(searchedWord.length > 0) {
+        return searchedWord[0].ru
+    } else {
+        return 'перевод не найден'
+    }
+ }
 
   return (
     <>
@@ -234,8 +229,16 @@ const clickHandler = (id) => {
          </div>
 
          <div className={styles.textButtons}>
+            <p className={styles.bold}>Нажмите на любое слово, чтобы увидеть перевод</p>
             {isShowingEn ? <div className={styles.textShowEn}>
-                    {hoveredWord && <div className={styles.cardContainer}><TranslationCard word={hoveredWord} onRemove={handleTranslationClose} innerRef={innerRef}/></div>}
+                    {hoveredWord && <div className={styles.cardContainer}>
+                        <TranslationCard 
+                        word={hoveredWord} 
+                        translation={findTranslation(hoveredWord)}
+                        onRemove={handleTranslationClose} 
+                        innerRef={innerRef}/>
+                        </div>
+                        }
                        <p>
                             {textByWords.map((word, index) => (
                                 
