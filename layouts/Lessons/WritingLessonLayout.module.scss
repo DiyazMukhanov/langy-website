@@ -1,0 +1,77 @@
+@import "styles/breakpoints";
+
+
+.lessonContainer {
+    @include size-tablet {
+        margin-left: -30px;
+    }
+}
+
+.title {
+    font-weight: bold;
+}
+
+.input {
+        /* Reset default styles */
+    border: none;
+    outline: none;
+    background-color: transparent;
+
+    /* Apply your custom styles */
+    border: solid var(--color-grey) 1px;
+    border-radius: 6px;
+    width: 40vw;
+    height: 50vh;
+    display: flex;
+    justify-content: flex-start;
+    resize: none;
+
+    @include size-tablet {
+        width: 92vw;
+    }
+}
+
+.checkButtonContainer {
+    display: flex;
+    justify-content: center;
+    width: 40vw;
+    margin-top: 30px;
+
+    @include size-tablet {
+        width: 92vw;
+        margin-top: 20px;
+    }
+}
+
+.commentsContainer {
+    border: solid var(--color-grey) 1px;
+    width: 40vw;
+    height: 30vh;
+
+    @include size-tablet {
+        width: 92vw;
+    }
+}
+
+.nextButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+    width: 60vw;
+    margin-top: 40px;
+    margin-bottom: 20px;
+
+    @include size-tablet {
+        width: 92vw;
+        justify-content: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+// .input::placeholder {
+//     text-align: center;
+// }
+
+// .input:focus {
+//     border: solid var(--color-grey) 2px;
+// }

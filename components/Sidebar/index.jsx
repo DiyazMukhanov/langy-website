@@ -6,7 +6,8 @@ export default function Sidebar({ lessonsSummary }) {
         <div className={styles.lessonsListContainer}>
         {lessonsSummary.map(lessonBlock => (
          <div className={styles.lessonBlock} key={lessonBlock.chapter}>
-            <div className={classNames(
+            <div key={lessonBlock.chapter} 
+            className={classNames(
              styles.title,
              {[styles.current]: lessonBlock.isCurrent}
              )}
