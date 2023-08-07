@@ -21,7 +21,7 @@
     border: solid var(--color-grey) 1px;
     border-radius: 6px;
     width: 40vw;
-    height: 50vh;
+    height: 20vh;
     display: flex;
     justify-content: flex-start;
     resize: none;
@@ -47,6 +47,8 @@
     border: solid var(--color-grey) 1px;
     width: 40vw;
     height: 30vh;
+    resize: none;
+    font-size: 16px;
 
     @include size-tablet {
         width: 92vw;
