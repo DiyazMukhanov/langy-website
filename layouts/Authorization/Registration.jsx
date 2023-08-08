@@ -89,18 +89,21 @@ export default function Registration() {
           if(!onlyLatinCharacters(passwordInputValue) || passwordInputValue.length < 7) {
             setInvalidPassword(true)
             alert('Используйте латинские буквы и цифры. Длина больше 8 символов.')
+            setIsLoading(false)
             return
         }
 
         if(!validator.isEmail(emailInputValue)) {
           setInvalidEmail(true)
           alert('Используйте правильный email')
+          setIsLoading(false)
           return
         }
 
         if(passwordInputValue !== passwordConfirmInputValue) {
           alert('Пароли не совпадают!')
           setPasswordsDiffers(true)
+          setIsLoading(false)
           return
       }
 
