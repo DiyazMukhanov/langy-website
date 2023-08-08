@@ -2,8 +2,6 @@ import { Typography } from '@/components/Typography'
 import styles from './Level.module.scss'
 import Header from '@/components/Header'
 import { Button } from '@/components/Button'
-import { setOnLevelTest } from '@/api/user'
-import { useEffect, useState } from 'react'
 import Loader from '@/components/Loader'
 import { useRouter } from 'next/router'
 

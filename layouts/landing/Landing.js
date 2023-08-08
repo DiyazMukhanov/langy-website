@@ -28,6 +28,7 @@ import classNames from 'classnames'
 import {useRouter} from "next/router"
 import ProtectPage from '@/components/ProtectPage'
 import { getMe } from '@/api/user'
+import { setCurrentLessonData } from '@/api/user'
 import { UserContext } from '@/store/userContext'
 
 export default function Landing() {
@@ -92,7 +93,6 @@ export default function Landing() {
   const logOutHandler = () => {
     userCtx.logOut()
   }
-  
   
     return (
       <ProtectPage>

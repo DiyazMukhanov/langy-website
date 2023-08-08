@@ -28,18 +28,19 @@ const headers = {
   return await axios.get(`${apiUrl}/users/me`, { headers });
 }
 
-// export const setOnLevelTest = async () => {
-//   const bodyData = {
-//     isOnLevelTest: true
-//   }
-//   const storedToken = token()
-//   const headers = {
-//     'Authorization': `Bearer ${storedToken}`,
-//     'Content-Type': 'application/json', 
-//   };
+export const setCurrentLessonData = async (currentLesson, currentChapter) => {
+  const bodyData = {
+    currentLesson: currentLesson,
+    currentChapter: currentChapter
+  }
+  const storedToken = token()
+  const headers = {
+    'Authorization': `Bearer ${storedToken}`,
+    'Content-Type': 'application/json', 
+  };
   
-//     return await axios.patch(`${apiUrl}/users/me`, bodyData, { headers });
-//   }
+    return await axios.patch(`${apiUrl}/users/me`, bodyData, { headers });
+  }
 
 
 

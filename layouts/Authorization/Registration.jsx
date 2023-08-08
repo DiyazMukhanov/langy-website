@@ -55,7 +55,8 @@ export default function Registration() {
         passwordConfirm: passwordConfirmInputValue
     }
 
-      const userSignUpHandler = async () => {
+      const userSignUpHandler = async (e) => {
+        e.preventDefault()
         setIsLoading(true)
         console.log('test clicked')
         
@@ -146,13 +147,22 @@ export default function Registration() {
         <div className={styles.formContainer}>
            <Typography size='small' element='h2' className={styles.formHeading}>Создайте аккаунт</Typography>
         
+        <form onSubmit={userSignUpHandler}>
         <div className={styles.inputs}>
           <input placeholder='Имя' className={classNames({[styles.errorInput]: nameEmpty}, {[styles.input]: !nameEmpty})} onChange={nameNameInputHandler}></input>
           <input placeholder='Электронная почта' className={classNames({[styles.errorInput]: emailEmpty}, {[styles.input]: !emailEmpty})} onChange={emailInputHandler}></input>
           <input placeholder='Пароль' className={classNames({[styles.errorInput]: passwordEmpty}, {[styles.input]: !passwordEmpty})} onChange={passwordInputHandler}></input>
           <input placeholder='Повторить пароль' className={classNames({[styles.errorInput]: passConfirmEmpty}, {[styles.input]: !passConfirmEmpty})} onChange={passwordConfirmInputHandler}></input>
         </div>
-        <Button variant='authLargeContained' onClick={userSignUpHandler} disabled={isLoading}>Зарегистрироваться</Button>
+        <Button 
+        variant='authLargeContained' 
+        // onClick={userSignUpHandler} 
+        disabled={isLoading}
+        className={styles.buttonRegister}
+        >
+          Зарегистрироваться
+        </Button>
+        </form>
         <p>или</p>
         <Button 
         variant='google'

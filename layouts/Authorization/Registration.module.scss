@@ -93,3 +93,11 @@
       font-size: 16px;
     }
 }
+
+.buttonRegister {
+  margin-top: 10px;
+
+  @include size-tablet {
+    margin-top: 20px;
+  }
+}

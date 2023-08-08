@@ -3,6 +3,7 @@ import { Button } from "@/components/Button"
 import styles from './Test.module.scss'
 import { useState, useEffect } from "react"
 import classNames from "classnames"
+import Result from "./Result"
 
 export default function Test() {
     const questions = [
@@ -121,6 +122,8 @@ export default function Test() {
     const [chosenId, setChosenId] = useState(null)
     const [currentQuestionBlock, setCurrentQuestionBlock] = useState(questions[0])
     const [answerResults, setAnswerResults] = useState([])
+    const [numberOfRightAnswers, setNumberOfRightAnswers] = useState(0)
+    const [resultIsShowing, setResultIsShowing] = useState(false)
 
     useEffect(() => {
         setCurrentQuestionBlock(questions[currentQuestion - 1]);
@@ -129,7 +132,11 @@ export default function Test() {
       }, [currentQuestion]);
 
       useEffect(() => {
-        console.log(answerResults)
+        const rightsArray = answerResults.filter(item => item === true)
+        setNumberOfRightAnswers(rightsArray.length)
+        if(answerResults.length === questionsTotal) {
+            setResultIsShowing(true)
+        }
       }, [answerResults])
 
     const chooseHandler = (id) => {
@@ -153,60 +160,61 @@ export default function Test() {
         }
     }
 
-    return (
-        <>
-          <Header variant='blue'/>
-          <div className={styles.container}>
-          <div className={styles.progressContainer}>
-             <div style={{
-          width: `${progress}%`,
-          height: '100%',
-          background: '#007bff'
-        }}/>
-          </div>
-
-          <div className={styles.questionsContainer}>
-             <div className={styles.top}>
-                <div className={styles.numberBlock}>
-                <div className={styles.number}>
-                    {currentQuestion}
-                </div>
-                <p className={styles.questionsHeading}>Вопрос</p>
-                </div>
-
-                <div className={styles.numberFrom}>
-                    {currentQuestion}/{questionsTotal}
-                </div>
-            </div>
-                <div className={styles.middle}>
-                <div className={styles.question}>
-                   {currentQuestionBlock.question}
-                </div>
-
-                <div className={styles.answers}>
-                   {currentQuestionBlock.answers.map(item => (
-                    <div className={styles.answerContainer} key={item.id}>
-                       <div className={classNames(
-                        styles.circle,
-                        {[styles.chosenCircle]: chosenId === item.id}
-                        )} 
-                        onClick={() => chooseHandler(item.id)}
-                        >
-                        </div>
-                        {item.answer}
+    if(!resultIsShowing) {
+        return (
+            <>
+              <Header variant='blue'/>
+              <div className={styles.container}>
+              <div className={styles.progressContainer}>
+                 <div style={{
+              width: `${progress}%`,
+              height: '100%',
+              background: '#007bff'
+            }}/>
+              </div>
+    
+              <div className={styles.questionsContainer}>
+                 <div className={styles.top}>
+                    <div className={styles.numberBlock}>
+                    <div className={styles.number}>
+                        {currentQuestion}
                     </div>
-                   ))}
-                   </div>
+                    <p className={styles.questionsHeading}>Вопрос</p>
+                    </div>
+    
+                    <div className={styles.numberFrom}>
+                        {currentQuestion}/{questionsTotal}
+                    </div>
                 </div>
-             
-
-             <div className={styles.bottom}>
-             <Button variant='standardLargeOutlined' onClick={nextQuestionHandler}>Далее</Button>
-             </div>
-          </div>
-
-          
-          </div>
-        </>
-    )
+                    <div className={styles.middle}>
+                    <div className={styles.question}>
+                       {currentQuestionBlock.question}
+                    </div>
+    
+                    <div className={styles.answers}>
+                       {currentQuestionBlock.answers.map(item => (
+                        <div className={styles.answerContainer} key={item.id}>
+                           <div className={classNames(
+                            styles.circle,
+                            {[styles.chosenCircle]: chosenId === item.id}
+                            )} 
+                            onClick={() => chooseHandler(item.id)}
+                            >
+                            </div>
+                            {item.answer}
+                        </div>
+                       ))}
+                       </div>
+                    </div>
+                 
+                 <div className={styles.bottom}>
+                 <Button variant='standardLargeOutlined' onClick={nextQuestionHandler}>Далее</Button>
+                 </div>
+              </div>
+              </div>
+            </>
+        )
+    } else {
+        return <Result level={numberOfRightAnswers}></Result>
+    }
 }
