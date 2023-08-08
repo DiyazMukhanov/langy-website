@@ -5,5 +5,5 @@ import { wordsWithTranslations } from "../../../utils/lessonsMaterials/elementar
 
 
 export default function Audio() {
-   return <AudioLessonLayout text={text} audioTasks={audioTasks} wordsWithTranslations={wordsWithTranslations}/>
+   return <AudioLessonLayout text={text} audioTasks={audioTasks} wordsWithTranslations={wordsWithTranslations} audioSrc="/audio/elementary-1.mp3"/>
 }

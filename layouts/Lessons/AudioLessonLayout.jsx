@@ -37,7 +37,7 @@ const TranslationCard = ({ word, translation, onRemove, innerRef }) => {
     )
 }
 
-const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations}) => {
+const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc}) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [timeProgress, setTimeProgress] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -200,7 +200,7 @@ const clickHandler = (id) => {
     <>
       <LessonLayout lessonsSummary={lessonsSummary} chapter="audio">
         
-         {hasWindow && <audio src="/audio/one.mp3" ref={audioRef} preload="metadata" onLoadedMetadata={onLoadedMetadata}/>}
+         {hasWindow && <audio src={audioSrc} ref={audioRef} preload="metadata" onLoadedMetadata={onLoadedMetadata}/>}
          
          <div className={styles.progress}>
             <div className={styles.time}>
