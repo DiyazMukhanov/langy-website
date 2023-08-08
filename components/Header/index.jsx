@@ -8,9 +8,11 @@ import SandwichBlack from '../../public/images/Sandwich-black.svg'
 import Modal from '../../layouts/landing/Modal'
 import { useState } from 'react'
 import Sidebar from '../Sidebar'
+import { useRouter } from 'next/router'
 
 export default function Header({ variant, lessonsSummary }) {
     const [isModalOpened, setIsModalOpened] = useState(false)
+    const router = useRouter()
 
     const modalCloseHandler = () => {
         setIsModalOpened(false)
@@ -18,6 +20,10 @@ export default function Header({ variant, lessonsSummary }) {
 
       const modalOpenHandler = () => {
         setIsModalOpened(true)
+      }
+
+      const goToMainHandler = () => {
+        router.push('/')
       }
 
     if(variant === 'blue') {
@@ -28,8 +34,9 @@ export default function Header({ variant, lessonsSummary }) {
             priority
             src={Logo}
             width={60}
+            onClick={goToMainHandler}
             />
-            <p>Выйти</p>
+            <p onClick={goToMainHandler}>Выйти</p>
             </div>
 
             <div className={styles.blueContainerMobile}>
@@ -38,6 +45,7 @@ export default function Header({ variant, lessonsSummary }) {
                     priority
                     src={LogoBlue}
                     width={60}
+                    onClick={goToMainHandler}
                 />
                 <Image
                     priority
@@ -49,6 +57,7 @@ export default function Header({ variant, lessonsSummary }) {
                     priority
                     src={ButtonClose}
                     width={20}
+                    onClick={goToMainHandler}
                 />
            
             </div>

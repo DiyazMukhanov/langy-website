@@ -4,80 +4,129 @@ import Google from '../../public/images/Google.svg'
 import Image from 'next/image'
 import { Button } from '@/components/Button'
 import { Typography } from '@/components/Typography'
-// import { googleRegistration } from '../../api/auth'
 import axios from 'axios';
 import { useState } from 'react'
 import { useRouter } from "next/router"
+import { registerUser } from '@/api/user'
+import classNames from 'classnames'
+import validator from "validator"
+import { goToMainHandler } from '@/utils/helpers'
 
 export default function Registration() {
     const [nameInputValue, setNameInputValue] = useState('')
     const [emailInputValue, setEmailInputValue] = useState('')
     const [passwordInputValue, setPasswordInputValue] = useState('')
     const [passwordConfirmInputValue, setPasswordConfirmInputValue] = useState('')
-
-    // const handleGoogleAuth = async () => {
-    //     try {
-    //       const response = await axios.get('http://localhost:3002/auth/google');
-    //       // Handle the response from the backend, if needed
-    //       console.log('Google Auth Response:', response.data);
-    //     } catch (error) {
-    //       console.error('Google Auth Error:', error);
-    //     }
-    //   };
+    const [invalidEmail, setInvalidEmail] = useState(false)
+    const [nameEmpty, setNameEmpty] = useState(false)
+    const [emailEmpty, setEmailEmpty] = useState(false)
+    const [passwordEmpty, setPasswordEmpty] = useState(false)
+    const [passConfirmEmpty, setPassConfirmEmpty] = useState(false)
+    const [invalidPassword, setInvalidPassword] = useState(false)
+    const [passWordsDiffer, setPasswordsDiffers] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     const router = useRouter()
 
-      const nameNameInputHandler = (event) => {
-        setNameInputValue(event.target.value)
+    function onlyLatinCharacters(str) {
+      return /^[a-zA-Z0-9]+$/.test(str);
+  }
+
+    const nameNameInputHandler = (event) => {
+      setNameInputValue(event.target.value)
       }
 
-      const emailInputHandler = (event) => {
-        setEmailInputValue(event.target.value)
-      }
+    const emailInputHandler = (event) => {
+      setEmailInputValue(event.target.value)
+    }
 
-      const passwordInputHandler = (event) => {
-        setPasswordInputValue(event.target.value)
-      }
+    const passwordInputHandler = (event) => {
+      setPasswordInputValue(event.target.value)
+    }
 
-      const passwordConfirmInputHandler = (event) => {
-        setPasswordConfirmInputValue(event.target.value)
-      }
+    const passwordConfirmInputHandler = (event) => {
+      setPasswordConfirmInputValue(event.target.value)
+    }
+
+      const body = {
+        name: nameInputValue,
+        email: emailInputValue,
+        password: passwordInputValue,
+        passwordConfirm: passwordConfirmInputValue
+    }
 
       const userSignUpHandler = async () => {
-        const url = 'http://localhost:3000/api/v1/users/signup'; 
-
-        const body = {
-            name: nameInputValue,
-            email: emailInputValue,
-            password: passwordInputValue,
-            passwordConfirm: passwordConfirmInputValue
-        }
+        setIsLoading(true)
+        console.log('test clicked')
         
-        try {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                         },
-                body: JSON.stringify(body),
-            })
-    
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-              }
-    
-              const responseData = await response.json();
-              console.log('Response data:', responseData);
-        } catch (error) {
-            console.error('Error:', error);
-            // Handle any errors that occurred during the fetch request
+        setInvalidEmail(false)
+        setNameEmpty(false)
+        setEmailEmpty(false)
+        setPasswordEmpty(false)
+        setPassConfirmEmpty(false)
+        setInvalidPassword(false)
+        setPasswordsDiffers(false)
+
+        if(!nameInputValue) {
+          setNameEmpty(true)
           }
+        if(!emailInputValue) {
+          setEmailEmpty(true)
+          }
+        if(!passwordInputValue) {
+          setPasswordEmpty(true)
+          }
+        if(!passwordConfirmInputValue) {
+          setPassConfirmEmpty(true)
+          }
+          
+          if(!nameInputValue || !emailInputValue || !passwordInputValue || !passwordConfirmInputValue ) {
+            console.log('Empty fields detected')
+            setIsLoading(false)
+            return
+          }
+
+          if(!onlyLatinCharacters(passwordInputValue) || passwordInputValue.length < 7) {
+            setInvalidPassword(true)
+            alert('Используйте латинские буквы и цифры. Длина больше 8 символов.')
+            return
+        }
+
+        if(!validator.isEmail(emailInputValue)) {
+          setInvalidEmail(true)
+          alert('Используйте правильный email')
+          return
+        }
+
+        if(passwordInputValue !== passwordConfirmInputValue) {
+          alert('Пароли не совпадают!')
+          setPasswordsDiffers(true)
+          return
+      }
+
+      try {
+        console.log(body)
+        const userData = await registerUser(body)
+        if(userData.data.token) {
+          localStorage.setItem('token', userData.data.token)
+          setIsLoading(false)
+          router.push('/test/level')
+        }
+      } catch (error) {
+          setIsLoading(false)
+          alert('Произошла ошибка, повторите попытку')
+          console.log(error)
+      }
       }
 
       const goToLoginHandler = () => {
         router.push('/authorization/login')
       }
 
+      const goToMainHandler = () => {
+        router.push('/')
+      }
+        
     return (
     <div className={styles.container}>
         <div className={styles.header}>
@@ -86,6 +135,7 @@ export default function Registration() {
            src={ButtonClose}
            width={15}
            className={styles.close}
+           onClick={goToMainHandler}
            />
            <Button variant='standardAuthOutlined' onClick={goToLoginHandler}>Войти</Button>
         </div>
@@ -94,16 +144,15 @@ export default function Registration() {
            <Typography size='small' element='h2' className={styles.formHeading}>Создайте аккаунт</Typography>
         
         <div className={styles.inputs}>
-          <input placeholder='Имя' className={styles.input} onChange={nameNameInputHandler}></input>
-          <input placeholder='Электронная почта' className={styles.input} onChange={emailInputHandler}></input>
-          <input placeholder='Пароль' className={styles.input} onChange={passwordInputHandler}></input>
-          <input placeholder='Повторить пароль' className={styles.input} onChange={passwordConfirmInputHandler}></input>
+          <input placeholder='Имя' className={classNames({[styles.errorInput]: nameEmpty}, {[styles.input]: !nameEmpty})} onChange={nameNameInputHandler}></input>
+          <input placeholder='Электронная почта' className={classNames({[styles.errorInput]: emailEmpty}, {[styles.input]: !emailEmpty})} onChange={emailInputHandler}></input>
+          <input placeholder='Пароль' className={classNames({[styles.errorInput]: passwordEmpty}, {[styles.input]: !passwordEmpty})} onChange={passwordInputHandler}></input>
+          <input placeholder='Повторить пароль' className={classNames({[styles.errorInput]: passConfirmEmpty}, {[styles.input]: !passConfirmEmpty})} onChange={passwordConfirmInputHandler}></input>
         </div>
-        <Button variant='authLargeContained' onClick={userSignUpHandler}>Зарегистрироваться</Button>
+        <Button variant='authLargeContained' onClick={userSignUpHandler} disabled={isLoading}>Зарегистрироваться</Button>
         <p>или</p>
         <Button 
         variant='google'
-        // onClick={handleGoogleAuth}
         >
            <Image
            priority

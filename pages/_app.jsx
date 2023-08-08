@@ -1,6 +1,7 @@
 import '../styles/globals.scss'
 import React from 'react'
 import Head from "next/head";
+import UserProvider from '@/store/userContext';
 
 function MyApp({ Component, pageProps }) {
  
@@ -9,8 +10,10 @@ function MyApp({ Component, pageProps }) {
           <Head>
               <title>Langy</title>
               <meta name="описание" content="Уроки английского языка"/>
-          </Head>   
-               <Component {...pageProps} />
+          </Head>  
+              <UserProvider>
+                 <Component {...pageProps} />
+              </UserProvider> 
       </>
         )
 }

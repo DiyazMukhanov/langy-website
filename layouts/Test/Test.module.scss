@@ -1,4 +1,4 @@
-
+@import "styles/breakpoints";
 
 .container {
     display: flex;
@@ -90,6 +90,11 @@
     display: flex;
     justify-content: flex-end;
     padding-right: 40px;
+
+    @include size-tablet {
+        padding-right: 0;
+        justify-content: center;
+    }
 }
 
 .middle {

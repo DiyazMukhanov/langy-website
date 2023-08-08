@@ -16,7 +16,7 @@ export const Button = ({
         className
         )
     
-    return <button className={classes} onClick={onClick}>
+    return <button className={classes} onClick={onClick} disabled={disabled}>
         {children}
     </button>
 }

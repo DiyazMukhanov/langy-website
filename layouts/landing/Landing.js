@@ -22,15 +22,19 @@ import { Button } from '@/components/Button'
 import Advantage from './Advantage'
 import AdvantageCard from './AdvantageCard'
 import HowCard from './HowCard'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import Modal from './Modal'
 import classNames from 'classnames'
 import {useRouter} from "next/router"
+import ProtectPage from '@/components/ProtectPage'
+import { getMe } from '@/api/user'
+import { UserContext } from '@/store/userContext'
 
 export default function Landing() {
   const [frequentOpenedId, setFrequentOpenedId] = useState(null)
   const [isModalOpened, setIsModalOpened] = useState(false)
   const router = useRouter()
+  const userCtx = useContext(UserContext)
   const frequentQuestions = [
     {
       id: 1,
@@ -74,10 +78,24 @@ export default function Landing() {
   };
 
   const continueHandler = () => {
-    router.push('authorization/registration')
+    if(!userCtx.userData) {
+      router.push('authorization/registration')
+    } else {
+      if(userCtx?.userData?.currentLesson !== 0 && userCtx?.userData?.currentChapter !== 'no') {
+        router.push(`/lessons/lesson${userCtx?.userData?.currentLesson}/${userCtx?.userData?.currentChapter}`)
+      } else {
+        router.push('/test/level')
+      }
+    }
   };
+
+  const logOutHandler = () => {
+    userCtx.logOut()
+  }
+  
   
     return (
+      <ProtectPage>
       <div className={styles.overlay}>
         <Modal isOpen={isModalOpened} onClose={modalCloseHandler}>
           <div className={styles.modalContainer}>
@@ -106,11 +124,22 @@ export default function Landing() {
            />
            <p>Служба поддержки</p>
            </div>
-
-           <div className={styles.modalButtons}>
-            <Button variant='standardLargeContained'>Регистрация</Button>
-            <Button variant='standardLargeOutlined'>Войти</Button>
+           {userCtx.userData && (
+            <p className={styles.profileLink} onClick={() => router.push('/profile')}>Личный кабинет</p>
+           )}
+           
+           {!userCtx.userData ? 
+           (<div className={styles.modalButtons}>
+            <Button variant='standardLargeContained' onClick={continueHandler}>Регистрация</Button>
+            <Button variant='standardLargeOutlined' onClick={loginHandler}>Войти</Button>
+           </div>): (
+            <div className={styles.modalButtons}>
+            <Button variant='standardLargeContained' onClick={continueHandler}>Продолжить</Button>
+            <Button variant='standardLargeOutlined' onClick={logOutHandler}>Выйти</Button>
            </div>
+           )
+          }
+           
         </Modal>
       
       <header className={styles.header} id='top'>
@@ -123,17 +152,22 @@ export default function Landing() {
            className={styles.logo}
            />
         </div>
-        <div className={styles.topButtons}>
+
+        {!userCtx.userData ? (<div className={styles.topButtons}>
          <Typography element='p' className={styles.enterBtn} onClick={loginHandler}>Войти</Typography>
          <Button variant='outlined' className={styles.registrationBtn} onClick={registrationHandler}>Регистрация</Button>
-        </div>
+        </div>) : (
+          <div className={styles.topButtons}>
+          <Typography element='p' className={styles.enterBtn}>{userCtx?.userData?.email}</Typography>
+          <Button variant='outlined' className={styles.registrationBtn} onClick={logOutHandler}>Выйти</Button>
+         </div>
+        )}
+        
         <Image
            priority
            src={Sandwich}
            className={styles.sandwich}
            onClick={modalOpenHandler}
-          //  height={44}
-          //  width={101}
            />
         
       </header>
@@ -151,10 +185,15 @@ export default function Landing() {
            src={DropOne}
            className={styles.dropOne}
            />
-         <div className={styles.btnBlock}>
+           {!userCtx.userData ? (<div className={styles.btnBlock}>
          <Button variant='contained' className={styles.startBtn} onClick={continueHandler}>Начать обучение</Button>
          <p className={styles.haveAccountBtn}>У меня уже есть аккаунт</p>
-         </div>
+         </div>) : <div className={styles.btnBlock}>
+         <Button variant='contained' className={styles.startBtn} onClick={continueHandler}>Продолжить обучение</Button>
+         {!userCtx.userData && (<p className={styles.haveAccountBtn}>У меня уже есть аккаунт</p>)}
+         
+         </div>}
+         
          <Image
            priority
            src={DropTwo}
@@ -238,7 +277,11 @@ export default function Landing() {
              textLineThree='время!'
              />
           </div>
-          <Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Попробуйте сейчас</Button>
+          {!userCtx.userData ? 
+          (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Попробуйте сейчас</Button>): 
+          (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Продолжить обучение</Button>)
+          }
+          
         </div>
       </section>
 
@@ -321,7 +364,11 @@ export default function Landing() {
            />
            <p>Служба поддержки</p>
            </div>
-           <Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Действуй!</Button>
+           {!userCtx.userData ? 
+           (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Действуй!</Button>): 
+           (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Продолжить</Button>)
+           }
+           
            <a href='#top'>
            <Image
            priority
@@ -333,6 +380,8 @@ export default function Landing() {
       </footer>
      
       </div>
+      </ProtectPage>
     )
+    
   }
   
