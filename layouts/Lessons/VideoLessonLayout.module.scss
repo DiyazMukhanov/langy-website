@@ -96,3 +96,7 @@
     border: solid var(--color-primary) 1px;
     border-radius: 40px;
 }
+
+.nonClickable {
+    pointer-events: none;
+}

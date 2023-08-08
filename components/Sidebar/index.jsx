@@ -5,8 +5,8 @@ export default function Sidebar({ lessonsSummary }) {
       return (
         <div className={styles.lessonsListContainer}>
         {lessonsSummary.map(lessonBlock => (
-         <div className={styles.lessonBlock} key={lessonBlock.chapter}>
-            <div key={lessonBlock.chapter} 
+         <div className={styles.lessonBlock} key={lessonBlock.title}>
+            <div
             className={classNames(
              styles.title,
              {[styles.current]: lessonBlock.isCurrent}
@@ -15,7 +15,7 @@ export default function Sidebar({ lessonsSummary }) {
              {lessonBlock.title}
              </div>
              {lessonBlock.lessons.map(lesson => (
-                 <div key={lesson.title} className={classNames(
+                 <div key={lesson.chapter} className={classNames(
                      styles.chapter,
                      {[styles.currentChapter]: lesson.isCurrent}
                  )}

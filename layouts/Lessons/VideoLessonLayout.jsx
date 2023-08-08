@@ -2,15 +2,14 @@ import LessonLayout from "./LessonLayout"
 import ReactPlayer from 'react-player'
 import { useState, useEffect } from "react"
 import styles from './VideoLessonLayout.module.scss'
-import {lessonsSummary} from '../../utils/lessonsSummary'
-import {videoTasks} from '../../utils/videoTasks'
 import Right from '../../public/images/Right.svg'
 import Mistake from '../../public/images/Mistake.svg'
 import { Button } from "@/components/Button"
 import Image from 'next/image'
 import {useRouter} from "next/router"
+import classNames from "classnames"
 
-export default function VideoLessonLayout() {
+export default function VideoLessonLayout({lessonsSummary, videoTasks, nextUrl}) {
     const [currentQuestion, setCurrentQuestion] = useState(1)
     const [wasClicked, setWasClicked] = useState(null)
     const router = useRouter()
@@ -38,7 +37,7 @@ export default function VideoLessonLayout() {
         }
 
         if(currentQuestion === totalQuestions) {
-            router.push('lessons/lesson1/listening')
+            router.push(nextUrl)
         }
     }
     
@@ -69,7 +68,11 @@ export default function VideoLessonLayout() {
                        {videoTasks[currentQuestion - 1].answers.map(answer => (
                         <div className={styles.answerContainer} key={answer.id}>
                             
-                                <div className={styles.rectangle} onClick={() => clickHandler(answer.id)}>
+                                <div className={classNames(
+                                    styles.rectangle, 
+                                    {[styles.nonClickable]: wasClicked})} 
+                                    onClick={() => clickHandler(answer.id)}
+                                    >
                                     {wasClicked === answer.id && answer.isCorrect === true && (
                                         <Image
                                         priority
@@ -82,11 +85,21 @@ export default function VideoLessonLayout() {
                                         <Image
                                         priority
                                         src={Mistake}
-                                        
                                         width={20}
                                         className={styles.tick}
                                         />
                                     )}
+
+                                    {
+                                      wasClicked && answer.isCorrect === true && (
+                                        <Image
+                                        priority
+                                        src={Right}
+                                        width={20}
+                                        className={styles.tick}
+                                        />
+                                    )  
+                                    }
                                 </div>
                            
                            <p>{answer.answer}</p>
