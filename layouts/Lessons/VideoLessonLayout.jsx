@@ -20,7 +20,7 @@ export default function VideoLessonLayout({lessonsSummary, videoTasks, nextUrl})
         }
     }, [])
 
-    const totalQuestions = videoTasks.length
+    const totalQuestions = videoTasks?.length
 
     const clickHandler = (id) => {
        setWasClicked(id)
