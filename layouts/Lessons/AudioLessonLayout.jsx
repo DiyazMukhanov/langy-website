@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import LessonLayout from "./LessonLayout";
 import { lessonsSummary } from "../../utils/lessonsSummary";
-import {text} from '../../utils/text'
+// import {text} from '../../utils/text'
 import styles from "./AudioLessonLayout.module.scss";
 import Pause from "../../public/images/Pause.svg";
 import Play from "../../public/images/Play.svg";
@@ -11,9 +11,10 @@ import Mistake from "../../public/images/Mistake.svg";
 import Right from "../../public/images/Right.svg";
 import Image from "next/image";
 import { Button } from "@/components/Button";
-import {videoTasks} from '../../utils/videoTasks'
+// import {videoTasks} from '../../utils/videoTasks'
 import {useRouter} from "next/router"
-import {wordsWithTranslations} from '../../utils/textWordsArr'
+// import {wordsWithTranslations} from '../../utils/textWordsArr'
+import classNames from "classnames";
 
 const TranslationCard = ({ word, translation, onRemove, innerRef }) => {
 
@@ -36,7 +37,7 @@ const TranslationCard = ({ word, translation, onRemove, innerRef }) => {
     )
 }
 
-const AudioLessonLayout = () => {
+const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations}) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [timeProgress, setTimeProgress] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -48,11 +49,10 @@ const AudioLessonLayout = () => {
   const [hoveredWord, setHoveredWord] = useState(null)
   const [hoveredWordIndex, setHoveredWordIndex] = useState(-1);
   
-//   const [showTranslationCard, setShowTranslationCard] = useState(false)
   const innerRef = useRef(null)
   const router = useRouter()
 
-  const totalQuestions = videoTasks.length
+  const totalQuestions = audioTasks?.length
   
   useEffect(() => {
     if(typeof window !== 'undefined') {
@@ -279,13 +279,18 @@ const clickHandler = (id) => {
                     <p>Выполните тест:</p>
                     <div className={styles.questions}>
                        <div className={styles.questionContainer}>
-                            <p className={styles.questionText}>{videoTasks[currentQuestion - 1].title}</p>
+                            <p className={styles.questionText}>{audioTasks[currentQuestion - 1].title}</p>
                             <p>{currentQuestion}/{totalQuestions}</p>
                        </div>
-                       {videoTasks[currentQuestion - 1].answers.map(answer => (
+                       {audioTasks[currentQuestion - 1].answers.map(answer => (
                         <div className={styles.answerContainer} key={answer.id}>
                             
-                                <div className={styles.rectangle} onClick={() => clickHandler(answer.id)}>
+                                <div className={classNames(
+                                  styles.rectangle,
+                                  {[styles.disabled]: wasClicked}
+                                  )} 
+                                  onClick={() => clickHandler(answer.id)}
+                                  >
                                     {wasClicked === answer.id && answer.isCorrect === true && (
                                         <Image
                                         priority
@@ -298,6 +303,15 @@ const clickHandler = (id) => {
                                         <Image
                                         priority
                                         src={Mistake}
+                                        
+                                        width={20}
+                                        className={styles.tick}
+                                        />
+                                    )}
+                                      {wasClicked && answer.isCorrect === true && (
+                                        <Image
+                                        priority
+                                        src={Right}
                                         
                                         width={20}
                                         className={styles.tick}
