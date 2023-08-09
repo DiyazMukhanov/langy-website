@@ -33,7 +33,8 @@ export default function Login() {
         password: passwordInputValue
     }
 
-    const userLoginHandler = async () => {
+    const userLoginHandler = async (event) => {
+        event.preventDefault()
         setIsLoading(true)
         console.log('test clicked')
 
@@ -93,12 +94,14 @@ export default function Login() {
         <div className={styles.formContainer}>
            <Typography size='small' element='h2' className={styles.formHeading}>Вход</Typography>
         
+        <form onSubmit={userLoginHandler} className={styles.form}>
         <div className={styles.inputs}>
           <input placeholder='Email' className={classNames({[styles.errorInput]: emailEmpty}, {[styles.input]: !emailEmpty})} onChange={emailInputHandler}></input>
           <input placeholder='Пароль' className={classNames({[styles.errorInput]: passwordEmpty}, {[styles.input]: !passwordEmpty})} onChange={passwordInputHandler}></input>
         </div>
         <p className={styles.forgotPassword}>Забыли пароль</p>
-        <Button variant='authLargeContained' onClick={userLoginHandler} disabled={isLoading}>Войти</Button>
+        <Button variant='authLargeContained' disabled={isLoading}>Войти</Button>
+        </form>
         <p>или</p>
         <Button 
         variant='google'

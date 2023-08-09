@@ -9,7 +9,7 @@ export default function Sidebar({ lessonsSummary }) {
             <div
             className={classNames(
              styles.title,
-             {[styles.current]: lessonBlock.isCurrent}
+             {[styles.completed]: lessonBlock.isCompleted}
              )}
              >
              {lessonBlock.title}

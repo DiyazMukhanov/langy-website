@@ -5,7 +5,10 @@ export const UserContext = React.createContext({
     userData: {},
     setUserData: () => {},
     logOut: () => {},
-    lessonsSummary: []
+    lessonsSummary: [],
+    setProgressData: () => {},
+    progressData: [],
+    getUpdatedLessonsSummary: () => {}
 })
 
 const UserProvider = (props) => {
@@ -195,8 +198,55 @@ const UserProvider = (props) => {
         }
     ]
 
+    
     const [lessonsSummary, setLessonsSummary] = useState(lessonsSummaryInitial)
+    
+    const [progressData, setProgressData] = useState(null)
 
+    const lessonsIndexes = {
+        gr: 0,
+        au: 1,
+        wr: 2,
+        ts: 3
+    }
+
+    // Get updated lessonsSummary upon updating of progressData which we get from server
+    const getUpdatedLessonsSummary = () => {
+        let updatedLessonsSummary;
+        if(progressData !== null) {
+             updatedLessonsSummary = lessonsSummary.map(lesson => {
+                progressData.map(progressItem => {
+                    if(progressItem.lesson === lesson.lessonNumber) {
+                        
+                        lesson.lessons[lessonsIndexes[progressItem.chapter]].isCompleted = true
+                    }
+                })
+
+                return lesson
+            })
+
+        } else {
+            console.log('data is null')
+        }
+
+        let finallyUpdatedLessonsSummary
+        
+        if(updatedLessonsSummary) {
+            finallyUpdatedLessonsSummary = updatedLessonsSummary.map(lesson => {
+                const filteredLessonItem = lesson.lessons.filter(item => item.isCompleted === true)
+                if(filteredLessonItem.length === 4) {
+                 lesson.isCompleted = true
+                }
+
+                return lesson
+            })
+        }
+       
+        console.log(finallyUpdatedLessonsSummary)
+        return updatedLessonsSummary
+    }
+
+   
     const logOut = () => {
         localStorage.setItem('token', null)
         if(router.asPath === '/') {
@@ -209,7 +259,10 @@ const UserProvider = (props) => {
         userData,
         setUserData,
         logOut,
-        lessonsSummary
+        lessonsSummary,
+        setProgressData,
+        progressData,
+        getUpdatedLessonsSummary
     }
 
     return (

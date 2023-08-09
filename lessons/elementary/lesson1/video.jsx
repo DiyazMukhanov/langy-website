@@ -7,10 +7,13 @@ import { videoUrl } from "@/utils/lessonsMaterials/elementary/lesson1/video-mate
 
 export default function Video() {
    const userCtx = useContext(UserContext)
+   const lessonNumber = 1
 
    return <VideoLessonLayout 
    videoTasks={videoTasks} 
    lessonsSummary={userCtx.lessonsSummary}
    videoUrl={videoUrl} 
-   nextUrl='/lessons/elementary/lesson1/audio'/>
+   nextUrl='/lessons/elementary/lesson1/audio'
+   lessonNumber={lessonNumber}
+   />
 }

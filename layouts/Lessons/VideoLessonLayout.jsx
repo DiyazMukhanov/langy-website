@@ -8,10 +8,13 @@ import { Button } from "@/components/Button"
 import Image from 'next/image'
 import {useRouter} from "next/router"
 import classNames from "classnames"
+import { setProgressData } from "@/api/user"
+import Loader from "@/components/Loader"
 
-export default function VideoLessonLayout({lessonsSummary, videoTasks, nextUrl}) {
+export default function VideoLessonLayout({lessonsSummary, videoTasks, nextUrl, lessonNumber}) {
     const [currentQuestion, setCurrentQuestion] = useState(1)
     const [wasClicked, setWasClicked] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
     const router = useRouter()
     const [hasWindow, setHasWindow] = useState(false)
     useEffect(() => {
@@ -26,6 +29,19 @@ export default function VideoLessonLayout({lessonsSummary, videoTasks, nextUrl})
        setWasClicked(id)
     }
 
+    const setProgressHandler = async () => {
+        setIsLoading(true)
+        try{
+        const data = await setProgressData({lessonNumber: lessonNumber, chapterCode: 'gr'})
+        router.push(nextUrl)
+        
+        } catch (err) {
+            console.log(err)
+            setIsLoading(false)
+            router.push(nextUrl)
+        }
+    }
+
     const nextQuestionHandler = () => {
         if(currentQuestion < totalQuestions) {
             if(wasClicked) {
@@ -37,81 +53,86 @@ export default function VideoLessonLayout({lessonsSummary, videoTasks, nextUrl})
         }
 
         if(currentQuestion === totalQuestions) {
-            router.push(nextUrl)
+            setProgressHandler()
         }
     }
     
-    return (
-        <LessonLayout lessonsSummary={lessonsSummary} chapter='grammar'>
-            <div className={styles.container}>
-                <div className={styles.top}>
-                    <p className={styles.topic}>Тема: Present Simple/Настоящее время</p>
-                    {/* <p className={styles.task}>Посмотрите следующее видео:</p> */}
-                    <div className={styles.wrapper}>
-                    {hasWindow && <ReactPlayer
-                        url='https://www.youtube.com/watch?v=TD-WPyKQy9o'
-                        className={styles.player}
-                        width="100%"
-                        height="100%"
-                        controls={true}
-                    />}
-                    </div>   
-                </div>
-
-                <div className={styles.bottom}>
-                    <p>Выполните тест:</p>
-                    <div className={styles.questions}>
-                       <div className={styles.questionContainer}>
-                            <p className={styles.questionText}>{videoTasks[currentQuestion - 1].title}</p>
-                            <p>{currentQuestion}/{totalQuestions}</p>
-                       </div>
-                       {videoTasks[currentQuestion - 1].answers.map(answer => (
-                        <div className={styles.answerContainer} key={answer.id}>
-                            
-                                <div className={classNames(
-                                    styles.rectangle, 
-                                    {[styles.nonClickable]: wasClicked})} 
-                                    onClick={() => clickHandler(answer.id)}
-                                    >
-                                    {wasClicked === answer.id && answer.isCorrect === true && (
-                                        <Image
-                                        priority
-                                        src={Right}
-                                        width={20}
-                                        className={styles.tick}
-                                        />
-                                    )}
-                                    {wasClicked === answer.id && answer.isCorrect === false && (
-                                        <Image
-                                        priority
-                                        src={Mistake}
-                                        width={20}
-                                        className={styles.tick}
-                                        />
-                                    )}
-
-                                    {
-                                      wasClicked && answer.isCorrect === true && (
-                                        <Image
-                                        priority
-                                        src={Right}
-                                        width={20}
-                                        className={styles.tick}
-                                        />
-                                    )  
-                                    }
-                                </div>
-                           
-                           <p>{answer.answer}</p>
-                        </div>    
-                       ))}
-                
+    if(isLoading) {
+        return <Loader />
+    } else {
+        return (
+            <LessonLayout lessonsSummary={lessonsSummary} chapter='grammar'>
+                <div className={styles.container}>
+                    <div className={styles.top}>
+                        <p className={styles.topic}>Тема: Present Simple/Настоящее время</p>
+                        {/* <p className={styles.task}>Посмотрите следующее видео:</p> */}
+                        <div className={styles.wrapper}>
+                        {hasWindow && <ReactPlayer
+                            url='https://www.youtube.com/watch?v=TD-WPyKQy9o'
+                            className={styles.player}
+                            width="100%"
+                            height="100%"
+                            controls={true}
+                        />}
+                        </div>   
                     </div>
-                    <div className={styles.btnContainer}>
-                    <Button onClick={nextQuestionHandler} variant="standardNextOutlined" className={styles.nextButton}>Далее</Button>
+    
+                    <div className={styles.bottom}>
+                        <p>Выполните тест:</p>
+                        <div className={styles.questions}>
+                           <div className={styles.questionContainer}>
+                                <p className={styles.questionText}>{videoTasks[currentQuestion - 1].title}</p>
+                                <p>{currentQuestion}/{totalQuestions}</p>
+                           </div>
+                           {videoTasks[currentQuestion - 1].answers.map(answer => (
+                            <div className={styles.answerContainer} key={answer.id}>
+                                
+                                    <div className={classNames(
+                                        styles.rectangle, 
+                                        {[styles.nonClickable]: wasClicked})} 
+                                        onClick={() => clickHandler(answer.id)}
+                                        >
+                                        {wasClicked === answer.id && answer.isCorrect === true && (
+                                            <Image
+                                            priority
+                                            src={Right}
+                                            width={20}
+                                            className={styles.tick}
+                                            />
+                                        )}
+                                        {wasClicked === answer.id && answer.isCorrect === false && (
+                                            <Image
+                                            priority
+                                            src={Mistake}
+                                            width={20}
+                                            className={styles.tick}
+                                            />
+                                        )}
+    
+                                        {
+                                          wasClicked && answer.isCorrect === true && (
+                                            <Image
+                                            priority
+                                            src={Right}
+                                            width={20}
+                                            className={styles.tick}
+                                            />
+                                        )  
+                                        }
+                                    </div>
+                               
+                               <p>{answer.answer}</p>
+                            </div>    
+                           ))}
+                    
+                        </div>
+                        <div className={styles.btnContainer}>
+                        <Button onClick={nextQuestionHandler} variant="standardNextOutlined" className={styles.nextButton}>Далее</Button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </LessonLayout>
-    )
+            </LessonLayout>
+        )
+    }
+   
 }

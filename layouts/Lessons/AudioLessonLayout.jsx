@@ -15,6 +15,7 @@ import { Button } from "@/components/Button";
 import {useRouter} from "next/router"
 // import {wordsWithTranslations} from '../../utils/textWordsArr'
 import classNames from "classnames";
+import { getProgressData } from "@/api/user";
 
 const TranslationCard = ({ word, translation, onRemove, innerRef }) => {
 
@@ -78,7 +79,7 @@ const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc}) 
 
   //Pause correction
   const progressUpdate = useCallback(() => {
-    const currentTime = audioRef.current.currentTime;
+    const currentTime = audioRef?.current?.currentTime;
     setTimeProgress(currentTime);
     progressBarRef.current.value = currentTime;
 
@@ -91,10 +92,10 @@ const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc}) 
   useEffect(() => {
     if (hasWindow) {
       if (isPlaying) {
-        audioRef.current.play();
+        audioRef?.current?.play();
         playAnimationRef.current = requestAnimationFrame(progressUpdate);
       } else {
-        audioRef.current.pause();
+        audioRef?.current?.pause();
         cancelAnimationFrame(playAnimationRef.current);
       }
     }
@@ -102,7 +103,7 @@ const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc}) 
   //End Pause correction
 
   const repeat = useCallback(() => {
-    const currentTime = audioRef.current.currentTime;
+    const currentTime = audioRef?.current?.currentTime;
     setTimeProgress(currentTime);
     progressBarRef.current.value = currentTime;
 
@@ -112,10 +113,10 @@ const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc}) 
   useEffect(() => {
     if(hasWindow) {
         if (isPlaying) {
-            audioRef.current.play();
+            audioRef?.current?.play();
             playAnimationRef.current = requestAnimationFrame(repeat);
           } else {
-            audioRef.current.pause();
+            audioRef?.current?.pause();
             cancelAnimationFrame(playAnimationRef.current);
           }
     }
@@ -123,7 +124,7 @@ const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc}) 
   }, [isPlaying, audioRef, repeat])
 
   const onLoadedMetadata = () => {
-    const seconds = audioRef.current.duration;
+    const seconds = audioRef?.current?.duration;
     setDuration(seconds);
     progressBarRef.current.max = seconds;
   };

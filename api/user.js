@@ -42,5 +42,27 @@ export const setCurrentLessonData = async (currentLesson, currentChapter) => {
     return await axios.patch(`${apiUrl}/users/me`, bodyData, { headers });
   }
 
+ export const setProgressData = async (progressBody) => {
+  const storedToken = token()
+  const headers = {
+    'Authorization': `Bearer ${storedToken}`,
+    'Content-Type': 'application/json', 
+  };
+
+  return await axios.post(`${apiUrl}/users/addProgress`, progressBody, { headers });
+ } 
+
+ export const getProgressData = async () => {
+  const storedToken = token()
+  const headers = {
+    'Authorization': `Bearer ${storedToken}`,
+    'Content-Type': 'application/json', 
+  };
+
+  return await axios.get(`${apiUrl}/users/progress`, { headers });
+ } 
+
+ 
+
 
 
