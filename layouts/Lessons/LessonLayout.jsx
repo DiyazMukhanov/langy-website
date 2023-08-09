@@ -4,8 +4,13 @@ import { useEffect, useRef } from "react";
 import classNames from "classnames";
 import SideBarDesktop from "./SideBarDesktop";
 import { Typography } from "@/components/Typography";
+import { UserContext } from "@/store/userContext";
+import { useContext } from "react";
 
-export default function LessonLayout({ children, lessonsSummary, chapter, withoutProgress }) {
+export default function LessonLayout({ children, chapter, withoutProgress }) {
+    const userCtx = useContext(UserContext)
+    const lessonsSummary = userCtx.lessonsSummary
+
     const progress = {
         grammar: 25,
         audio: 50,

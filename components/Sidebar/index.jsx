@@ -17,7 +17,8 @@ export default function Sidebar({ lessonsSummary }) {
              {lessonBlock.lessons.map(lesson => (
                  <div key={lesson.chapter} className={classNames(
                      styles.chapter,
-                     {[styles.currentChapter]: lesson.isCurrent}
+                     {[styles.currentChapter]: lesson.isCurrent},
+                     {[styles.completed]: lesson.isCompleted},
                  )}
                  >
                      {lesson.chapter}

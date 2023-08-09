@@ -21,24 +21,28 @@ const UserProvider = (props) => {
             lessons: [
                 {
                     chapter: 'Grammar: video lesson',
+                    chapterCode: 'gr',
                     ru: 'Грамматика',
                     isCurrent: true,
-                    isCompleted: true
+                    isCompleted: false
                 },
                 {
                     chapter: 'Listening/Reading',
+                    chapterCode: 'au',
                     ru: 'Аудио/Чтение',
                     isCurrent: false,
                     isCompleted: false
                 },
                 {
                     chapter: 'Writing',
+                    chapterCode: 'wr',
                     ru: 'Письмо',
                     isCurrent: false,
                     isCompleted: false
                 },
                 {
                     chapter: 'Test',
+                    chapterCode: 'ts',
                     ru: 'Тест',
                     isCurrent: false,
                     isCompleted: false
@@ -53,24 +57,28 @@ const UserProvider = (props) => {
             lessons: [
                 {
                     chapter: 'Grammar: video lesson',
+                    chapterCode: 'gr',
                     ru: 'Грамматика',
                     isCurrent: false,
-                    isCompleted: true
+                    isCompleted: false
                 },
                 {
                     chapter: 'Listening/Reading',
+                    chapterCode: 'au',
                     ru: 'Аудио/Чтение',
                     isCurrent: false,
                     isCompleted: false
                 },
                 {
                     chapter: 'Writing',
+                    chapterCode: 'wr',
                     ru: 'Письмо',
                     isCurrent: false,
                     isCompleted: false
                 },
                 {
                     chapter: 'Test',
+                    chapterCode: 'ts',
                     ru: 'Тест',
                     isCurrent: false,
                     isCompleted: false
@@ -85,24 +93,28 @@ const UserProvider = (props) => {
             lessons: [
                 {
                     chapter: 'Grammar: video lesson',
+                    chapterCode: 'gr',
                     ru: 'Грамматика',
                     isCurrent: false,
-                    isCompleted: true
+                    isCompleted: false
                 },
                 {
                     chapter: 'Listening/Reading',
+                    chapterCode: 'au',
                     ru: 'Аудио/Чтение',
                     isCurrent: false,
                     isCompleted: false
                 },
                 {
                     chapter: 'Writing',
+                    chapterCode: 'wr',
                     ru: 'Письмо',
                     isCurrent: false,
                     isCompleted: false
                 },
                 {
                     chapter: 'Test',
+                    chapterCode: 'ts',
                     ru: 'Тест',
                     isCurrent: false,
                     isCompleted: false
@@ -117,24 +129,28 @@ const UserProvider = (props) => {
             lessons: [
                 {
                     chapter: 'Grammar: video lesson',
+                    chapterCode: 'gr',
                     ru: 'Грамматика',
                     isCurrent: false,
-                    isCompleted: true
+                    isCompleted: false
                 },
                 {
                     chapter: 'Listening/Reading',
+                    chapterCode: 'au',
                     ru: 'Аудио/Чтение',
                     isCurrent: false,
                     isCompleted: false
                 },
                 {
                     chapter: 'Writing',
+                    chapterCode: 'wr',
                     ru: 'Письмо',
                     isCurrent: false,
                     isCompleted: false
                 },
                 {
                     chapter: 'Test',
+                    chapterCode: 'ts',
                     ru: 'Тест',
                     isCurrent: false,
                     isCompleted: false
@@ -149,24 +165,28 @@ const UserProvider = (props) => {
             lessons: [
                 {
                     chapter: 'Grammar: video lesson',
+                    chapterCode: 'gr',
                     ru: 'Грамматика',
                     isCurrent: false,
-                    isCompleted: true
+                    isCompleted: false
                 },
                 {
                     chapter: 'Listening/Reading',
+                    chapterCode: 'au',
                     ru: 'Аудио/Чтение',
                     isCurrent: false,
                     isCompleted: false
                 },
                 {
                     chapter: 'Writing',
+                    chapterCode: 'wr',
                     ru: 'Письмо',
                     isCurrent: false,
                     isCompleted: false
                 },
                 {
                     chapter: 'Test',
+                    chapterCode: 'ts',
                     ru: 'Тест',
                     isCurrent: false,
                     isCompleted: false
