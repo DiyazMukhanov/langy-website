@@ -1,8 +1,6 @@
-// AudioPlayer.js
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import LessonLayout from "./LessonLayout";
 import { lessonsSummary } from "../../utils/lessonsSummary";
-// import {text} from '../../utils/text'
 import styles from "./AudioLessonLayout.module.scss";
 import Pause from "../../public/images/Pause.svg";
 import Play from "../../public/images/Play.svg";
@@ -11,11 +9,11 @@ import Mistake from "../../public/images/Mistake.svg";
 import Right from "../../public/images/Right.svg";
 import Image from "next/image";
 import { Button } from "@/components/Button";
-// import {videoTasks} from '../../utils/videoTasks'
 import {useRouter} from "next/router"
-// import {wordsWithTranslations} from '../../utils/textWordsArr'
 import classNames from "classnames";
 import { getProgressData } from "@/api/user";
+import Loader from "@/components/Loader";
+import { setProgressData } from "@/api/user";
 
 const TranslationCard = ({ word, translation, onRemove, innerRef }) => {
 
@@ -38,7 +36,7 @@ const TranslationCard = ({ word, translation, onRemove, innerRef }) => {
     )
 }
 
-const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc}) => {
+const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc, lessonNumber, nextUrl}) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [timeProgress, setTimeProgress] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -49,6 +47,7 @@ const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc}) 
   const [wasClicked, setWasClicked] = useState(null)
   const [hoveredWord, setHoveredWord] = useState(null)
   const [hoveredWordIndex, setHoveredWordIndex] = useState(-1);
+  const [isLoading, setIsLoading] = useState(false)
   
   const innerRef = useRef(null)
   const router = useRouter()
@@ -153,6 +152,19 @@ const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc}) 
     setIsShowingRu(false)
   }
 
+  const setProgressHandler = async () => {
+    setIsLoading(true)
+    try{
+    const data = await setProgressData({lessonNumber: lessonNumber, chapterCode: 'au'})
+    router.push(nextUrl)
+    
+    } catch (err) {
+        console.log(err)
+        setIsLoading(false)
+        router.push(nextUrl)
+    }
+}
+
   const nextQuestionHandler = () => {
     if(currentQuestion < totalQuestions) {
         if(wasClicked) {
@@ -164,7 +176,7 @@ const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc}) 
     }
 
     if(currentQuestion === totalQuestions) {
-        router.push('lessons/lesson1/writing')
+      setProgressHandler(lessonNumber, nextUrl)
     }
 }
 
@@ -197,6 +209,9 @@ const clickHandler = (id) => {
     }
  }
 
+ if(isLoading) {
+  return <Loader />
+ } else {
   return (
     <>
       <LessonLayout lessonsSummary={lessonsSummary} chapter="audio">
@@ -334,6 +349,8 @@ const clickHandler = (id) => {
       </LessonLayout>
     </>
   );
+ }
+  
 };
 
 export default AudioLessonLayout

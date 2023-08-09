@@ -53,7 +53,7 @@ export default function VideoLessonLayout({lessonsSummary, videoTasks, nextUrl, 
         }
 
         if(currentQuestion === totalQuestions) {
-            setProgressHandler()
+            setProgressHandler(lessonNumber, nextUrl)
         }
     }
     

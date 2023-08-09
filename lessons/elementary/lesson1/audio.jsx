@@ -6,5 +6,12 @@ import { getProgressData } from "@/api/user";
 
 
 export default function Audio() {
-   return <AudioLessonLayout text={text} audioTasks={audioTasks} wordsWithTranslations={wordsWithTranslations} audioSrc="/audio/elementary-1.mp3"/>
+   return <AudioLessonLayout 
+   text={text} 
+   audioTasks={audioTasks} 
+   wordsWithTranslations={wordsWithTranslations} 
+   audioSrc="/audio/elementary-1.mp3"
+   lessonNumber={1}
+   nextUrl='/lessons/elementary/lesson1/writing'
+   />
 }
