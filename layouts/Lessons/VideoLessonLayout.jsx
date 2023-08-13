@@ -17,6 +17,7 @@ export default function VideoLessonLayout({lessonsSummary, videoTasks, nextUrl, 
     const [isLoading, setIsLoading] = useState(false)
     const router = useRouter()
     const [hasWindow, setHasWindow] = useState(false)
+    console.log(hasWindow)
     useEffect(() => {
         if(typeof window !== 'undefined') {
             setHasWindow(true);

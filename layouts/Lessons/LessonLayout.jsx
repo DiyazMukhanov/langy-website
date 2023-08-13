@@ -12,7 +12,6 @@ export default function LessonLayout({ children, chapter, withoutProgress }) {
     const [isLoading, setIsLoading] = useState(true)
     const lessonsSummary = userCtx.lessonsSummary
     const updatedLessonsSummary = userCtx.getUpdatedLessonsSummary(lessonsSummary)
-    console.log(userCtx.progressData)
 
     useEffect(() => {
         const getProgress = async () => {

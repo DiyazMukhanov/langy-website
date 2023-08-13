@@ -72,12 +72,24 @@
     cursor: pointer;
 }
 
-.chosenCircle {
+.rightChosenCircle {
     border: solid var(--color-grey) 1px;
     border-radius: 100%;
     width: 30px;
     height: 30px;
-    background-color: var(--color-primary);
+    background-color: var(--color-green);
+}
+
+.wrongChosenCircle {
+    border: solid var(--color-grey) 1px;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-red);
+}
+
+.disabled {
+    pointer-events: none;
 }
 
 .answerContainer {

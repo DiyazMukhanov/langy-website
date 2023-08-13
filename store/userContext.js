@@ -227,6 +227,7 @@ const UserProvider = (props) => {
 
         } else {
             console.log('data is null')
+            return lessonsSummary
         }
 
         let finallyUpdatedLessonsSummary

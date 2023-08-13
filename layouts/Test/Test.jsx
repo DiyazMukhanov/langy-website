@@ -197,7 +197,10 @@ export default function Test() {
                         <div className={styles.answerContainer} key={item.id}>
                            <div className={classNames(
                             styles.circle,
-                            {[styles.chosenCircle]: chosenId === item.id}
+                            {[styles.rightChosenCircle]: chosenId === item.id && item.isRight === true},
+                            {[styles.wrongChosenCircle]: chosenId === item.id && item.isRight === false},
+                            {[styles.rightChosenCircle]: chosenId && item.isRight === true},
+                            {[styles.disabled]: chosenId},
                             )} 
                             onClick={() => chooseHandler(item.id)}
                             >
