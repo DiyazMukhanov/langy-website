@@ -58,11 +58,11 @@ export default function LessonLayout({ children, chapter, withoutProgress }) {
                         <div style={{
                     width: `${progress[chapter]}%`,
                     height: '100%',
-                    background: '#48C61C'
+                    background: '#48C61C',
+                    borderRadius: '25px'
                     }}/>
                     </div>)}
                     
-                 
                 <div className={styles.links}>
                    {chapter === 'grammar' && <p className={styles.currentLink}>Грамматика</p>}
                    {chapter === 'audio' && <p className={styles.currentLink}>Аудио/Чтение</p>}

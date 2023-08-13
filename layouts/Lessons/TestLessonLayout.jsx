@@ -1,103 +1,18 @@
 import LessonLayout from "./LessonLayout";
-import { lessonsSummary } from "@/utils/lessonsSummary";
 import styles from './TestLessonLayout.module.scss'
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import classNames from "classnames";
 import NextButton from '../../public/images/Next-button.svg'
 import RightTick from '../../public/images/Right-tick.svg'
 import WrongTick from '../../public/images/Wrong-tick.svg'
 import Image from 'next/image'
 import { Typography } from "@/components/Typography"
-import { Button } from "@/components/Button";
+import { Button } from "@/components/Button"
+import { UserContext } from "@/store/userContext";
+import { useRouter } from "next/router";
 
-const questions = [
-    {
-        id: 1,
-        firstPart: 'You shall',
-        secondPart: 'this game',
-        description: 'Глагол быть имеет разнеы формы. Здесь нужно было поставить эту форму, потому что она больше подходит. Продолжай обучение, у тебя всё получится!',
-        answers: [
-            {
-                id: 1,
-                answer: 'play',
-                isCorrect: true
-            },
-            {
-                id: 2,
-                answer: 'go',
-                isCorrect: false
-            },
-            {
-                id: 3,
-                answer: 'swim',
-                isCorrect: false
-            },
-            {
-                id: 4,
-                answer: 'eat',
-                isCorrect: false
-            }
-        ] 
-    },
-    {
-        id: 2,
-        firstPart: 'You can',
-        secondPart: 'this cake',
-        description: 'Глагол быть имеет разнеы формы. Здесь нужно было поставить эту форму, потому что она больше подходит. Продолжай обучение, у тебя всё получится!',
-        answers: [
-            {
-                id: 1,
-                answer: 'play',
-                isCorrect: false
-            },
-            {
-                id: 2,
-                answer: 'go',
-                isCorrect: false
-            },
-            {
-                id: 3,
-                answer: 'swim',
-                isCorrect: false
-            },
-            {
-                id: 4,
-                answer: 'eat',
-                isCorrect: true
-            }
-        ] 
-    },
-    {
-        id: 3,
-        firstPart: 'You can',
-        secondPart: 'this cat',
-        description: 'Глагол быть имеет разнеы формы. Здесь нужно было поставить эту форму, потому что она больше подходит. Продолжай обучение, у тебя всё получится!',
-        answers: [
-            {
-                id: 1,
-                answer: 'take',
-                isCorrect: true
-            },
-            {
-                id: 2,
-                answer: 'go',
-                isCorrect: false
-            },
-            {
-                id: 3,
-                answer: 'swim',
-                isCorrect: false
-            },
-            {
-                id: 4,
-                answer: 'eat',
-                isCorrect: false
-            }
-        ] 
-    }
-]
-
-const ResultsShowing = ({rightAnswers, totalQuestions, questionsArr }) => {
+const ResultsShowing = ({rightAnswers, totalQuestions, questionsArr, nextUrl }) => {
+    const router = useRouter()
     const checkIsRight = (question, chosenAnswer) => {
         const trueAnswer = question.answers.filter(answer => answer.isCorrect === true)
         const trueResult = trueAnswer[0].answer
@@ -155,7 +70,7 @@ const ResultsShowing = ({rightAnswers, totalQuestions, questionsArr }) => {
         </div>
 
         <div className={styles.buttonNextBottom}>
-           <Button variant="standardNextContained">Следующий урок</Button>
+           <Button variant="standardNextContained" onClick={() => router.push(nextUrl)}>Следующий урок</Button>
         </div>
         </div>
         )
@@ -177,7 +92,7 @@ const WordContainer = ({ word, isCorrect, onClick, droppedWord }) => {
    )
 }
 
-export default function TestLessonLayout() {
+export default function TestLessonLayout({questions, lessonsSummary, nextUrl}) {
     const [questionsArr, setQuestionsArray] = useState(questions)
     const [currentQuestion, setCurrentQuestion] = useState(1)
     const totalQuestions = questions.length
@@ -186,7 +101,7 @@ export default function TestLessonLayout() {
     const [isCompleted, setIsCompleted] = useState(false)
     const [progress, setProgress] = useState(10)
 
-    console.log(questionsArr)
+    const userCtx = useContext(UserContext)
 
     const rightAnswersFind = (arr) => {
         const onlyTrueArr = arr.filter(item => item === true)
@@ -236,7 +151,8 @@ export default function TestLessonLayout() {
             <div style={{
             width: `${progress}%`,
             height: '100%',
-            background: '#48C61C'
+            background: '#48C61C',
+            borderRadius: '25px'
             }}/>
             </div>
             <div className={styles.questionContainer}>
@@ -281,7 +197,7 @@ export default function TestLessonLayout() {
             </div>
             </div>
             </>) : (
-            <ResultsShowing rightAnswers={rightAnswers} totalQuestions={totalQuestions} questionsArr={questionsArr} />
+            <ResultsShowing rightAnswers={rightAnswers} totalQuestions={totalQuestions} questionsArr={questionsArr} nextUrl={nextUrl}/>
         )}
         
        </LessonLayout>
