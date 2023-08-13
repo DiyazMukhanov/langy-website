@@ -9,11 +9,17 @@ export default function Video() {
    const userCtx = useContext(UserContext)
    const lessonNumber = 1
 
+   const currentLessonData = {
+      currentChapter: 'video',
+      currentLesson: 1
+   }
+
    return <VideoLessonLayout 
    videoTasks={videoTasks} 
    lessonsSummary={userCtx.lessonsSummary}
    videoUrl={videoUrl} 
    nextUrl='/lessons/elementary/lesson1/audio'
    lessonNumber={lessonNumber}
+   currentLessonData={currentLessonData}
    />
 }

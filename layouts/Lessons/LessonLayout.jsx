@@ -4,10 +4,10 @@ import SideBarDesktop from "./SideBarDesktop";
 import { Typography } from "@/components/Typography";
 import { UserContext } from "@/store/userContext";
 import { useContext, useEffect, useState } from "react";
-import  { getProgressData }  from "../../api/user";
+import  { getProgressData, setCurrentLessonData }  from "../../api/user";
 import Loader from "@/components/Loader";
 
-export default function LessonLayout({ children, chapter, withoutProgress }) {
+export default function LessonLayout({ children, chapter, withoutProgress, currentLessonData }) {
     const userCtx = useContext(UserContext)
     const [isLoading, setIsLoading] = useState(true)
     const lessonsSummary = userCtx.lessonsSummary
@@ -32,6 +32,23 @@ export default function LessonLayout({ children, chapter, withoutProgress }) {
       
     }, [])
 
+    useEffect(() => {
+        const setCurrentLesson = async () => {
+            console.log(currentLessonData)
+            try {
+                const currentLessonDataFetched = await setCurrentLessonData(currentLessonData)
+                console.log(currentLessonDataFetched)
+                
+              } catch (err) {
+                console.log(err)
+                
+              }
+        }
+
+        setCurrentLesson()
+      
+    }, [])
+
     const progress = {
         grammar: 25,
         audio: 50,
@@ -39,9 +56,6 @@ export default function LessonLayout({ children, chapter, withoutProgress }) {
         test: 100
     }
 
-    const currentLesson = lessonsSummary.filter(lesson => lesson.isCurrent === true)
-    const currentChapter = currentLesson[0].lessons.filter(chapter => chapter.isCurrent === true)
-    
     if(isLoading) {
         return <Loader />
     } else {

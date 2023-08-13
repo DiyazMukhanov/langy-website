@@ -28,11 +28,8 @@ const headers = {
   return await axios.get(`${apiUrl}/users/me`, { headers });
 }
 
-export const setCurrentLessonData = async (currentLesson, currentChapter) => {
-  const bodyData = {
-    currentLesson: currentLesson,
-    currentChapter: currentChapter
-  }
+export const setCurrentLessonData = async (bodyData) => {
+  
   const storedToken = token()
   const headers = {
     'Authorization': `Bearer ${storedToken}`,

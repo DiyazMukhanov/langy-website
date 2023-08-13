@@ -11,7 +11,6 @@ import Image from "next/image";
 import { Button } from "@/components/Button";
 import {useRouter} from "next/router"
 import classNames from "classnames";
-import { getProgressData } from "@/api/user";
 import Loader from "@/components/Loader";
 import { setProgressData } from "@/api/user";
 
@@ -36,7 +35,7 @@ const TranslationCard = ({ word, translation, onRemove, innerRef }) => {
     )
 }
 
-const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc, lessonNumber, nextUrl}) => {
+const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc, lessonNumber, nextUrl, currentLessonData}) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [timeProgress, setTimeProgress] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -46,7 +45,6 @@ const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc, l
   const [currentQuestion, setCurrentQuestion] = useState(1)
   const [wasClicked, setWasClicked] = useState(null)
   const [hoveredWord, setHoveredWord] = useState(null)
-  const [hoveredWordIndex, setHoveredWordIndex] = useState(-1);
   const [isLoading, setIsLoading] = useState(false)
   
   const innerRef = useRef(null)
@@ -214,7 +212,7 @@ const clickHandler = (id) => {
  } else {
   return (
     <>
-      <LessonLayout lessonsSummary={lessonsSummary} chapter="audio">
+      <LessonLayout lessonsSummary={lessonsSummary} chapter="audio" currentLessonData={currentLessonData}>
         
          {hasWindow && <audio src={audioSrc} ref={audioRef} preload="metadata" onLoadedMetadata={onLoadedMetadata}/>}
          

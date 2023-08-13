@@ -11,13 +11,13 @@ import classNames from "classnames"
 import { setProgressData } from "@/api/user"
 import Loader from "@/components/Loader"
 
-export default function VideoLessonLayout({lessonsSummary, videoTasks, nextUrl, lessonNumber}) {
+export default function VideoLessonLayout({lessonsSummary, videoTasks, nextUrl, lessonNumber, currentLessonData}) {
     const [currentQuestion, setCurrentQuestion] = useState(1)
     const [wasClicked, setWasClicked] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
     const router = useRouter()
     const [hasWindow, setHasWindow] = useState(false)
-    console.log(hasWindow)
+    
     useEffect(() => {
         if(typeof window !== 'undefined') {
             setHasWindow(true);
@@ -62,7 +62,7 @@ export default function VideoLessonLayout({lessonsSummary, videoTasks, nextUrl, 
         return <Loader />
     } else {
         return (
-            <LessonLayout lessonsSummary={lessonsSummary} chapter='grammar'>
+            <LessonLayout lessonsSummary={lessonsSummary} chapter='grammar' currentLessonData={currentLessonData}>
                 <div className={styles.container}>
                     <div className={styles.top}>
                         <p className={styles.topic}>Тема: Present Simple/Настоящее время</p>

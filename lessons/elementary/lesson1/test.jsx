@@ -8,6 +8,10 @@ import TestLessonLayout from "@/layouts/Lessons/TestLessonLayout";
 export default function Video() {
    const userCtx = useContext(UserContext)
    const lessonNumber = 1
+   const currentLessonData = {
+    currentChapter: 'test',
+    currentLesson: 1
+ }
 
    const questions = [
     {
@@ -103,5 +107,6 @@ export default function Video() {
    videoUrl={videoUrl} 
    nextUrl='/lessons/elementary/lesson2/video'
    lessonNumber={lessonNumber}
+   currentLessonData={currentLessonData}
    />
 }
