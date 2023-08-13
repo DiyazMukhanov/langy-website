@@ -1,10 +1,15 @@
 import styles from "./Loader.module.scss";
 import {ThreeDots} from "react-loader-spinner";
+import classNames from "classnames";
 
 
-const Loader = () => {
+const Loader = ({small}) => {
+   
     return (
-        <div className={styles.spinner}>
+        <div className={classNames(
+            {[styles.small]: small === true},
+            {[styles.spinner]: small === undefined},
+            )}>
             <ThreeDots
                 height="80"
                 width="80"

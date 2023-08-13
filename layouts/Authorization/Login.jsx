@@ -94,7 +94,7 @@ export default function Login() {
         <div className={styles.formContainer}>
            <Typography size='small' element='h2' className={styles.formHeading}>Вход</Typography>
         
-        <form onSubmit={userLoginHandler} className={styles.form}>
+        <form type='submit' onSubmit={userLoginHandler} className={styles.form}>
         <div className={styles.inputs}>
           <input placeholder='Email' className={classNames({[styles.errorInput]: emailEmpty}, {[styles.input]: !emailEmpty})} onChange={emailInputHandler}></input>
           <input placeholder='Пароль' className={classNames({[styles.errorInput]: passwordEmpty}, {[styles.input]: !passwordEmpty})} onChange={passwordInputHandler}></input>

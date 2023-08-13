@@ -6,13 +6,15 @@ import Image from 'next/image'
 import ButtonClose from '../../public/images/Button-close.svg'
 import SandwichBlack from '../../public/images/Sandwich-black.svg'
 import Modal from '../../layouts/landing/Modal'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import Sidebar from '../Sidebar'
 import { useRouter } from 'next/router'
+import { UserContext } from '@/store/userContext'
 
 export default function Header({ variant, lessonsSummary }) {
     const [isModalOpened, setIsModalOpened] = useState(false)
     const router = useRouter()
+    const userCtx = useContext(UserContext)
 
     const modalCloseHandler = () => {
         setIsModalOpened(false)
@@ -26,6 +28,10 @@ export default function Header({ variant, lessonsSummary }) {
         router.push('/')
       }
 
+      const logOutHandler = () => {
+        userCtx.logOut()
+      }
+
     if(variant === 'blue') {
         return (
             <>
@@ -34,9 +40,10 @@ export default function Header({ variant, lessonsSummary }) {
             priority
             src={Logo}
             width={60}
+            className={styles.pointer}
             onClick={goToMainHandler}
             />
-            <p onClick={goToMainHandler}>Выйти</p>
+            <p onClick={logOutHandler}>Выйти</p>
             </div>
 
             <div className={styles.blueContainerMobile}>
@@ -69,7 +76,7 @@ export default function Header({ variant, lessonsSummary }) {
         return (
             <>
               <div className={styles.whiteContainer}>
-              <div className={styles.logo}>
+              <div className={styles.logo} onClick={goToMainHandler}>
                 <Image
                     priority
                     src={LogoBlue}
@@ -82,7 +89,7 @@ export default function Header({ variant, lessonsSummary }) {
                 />
                 </div>
                 <div className={styles.profile}>
-                   <p>Выйти</p>
+                   <p className={styles.exit} onClick={logOutHandler}>Выйти</p>
                    <div className={styles.circle}>
                       D
                    </div>

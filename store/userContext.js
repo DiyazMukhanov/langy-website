@@ -198,7 +198,6 @@ const UserProvider = (props) => {
         }
     ]
 
-    
     const [lessonsSummary, setLessonsSummary] = useState(lessonsSummaryInitial)
     
     const [progressData, setProgressData] = useState(null)
@@ -226,7 +225,6 @@ const UserProvider = (props) => {
             })
 
         } else {
-            console.log('data is null')
             return lessonsSummary
         }
 
@@ -243,7 +241,6 @@ const UserProvider = (props) => {
             })
         }
        
-        console.log(finallyUpdatedLessonsSummary)
         return updatedLessonsSummary
     }
 

@@ -10,9 +10,6 @@ export const Button = ({
 }) => {
     const classes = classNames(styles.button,
         styles[variant],
-        {
-            [styles.disabled]: disabled,
-        },
         className
         )
     
