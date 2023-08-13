@@ -169,7 +169,8 @@ export default function Test() {
                  <div style={{
               width: `${progress}%`,
               height: '100%',
-              background: '#007bff'
+              background: '#007bff',
+              borderRadius: '25px',
             }}/>
               </div>
     
