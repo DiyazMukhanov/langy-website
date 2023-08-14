@@ -19,7 +19,7 @@ const UserProvider = (props) => {
     const [lessonsSummary, setLessonsSummary] = useState(lessonsSummaryInitial)
     
     const [progressData, setProgressData] = useState(null)
-
+    
     const lessonsIndexes = {
         gr: 0,
         au: 1,
@@ -76,6 +76,7 @@ const UserProvider = (props) => {
         setUserData,
         logOut,
         lessonsSummary,
+        setLessonsSummary,
         setProgressData,
         progressData,
         getUpdatedLessonsSummary

@@ -5,8 +5,9 @@ import { useState } from 'react'
 import { sendAssay } from '@/api/charGPT'
 import Loader from '@/components/Loader'
 import { useRouter } from 'next/router'
+import { setProgressData } from '@/api/user'
 
-export default function WritingLessonLayout({writingTask, nextUrl, currentLessonData, subscriptionIsNeeded})  {
+export default function WritingLessonLayout({writingTask, nextUrl, currentLessonData, subscriptionIsNeeded, lessonNumber})  {
     const [essay, setEssay] = useState('')
     const [response, setResponse] = useState('')
     const [isLoading, setIsLoading] = useState(false)
@@ -41,6 +42,24 @@ export default function WritingLessonLayout({writingTask, nextUrl, currentLesson
     const onChangeBackup = () => {
 
     }
+
+    const setProgressHandler = async () => {
+      setIsLoading(true)
+      try{
+      const data = await setProgressData({lessonNumber: lessonNumber, chapterCode: 'wr'})
+      router.push(nextUrl)
+      
+      } catch (err) {
+          setIsLoading(false)
+          router.push(nextUrl)
+      }
+  }
+
+    const goNextHndler = () => {
+      setProgressHandler()
+    }
+
+
  
         return (
             <>
@@ -65,7 +84,7 @@ export default function WritingLessonLayout({writingTask, nextUrl, currentLesson
                   )}
                   
                   <div className={styles.nextButtonContainer}>
-                    <Button variant='standardNextContained' onClick={() => router.push(nextUrl)}>Далее</Button>
+                    <Button variant='standardNextContained' onClick={goNextHndler}>Далее</Button>
                   </div>
                </div>
             </LessonLayout>

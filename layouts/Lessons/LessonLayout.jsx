@@ -12,10 +12,49 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
     const userCtx = useContext(UserContext)
     const [isLoading, setIsLoading] = useState(true)
     const lessonsSummary = userCtx.lessonsSummary
-    const updatedLessonsSummary = userCtx.getUpdatedLessonsSummary(lessonsSummary)
+    const updatedLessonsSummary = userCtx.getUpdatedLessonsSummary()
+    console.log(currentLessonData)
 
     useEffect(() => {
         const getProgress = async () => {
+            const lessonsIndexes = {
+                video: 0,
+                audio: 1,
+                writing: 2,
+                test: 3
+            }
+
+            const chapterCodes = {
+                gr: 'video',
+                au: 'audio',
+                wr: 'writing',
+                ts: 'test'
+            }
+
+            let indexOfCurrentLesson
+
+            const updatedLessonsSummary = lessonsSummary.map((lesson, index) => {
+                
+                if(currentLessonData.currentLesson === index + 1) {
+                    lesson.lessons[lessonsIndexes[currentLessonData.currentChapter]].isCurrent = true
+                    indexOfCurrentLesson = lessonsIndexes[currentLessonData.currentChapter]
+                }
+
+                lesson.lessons.map(item => {
+                
+                    if(item.isCurrent === true ) {
+                        
+                        if(chapterCodes[item.chapterCode] !== currentLessonData.currentChapter ) {
+                           item.isCurrent = false
+                        }
+                    }
+                })
+
+                return lesson
+            })
+
+            userCtx.setLessonsSummary(updatedLessonsSummary)
+
             try {
                 const progressData = await getProgressData()
                 if(progressData) {

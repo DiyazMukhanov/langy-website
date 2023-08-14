@@ -3,14 +3,14 @@ export const lessonsSummaryInitial = [
         title: 'Урок 1',
         lessonNumber: 1,
         isCompleted: false,
-        isCurrent: true,
+        isCurrent: false,
         level: 'elementary',
         lessons: [
             {
                 chapter: 'Grammar: video lesson',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
-                isCurrent: true,
+                isCurrent: false,
                 isCompleted: false
             },
             {

@@ -10,7 +10,7 @@ export default function ProtectPage({children, currentLesson, currentChapter, su
    const userCtx = useContext(UserContext)
    const [isLoading, setIsLoading] = useState(true)
    const router = useRouter()
-
+    
    useEffect(() => {
     const fetchUserData = async () => {       
                   if(currentLesson && currentChapter) {
