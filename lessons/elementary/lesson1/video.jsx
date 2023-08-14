@@ -17,5 +17,6 @@ export default function Video() {
    nextUrl='/lessons/elementary/lesson1/audio'
    lessonNumber={lessonNumber}
    currentLessonData={currentLessonData}
+   subscriptionIsNeeded={false}
    />
 }

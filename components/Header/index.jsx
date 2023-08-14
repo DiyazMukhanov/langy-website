@@ -100,7 +100,7 @@ export default function Header({ variant }) {
                 <div className={styles.whiteContainerMobile}>
                 <Modal isOpen={isModalOpened} onClose={modalCloseHandler}>
                 <div className={styles.modalContainer}>
-                  <div className={styles.modalLogos}>
+                  <div className={styles.modalLogos} onClick={() => router.push('/')}>
                     <Image
                     priority
                     src={LogoBlue}
@@ -129,7 +129,7 @@ export default function Header({ variant }) {
                     width={35}
                     onClick={modalOpenHandler}
                 />
-                 <div className={styles.modalLogos}>
+                 <div className={styles.modalLogos} onClick={() => router.push('/')}>
                     <Image
                     priority
                     src={LogoBlue}

@@ -6,7 +6,7 @@ import { sendAssay } from '@/api/charGPT'
 import Loader from '@/components/Loader'
 import { useRouter } from 'next/router'
 
-export default function WritingLessonLayout({writingTask, nextUrl, currentLessonData})  {
+export default function WritingLessonLayout({writingTask, nextUrl, currentLessonData, subscriptionIsNeeded})  {
     const [essay, setEssay] = useState('')
     const [response, setResponse] = useState('')
     const [isLoading, setIsLoading] = useState(false)
@@ -44,7 +44,7 @@ export default function WritingLessonLayout({writingTask, nextUrl, currentLesson
  
         return (
             <>
-            <LessonLayout chapter='writing' currentLessonData={currentLessonData}>
+            <LessonLayout chapter='writing' currentLessonData={currentLessonData} subscriptionIsNeeded={subscriptionIsNeeded}>
                <div className={styles.lessonContainer}>
                   <p className={styles.title}>
                      {writingTask}

@@ -99,5 +99,6 @@ export default function Video() {
    nextUrl='/lessons/elementary/lesson2/video'
    lessonNumber={lessonNumber}
    currentLessonData={currentLessonData}
+   subscriptionIsNeeded={true}
    />
 }

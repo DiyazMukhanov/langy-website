@@ -34,7 +34,7 @@ const TranslationCard = ({ word, translation, onRemove, innerRef }) => {
     )
 }
 
-const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc, lessonNumber, nextUrl, currentLessonData}) => {
+const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc, lessonNumber, nextUrl, currentLessonData, subscriptionIsNeeded}) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [timeProgress, setTimeProgress] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -211,7 +211,7 @@ const clickHandler = (id) => {
  } else {
   return (
     <>
-      <LessonLayout chapter="audio" currentLessonData={currentLessonData} subscriptionIsNeeded={true}>
+      <LessonLayout chapter="audio" currentLessonData={currentLessonData} subscriptionIsNeeded={subscriptionIsNeeded}>
         
          {hasWindow && <audio src={audioSrc} ref={audioRef} preload="metadata" onLoadedMetadata={onLoadedMetadata}/>}
          

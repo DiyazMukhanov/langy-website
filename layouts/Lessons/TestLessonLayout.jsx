@@ -92,7 +92,7 @@ const WordContainer = ({ word, isCorrect, onClick, droppedWord }) => {
    )
 }
 
-export default function TestLessonLayout({questions, nextUrl, currentLessonData}) {
+export default function TestLessonLayout({questions, nextUrl, currentLessonData, subscriptionIsNeeded}) {
     const [questionsArr, setQuestionsArray] = useState(questions)
     const [currentQuestion, setCurrentQuestion] = useState(1)
     const totalQuestions = questions.length
@@ -144,7 +144,7 @@ export default function TestLessonLayout({questions, nextUrl, currentLessonData}
      return (
      <>
      
-       <LessonLayout chapter='test' withoutProgress={true} currentLessonData={currentLessonData}>
+       <LessonLayout chapter='test' withoutProgress={true} currentLessonData={currentLessonData} subscriptionIsNeeded={subscriptionIsNeeded}>
         {!isCompleted ? (
             <>
             <div className={styles.progressContainer}>

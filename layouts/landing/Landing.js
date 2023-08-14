@@ -22,7 +22,7 @@ import { Button } from '@/components/Button'
 import Advantage from './Advantage'
 import AdvantageCard from './AdvantageCard'
 import HowCard from './HowCard'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import Modal from './Modal'
 import classNames from 'classnames'
 import {useRouter} from "next/router"
@@ -36,6 +36,23 @@ export default function Landing() {
   const [isModalOpened, setIsModalOpened] = useState(false)
   const router = useRouter()
   const userCtx = useContext(UserContext)
+  const [isLoading, setIsLoading] = useState(true)
+  
+  useEffect(() => {
+    const getUser = async () => {
+      try{
+        const response = await getMe()
+        console.log(response?.data)
+      } catch (err) {
+        console.log(err)
+        setIsLoading(false)
+      }
+      
+    }
+    getUser()
+
+  }, [])
+
   const frequentQuestions = [
     {
       id: 1,
@@ -95,7 +112,7 @@ export default function Landing() {
   }
   
     return (
-      <ProtectPage>
+      
       <div className={styles.overlay}>
         <Modal isOpen={isModalOpened} onClose={modalCloseHandler}>
           <div className={styles.modalContainer}>
@@ -117,7 +134,7 @@ export default function Landing() {
            onClick={modalCloseHandler}
            />
            </div>
-           <div className={styles.serviceModal}>
+           <div className={styles.serviceModal} onClick={() => router.push('/service')}>
            <Image
            priority
            src={ServiceBlue}
@@ -158,7 +175,7 @@ export default function Landing() {
          <Button variant='outlined' className={styles.registrationBtn} onClick={registrationHandler}>Регистрация</Button>
         </div>) : (
           <div className={styles.topButtons}>
-          <Typography element='p' className={styles.enterBtn}>{userCtx?.userData?.email}</Typography>
+          <Typography element='p' className={styles.enterBtn} onClick={() => router.push('/profile')}>{userCtx?.userData?.email}</Typography>
           <Button variant='outlined' className={styles.registrationBtn} onClick={logOutHandler}>Выйти</Button>
          </div>
         )}
@@ -362,7 +379,7 @@ export default function Landing() {
            priority
            src={Service}
            />
-           <p>Служба поддержки</p>
+           <p onClick={() => router.push('/service')}>Служба поддержки</p>
            </div>
            {!userCtx.userData ? 
            (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Действуй!</Button>): 
@@ -380,7 +397,7 @@ export default function Landing() {
       </footer>
      
       </div>
-      </ProtectPage>
+      
     )
     
   }
