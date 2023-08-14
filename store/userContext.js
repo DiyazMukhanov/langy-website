@@ -21,6 +21,7 @@ const UserProvider = (props) => {
             lessonNumber: 1,
             isCompleted: false,
             isCurrent: true,
+            level: 'elementary',
             lessons: [
                 {
                     chapter: 'Grammar: video lesson',
@@ -57,6 +58,7 @@ const UserProvider = (props) => {
             lessonNumber: 2,
             isCompleted: false,
             isCurrent: false,
+            level: 'elementary',
             lessons: [
                 {
                     chapter: 'Grammar: video lesson',
@@ -93,6 +95,7 @@ const UserProvider = (props) => {
             lessonNumber: 3,
             isCompleted: false,
             isCurrent: false,
+            level: 'elementary',
             lessons: [
                 {
                     chapter: 'Grammar: video lesson',
@@ -129,6 +132,7 @@ const UserProvider = (props) => {
             lessonNumber: 4,
             isCompleted: false,
             isCurrent: false,
+            level: 'elementary',
             lessons: [
                 {
                     chapter: 'Grammar: video lesson',
@@ -165,6 +169,7 @@ const UserProvider = (props) => {
             lessonNumber: 5,
             isCompleted: false,
             isCurrent: false,
+            level: 'elementary',
             lessons: [
                 {
                     chapter: 'Grammar: video lesson',
