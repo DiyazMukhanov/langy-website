@@ -8,7 +8,7 @@ import { createServiceRequest } from '@/api/user'
 
 export default function Service() {
     const [isLoading, setIsLoading] = useState(false)
-    const [sent, setSent] = useState(true)
+    const [sent, setSent] = useState(false)
 
     const [topicInputValue, setTopicInputValue] = useState('')
     const [issueInputValue, setIssueInputValue] = useState('')
