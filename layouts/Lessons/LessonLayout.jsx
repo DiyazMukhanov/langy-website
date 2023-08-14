@@ -6,8 +6,9 @@ import { UserContext } from "@/store/userContext";
 import { useContext, useEffect, useState } from "react";
 import  { getProgressData, setCurrentLessonData }  from "../../api/user";
 import Loader from "@/components/Loader";
+import ProtectPage from "@/components/ProtectPage";
 
-export default function LessonLayout({ children, chapter, withoutProgress, currentLessonData }) {
+export default function LessonLayout({ children, chapter, withoutProgress, currentLessonData, subscriptionIsNeeded }) {
     const userCtx = useContext(UserContext)
     const [isLoading, setIsLoading] = useState(true)
     const lessonsSummary = userCtx.lessonsSummary
@@ -32,23 +33,6 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
       
     }, [])
 
-    useEffect(() => {
-        const setCurrentLesson = async () => {
-            console.log(currentLessonData)
-            try {
-                const currentLessonDataFetched = await setCurrentLessonData(currentLessonData)
-                console.log(currentLessonDataFetched)
-                
-              } catch (err) {
-                console.log(err)
-                
-              }
-        }
-
-        setCurrentLesson()
-      
-    }, [])
-
     const progress = {
         grammar: 25,
         audio: 50,
@@ -59,7 +43,8 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
     if(isLoading) {
         return <Loader />
     } else {
-        return (<>
+        return (
+        <ProtectPage currentLesson={currentLessonData.currentLesson} currentChapter={currentLessonData.currentChapter} subscriptionIsNeeded={subscriptionIsNeeded}>
             <Header variant='white' lessonsSummary={updatedLessonsSummary}/>
             <div className={styles.container}>
                 <SideBarDesktop lessonsSummary={updatedLessonsSummary}/>
@@ -86,8 +71,8 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
                 {children}
                 </div>
             </div>
+            </ProtectPage>
             
-            </>
             )
     }
     

@@ -211,7 +211,7 @@ const clickHandler = (id) => {
  } else {
   return (
     <>
-      <LessonLayout chapter="audio" currentLessonData={currentLessonData}>
+      <LessonLayout chapter="audio" currentLessonData={currentLessonData} subscriptionIsNeeded={true}>
         
          {hasWindow && <audio src={audioSrc} ref={audioRef} preload="metadata" onLoadedMetadata={onLoadedMetadata}/>}
          
