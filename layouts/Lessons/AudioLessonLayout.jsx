@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import LessonLayout from "./LessonLayout";
-import { lessonsSummary } from "../../utils/lessonsSummary";
 import styles from "./AudioLessonLayout.module.scss";
 import Pause from "../../public/images/Pause.svg";
 import Play from "../../public/images/Play.svg";
@@ -212,7 +211,7 @@ const clickHandler = (id) => {
  } else {
   return (
     <>
-      <LessonLayout lessonsSummary={lessonsSummary} chapter="audio" currentLessonData={currentLessonData}>
+      <LessonLayout chapter="audio" currentLessonData={currentLessonData}>
         
          {hasWindow && <audio src={audioSrc} ref={audioRef} preload="metadata" onLoadedMetadata={onLoadedMetadata}/>}
          

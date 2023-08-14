@@ -11,10 +11,11 @@ import Sidebar from '../Sidebar'
 import { useRouter } from 'next/router'
 import { UserContext } from '@/store/userContext'
 
-export default function Header({ variant, lessonsSummary }) {
+export default function Header({ variant }) {
     const [isModalOpened, setIsModalOpened] = useState(false)
     const router = useRouter()
     const userCtx = useContext(UserContext)
+    const lessonsSummary = userCtx.getUpdatedLessonsSummary()
 
     const modalCloseHandler = () => {
         setIsModalOpened(false)

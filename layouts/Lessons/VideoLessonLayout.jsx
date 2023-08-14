@@ -11,7 +11,7 @@ import classNames from "classnames"
 import { setProgressData } from "@/api/user"
 import Loader from "@/components/Loader"
 
-export default function VideoLessonLayout({lessonsSummary, videoTasks, nextUrl, lessonNumber, currentLessonData}) {
+export default function VideoLessonLayout({videoTasks, nextUrl, lessonNumber, currentLessonData}) {
     const [currentQuestion, setCurrentQuestion] = useState(1)
     const [wasClicked, setWasClicked] = useState(null)
     const [isLoading, setIsLoading] = useState(false)

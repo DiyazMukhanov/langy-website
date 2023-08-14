@@ -59,6 +59,16 @@ export const setCurrentLessonData = async (bodyData) => {
   return await axios.get(`${apiUrl}/users/progress`, { headers });
  } 
 
+ export const subscribeMe = async (subscribeBody) => {
+  const storedToken = token()
+  const headers = {
+    'Authorization': `Bearer ${storedToken}`,
+    'Content-Type': 'application/json', 
+  };
+
+  return await axios.patch(`${apiUrl}/users/subscribe`, subscribeBody, { headers });
+ } 
+
  
 
 

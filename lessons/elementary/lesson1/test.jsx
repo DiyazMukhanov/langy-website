@@ -1,12 +1,6 @@
-import { videoTasks } from "@/utils/lessonsMaterials/elementary/lesson1/video-materials";
-import { UserContext } from "@/store/userContext"
-import { useContext } from "react"
-import { videoUrl } from "@/utils/lessonsMaterials/elementary/lesson1/video-materials";
 import TestLessonLayout from "@/layouts/Lessons/TestLessonLayout";
 
-
 export default function Video() {
-   const userCtx = useContext(UserContext)
    const lessonNumber = 1
    const currentLessonData = {
     currentChapter: 'test',
@@ -101,10 +95,7 @@ export default function Video() {
 ]
 
    return <TestLessonLayout 
-   questions={questions}
-   videoTasks={videoTasks} 
-   lessonsSummary={userCtx.lessonsSummary}
-   videoUrl={videoUrl} 
+   questions={questions} 
    nextUrl='/lessons/elementary/lesson2/video'
    lessonNumber={lessonNumber}
    currentLessonData={currentLessonData}
