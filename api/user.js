@@ -69,6 +69,18 @@ export const setCurrentLessonData = async (bodyData) => {
   return await axios.patch(`${apiUrl}/users/subscribe`, subscribeBody, { headers });
  } 
 
+ export const createServiceRequest = async (requestBody) => {
+  const storedToken = token()
+  const headers = {
+    'Authorization': `Bearer ${storedToken}`,
+    'Content-Type': 'application/json', 
+  };
+
+  return await axios.post(`${apiUrl}/services`, requestBody, { headers });
+ } 
+
+
+
  
 
 
