@@ -1,7 +1,5 @@
 import VideoLessonLayout from "@/layouts/Lessons/VideoLessonLayout";
 import { videoTasks } from "@/utils/lessonsMaterials/elementary/lesson1/video-materials";
-import { UserContext } from "@/store/userContext"
-import { useContext } from "react"
 import { videoUrl } from "@/utils/lessonsMaterials/elementary/lesson1/video-materials";
 
 

@@ -62,7 +62,7 @@ export default function VideoLessonLayout({videoTasks, nextUrl, lessonNumber, cu
         return <Loader />
     } else {
         return (
-            <LessonLayout lessonsSummary={lessonsSummary} chapter='grammar' currentLessonData={currentLessonData}>
+            <LessonLayout chapter='grammar' currentLessonData={currentLessonData}>
                 <div className={styles.container}>
                     <div className={styles.top}>
                         <p className={styles.topic}>Тема: Present Simple/Настоящее время</p>
