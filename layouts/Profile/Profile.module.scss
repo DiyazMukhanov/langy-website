@@ -1,0 +1,68 @@
+@import "styles/breakpoints";
+
+.profileContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    
+    @include size-tablet {
+        flex-direction: column;
+        padding: 20px;
+        align-items: center;
+        height: 80vh;
+    }
+}
+
+.name {
+    font-weight: bold;
+    font-size: 28px;
+
+    @include size-tablet {
+        font-size: 22px;
+    }
+}
+
+.level {
+    color: var(--color-primary);
+    font-size: 24px;
+    font-weight: bold;
+    background-color: var(--color-light-grey);
+    border-radius: 12px;
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include size-tablet {
+        font-size: 18px;
+    }
+}
+
+.service {
+    font-weight: bold;
+    cursor: pointer;
+    border: solid var(--color-primary) 1px;
+    padding: 15px;
+    border-radius: 12px;
+    width: fit-content;
+
+    @include size-tablet {
+        margin: 0;
+    }
+}
+
+.leftSide {
+    @include size-tablet {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        & p {
+            margin: 0;
+        }
+        & h2 {
+            margin: 0;
+        }
+    }
+}
