@@ -7,9 +7,11 @@
     
     @include size-tablet {
         flex-direction: column;
-        padding: 20px;
+        padding: 0;
+        gap: 40px;
         align-items: center;
         height: 80vh;
+        justify-content: space-evenly;
     }
 }
 
