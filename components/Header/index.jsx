@@ -16,8 +16,7 @@ export default function Header({ variant }) {
     const router = useRouter()
     const userCtx = useContext(UserContext)
     const lessonsSummary = userCtx.getUpdatedLessonsSummary()
-    console.log(lessonsSummary)
-
+    
     const modalCloseHandler = () => {
         setIsModalOpened(false)
       }

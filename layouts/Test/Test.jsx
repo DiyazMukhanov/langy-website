@@ -1,11 +1,35 @@
 import Header from "@/components/Header"
 import { Button } from "@/components/Button"
 import styles from './Test.module.scss'
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import classNames from "classnames"
 import Result from "./Result"
+import { assignLevel, setLevelChecked } from '@/api/user'
+import { UserContext } from "@/store/userContext"
+import ProtectPage from "@/components/ProtectPage"
+import { useRouter } from "next/router"
+import Loader from "@/components/Loader"
 
 export default function Test() {
+    const userCtx = useContext(UserContext)
+    const router = useRouter()
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+      
+       if(userCtx?.userData?.levelChecked === true) {
+        if(userCtx?.userData?.currentLesson !== 0 && userCtx?.userData?.currentChapter !== 'no') {
+            router.push(`/lessons/${userCtx.userData.level}/lesson${userCtx?.userData?.currentLesson}/${userCtx?.userData?.currentChapter}`)
+            setIsLoading(false)
+          } else {
+            router.push('/lessons/elementary/lesson1/video')
+            setIsLoading(false)
+          }
+       } else {
+        setIsLoading(false)
+       }
+    }, [userCtx.userData])
+
     const questions = [
         {
             number: 1,
@@ -160,9 +184,13 @@ export default function Test() {
         }
     }
 
+    if(isLoading) {
+        return <Loader />
+    }
+
     if(!resultIsShowing) {
         return (
-            <>
+            <ProtectPage>
               <Header variant='blue'/>
               <div className={styles.container}>
               <div className={styles.progressContainer}>
@@ -216,7 +244,7 @@ export default function Test() {
                  </div>
               </div>
               </div>
-            </>
+            </ProtectPage>
         )
     } else {
         return <Result level={numberOfRightAnswers}></Result>

@@ -78,7 +78,35 @@ export const setCurrentLessonData = async (bodyData) => {
   };
 
   return await axios.post(`${apiUrl}/services`, requestBody, { headers });
- } 
+ }
+
+ export const assignLevel = async (level) => {
+  const bodyData = {
+    level: level
+  }
+  const storedToken = token()
+  const headers = {
+    'Authorization': `Bearer ${storedToken}`,
+    'Content-Type': 'application/json', 
+  };
+  
+    return await axios.post(`${apiUrl}/users/addMultipleProgresses`, bodyData, { headers });
+  }
+
+  export const setLevelChecked = async () => {
+    const bodyData = {
+      levelChecked: true
+    }
+    const storedToken = token()
+    const headers = {
+      'Authorization': `Bearer ${storedToken}`,
+      'Content-Type': 'application/json', 
+    };
+    
+      return await axios.patch(`${apiUrl}/users/me`, bodyData, { headers });
+    }
+ 
+ 
 
 
 
