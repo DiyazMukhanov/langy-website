@@ -66,11 +66,15 @@ export default function Result({level}) {
 
    const nextHandler = () => {
     if(levelType == 'Elementary') {
-      router.push('/lessons/elementary/lesson1/video')
+      router.push('/lessons/lesson1/video')
     } 
 
     if(levelType == 'Pre-intermediate') {
-        router.push('/lessons/pre-intermediate/lesson1/video')
+        router.push('/lessons/lesson9/video')
+      }
+
+    if(levelType == 'Intermediate') {
+        router.push('/lessons/lesson17/video')
       }
 
    }

@@ -15,7 +15,8 @@ export default function Audio() {
    wordsWithTranslations={wordsWithTranslations} 
    audioSrc="/audio/elementary-1.mp3"
    lessonNumber={1}
-   nextUrl='/lessons/elementary/lesson1/writing'
+   nextUrl='/lessons/lesson1/writing'
    currentLessonData={currentLessonData}
+   subscriptionIsNeeded={false}
    />
 }

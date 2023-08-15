@@ -6,28 +6,9 @@ import Loader from '@/components/Loader'
 import { useRouter } from 'next/router'
 
 export default function Level() {
-  // const [isLoading, setIsLoading] = useState(true)
+  
   const router = useRouter()
-
-  // useEffect(() => {
-  //   const updateToOnLevelTest = async () => {
-  //     try {
-  //       const userData = await setOnLevelTest()
-  //       if(userData) {
-  //         setIsLoading(false)
-  //       } 
-  //     } catch(error) {
-  //       console.log(error)
-  //       setIsLoading(false)
-  //     }
-  //   }
-
-  //   updateToOnLevelTest()
-
-    
-  // }, [])
-
-    
+  
       return (
         <>
           <Header variant='blue'></Header>

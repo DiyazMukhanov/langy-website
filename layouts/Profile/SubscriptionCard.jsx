@@ -19,7 +19,7 @@ export default function SubscriptionCard({userData}) {
           router.push('authorization/registration')
         } else {
           if(userData?.currentLesson !== 0 && userData?.currentChapter !== 'no') {
-            router.push(`/lessons/${userData.level}/lesson${userData?.currentLesson}/${userData?.currentChapter}`)
+            router.push(`/lessons/lesson${userData?.currentLesson}/${userData?.currentChapter}`)
           } else {
             router.push('/test/level')
           }

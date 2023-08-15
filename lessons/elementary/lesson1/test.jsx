@@ -96,7 +96,7 @@ export default function Video() {
 
    return <TestLessonLayout 
    questions={questions} 
-   nextUrl='/lessons/elementary/lesson2/video'
+   nextUrl='/lessons/lesson2/video'
    lessonNumber={lessonNumber}
    currentLessonData={currentLessonData}
    subscriptionIsNeeded={false}

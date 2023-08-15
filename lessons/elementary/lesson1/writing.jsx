@@ -10,7 +10,7 @@ export default function Writing() {
 
    return <WritingLessonLayout 
    writingTask='Пожалуйста напишите короткое эссе на тему "Моя семья"'
-   nextUrl='/lessons/elementary/lesson1/test'
+   nextUrl='/lessons/lesson1/test'
    lessonNumber={lessonNumber}
    currentLessonData={currentLessonData}
    subscriptionIsNeeded={false}

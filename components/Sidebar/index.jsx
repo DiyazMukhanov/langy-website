@@ -13,7 +13,7 @@ export default function Sidebar({ lessonsSummary }) {
         }
         const chapterName = lessonsIndexes[lesson.chapterCode]
       
-        router.push(`/lessons/${level}/lesson${lessonNumber}/${chapterName}`)
+        router.push(`/lessons/lesson${lessonNumber}/${chapterName}`)
     }
 
       return (

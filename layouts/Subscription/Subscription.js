@@ -29,7 +29,7 @@ export default function Subscription() {
           router.push('authorization/registration')
         } else {
           if(userCtx?.userData?.currentLesson !== 0 && userCtx?.userData?.currentChapter !== 'no') {
-            router.push(`/lessons/${userCtx.userData.level}/lesson${userCtx?.userData?.currentLesson}/${userCtx?.userData?.currentChapter}`)
+            router.push(`/lessons/lesson${userCtx?.userData?.currentLesson}/${userCtx?.userData?.currentChapter}`)
           } else {
             router.push('/test/level')
           }

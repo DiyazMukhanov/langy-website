@@ -19,10 +19,10 @@ export default function Test() {
       
        if(userCtx?.userData?.levelChecked === true) {
         if(userCtx?.userData?.currentLesson !== 0 && userCtx?.userData?.currentChapter !== 'no') {
-            router.push(`/lessons/${userCtx.userData.level}/lesson${userCtx?.userData?.currentLesson}/${userCtx?.userData?.currentChapter}`)
+            router.push(`/lessons/lesson${userCtx?.userData?.currentLesson}/${userCtx?.userData?.currentChapter}`)
             setIsLoading(false)
           } else {
-            router.push('/lessons/elementary/lesson1/video')
+            router.push('/lessons/lesson1/video')
             setIsLoading(false)
           }
        } else {

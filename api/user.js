@@ -131,17 +131,17 @@ export const setCurrentLessonData = async (bodyData) => {
         return await axios.patch(`${apiUrl}/users/resetPassword/${token}`, bodyData, { headers });
       }
 
-      export const resetProgress = async () => {
-        
-        const storedToken = token()
-        const headers = {
-          'Authorization': `Bearer ${storedToken}`,
-          'Content-Type': 'application/json', 
-        };
-        
-          return await axios.delete(`${apiUrl}/users/progress`, { headers });
-        }
- 
+    export const resetProgress = async () => {
+      
+      const storedToken = token()
+      const headers = {
+        'Authorization': `Bearer ${storedToken}`,
+        'Content-Type': 'application/json', 
+      };
+      
+        return await axios.delete(`${apiUrl}/users/progress`, { headers });
+      }
+
  
 
 
