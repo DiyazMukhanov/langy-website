@@ -197,6 +197,7 @@ const clickHandler = (id) => {
 
  const findTranslation = (englishWord) => {
     const searchedWord = wordsWithTranslations.filter(word => word.en === englishWord)
+
     if(searchedWord.length > 0) {
         return searchedWord[0].ru
     } else {

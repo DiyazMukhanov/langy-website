@@ -46,18 +46,18 @@ const UserProvider = (props) => {
             return lessonsSummary
         }
 
-        let finallyUpdatedLessonsSummary
+        // let finallyUpdatedLessonsSummary
         
-        if(updatedLessonsSummary) {
-            finallyUpdatedLessonsSummary = updatedLessonsSummary.map(lesson => {
-                const filteredLessonItem = lesson.lessons.filter(item => item.isCompleted === true)
-                if(filteredLessonItem.length === 4) {
-                 lesson.isCompleted = true
-                }
+        // if(updatedLessonsSummary) {
+        //     finallyUpdatedLessonsSummary = updatedLessonsSummary.map(lesson => {
+        //         const filteredLessonItem = lesson.lessons.filter(item => item.isCompleted === true)
+        //         if(filteredLessonItem.length === 4) {
+        //          lesson.isCompleted = true
+        //         }
 
-                return lesson
-            })
-        }
+        //         return lesson
+        //     })
+        // }
        
         return updatedLessonsSummary
     }

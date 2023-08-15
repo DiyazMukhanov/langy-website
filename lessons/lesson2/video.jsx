@@ -5,17 +5,17 @@ import { videoUrl } from "@/utils/lessonsMaterials/lesson2/video-materials";
 
 export default function Video() {
    console.log(videoUrl)
-   const lessonNumber = 1
+   const lessonNumber = 2
 
    const currentLessonData = {
       currentChapter: 'video',
-      currentLesson: 1
+      currentLesson: 2
    }
 
    return <VideoLessonLayout 
    videoTasks={videoTasks} 
    videoUrl={videoUrl} 
-   nextUrl='/lessons/lesson1/audio'
+   nextUrl='/lessons/lesson2/audio'
    lessonNumber={lessonNumber}
    currentLessonData={currentLessonData}
    subscriptionIsNeeded={false}

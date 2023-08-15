@@ -47,7 +47,7 @@ export const videoTasks = [
         answers: [
             {
                 id: 1,
-                answer: 'boxes',
+                answer: 'boxs',
                 isCorrect: false
             },
             {
