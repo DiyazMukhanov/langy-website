@@ -1,7 +1,7 @@
 import AudioLessonLayout from "@/layouts/Lessons/AudioLessonLayout";
-import { text } from "../../../utils/lessonsMaterials/elementary/lesson1/audio-materials";
-import { audioTasks } from "../../../utils/lessonsMaterials/elementary/lesson1/audio-materials";
-import { wordsWithTranslations } from "../../../utils/lessonsMaterials/elementary/lesson1/audio-materials";
+import { text } from "../../utils/lessonsMaterials/lesson1/audio-materials";
+import { audioTasks } from "../../utils/lessonsMaterials/lesson1/audio-materials";
+import { wordsWithTranslations } from "../../utils/lessonsMaterials/lesson1/audio-materials";
 
 export default function Audio() {
    const currentLessonData = {

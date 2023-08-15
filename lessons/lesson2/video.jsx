@@ -1,9 +1,10 @@
 import VideoLessonLayout from "@/layouts/Lessons/VideoLessonLayout";
-import { videoTasks } from "@/utils/lessonsMaterials/elementary/lesson1/video-materials";
-import { videoUrl } from "@/utils/lessonsMaterials/elementary/lesson1/video-materials";
+import { videoTasks } from "@/utils/lessonsMaterials/lesson2/video-materials";
+import { videoUrl } from "@/utils/lessonsMaterials/lesson2/video-materials";
 
 
 export default function Video() {
+   console.log(videoUrl)
    const lessonNumber = 1
 
    const currentLessonData = {
@@ -14,7 +15,7 @@ export default function Video() {
    return <VideoLessonLayout 
    videoTasks={videoTasks} 
    videoUrl={videoUrl} 
-   nextUrl='/lessons/elementary/lesson1/audio'
+   nextUrl='/lessons/lesson1/audio'
    lessonNumber={lessonNumber}
    currentLessonData={currentLessonData}
    subscriptionIsNeeded={false}

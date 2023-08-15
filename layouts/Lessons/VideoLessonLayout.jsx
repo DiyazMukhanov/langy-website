@@ -11,7 +11,7 @@ import classNames from "classnames"
 import { setProgressData } from "@/api/user"
 import Loader from "@/components/Loader"
 
-export default function VideoLessonLayout({videoTasks, nextUrl, lessonNumber, currentLessonData, subscriptionIsNeeded}) {
+export default function VideoLessonLayout({videoTasks, nextUrl, lessonNumber, currentLessonData, subscriptionIsNeeded, videoUrl}) {
     const [currentQuestion, setCurrentQuestion] = useState(1)
     const [wasClicked, setWasClicked] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
@@ -69,7 +69,7 @@ export default function VideoLessonLayout({videoTasks, nextUrl, lessonNumber, cu
                         {/* <p className={styles.task}>Посмотрите следующее видео:</p> */}
                         <div className={styles.wrapper}>
                         {hasWindow && <ReactPlayer
-                            url='https://www.youtube.com/watch?v=TD-WPyKQy9o'
+                            url={videoUrl}
                             className={styles.player}
                             width="100%"
                             height="100%"

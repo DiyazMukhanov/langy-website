@@ -1,1 +1,1 @@
-export { default } from '../../../lessons/elementary/lesson1/writing'
+export { default } from '../../../lessons/lesson1/writing'

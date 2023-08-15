@@ -44,6 +44,7 @@ const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc, l
   const [currentQuestion, setCurrentQuestion] = useState(1)
   const [wasClicked, setWasClicked] = useState(null)
   const [hoveredWord, setHoveredWord] = useState(null)
+  // const [hoveredWordIndex, setHoveredWordIndex] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   
   const innerRef = useRef(null)
@@ -186,9 +187,6 @@ const clickHandler = (id) => {
     const wordWithoutPunctuation = wordWithPunctuation.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").trim()
     setHoveredWord(wordWithoutPunctuation)
 
-    // Find the index of the hovered word in the textByWords array
-    const index = textByWords.indexOf(wordWithoutPunctuation);
-    setHoveredWordIndex(index);
  }
 
  const handleTranslationClose = () => {

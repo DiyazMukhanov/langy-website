@@ -10,9 +10,13 @@ import { Typography } from "@/components/Typography"
 import { Button } from "@/components/Button"
 import { UserContext } from "@/store/userContext";
 import { useRouter } from "next/router";
+import { setProgressData } from "@/api/user";
+import Loader from "@/components/Loader";
 
-const ResultsShowing = ({rightAnswers, totalQuestions, questionsArr, nextUrl }) => {
+const ResultsShowing = ({rightAnswers, totalQuestions, questionsArr, nextUrl, lessonNumber }) => {
     const router = useRouter()
+    const [isLoading, setIsLoading] = useState(false)
+
     const checkIsRight = (question, chosenAnswer) => {
         const trueAnswer = question.answers.filter(answer => answer.isCorrect === true)
         const trueResult = trueAnswer[0].answer
@@ -24,56 +28,81 @@ const ResultsShowing = ({rightAnswers, totalQuestions, questionsArr, nextUrl }) 
         return trueAnswer[0].answer
     }
 
-    return (
-    <div className={styles.resultsContainer}>
-        <Typography size='small' element='h3'>Поздравляем!</Typography>
-        <p className={styles.resultText}>Ваш результат: {rightAnswers}/{totalQuestions}</p>
-        <div className={styles.resultsShowing}>
-           {questionsArr.map(question => (
-            <>
-            <div className={styles.answerBlockTop}>
-            <div className={styles.answersAllContainer}>
-                
-                <div className={styles.answerResult}>
-                {checkIsRight(question, question.chosenAnswer) ? 
-                <Image
-                        priority
-                        src={RightTick}
-                    /> : 
-                    <Image
-                    priority
-                    src={WrongTick}
-                />}
-                <p>{question.id}.</p>
-                <p>{question.firstPart}</p>
-                <div className={classNames(
-                    {[styles.resultWordCardRight] : checkIsRight(question, question.chosenAnswer)},
-                    {[styles.resultWordCardWrong] : !checkIsRight(question, question.chosenAnswer)},
-                    )}>{question.chosenAnswer}</div>
-                <p>{question.secondPart}</p>    
-                </div>
-                {!checkIsRight(question, question.chosenAnswer) &&  
-                // if the answer was wrong we show the right answer to user
-                <div className={styles.answerResult}>
-                    <p className={styles.secondShow}><span className={styles.board}>|</span><span className={styles.questionNumberMobile}>{question.id}.&nbsp;</span> {question.firstPart}</p>
-                    <div className={styles.resultWordCardRight}>{findRightAnswer(question)}</div>
-                    <p>{question.secondPart}</p>
-                </div>
-                }
-                </div>
-            </div>
-            <div className={styles.description}>
-                <p>{question.description}</p>
-                </div>
-                </>
-           ))}
-        </div>
+    const setProgressHandler = async () => {
+        console.log('clicked next')
+        setIsLoading(true)
+        try{
+        const data = await setProgressData({lessonNumber: lessonNumber, chapterCode: 'ts'})
+        if(data) {
+            console.log(data)
+            router.push(nextUrl)
+        }
+        } catch (err) {
+            console.log(err)
+            setIsLoading(false)
+            router.push(nextUrl)
+        }
+    }
+  
+      const goNextHndler = () => {
+        setProgressHandler()
+      }
 
-        <div className={styles.buttonNextBottom}>
-           <Button variant="standardNextContained" onClick={() => router.push(nextUrl)}>Следующий урок</Button>
-        </div>
-        </div>
-        )
+      if(isLoading) {
+        return <Loader />
+      } else {
+        return (
+            <div className={styles.resultsContainer}>
+                <Typography size='small' element='h3'>Поздравляем!</Typography>
+                <p className={styles.resultText}>Ваш результат: {rightAnswers}/{totalQuestions}</p>
+                <div className={styles.resultsShowing}>
+                   {questionsArr.map(question => (
+                    <>
+                    <div className={styles.answerBlockTop}>
+                    <div className={styles.answersAllContainer}>
+                        
+                        <div className={styles.answerResult}>
+                        {checkIsRight(question, question.chosenAnswer) ? 
+                        <Image
+                                priority
+                                src={RightTick}
+                            /> : 
+                            <Image
+                            priority
+                            src={WrongTick}
+                        />}
+                        <p>{question.id}.</p>
+                        <p>{question.firstPart}</p>
+                        <div className={classNames(
+                            {[styles.resultWordCardRight] : checkIsRight(question, question.chosenAnswer)},
+                            {[styles.resultWordCardWrong] : !checkIsRight(question, question.chosenAnswer)},
+                            )}>{question.chosenAnswer}</div>
+                        <p>{question.secondPart}</p>    
+                        </div>
+                        {!checkIsRight(question, question.chosenAnswer) &&  
+                        // if the answer was wrong we show the right answer to user
+                        <div className={styles.answerResult}>
+                            <p className={styles.secondShow}><span className={styles.board}>|</span><span className={styles.questionNumberMobile}>{question.id}.&nbsp;</span> {question.firstPart}</p>
+                            <div className={styles.resultWordCardRight}>{findRightAnswer(question)}</div>
+                            <p>{question.secondPart}</p>
+                        </div>
+                        }
+                        </div>
+                    </div>
+                    <div className={styles.description}>
+                        <p>{question.description}</p>
+                        </div>
+                        </>
+                   ))}
+                </div>
+        
+                <div className={styles.buttonNextBottom}>
+                   <Button variant="standardNextContained" onClick={goNextHndler}>Следующий урок</Button>
+                </div>
+                </div>
+                )
+      }
+    
 }
 
 const WordContainer = ({ word, isCorrect, onClick, droppedWord }) => {
@@ -92,7 +121,7 @@ const WordContainer = ({ word, isCorrect, onClick, droppedWord }) => {
    )
 }
 
-export default function TestLessonLayout({questions, nextUrl, currentLessonData, subscriptionIsNeeded}) {
+export default function TestLessonLayout({questions, nextUrl, currentLessonData, subscriptionIsNeeded, lessonNumber}) {
     const [questionsArr, setQuestionsArray] = useState(questions)
     const [currentQuestion, setCurrentQuestion] = useState(1)
     const totalQuestions = questions.length
@@ -197,7 +226,7 @@ export default function TestLessonLayout({questions, nextUrl, currentLessonData,
             </div>
             </div>
             </>) : (
-            <ResultsShowing rightAnswers={rightAnswers} totalQuestions={totalQuestions} questionsArr={questionsArr} nextUrl={nextUrl}/>
+            <ResultsShowing rightAnswers={rightAnswers} totalQuestions={totalQuestions} questionsArr={questionsArr} nextUrl={nextUrl} lessonNumber={lessonNumber}/>
         )}
         
        </LessonLayout>
