@@ -15,16 +15,16 @@ const Forgot = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(false)
     const [emptyField, setEmptyField] = useState(false)
-    const [emailEmpty, setEmailEmpty] = useState(false)
+
+    console.log(emptyField)
 
     const forgotHandler = async (event) => {
         event.preventDefault()
         setError(false)
         setEmptyField(false)
-        setEmailEmpty(false)
         setIsLoading(true)
 
-        if(!emailValue ) {
+        if(!emailValue) {
             setEmptyField(true)
             setInvalidEmail(false)
             setIsLoading(false)
@@ -38,10 +38,9 @@ const Forgot = () => {
             return
         }
 
-        try{
+        try {
             const data = await forgotPassword(emailValue)
-            console.log(data)
-            if(data.status === 'success') {
+            if(data) {
                 setIsLoading(false)
                 setEmailSent(true)
             }
@@ -55,14 +54,10 @@ const Forgot = () => {
     if(emailSent) {
         return (
             <>
-            <div>
+            <div className={styles.complete}>
             Ссылка для сброса отправлена на указанный почтовый ящик
-        </div>
-                <Link href='/'>
-                    <a className={styles.enterLink}>
-                        Перейти на главную главную страницу
-                    </a>
-                </Link>
+            <Button variant='authLargeContained' onClick={() => router.push('/')}>На главную</Button>
+            </div>
             </>
         )
     }
@@ -77,7 +72,7 @@ const Forgot = () => {
                 <div className={styles.formBlock}><label className={styles.label}>Email</label>
                     <input
                         placeholder='Укажите ваш почтовый адрес'
-                        className={classNames({[styles.warningInput]: emailEmpty}, styles.input)}
+                        className={classNames({[styles.warningInput]: emptyField}, styles.input)}
                         onChange={(event) => setEmailValue(event.target.value)}
                     >
                     </input>

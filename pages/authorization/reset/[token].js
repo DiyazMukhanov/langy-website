@@ -1,11 +1,9 @@
 import { useRouter } from 'next/router'
-import styles from "../../../layouts/Authorization/Login.module.scss"
+import styles from "./reset.module.scss"
 import classNames from "classnames";
 import { Button } from '@/components/Button';
 import { resetPassword } from '@/api/user';
 import { useState } from "react";
-
-import validator from "validator";
 
 const passwordReset = () => {
     const router = useRouter()
@@ -23,7 +21,6 @@ const passwordReset = () => {
 
 
     // error handling
-    const [error, setError] = useState(false);
     const [emptyField, setEmptyField] = useState(false)
 
     function onlyLatinCharacters(str) {
@@ -32,7 +29,6 @@ const passwordReset = () => {
 
     const resetPasswordHandler = async (event) => {
         event.preventDefault()
-        setError(false)
         setPasswordEmpty(false)
         setPassConfirmEmpty(false)
         setInvalidPassword(false)
@@ -66,7 +62,9 @@ const passwordReset = () => {
             const data = await resetPassword(passwordValue, passwordConfirmValue, token)
             console.log(data)
         } catch (err) {
-            console.log(err)
+            if(err.response.data.message === 'Token is invalid or has expired') {
+                alert('Время действия ссылки истекло. Нажмите "Повторить сброс"')
+            }
             setIsLoading(false)
         }   
     }
@@ -97,15 +95,17 @@ const passwordReset = () => {
                     >
                     </input>
                 </div>
-
+                <div className={styles.buttonContainer}>
                 <Button
-                    variant='contained'
-                    size='small'
+                    variant='standardNextContained'
                     className={styles.button}
                     disabled={isLoading}
                 >
                     Обновить пароль
                 </Button>
+                </div>
+
+                
 
                 {isLoading && <p className={styles.warning}>Идёт обновление пароля...</p>}
                 {emptyField && <p className={styles.warning}>Заполните все поля!</p>}
@@ -113,6 +113,17 @@ const passwordReset = () => {
                 {invalidPassword && <p className={styles.warning}>Пароль должен состоять из латинских букв или цифр. Длина пароля минимум 8 букв</p>}
                 {passWordsDiffer && <p className={styles.warning}>Пароли не совпадают</p>}
             </form>
+
+            <div className={styles.buttonContainer}>
+                <Button
+                    variant='standardNextContained'
+                    className={styles.button}
+                    disabled={isLoading}
+                    onClick={() => router.push('/authorization/forgot')}
+                >
+                    Повторить сброс
+                </Button>
+                </div>
         </div>
     )
 }

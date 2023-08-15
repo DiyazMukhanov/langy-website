@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.formBlock {
+    // border: solid red 1px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.paragraph {
+    font-weight: bold;
+    text-align: center;
+}
+
+.warningInput {
+    border: solid red 1px;
+}
+
+.warning {
+    color: red;
+}
+
+.input {
+    height: 30px;
+    width: 250px;
+}
+
+.form {
+    // border: solid red 1px; 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.buttonContainer {
+    text-align: center;
+}

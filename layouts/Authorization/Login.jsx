@@ -96,7 +96,7 @@ export default function Login() {
           <input placeholder='Email' className={classNames({[styles.errorInput]: emailEmpty}, {[styles.input]: !emailEmpty})} onChange={emailInputHandler}></input>
           <input placeholder='Пароль' className={classNames({[styles.errorInput]: passwordEmpty}, {[styles.input]: !passwordEmpty})} onChange={passwordInputHandler}></input>
         </div>
-        <p className={styles.forgotPassword}>Забыли пароль</p>
+        <p className={styles.forgotPassword} onClick={() => router.push('/authorization/forgot')}>Забыли пароль</p>
         <Button variant='authLargeContained' disabled={isLoading}>Войти</Button>
         </form>
         <p>или</p>
