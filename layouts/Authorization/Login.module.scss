@@ -107,3 +107,12 @@
   flex-direction: column;
   gap: 10px;
 }
+
+.existContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.exist {
+  color: var(--color-red);
+}

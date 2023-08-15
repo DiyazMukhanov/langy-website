@@ -105,6 +105,31 @@ export const setCurrentLessonData = async (bodyData) => {
     
       return await axios.patch(`${apiUrl}/users/me`, bodyData, { headers });
     }
+
+    export const forgotPassword = async (email) => {
+      const bodyData = {
+        email
+      }
+    
+      const headers = {
+        'Content-Type': 'application/json', 
+      };
+      
+        return await axios.post(`${apiUrl}/users/forgotPassword`, bodyData, { headers });
+      }
+
+    export const resetPassword = async (password, passwordConfirm, token) => {
+      const bodyData = {
+        password,
+        passwordConfirm
+      }
+    
+      const headers = {
+        'Content-Type': 'application/json', 
+      };
+      
+        return await axios.patch(`${apiUrl}/users/resetPassword/${token}`, bodyData, { headers });
+      }
  
  
 

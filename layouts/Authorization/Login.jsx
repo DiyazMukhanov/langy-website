@@ -15,6 +15,7 @@ export default function Login() {
     const [emailEmpty, setEmailEmpty] = useState(false)
     const [passwordEmpty, setPasswordEmpty] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
+    const [userNotExists, setUserNotExists] = useState(false)
 
     const router = useRouter()
 
@@ -33,9 +34,9 @@ export default function Login() {
 
     const userLoginHandler = async (event) => {
         event.preventDefault()
+        setUserNotExists(false)
         setIsLoading(true)
-        console.log('test clicked')
-
+        
         setPasswordEmpty(false)
         setEmailEmpty(false)
 
@@ -48,14 +49,13 @@ export default function Login() {
             }
 
         if(!emailInputValue || !passwordInputValue) {
-            console.log('Empty fields detected')
             setIsLoading(false)
             return
             }
 
         try {
-            console.log(body)
             const userData = await loginUser(body)
+            setIsLoading(false)
             if(userData.data.token) {
                 localStorage.setItem('token', userData.data.token)
                 setIsLoading(false)
@@ -63,8 +63,7 @@ export default function Login() {
             }
             } catch (error) {
                 setIsLoading(false)
-                alert('Произошла ошибка, повторите попытку')
-                console.log(error)
+                setUserNotExists(true)
             }
     }
 
@@ -112,6 +111,11 @@ export default function Login() {
            />
             Google
         </Button>
+        </div>
+
+        <div className={styles.existContainer}>
+        {userNotExists && <p className={styles.exist}>Неверные данные!</p>}
+        {isLoading && <p className={styles.exist}>Идёт вход...</p>}
         </div>
     </div>
     )
