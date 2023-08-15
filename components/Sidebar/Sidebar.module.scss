@@ -25,7 +25,6 @@
     font-weight: 600;
     border: solid var(--color-grey) 1px;
     padding-left: 20px;
-    cursor: pointer;
     background-color: var(--color-primary);
     color: var(--color-white);
 }
@@ -40,9 +39,9 @@
     cursor: pointer;
 }
 
-// .current {
-//     background-color: var(--color-green);
-// }
+.disabled {
+    pointer-events: none;
+}
 
 .currentChapter {
     background-color: var(--color-light-blue);

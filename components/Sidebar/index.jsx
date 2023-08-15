@@ -16,7 +16,6 @@ export default function Sidebar({ lessonsSummary }) {
         router.push(`/lessons/${level}/lesson${lessonNumber}/${chapterName}`)
     }
 
-    console.log(lessonsSummary)
       return (
         <div className={styles.lessonsListContainer}>
         {lessonsSummary.map(lessonBlock => (
@@ -34,6 +33,7 @@ export default function Sidebar({ lessonsSummary }) {
                      styles.chapter,
                      {[styles.currentChapter]: lesson.isCurrent},
                      {[styles.completed]: lesson.isCompleted},
+                     {[styles.disabled]: lesson.isCompleted === false},
                  )}
                  onClick={() => navigationHandler(lessonBlock.lessonNumber, lesson, lessonBlock.level)}
                  >
