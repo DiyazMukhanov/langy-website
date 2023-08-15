@@ -78,8 +78,10 @@ const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc, l
   const progressUpdate = useCallback(() => {
     const currentTime = audioRef?.current?.currentTime;
     setTimeProgress(currentTime);
-    progressBarRef.current.value = currentTime;
-
+    if(progressBarRef !== null && progressBarRef.current !== null) {
+      progressBarRef.current.value = currentTime;
+    }
+  
     if (isPlaying || currentTime < duration) {
       // Continue updating progress during the pause state if audio hasn't ended
       playAnimationRef.current = requestAnimationFrame(progressUpdate);

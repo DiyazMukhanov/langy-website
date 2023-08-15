@@ -19,6 +19,7 @@ const ResultsShowing = ({rightAnswers, totalQuestions, questionsArr, nextUrl, le
 
     const checkIsRight = (question, chosenAnswer) => {
         const trueAnswer = question.answers.filter(answer => answer.isCorrect === true)
+        console.log(trueAnswer)
         const trueResult = trueAnswer[0].answer
         return trueResult === chosenAnswer
     }
