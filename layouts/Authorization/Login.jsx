@@ -16,8 +16,6 @@ export default function Login() {
     const [passwordEmpty, setPasswordEmpty] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
 
-    console.log(isLoading)
-
     const router = useRouter()
 
     const emailInputHandler = (event) => {

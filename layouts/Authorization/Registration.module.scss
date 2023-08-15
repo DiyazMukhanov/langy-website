@@ -101,3 +101,12 @@
     margin-top: 20px;
   }
 }
+
+.existContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.exist {
+  color: var(--color-red);
+}

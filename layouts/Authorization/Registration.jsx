@@ -25,6 +25,7 @@ export default function Registration() {
     const [invalidPassword, setInvalidPassword] = useState(false)
     const [passWordsDiffer, setPasswordsDiffers] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
+    const [userExists, setUserExists] = useState(false)
 
     const router = useRouter()
 
@@ -57,9 +58,9 @@ export default function Registration() {
 
       const userSignUpHandler = async (e) => {
         e.preventDefault()
+        setUserExists(false)
         setIsLoading(true)
-        console.log('test clicked')
-        
+
         setInvalidEmail(false)
         setNameEmpty(false)
         setEmailEmpty(false)
@@ -109,8 +110,12 @@ export default function Registration() {
       }
 
       try {
-        console.log(body)
         const userData = await registerUser(body)
+        if(userData?.data?.message === 'User exists') {
+          setUserExists(true)
+          setIsLoading(false)
+        }
+        
         if(userData.data.token) {
           localStorage.setItem('token', userData.data.token)
           setIsLoading(false)
@@ -175,6 +180,10 @@ export default function Registration() {
            />
             Google
         </Button>
+        </div>
+        <div className={styles.existContainer}>
+        {userExists && <p className={styles.exist}>Пользователь уже существует!</p>}
+        {isLoading && <p className={styles.exist}>Идёт регистрация...</p>}
         </div>
     </div>
     )
