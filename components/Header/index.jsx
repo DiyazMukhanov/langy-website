@@ -44,7 +44,10 @@ export default function Header({ variant }) {
             className={styles.pointer}
             onClick={goToMainHandler}
             />
+            <div className={styles.headerRight}>
+            <p onClick={() => router.push('/profile')}>Личный кабинет</p>
             <p onClick={logOutHandler}>Выйти</p>
+            </div>
             </div>
 
             <div className={styles.blueContainerMobile}>
@@ -61,13 +64,15 @@ export default function Header({ variant }) {
                     width={20}
                 />
                 </div>
+                <div className={styles.mobileHeaderRight}>
+                  <p onClick={() => router.push('/profile')}>Личный кабинет</p>
                 <Image
                     priority
                     src={ButtonClose}
                     width={20}
                     onClick={goToMainHandler}
                 />
-           
+           </div>
             </div>
             </>
             )

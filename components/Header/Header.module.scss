@@ -114,4 +114,20 @@
     cursor: pointer;
 }
 
+.headerRight {
+    display: flex;
+    gap: 20px;
+}
+
+.mobileHeaderRight {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    & p {
+        font-weight: bold;
+        color: var(--color-primary);
+    }
+}
+
 
