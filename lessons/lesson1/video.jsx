@@ -19,5 +19,6 @@ export default function Video() {
    lessonNumber={lessonNumber}
    currentLessonData={currentLessonData}
    subscriptionIsNeeded={false}
+   topic='Articles / Артикли'
    />
 }

@@ -11,7 +11,7 @@ import classNames from "classnames"
 import { setProgressData } from "@/api/user"
 import Loader from "@/components/Loader"
 
-export default function VideoLessonLayout({videoTasks, nextUrl, lessonNumber, currentLessonData, subscriptionIsNeeded, videoUrl}) {
+export default function VideoLessonLayout({videoTasks, nextUrl, lessonNumber, currentLessonData, subscriptionIsNeeded, videoUrl, topic}) {
     const [currentQuestion, setCurrentQuestion] = useState(1)
     const [wasClicked, setWasClicked] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
@@ -65,7 +65,7 @@ export default function VideoLessonLayout({videoTasks, nextUrl, lessonNumber, cu
             <LessonLayout chapter='grammar' currentLessonData={currentLessonData} subscriptionIsNeeded={subscriptionIsNeeded}>
                 <div className={styles.container}>
                     <div className={styles.top}>
-                        <p className={styles.topic}>Тема: Present Simple/Настоящее время</p>
+                        <p className={styles.topic}>Тема: {topic}</p>
                         {/* <p className={styles.task}>Посмотрите следующее видео:</p> */}
                         <div className={styles.wrapper}>
                         {hasWindow && <ReactPlayer

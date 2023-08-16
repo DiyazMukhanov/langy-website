@@ -18,7 +18,7 @@ export default function Level() {
     useEffect(() => {
        
        if(userCtx?.userData?.levelChecked === true) {
-        console.log('level checked')
+        
         if(userCtx?.userData?.currentLesson !== 0 && userCtx?.userData?.currentChapter !== 'no') {
             router.push(`/lessons/lesson${userCtx?.userData?.currentLesson}/${userCtx?.userData?.currentChapter}`)
             setIsLoading(false)

@@ -1,24 +1,24 @@
 import VideoLessonLayout from "@/layouts/Lessons/VideoLessonLayout";
-import { videoTasks } from "@/utils/lessonsMaterials/lesson2/video-materials";
-import { videoUrl } from "@/utils/lessonsMaterials/lesson2/video-materials";
+import { videoTasks } from "@/utils/lessonsMaterials/lesson3/video-materials";
+import { videoUrl } from "@/utils/lessonsMaterials/lesson3/video-materials";
 
 
 export default function Video() {
    console.log(videoUrl)
-   const lessonNumber = 2
+   const lessonNumber = 3
 
    const currentLessonData = {
       currentChapter: 'video',
-      currentLesson: 2
+      currentLesson: 3
    }
 
    return <VideoLessonLayout 
    videoTasks={videoTasks} 
    videoUrl={videoUrl} 
-   nextUrl='/lessons/lesson2/audio'
+   nextUrl='/lessons/lesson3/audio'
    lessonNumber={lessonNumber}
    currentLessonData={currentLessonData}
    subscriptionIsNeeded={false}
-   topic='Plural nouns / Множественное число'
+   topic='Pronouns / Местоимения'
    />
 }
