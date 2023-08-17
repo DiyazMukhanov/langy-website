@@ -11,6 +11,10 @@ const token = () => {
   return storedToken
 }
 
+export const googleAuth = async () => {
+  return await axios.get(`https://langy-api.onrender.com/auth/google`)
+}
+
 export const registerUser = async (bodyData) => {
    return await axios.post(`${apiUrl}/users/signup`, bodyData)
 }

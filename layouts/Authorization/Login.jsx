@@ -6,7 +6,7 @@ import { Button } from '@/components/Button'
 import { Typography } from '@/components/Typography'
 import { useState } from 'react'
 import classNames from 'classnames'
-import { loginUser } from '@/api/user'
+import { googleAuth, loginUser } from '@/api/user'
 import { useRouter } from 'next/router'
 
 export default function Login() {
@@ -75,6 +75,16 @@ export default function Login() {
     router.push('/')
     }
 
+    const googleAuthHandler = () => {
+        try {
+            const response = googleAuth()
+            console.log(response)
+        } catch (err) {
+            console.log(err)
+        }
+        
+    }
+
     return (
     <div className={styles.container}>
         <div className={styles.header}>
@@ -102,6 +112,7 @@ export default function Login() {
         <p>или</p>
         <Button 
         variant='google'
+        onClick={googleAuthHandler}
         >
            <Image
            priority
