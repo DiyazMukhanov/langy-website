@@ -14,6 +14,12 @@ import Loader from "@/components/Loader";
 import { setProgressData } from "@/api/user";
 
 const TranslationCard = ({ word, translation, onRemove, innerRef }) => {
+    const readWordAloud = (text) => {
+      const speechSynthesis = window.speechSynthesis
+      const utterance = new SpeechSynthesisUtterance(text)
+      utterance.lang = 'en-US'
+      speechSynthesis.speak(utterance)
+    }
 
     return (
     <div className={styles.translationCard} ref={innerRef}>
@@ -28,6 +34,13 @@ const TranslationCard = ({ word, translation, onRemove, innerRef }) => {
         </div>
         <div className={styles.cardMiddle}>
        <p>{word} - {translation}</p>
+       <Image
+                priority
+                src={Play}
+                width={30}
+                onClick={() => readWordAloud(word)}
+                className={styles.wordPlay}
+                />
        </div>
        
     </div>

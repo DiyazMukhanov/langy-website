@@ -24,7 +24,7 @@ export const questions = [
     },
     {
         id: 2,
-        firstPart: "Diana and I frisrt met",
+        firstPart: "Diana and I fisrt met",
         secondPart: '2013.',
         description: 'Нужно добавить объяснение',
         answers: [
