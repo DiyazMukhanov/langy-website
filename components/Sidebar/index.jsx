@@ -1,9 +1,12 @@
 import { useRouter } from 'next/router'
+import { useEffect, useRef } from 'react'
 import styles from './Sidebar.module.scss'
 import classNames from 'classnames'
 
 export default function Sidebar({ lessonsSummary }) {
     const router = useRouter()
+    const currentLessonRef = useRef(null)
+
     const navigationHandler = (lessonNumber, lesson, level) => {
         const lessonsIndexes = {
             gr: 'video',
@@ -15,6 +18,13 @@ export default function Sidebar({ lessonsSummary }) {
       
         router.push(`/lessons/lesson${lessonNumber}/${chapterName}`)
     }
+
+    useEffect(() => {
+        // Scroll to the current lesson when the component is first rendered
+        if (currentLessonRef.current) {
+          currentLessonRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, []);
 
       return (
         <div className={styles.lessonsListContainer}>
@@ -35,6 +45,7 @@ export default function Sidebar({ lessonsSummary }) {
                      {[styles.completed]: lesson.isCompleted},
                      {[styles.disabled]: lesson.isCompleted === false},
                  )}
+                 ref={lesson.isCurrent ? currentLessonRef : null}
                  onClick={() => navigationHandler(lessonBlock.lessonNumber, lesson, lessonBlock.level)}
                  >
                      {lesson.chapter}

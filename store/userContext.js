@@ -45,20 +45,7 @@ const UserProvider = (props) => {
         } else {
             return lessonsSummary
         }
-
-        // let finallyUpdatedLessonsSummary
         
-        // if(updatedLessonsSummary) {
-        //     finallyUpdatedLessonsSummary = updatedLessonsSummary.map(lesson => {
-        //         const filteredLessonItem = lesson.lessons.filter(item => item.isCompleted === true)
-        //         if(filteredLessonItem.length === 4) {
-        //          lesson.isCompleted = true
-        //         }
-
-        //         return lesson
-        //     })
-        // }
-       
         return updatedLessonsSummary
     }
 
