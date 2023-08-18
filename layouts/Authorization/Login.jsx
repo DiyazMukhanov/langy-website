@@ -104,6 +104,7 @@ export default function Login() {
         <Button 
         variant='google'
         onClick={() => router.push('https://langy-api.onrender.com/auth')}
+        // onClick={() => router.push('http://localhost:3000/auth')}
         // onClick={googleAuthHandler}
         >
            <Image
