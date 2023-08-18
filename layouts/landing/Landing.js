@@ -40,15 +40,18 @@ export default function Landing() {
   const [isLoading, setIsLoading] = useState(true)
   
   useEffect(() => {
+    const allCookies = document.cookie;
+    console.log(allCookies);
     const getUser = async () => {
       try{
         const userData = await getMe()
+        console.log(userData)
         userCtx.setUserData(userData.data.data)
         setIsLoading(false)
       } catch (err) {
+        console.log(err)
         setIsLoading(false)
       }
-      
     }
     getUser()
 
