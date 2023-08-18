@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 
 export default function SubscriptionCard({userData}) {
     const router = useRouter()
-    const dateObject = new Date(userData.subscriptionExpirationDate)
+    const dateObject = new Date(userData?.subscriptionExpirationDate)
 
     const options = {
         year: 'numeric',
@@ -29,11 +29,11 @@ export default function SubscriptionCard({userData}) {
    return (
     <div className={styles.cardContainer}>
         <h2>Мои подписки</h2>
-        {userData.isSubscribed ? 
+        {userData?.isSubscribed ? 
         (<p>Ваша подписка действительна до {formattedDate}</p>): 
         (<p>У вас нет активных подписок</p>)}
-        {!userData.isSubscribed && (<Button variant='standardNextContained' className={styles.subscribeButton} onClick={() => router.push('/subscribe')}>Приобрести</Button>)}
-        {userData.isSubscribed && (<Button variant='standardNextContained' onClick={continueHandler} className={styles.subscribeButton}>Продолжить обучение</Button>)}
+        {!userData?.isSubscribed && (<Button variant='standardNextContained' className={styles.subscribeButton} onClick={() => router.push('/subscribe')}>Приобрести</Button>)}
+        {userData?.isSubscribed && (<Button variant='standardNextContained' onClick={continueHandler} className={styles.subscribeButton}>Продолжить обучение</Button>)}
     </div>
    )
 }

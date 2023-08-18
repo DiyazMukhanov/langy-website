@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const apiUrl = 'https://langy-api.onrender.com/api/v1';
-const apiUrl = 'http://localhost:3000/api/v1';
+const apiUrl = 'https://langy-api.onrender.com/api/v1';
+// const apiUrl = 'http://localhost:3000/api/v1';
 
 // const token = () => {
 //   let storedToken
@@ -12,11 +12,15 @@ const apiUrl = 'http://localhost:3000/api/v1';
 // }
 
 export const registerUser = async (bodyData) => {
-   return await axios.post(`${apiUrl}/users/signup`, bodyData)
+   return await axios.post(`${apiUrl}/users/signup`, bodyData, { withCredentials: true, headers: { 'Content-Type': 'application/json'} })
 }
 
 export const loginUser = async (bodyData) => {
-  return await axios.post(`${apiUrl}/users/login`, bodyData)
+  return await axios.post(`${apiUrl}/users/login`, bodyData, { withCredentials: true, headers: { 'Content-Type': 'application/json'} })
+}
+
+export const logoutUser = async () => {
+  return await axios.get(`${apiUrl}/users/logOut`, { withCredentials: true, headers: { 'Content-Type': 'application/json'} })
 }
 
 export const getMe = async () => {

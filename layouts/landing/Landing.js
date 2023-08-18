@@ -27,7 +27,7 @@ import Modal from './Modal'
 import classNames from 'classnames'
 import {useRouter} from "next/router"
 import ProtectPage from '@/components/ProtectPage'
-import { getMe } from '@/api/user'
+import { getMe, logoutUser } from '@/api/user'
 import { setCurrentLessonData } from '@/api/user'
 import { UserContext } from '@/store/userContext'
 import Loader from '@/components/Loader'
@@ -111,8 +111,16 @@ export default function Landing() {
     }
   };
 
-  const logOutHandler = () => {
-    userCtx.logOut()
+  const logOutHandler = async() => {
+    try{
+      const response = await logoutUser()
+      if(response) {
+        router.reload()
+      }
+      console.log(response)
+    } catch(err) {
+       console.log(err)
+    }
   }
   
     if(isLoading) {
