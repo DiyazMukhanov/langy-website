@@ -23,7 +23,7 @@ const ResultsShowing = ({rightAnswers, totalQuestions, questionsArr, nextUrl, le
         const trueResult = trueAnswer[0].answer
         return trueResult === chosenAnswer
     }
-
+    
     const findRightAnswer = (question) => {
         const trueAnswer = question.answers.filter(answer => answer.isCorrect === true)
         return trueAnswer[0].answer
