@@ -55,11 +55,11 @@ export default function Login() {
 
         try {
             const userData = await loginUser(body)
-            console.log(userData)
             setIsLoading(false)
-            if(userData) {
+            if(userData.data.token) {
+                localStorage.setItem('token', userData.data.token)
                 setIsLoading(false)
-                router.push('/')
+                router.push('/test/level')
             }
             } catch (error) {
                 setIsLoading(false)
@@ -75,6 +75,7 @@ export default function Login() {
     router.push('/')
     }
 
+    
     return (
     <div className={styles.container}>
         <div className={styles.header}>
@@ -103,7 +104,6 @@ export default function Login() {
         {/* <a href='http://localhost:3000/auth/google'> */}
         <Button 
         variant='google'
-        onClick={() => router.push('https://langy-api.onrender.com/auth')}
         // onClick={() => router.push('http://localhost:3000/auth')}
         // onClick={googleAuthHandler}
         >
