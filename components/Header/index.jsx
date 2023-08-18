@@ -10,7 +10,6 @@ import { useState, useContext } from 'react'
 import Sidebar from '../Sidebar'
 import { useRouter } from 'next/router'
 import { UserContext } from '@/store/userContext'
-import { logoutUser } from '@/api/user'
 
 export default function Header({ variant }) {
     const [isModalOpened, setIsModalOpened] = useState(false)
@@ -30,16 +29,8 @@ export default function Header({ variant }) {
         router.push('/')
       }
 
-      const logOutHandler = async () => {
-        try{
-          const response = await logoutUser()
-          if(response) {
-            router.reload()
-          }
-          console.log(response)
-        } catch(err) {
-           console.log(err)
-        }
+      const logOutHandler = () => {
+        userCtx.logOut()
       }
 
     if(variant === 'blue') {
