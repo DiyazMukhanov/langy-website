@@ -2,7 +2,8 @@ import axios from 'axios';
 
 // const apiUrl = 'https://langy-api.onrender.com/api/v1';
 // const apiUrl = 'http://localhost:3000/api/v1';
-const apiUrl = process.env.SERVER_URL
+// const apiUrl = process.env.SERVER_URL
+const apiUrl = 'http://185.164.173.181:3000/api/v1'
 
 // const token = () => {
 //   let storedToken
