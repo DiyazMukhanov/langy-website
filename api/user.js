@@ -1,110 +1,117 @@
 import axios from 'axios';
 
 // const apiUrl = 'https://langy-api.onrender.com/api/v1';
-const apiUrl = 'http://localhost:3000/api/v1';
+// const apiUrl = 'http://localhost:3000/api/v1';
+const apiUrl = process.env.SERVER_URL
 
-const token = () => {
-  let storedToken
-  if(typeof window !== 'undefined') {
-      storedToken = localStorage.getItem('token')
-  }
-  return storedToken
-}
+// const token = () => {
+//   let storedToken
+//   if(typeof window !== 'undefined') {
+//       storedToken = localStorage.getItem('token')
+//   }
+//   return storedToken
+// }
+
+const options = { withCredentials: true, headers: { 'Content-Type': 'application/json'}}
 
 export const registerUser = async (bodyData) => {
-   return await axios.post(`${apiUrl}/users/signup`, bodyData)
-}
+    return await axios.post(`${apiUrl}/users/signup`, bodyData, options )
+ } 
+
+// export const registerUser = async (bodyData) => {
+//    return await axios.post(`${apiUrl}/users/signup`, bodyData)
+// }
 
 export const loginUser = async (bodyData) => {
-  return await axios.post(`${apiUrl}/users/login`, bodyData)
+  return await axios.post(`${apiUrl}/users/login`, bodyData, options)
 }
 
 export const getMe = async () => {
 
-const storedToken = token()
-const headers = {
-  'Authorization': `Bearer ${storedToken}`,
-  'Content-Type': 'application/json', 
-};
+// const storedToken = token()
+// const headers = {
+//   'Authorization': `Bearer ${storedToken}`,
+//   'Content-Type': 'application/json', 
+// };
 
-  return await axios.get(`${apiUrl}/users/me`, { headers });
+  return await axios.get(`${apiUrl}/users/me`, options);
 }
 
 export const setCurrentLessonData = async (bodyData) => {
   
-  const storedToken = token()
-  const headers = {
-    'Authorization': `Bearer ${storedToken}`,
-    'Content-Type': 'application/json', 
-  };
+  // const storedToken = token()
+  // const headers = {
+  //   'Authorization': `Bearer ${storedToken}`,
+  //   'Content-Type': 'application/json', 
+  // };
   
-    return await axios.patch(`${apiUrl}/users/me`, bodyData, { headers });
+    return await axios.patch(`${apiUrl}/users/me`, bodyData, options);
   }
 
  export const setProgressData = async (progressBody) => {
-  const storedToken = token()
-  const headers = {
-    'Authorization': `Bearer ${storedToken}`,
-    'Content-Type': 'application/json', 
-  };
+  // const storedToken = token()
+  // const headers = {
+  //   'Authorization': `Bearer ${storedToken}`,
+  //   'Content-Type': 'application/json', 
+  // };
 
-  return await axios.post(`${apiUrl}/users/addProgress`, progressBody, { headers });
+  return await axios.post(`${apiUrl}/users/addProgress`, progressBody, options);
  } 
 
  export const getProgressData = async () => {
-  const storedToken = token()
-  const headers = {
-    'Authorization': `Bearer ${storedToken}`,
-    'Content-Type': 'application/json', 
-  };
+  // const storedToken = token()
+  // const headers = {
+  //   'Authorization': `Bearer ${storedToken}`,
+  //   'Content-Type': 'application/json', 
+  // };
 
-  return await axios.get(`${apiUrl}/users/progress`, { headers });
+  return await axios.get(`${apiUrl}/users/progress`, options);
  } 
 
  export const subscribeMe = async (subscribeBody) => {
-  const storedToken = token()
-  const headers = {
-    'Authorization': `Bearer ${storedToken}`,
-    'Content-Type': 'application/json', 
-  };
+  // const storedToken = token()
+  // const headers = {
+  //   'Authorization': `Bearer ${storedToken}`,
+  //   'Content-Type': 'application/json', 
+  // };
 
-  return await axios.patch(`${apiUrl}/users/subscribe`, subscribeBody, { headers });
+  return await axios.patch(`${apiUrl}/users/subscribe`, subscribeBody, options);
  } 
 
  export const createServiceRequest = async (requestBody) => {
-  const storedToken = token()
-  const headers = {
-    'Authorization': `Bearer ${storedToken}`,
-    'Content-Type': 'application/json', 
-  };
+  // const storedToken = token()
+  // const headers = {
+  //   'Authorization': `Bearer ${storedToken}`,
+  //   'Content-Type': 'application/json', 
+  // };
 
-  return await axios.post(`${apiUrl}/services`, requestBody, { headers });
+  return await axios.post(`${apiUrl}/services`, requestBody, options);
  }
 
  export const assignLevel = async (level) => {
   const bodyData = {
     level: level
   }
-  const storedToken = token()
-  const headers = {
-    'Authorization': `Bearer ${storedToken}`,
-    'Content-Type': 'application/json', 
-  };
+  // const storedToken = token()
+  // const headers = {
+  //   'Authorization': `Bearer ${storedToken}`,
+  //   'Content-Type': 'application/json', 
+  // };
   
-    return await axios.post(`${apiUrl}/users/addMultipleProgresses`, bodyData, { headers });
+    return await axios.post(`${apiUrl}/users/addMultipleProgresses`, bodyData, options);
   }
 
   export const setLevelChecked = async () => {
     const bodyData = {
       levelChecked: true
     }
-    const storedToken = token()
-    const headers = {
-      'Authorization': `Bearer ${storedToken}`,
-      'Content-Type': 'application/json', 
-    };
+    // const storedToken = token()
+    // const headers = {
+    //   'Authorization': `Bearer ${storedToken}`,
+    //   'Content-Type': 'application/json', 
+    // };
     
-      return await axios.patch(`${apiUrl}/users/me`, bodyData, { headers });
+      return await axios.patch(`${apiUrl}/users/me`, bodyData, options);
     }
 
     export const forgotPassword = async (email) => {
@@ -112,11 +119,11 @@ export const setCurrentLessonData = async (bodyData) => {
         email
       }
     
-      const headers = {
-        'Content-Type': 'application/json', 
-      };
+      // const headers = {
+      //   'Content-Type': 'application/json', 
+      // };
       
-        return await axios.post(`${apiUrl}/users/forgotPassword`, bodyData, { headers });
+        return await axios.post(`${apiUrl}/users/forgotPassword`, bodyData, options);
       }
 
     export const resetPassword = async (password, passwordConfirm, token) => {
@@ -125,23 +132,27 @@ export const setCurrentLessonData = async (bodyData) => {
         passwordConfirm
       }
     
-      const headers = {
-        'Content-Type': 'application/json', 
-      };
+      // const headers = {
+      //   'Content-Type': 'application/json', 
+      // };
       
-        return await axios.patch(`${apiUrl}/users/resetPassword/${token}`, bodyData, { headers });
+        return await axios.patch(`${apiUrl}/users/resetPassword/${token}`, bodyData, options);
       }
 
     export const resetProgress = async () => {
       
-      const storedToken = token()
-      const headers = {
-        'Authorization': `Bearer ${storedToken}`,
-        'Content-Type': 'application/json', 
-      };
+      // const storedToken = token()
+      // const headers = {
+      //   'Authorization': `Bearer ${storedToken}`,
+      //   'Content-Type': 'application/json', 
+      // };
       
-        return await axios.delete(`${apiUrl}/users/progress`, { headers });
+        return await axios.delete(`${apiUrl}/users/progress`, options);
       }
+
+      export const userLogout = async () => {
+          return await axios.get(`${apiUrl}/users/logOut`, options);
+        }
 
  
 

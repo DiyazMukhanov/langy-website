@@ -56,8 +56,8 @@ export default function Login() {
         try {
             const userData = await loginUser(body)
             setIsLoading(false)
-            if(userData.data.token) {
-                localStorage.setItem('token', userData.data.token)
+            if(userData) {
+                // localStorage.setItem('token', userData.data.token)
                 setIsLoading(false)
                 router.push('/test/level')
             }
@@ -75,14 +75,14 @@ export default function Login() {
     router.push('/')
     }
 
-    const googleAuthHandler = () => {
-        try {
-            const response = googleAuth()
-            console.log(response)
-        } catch (err) {
-            console.log(err)
-        } 
-    }
+    // const googleAuthHandler = () => {
+    //     try {
+    //         const response = googleAuth()
+    //         console.log(response)
+    //     } catch (err) {
+    //         console.log(err)
+    //     } 
+    // }
 
     // const handleGoogleLogin = () => {
     //     const popup = window.open('http://localhost:YOUR_BACKEND_PORT/auth/google', '_blank', 'width=600,height=400');
@@ -132,7 +132,7 @@ export default function Login() {
         {/* <a href='http://localhost:3000/auth/google'> */}
         <Button 
         variant='google'
-        // onClick={() => router.push('http://localhost:3000/auth')}
+        onClick={() => router.push('http://185.164.173.181:3000/auth')}
         // onClick={googleAuthHandler}
         >
            <Image

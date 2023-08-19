@@ -33,11 +33,10 @@ export default function ProtectPage({children, currentLesson, currentChapter, su
                           } else {
                             setIsLoading(false)
                           }
-
-                          
                         }
                   } catch (error) {
                       setIsLoading(false)
+                      router.push('/')
                     }   
                   } else {
                     try {
