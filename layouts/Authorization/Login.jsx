@@ -75,7 +75,35 @@ export default function Login() {
     router.push('/')
     }
 
-    
+    const googleAuthHandler = () => {
+        try {
+            const response = googleAuth()
+            console.log(response)
+        } catch (err) {
+            console.log(err)
+        } 
+    }
+
+    // const handleGoogleLogin = () => {
+    //     const popup = window.open('http://localhost:YOUR_BACKEND_PORT/auth/google', '_blank', 'width=600,height=400');
+      
+    //     // Listen for the message event to receive the token from the popup window
+    //     window.addEventListener('message', (event) => {
+    //       if (event.origin === 'http://localhost:YOUR_BACKEND_PORT') { // Replace with your backend URL
+    //         const token = event.data;
+    //         console.log('Received Token:', token);
+      
+    //         // Save the token to local storage
+    //         localStorage.setItem('token', token);
+      
+    //         // Perform any further actions you need with the token
+    //         // For example, navigate to a new page or update state
+    //       }
+    //     });
+    //   };
+      
+    //   // ...
+
     return (
     <div className={styles.container}>
         <div className={styles.header}>
