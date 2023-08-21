@@ -3,7 +3,7 @@ import axios from 'axios';
 // const apiUrl = 'https://langy-api.onrender.com/api/v1';
 // const apiUrl = 'http://localhost:3000/api/v1';
 // const apiUrl = process.env.SERVER_URL
-const apiUrl = 'http://185.164.173.181:3000/api/v1'
+const apiUrl = 'http://localhost:3000/api/v1'
 
 // const token = () => {
 //   let storedToken
@@ -70,12 +70,7 @@ export const setCurrentLessonData = async (bodyData) => {
  } 
 
  export const subscribeMe = async (subscribeBody) => {
-  // const storedToken = token()
-  // const headers = {
-  //   'Authorization': `Bearer ${storedToken}`,
-  //   'Content-Type': 'application/json', 
-  // };
-
+  
   return await axios.patch(`${apiUrl}/users/subscribe`, subscribeBody, options);
  } 
 
@@ -154,6 +149,16 @@ export const setCurrentLessonData = async (bodyData) => {
       export const userLogout = async () => {
           return await axios.get(`${apiUrl}/users/logOut`, options);
         }
+
+      export const getUserByEmail = async (email) => {
+        
+        return await axios.get(`${apiUrl}/users/byEmail/${email}`, options);
+      }
+
+      export const subscribeUser = async (subscribeBody, id) => {
+  
+        return await axios.patch(`${apiUrl}/users/subscribeById/${id}`, subscribeBody, options);
+       } 
 
  
 

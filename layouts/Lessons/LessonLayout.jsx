@@ -78,6 +78,16 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
         test: 100
     }
 
+    const dateObject = new Date(userCtx?.userData?.subscriptionExpirationDate)
+
+    const options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      }
+
+      const formattedDate = dateObject.toLocaleDateString('ru-RU', options)
+
     if(isLoading) {
         return <Loader />
     } else {
@@ -85,11 +95,11 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
         <ProtectPage currentLesson={currentLessonData.currentLesson} currentChapter={currentLessonData.currentChapter} subscriptionIsNeeded={subscriptionIsNeeded}>
             <Header variant='white' lessonsSummary={updatedLessonsSummary}/>
             <div className={styles.container}>
-                <SideBarDesktop lessonsSummary={updatedLessonsSummary}/>
+                <SideBarDesktop lessonsSummary={updatedLessonsSummary} expires={formattedDate}/>
                 <div className={styles.rightSide}>
                     <div>
                     <Typography size='small' element='h3' className={styles.text}>Beginner</Typography>
-                    <p>подписка действует до 30.07.23</p>
+                    <p>подписка действует до {formattedDate}</p>
                     </div>
                     {!withoutProgress && (<div className={styles.progressContainer}>
                         <div style={{

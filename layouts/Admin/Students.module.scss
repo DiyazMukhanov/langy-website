@@ -1,0 +1,25 @@
+.searchCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    & p {
+        margin: 0;
+    }
+
+    & input {
+        width: 30vw;
+    }
+}
+
+.container {
+    margin: 20px;
+}
+
+.btns {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    gap: 10px;
+}

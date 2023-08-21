@@ -32,7 +32,7 @@ export default function SubscriptionCard({userData}) {
         {userData?.isSubscribed ? 
         (<p>Ваша подписка действительна до {formattedDate}</p>): 
         (<p>У вас нет активных подписок</p>)}
-        {!userData?.isSubscribed && (<Button variant='standardNextContained' className={styles.subscribeButton} onClick={() => router.push('/subscribe')}>Приобрести</Button>)}
+        {!userData?.isSubscribed && (<Button variant='standardNextContained' className={styles.subscribeButton} onClick={() => router.push('/subscription')}>Приобрести</Button>)}
         {userData?.isSubscribed && (<Button variant='standardNextContained' onClick={continueHandler} className={styles.subscribeButton}>Продолжить обучение</Button>)}
     </div>
    )
