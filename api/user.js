@@ -160,6 +160,16 @@ export const setCurrentLessonData = async (bodyData) => {
         return await axios.patch(`${apiUrl}/users/subscribeById/${id}`, subscribeBody, options);
        } 
 
+      export const getAllServices = async (page) => {
+      
+      return await axios.get(`${apiUrl}/services?page=${page}&limit=2`, options);
+    } 
+
+    export const getServiceById = async (id) => {
+      
+      return await axios.get(`${apiUrl}/services/${id}`, options);
+    } 
+
  
 
 
