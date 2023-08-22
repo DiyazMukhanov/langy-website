@@ -60,11 +60,12 @@ export default function Login() {
                 if(userData?.data?.data?.user?.role === 'manager') {
                     setIsLoading(false)
                     router.push('/admin/main')
-                } else {
+                } 
+                
                     // localStorage.setItem('token', userData.data.token)
                     setIsLoading(false)
                     router.push('/test/level')
-                }
+                
                 
             }
             } catch (error) {

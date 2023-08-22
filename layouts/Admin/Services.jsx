@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import styles from './Services.module.scss'
 import { useRouter } from 'next/router'
-import { getAllServices } from '@/api/user'
+import { getAllServices, showNotResolvedService } from '@/api/user'
 import classNames from 'classnames'
 
 export default function Services() {
@@ -12,6 +12,7 @@ export default function Services() {
     const [isLoading, setIsLoading] = useState(true)
     console.log(page)
     useEffect(() => {
+        setIsLoading(true)
        const getInitalServices = async () => {
         try{
             const response = await getAllServices(page)
@@ -34,6 +35,7 @@ export default function Services() {
     }, [data])
 
     const nextPageHandler = async () => {
+        setNoData(false)
         if(data?.length === 0) {
             setNoData(true)
             return
@@ -43,12 +45,39 @@ export default function Services() {
     } 
 
     const previosPageHandler = async () => {
+        setNoData(false)
         if(page === 1) {
             return
         } else {
             setPage(page - 1)
         }
     } 
+
+    const showNotResolvedHadler = async () => {
+        try{
+            setIsLoading(true)
+            const response = await showNotResolvedService(page)
+            console.log(response?.data?.data)
+            setData(response?.data?.data)
+            setIsLoading(false)
+          } catch(err) {
+             console.log(err)
+             setIsLoading(false)
+          }
+    }
+
+    const showAllHandler = async () => {
+        try{
+            setIsLoading(true)
+            const response = await getAllServices(page)
+            console.log(response?.data?.data)
+            setData(response?.data?.data)
+            setIsLoading(false)
+          } catch(err) {
+             console.log(err)
+             setIsLoading(false)
+          }
+    }
     
     if(isLoading) {
         return <div>Loading...</div>
@@ -58,8 +87,12 @@ export default function Services() {
              <div className={styles.paginationButtons}> 
                 <button onClick={previosPageHandler}>previous</button>
                 <button onClick={nextPageHandler}>next</button>
+                <p>Page {page}</p>
              </div>
-        
+             <div className={styles.showBtns}>
+             <button onClick={showNotResolvedHadler}>Show not resolved</button>
+             <button onClick={showAllHandler}>Show all requests</button>
+             </div>
              {noData ? <p>No data</p> : (
                 <div className={styles.dataContainer}>
                   {data.map(item => (

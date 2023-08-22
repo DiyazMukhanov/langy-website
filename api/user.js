@@ -162,7 +162,7 @@ export const setCurrentLessonData = async (bodyData) => {
 
       export const getAllServices = async (page) => {
       
-      return await axios.get(`${apiUrl}/services?page=${page}&limit=2`, options);
+      return await axios.get(`${apiUrl}/services?page=${page}&limit=10`, options);
     } 
 
     export const getServiceById = async (id) => {
@@ -170,7 +170,17 @@ export const setCurrentLessonData = async (bodyData) => {
       return await axios.get(`${apiUrl}/services/${id}`, options);
     } 
 
- 
+    export const resolveService = async (id) => {
+      return await axios.post(`${apiUrl}/services/${id}`, {}, options);
+    } 
+
+    export const showNotResolvedService = async (page) => {
+      
+      return await axios.get(`${apiUrl}/services?page=${page}&limit=10&isResolved=false`, options);
+    } 
+
+
+
 
 
 

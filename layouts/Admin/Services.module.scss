@@ -9,3 +9,15 @@
 .notResolved {
     font-weight: bold;
 }
+
+.paginationButtons {
+    display: flex;
+    gap: 10px;
+    
+    margin-bottom: 20px;
+    align-items: center;
+}
+.showBtns {
+    display: flex;
+    gap: 20px;
+}
