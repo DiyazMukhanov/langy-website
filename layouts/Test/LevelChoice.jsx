@@ -28,7 +28,7 @@ export default function LevelChoice() {
            router.push(`/lessons/lesson${userCtx?.userData?.currentLesson}/${userCtx?.userData?.currentChapter}`)
            setIsLoading(false)
          } else {
-           router.push('/lessons/elementary/lesson1/video')
+           router.push('/lessons/lesson1/video')
            setIsLoading(false)
          }
       } else {

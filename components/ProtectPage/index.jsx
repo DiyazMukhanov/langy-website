@@ -6,7 +6,7 @@ import { setCurrentLessonData } from "../../api/user"
 import { useRouter } from "next/router"
 
 
-export default function ProtectPage({children, currentLesson, currentChapter, subscriptionIsNeeded}) {
+export default function ProtectPage({children, currentLesson, currentChapter, subscriptionIsNeeded, adminNeeded}) {
    const userCtx = useContext(UserContext)
    const [isLoading, setIsLoading] = useState(true)
    const router = useRouter()
@@ -21,6 +21,10 @@ export default function ProtectPage({children, currentLesson, currentChapter, su
         
                   try {
                       const userData = await setCurrentLessonData(bodyData)
+                      
+                      if(userData?.data?.data?.role === 'admin' || userData?.data?.data?.role === 'manager') {
+                          router.push('/admin/main')
+                      }
                       if(userData) {
                           userCtx.setUserData(userData.data.data)
 
@@ -41,10 +45,30 @@ export default function ProtectPage({children, currentLesson, currentChapter, su
                   } else {
                     try {
                       const userData = await getMe()
-                      if(userData) {
-                          userCtx.setUserData(userData.data.data)
+                      if(userData?.data?.data?.role === 'admin' || userData?.data?.data?.role === 'manager') {
+                        router.push('/admin/main')
+                    }
+                      userCtx.setUserData(userData?.data?.data)
+                      
+                      if(adminNeeded) {
+                        console.log(userData?.data?.data?.role)
+                        if(userData?.data?.data?.role === 'admin' || userData?.data?.data?.role === 'manager') {
+                          
+                          // setIsLoading(false)
                           setIsLoading(false)
+                        } else {
+                          router.push('/')
+                        }
                       }
+
+                      if(!adminNeeded) {
+                        setIsLoading(false)
+                      }
+
+                      // if(userData) {
+                      //     userCtx.setUserData(userData?.data?.data)
+                      //     setIsLoading(false)
+                      // }
                     } catch (error) {
                       console.error("Error fetching user data:", error);
                       router.push('/authorization/login')

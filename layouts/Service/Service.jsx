@@ -17,10 +17,12 @@ export default function Service() {
     const [issueInputValueEmpty, setIssueInputValueEmpty] = useState(false)
 
     const topicChangeHandler = (event) => {
+        setSent(false)
         setTopicInputValue(event.target.value)
     }
 
     const issueChangeHandler = (event) => {
+        setSent(false)
         setIssueInputValue(event.target.value)
     }
 
@@ -47,8 +49,8 @@ export default function Service() {
             <Header variant='blue'/>
             <div className={styles.serviceContainer}>
                <h2>Служба поддержки</h2>
-               <input type='text' placeholder='Тема *' className={classNames(styles.input, {[styles.red]: topicInputValueEmpty})} onChange={topicChangeHandler}/>
-               <textarea placeholder='Опишите проблему *' className={classNames(styles.large, {[styles.red]: issueInputValueEmpty})} onChange={issueChangeHandler}/>
+               <input type='text' placeholder='Тема *' className={classNames(styles.input, {[styles.red]: topicInputValueEmpty})} onChange={topicChangeHandler} />
+               <textarea placeholder='Опишите проблему *' className={classNames(styles.large, {[styles.red]: issueInputValueEmpty})} onChange={issueChangeHandler} />
                <Button variant='standardNextContained' className={styles.button} onClick={sendMessageHandler}>Отправить</Button>
                {isLoading && <p>Идёт отправка...</p>}
                {sent && <p>Отправлено!</p>}

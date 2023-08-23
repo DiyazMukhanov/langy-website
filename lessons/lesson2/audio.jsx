@@ -17,6 +17,6 @@ export default function Audio() {
    lessonNumber={2}
    nextUrl='/lessons/lesson2/writing'
    currentLessonData={currentLessonData}
-   subscriptionIsNeeded={false}
+   subscriptionIsNeeded={true}
    />
 }

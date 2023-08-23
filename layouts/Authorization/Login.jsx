@@ -55,16 +55,44 @@ export default function Login() {
 
         try {
             const userData = await loginUser(body)
-            setIsLoading(false)
+            
             if(userData) {
                 if(userData?.data?.data?.user?.role === 'manager') {
                     setIsLoading(false)
                     router.push('/admin/main')
-                } 
+                }
                 
-                    // localStorage.setItem('token', userData.data.token)
+                if(userData?.data?.data?.user?.levelChecked === true) {
+                    //Routing
+                    if(userData?.data?.data?.user?.currentLesson !== 0 && userData?.data?.data?.user?.currentChapter !== 'no') {
+                        router.push(`/lessons/lesson${userData?.data?.data?.user?.currentLesson}/${userData?.data?.data?.user?.currentChapter}`)
+                        setIsLoading(false)
+                      } else {
+                        if(userData?.data?.data?.user?.level === 'preIntermediate') {
+                          router.push('/lessons/lesson9/video')
+                          console.log('preIntermediate ok')
+                          setIsLoading(false)
+                        }
+            
+                        if(userData?.data?.data?.user?.level === 'intermediate') {
+                          router.push('/lessons/lesson17/video')
+                          console.log('intermediate ok')
+                          setIsLoading(false)
+                        }
+            
+                        if(userData?.data?.data?.user?.level === 'elementary') {
+                          router.push('/lessons/lesson1/video')
+                          console.log('elementary ok')
+                          setIsLoading(false)
+                        }
+                      }
+                   } else {
                     setIsLoading(false)
                     router.push('/test/level')
+                   }
+
+                    // localStorage.setItem('token', userData.data.token)
+                    
                 
                 
             }

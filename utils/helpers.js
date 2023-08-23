@@ -12,5 +12,5 @@ function extractUniqueWords(text) {
 
 const inputText = "For almost any person, there is nothing more important in the world than their family. I love my family too.";
 const uniqueWords = extractUniqueWords(inputText);
-console.log(uniqueWords);
+// console.log(uniqueWords);
 

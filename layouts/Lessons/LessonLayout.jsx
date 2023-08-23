@@ -78,15 +78,22 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
         test: 100
     }
 
-    const dateObject = new Date(userCtx?.userData?.subscriptionExpirationDate)
+    let dateObject 
+    let options 
+    let formattedDate 
 
-    const options = {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      }
+    if(userCtx?.userData?.subscriptionExpirationDate !== null) {
+        dateObject = new Date(userCtx?.userData?.subscriptionExpirationDate)
 
-      const formattedDate = dateObject.toLocaleDateString('ru-RU', options)
+        options = {
+           year: 'numeric',
+           month: 'long',
+           day: 'numeric'
+         }
+   
+          formattedDate = dateObject.toLocaleDateString('ru-RU', options)
+    }
+    
 
     if(isLoading) {
         return <Loader />
@@ -99,7 +106,7 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
                 <div className={styles.rightSide}>
                     <div>
                     <Typography size='small' element='h3' className={styles.text}>Beginner</Typography>
-                    <p>подписка действует до {formattedDate}</p>
+                    {formattedDate && <p>подписка действует до {formattedDate}</p>}
                     </div>
                     {!withoutProgress && (<div className={styles.progressContainer}>
                         <div style={{

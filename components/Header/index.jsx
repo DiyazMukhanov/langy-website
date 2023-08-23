@@ -17,6 +17,8 @@ export default function Header({ variant }) {
     const router = useRouter()
     const userCtx = useContext(UserContext)
     const lessonsSummary = userCtx.getUpdatedLessonsSummary()
+
+    const firstLetterOfName = userCtx?.userData?.name[0].toUpperCase()
     
     const modalCloseHandler = () => {
         setIsModalOpened(false)
@@ -104,8 +106,8 @@ export default function Header({ variant }) {
                 </div>
                 <div className={styles.profile}>
                    <p className={styles.exit} onClick={logOutHandler}>Выйти</p>
-                   <div className={styles.circle}>
-                      D
+                   <div className={styles.circle} onClick={() => router.push('/profile')}>
+                      {firstLetterOfName}
                    </div>
                 </div>
                 </div>

@@ -18,7 +18,7 @@ export default function Video() {
    nextUrl='/lessons/lesson5/audio'
    lessonNumber={lessonNumber}
    currentLessonData={currentLessonData}
-   subscriptionIsNeeded={false}
+   subscriptionIsNeeded={true}
    topic='Present simple / Настоящее простое время'
    />
 }

@@ -27,6 +27,8 @@ export default function Registration() {
     const [isLoading, setIsLoading] = useState(false)
     const [userExists, setUserExists] = useState(false)
 
+    console.log(isLoading)
+
     const router = useRouter()
 
     function onlyLatinCharacters(str) {
@@ -71,22 +73,28 @@ export default function Registration() {
 
         if(!nameInputValue) {
           setNameEmpty(true)
+          setIsLoading(false)
           }
+
         if(!emailInputValue) {
           setEmailEmpty(true)
+          setIsLoading(false)
           }
+
         if(!passwordInputValue) {
           setPasswordEmpty(true)
+          setIsLoading(false)
           }
+
         if(!passwordConfirmInputValue) {
           setPassConfirmEmpty(true)
+          setIsLoading(false)
           }
           
-          if(!nameInputValue || !emailInputValue || !passwordInputValue || !passwordConfirmInputValue ) {
-            console.log('Empty fields detected')
-            setIsLoading(false)
-            return
-          }
+          // if(!nameInputValue || !emailInputValue || !passwordInputValue || !passwordConfirmInputValue ) {
+          //   console.log('Empty fields detected')
+          //   setIsLoading(false)
+          // }
 
           if(!onlyLatinCharacters(passwordInputValue) || passwordInputValue.length < 7) {
             setInvalidPassword(true)
@@ -108,25 +116,29 @@ export default function Registration() {
           setIsLoading(false)
           return
       }
-
-      try {
-        const userData = await registerUser(body)
-        if(userData?.data?.message === 'User exists') {
-          setUserExists(true)
-          setIsLoading(false)
+      
+       
+        try {
+          const userData = await registerUser(body)
+          if(userData?.data?.message === 'User exists') {
+            setUserExists(true)
+            setIsLoading(false)
+          }
+          
+          if(userData) {
+            console.log(userData)
+            // localStorage.setItem('token', userData.data.token)
+            setIsLoading(false)
+            router.push('/test/level')
+          }
+        } catch (error) {
+            setIsLoading(false)
+            alert('Произошла ошибка, повторите попытку')
+            console.log(error)
         }
-        
-        if(userData.data.token) {
-          localStorage.setItem('token', userData.data.token)
-          setIsLoading(false)
-          router.push('/test/level')
-        }
-      } catch (error) {
-          setIsLoading(false)
-          alert('Произошла ошибка, повторите попытку')
-          console.log(error)
       }
-      }
+    
+      
 
       const goToLoginHandler = () => {
         router.push('/authorization/login')
@@ -171,6 +183,7 @@ export default function Registration() {
         <p>или</p>
         <Button 
         variant='google'
+        onClick={() => router.push('http://localhost:3000/auth')}
         >
            <Image
            priority
@@ -187,4 +200,5 @@ export default function Registration() {
         </div>
     </div>
     )
-}
+    }
+  
