@@ -179,6 +179,11 @@ export const setCurrentLessonData = async (bodyData) => {
       return await axios.get(`${apiUrl}/services?page=${page}&limit=10&isResolved=false`, options);
     } 
 
+  export const getStatistics = async () => {
+      
+    return await axios.get(`${apiUrl}/users/statistics`, options);
+  }
+
 
 
 

@@ -10,6 +10,7 @@ import Loader from "@/components/Loader"
 
 export default function Profile() {
     const userCtx = useContext(UserContext)
+    console.log(userCtx.userData)
     const router = useRouter()
     const [isLoading, setIsLoading] = useState(false)
 

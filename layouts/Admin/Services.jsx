@@ -54,13 +54,16 @@ export default function Services() {
     } 
 
     const showNotResolvedHadler = async () => {
+        
         try{
+            setNoData(false)
             setIsLoading(true)
             const response = await showNotResolvedService(page)
             console.log(response?.data?.data)
             setData(response?.data?.data)
             setIsLoading(false)
           } catch(err) {
+             setNoData(false)
              console.log(err)
              setIsLoading(false)
           }
@@ -68,12 +71,14 @@ export default function Services() {
 
     const showAllHandler = async () => {
         try{
+            setNoData(false)
             setIsLoading(true)
             const response = await getAllServices(page)
             console.log(response?.data?.data)
             setData(response?.data?.data)
             setIsLoading(false)
           } catch(err) {
+             setNoData(false)
              console.log(err)
              setIsLoading(false)
           }
