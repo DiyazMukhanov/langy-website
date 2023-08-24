@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // const apiUrl = 'https://langy-api.onrender.com/api/v1';
-const apiUrl = 'http://localhost:3000/api/v1';
+const apiUrl = process.env.NEXT_PUBLIC_ENVIRONMENT === 'development' ? 'http://localhost:3000/api/v1' : `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1`
 
 // const token = () => {
 //     let storedToken

@@ -38,9 +38,11 @@ export default function Landing() {
   const router = useRouter()
   const userCtx = useContext(UserContext)
   const [isLoading, setIsLoading] = useState(true)
+
+  
   
   useEffect(() => {
-    
+    console.log(process.env.NEXT_PUBLIC_SERVER_URL)
     const getUser = async () => {
       try{
         const userData = await getMe()
@@ -408,9 +410,7 @@ export default function Landing() {
              </a>
           </div>
         </footer>
-       
-        </div>
-        
+        </div>        
       )
     }
     
