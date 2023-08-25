@@ -183,7 +183,7 @@ export default function Registration() {
         <p>или</p>
         <Button 
         variant='google'
-        onClick={() => router.push(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1`)}
+        onClick={() => router.push(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/auth`)}
         >
            <Image
            priority
