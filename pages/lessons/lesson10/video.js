@@ -1,0 +1,1 @@
+export { default } from '../../../lessons/lesson10/video'

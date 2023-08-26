@@ -1,16 +1,16 @@
 import WritingLessonLayout from "@/layouts/Lessons/WritingLessonLayout";
 
 export default function Writing() {
-   const lessonNumber = 9
+   const lessonNumber = 10
 
    const currentLessonData = {
     currentChapter: 'writing',
-    currentLesson: 9
+    currentLesson: 10
  }
 
    return <WritingLessonLayout 
-   writingTask='Напишите вкратце о том как вы проводите выходные (150 слов)'
-   nextUrl='/lessons/lesson9/test'
+   writingTask='Напишите вкратце о том как вы проводите свободное время (150 слов)'
+   nextUrl='/lessons/lesson10/test'
    lessonNumber={lessonNumber}
    currentLessonData={currentLessonData}
    subscriptionIsNeeded={true}
