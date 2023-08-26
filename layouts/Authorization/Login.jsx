@@ -113,7 +113,7 @@ export default function Login() {
 
     const testGoogleAuth = async () => {
         try {
-          const response = await axios.get(`https://langy.su/api/auth`, { withCredentials: true, headers: { 'Content-Type': 'application/json'}})
+          const response = await axios.get(`https://langy.su/api/api/auth`, { withCredentials: true, headers: { 'Content-Type': 'application/json'}})
         } catch (err) {
             console.log(err)
         }
@@ -147,8 +147,8 @@ export default function Login() {
         {/* <a href='http://localhost:3000/auth/google'> */}
         <Button 
         variant='google'
-        onClick={testGoogleAuth}
-        // onClick={() => router.push(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/auth`)}
+        // onClick={testGoogleAuth}
+        onClick={() => router.push(`${process.env.NEXT_PUBLIC_SERVER_URL}/auth`)}
         // onClick={() => router.push(`http://localhost:3000/auth`)}
         // onClick={googleAuthHandler}
         >
