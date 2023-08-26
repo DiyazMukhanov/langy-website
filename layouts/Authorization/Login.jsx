@@ -8,6 +8,7 @@ import { useState } from 'react'
 import classNames from 'classnames'
 import { googleAuth, loginUser } from '@/api/user'
 import { useRouter } from 'next/router'
+import axios from 'axios';
 
 export default function Login() {
     const [emailInputValue, setEmailInputValue] = useState('')
@@ -110,6 +111,14 @@ export default function Login() {
     router.push('/')
     }
 
+    const testGoogleAuth = async () => {
+        try {
+          const response = await axios.get(`https://langy.su/api/auth`, { withCredentials: true, headers: { 'Content-Type': 'application/json'}})
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     return (
     <div className={styles.container}>
         <div className={styles.header}>
@@ -138,7 +147,8 @@ export default function Login() {
         {/* <a href='http://localhost:3000/auth/google'> */}
         <Button 
         variant='google'
-        onClick={() => router.push(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/auth`)}
+        onClick={testGoogleAuth}
+        // onClick={() => router.push(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/auth`)}
         // onClick={() => router.push(`http://localhost:3000/auth`)}
         // onClick={googleAuthHandler}
         >
