@@ -148,7 +148,7 @@ export default function Login() {
         <Button 
         variant='google'
         // onClick={testGoogleAuth}
-        onClick={() => router.push(`${process.env.NEXT_PUBLIC_SERVER_URL}/auth`)}
+        onClick={() => router.push(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/auth`)}
         // onClick={() => router.push(`http://localhost:3000/auth`)}
         // onClick={googleAuthHandler}
         >
