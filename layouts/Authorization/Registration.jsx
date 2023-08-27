@@ -27,7 +27,12 @@ export default function Registration() {
     const [isLoading, setIsLoading] = useState(false)
     const [userExists, setUserExists] = useState(false)
 
-    console.log(isLoading)
+    let serverUrl
+    if(process.env.NEXT_PUBLIC_ENVIRONMENT === 'development') {
+      serverUrl = `http://localhost:3000`
+    } else {
+      serverUrl = process.env.NEXT_PUBLIC_SERVER_URL
+    }
 
     const router = useRouter()
 
@@ -183,7 +188,7 @@ export default function Registration() {
         <p>или</p>
         <Button 
         variant='google'
-        onClick={() => router.push(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/auth`)}
+        onClick={() => router.push(`${serverUrl}/api/auth`)}
         >
            <Image
            priority
