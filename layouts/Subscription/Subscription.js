@@ -3,14 +3,14 @@ import ProtectPage from "@/components/ProtectPage";
 import styles from './Subscription.module.scss'
 import OptionCard from "./OptionCard";
 import { subscribeMe } from "@/api/user";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Loader from "@/components/Loader";
 import { UserContext } from "@/store/userContext";
 import { useRouter } from "next/router";
 
 
 export default function Subscription() {
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
     const userCtx = useContext(UserContext)
     const router = useRouter()
 
@@ -54,6 +54,15 @@ export default function Subscription() {
          alert('Произошла ошибка!')
        }
     }
+    console.log(userCtx?.userData?.isSubscribed)
+    useEffect(() => {
+       if(userCtx?.userData?.isSubscribed) {
+        continueHandler()
+        // setIsLoading(false)
+       } else {
+        setIsLoading(false)
+       }
+    }, [userCtx?.userData])
 
     if(isLoading) {
         return <Loader />

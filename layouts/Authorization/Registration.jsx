@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { Button } from '@/components/Button'
 import { Typography } from '@/components/Typography'
 import axios from 'axios';
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useRouter } from "next/router"
 import { registerUser } from '@/api/user'
 import classNames from 'classnames'
@@ -26,6 +26,12 @@ export default function Registration() {
     const [passWordsDiffer, setPasswordsDiffers] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [userExists, setUserExists] = useState(false)
+
+    const nameRef = useRef(null)
+    const emailRef = useRef(null)
+    const passwordRef = useRef(null)
+    const passwordConfirmRef = useRef(null)
+    
 
     let serverUrl
     if(process.env.NEXT_PUBLIC_ENVIRONMENT === 'development') {
@@ -56,15 +62,21 @@ export default function Registration() {
       setPasswordConfirmInputValue(event.target.value)
     }
 
-      const body = {
-        name: nameInputValue,
-        email: emailInputValue,
-        password: passwordInputValue,
-        passwordConfirm: passwordConfirmInputValue
-    }
+    //   const body = {
+    //     name: nameInputValue,
+    //     email: emailInputValue,
+    //     password: passwordInputValue,
+    //     passwordConfirm: passwordConfirmInputValue
+    // }
 
       const userSignUpHandler = async (e) => {
         e.preventDefault()
+        const body = {
+          name: nameRef.current.value,
+          email: emailRef.current.value,
+          password: passwordRef.current.value,
+          passwordConfirm: passwordConfirmRef.current.value
+      }
         setUserExists(false)
         setIsLoading(true)
 
@@ -143,8 +155,6 @@ export default function Registration() {
         }
       }
     
-      
-
       const goToLoginHandler = () => {
         router.push('/authorization/login')
       }
@@ -171,10 +181,10 @@ export default function Registration() {
         
         <form onSubmit={userSignUpHandler}>
         <div className={styles.inputs}>
-          <input placeholder='Имя' className={classNames({[styles.errorInput]: nameEmpty}, {[styles.input]: !nameEmpty})} onChange={nameNameInputHandler}></input>
-          <input placeholder='Электронная почта' className={classNames({[styles.errorInput]: emailEmpty}, {[styles.input]: !emailEmpty})} onChange={emailInputHandler}></input>
-          <input placeholder='Пароль' className={classNames({[styles.errorInput]: passwordEmpty}, {[styles.input]: !passwordEmpty})} onChange={passwordInputHandler}></input>
-          <input placeholder='Повторить пароль' className={classNames({[styles.errorInput]: passConfirmEmpty}, {[styles.input]: !passConfirmEmpty})} onChange={passwordConfirmInputHandler}></input>
+          <input placeholder='Имя' className={classNames({[styles.errorInput]: nameEmpty}, {[styles.input]: !nameEmpty})} onChange={nameNameInputHandler} ref={nameRef}></input>
+          <input placeholder='Электронная почта' className={classNames({[styles.errorInput]: emailEmpty}, {[styles.input]: !emailEmpty})} onChange={emailInputHandler} ref={emailRef}></input>
+          <input placeholder='Пароль' className={classNames({[styles.errorInput]: passwordEmpty}, {[styles.input]: !passwordEmpty})} onChange={passwordInputHandler} ref={passwordRef}></input>
+          <input placeholder='Повторить пароль' className={classNames({[styles.errorInput]: passConfirmEmpty}, {[styles.input]: !passConfirmEmpty})} onChange={passwordConfirmInputHandler} ref={passwordConfirmRef}></input>
         </div>
         <Button 
         variant='authLargeContained' 

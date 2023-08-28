@@ -16,7 +16,7 @@ export default function Level() {
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-       
+      
        if(userCtx?.userData?.levelChecked === true) {
         
         if(userCtx?.userData?.currentLesson !== 0 && userCtx?.userData?.currentChapter !== 'no') {
@@ -25,19 +25,19 @@ export default function Level() {
           } else {
             if(userCtx?.userData?.level === 'preIntermediate') {
               router.push('/lessons/lesson9/video')
-              console.log('preIntermediate ok')
+              
               setIsLoading(false)
             }
 
             if(userCtx?.userData?.level === 'intermediate') {
               router.push('/lessons/lesson17/video')
-              console.log('intermediate ok')
+              
               setIsLoading(false)
             }
 
             if(userCtx?.userData?.level === 'elementary') {
               router.push('/lessons/lesson1/video')
-              console.log('elementary ok')
+              
               setIsLoading(false)
             }
           }
