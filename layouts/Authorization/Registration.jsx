@@ -183,9 +183,9 @@ export default function Registration() {
         <form onSubmit={userSignUpHandler}>
         <div className={styles.inputs}>
           <input placeholder='Имя' className={classNames({[styles.errorInput]: nameEmpty}, {[styles.input]: !nameEmpty})} onChange={nameNameInputHandler} ref={nameRef}></input>
-          <input placeholder='Электронная почта' className={classNames({[styles.errorInput]: emailEmpty}, {[styles.input]: !emailEmpty})} onChange={emailInputHandler} ref={emailRef} name="email" autoComplete='email'></input>
-          <input placeholder='Пароль' id="new-password-text-field" className={classNames({[styles.errorInput]: passwordEmpty}, {[styles.input]: !passwordEmpty})} onChange={passwordInputHandler} ref={passwordRef} name="password" autoComplete='new-password'></input>
-          <input placeholder='Повторить пароль' id="confirm-password-text-field" className={classNames({[styles.errorInput]: passConfirmEmpty}, {[styles.input]: !passConfirmEmpty})} onChange={passwordConfirmInputHandler} ref={passwordConfirmRef} name="passwordConfirm" autoComplete='new-password'></input>
+          <input placeholder='Электронная почта' type='email' className={classNames({[styles.errorInput]: emailEmpty}, {[styles.input]: !emailEmpty})} onChange={emailInputHandler} ref={emailRef} name="email" autoComplete='email'></input>
+          <input placeholder='Пароль' type='password' id="new-password-text-field" className={classNames({[styles.errorInput]: passwordEmpty}, {[styles.input]: !passwordEmpty})} onChange={passwordInputHandler} ref={passwordRef} name="password" autoComplete='new-password'></input>
+          <input placeholder='Повторить пароль' type='password' id="confirm-password-text-field" className={classNames({[styles.errorInput]: passConfirmEmpty}, {[styles.input]: !passConfirmEmpty})} onChange={passwordConfirmInputHandler} ref={passwordConfirmRef} name="passwordConfirm" autoComplete='new-password'></input>
         </div>
         <Button 
         variant='authLargeContained' 
