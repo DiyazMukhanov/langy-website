@@ -26,6 +26,9 @@ export default function Registration() {
     const [passWordsDiffer, setPasswordsDiffers] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [userExists, setUserExists] = useState(false)
+    const [genderValue, setGenderValue] = useState('male')
+
+    console.log(genderValue)
 
     const nameRef = useRef(null)
     const emailRef = useRef(null)
@@ -75,7 +78,8 @@ export default function Registration() {
           name: nameRef.current.value,
           email: emailRef.current.value,
           password: passwordRef.current.value,
-          passwordConfirm: passwordConfirmRef.current.value
+          passwordConfirm: passwordConfirmRef.current.value,
+          gender: genderValue
       }
         setUserExists(false)
         setIsLoading(true)
@@ -186,6 +190,13 @@ export default function Registration() {
           <input placeholder='Электронная почта' type='email' className={classNames({[styles.errorInput]: emailEmpty}, {[styles.input]: !emailEmpty})} onChange={emailInputHandler} ref={emailRef} name="email" autoComplete='email'></input>
           <input placeholder='Пароль' type='password' id="new-password-text-field" className={classNames({[styles.errorInput]: passwordEmpty}, {[styles.input]: !passwordEmpty})} onChange={passwordInputHandler} ref={passwordRef} name="password" autoComplete='new-password'></input>
           <input placeholder='Повторить пароль' type='password' id="confirm-password-text-field" className={classNames({[styles.errorInput]: passConfirmEmpty}, {[styles.input]: !passConfirmEmpty})} onChange={passwordConfirmInputHandler} ref={passwordConfirmRef} name="passwordConfirm" autoComplete='new-password'></input>
+          <div className={styles.selectContainer}>
+            <label>Ваш пол:</label>
+          <select className={styles.selectInput} name='Ваш пол' onChange={(e) => setGenderValue(e.target.value)}>
+            <option value="male">Благородный мужчина</option>
+            <option value="female">Прекрасная женщина</option>
+          </select>
+          </div>
         </div>
         <Button 
         variant='authLargeContained' 

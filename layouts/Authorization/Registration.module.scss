@@ -110,3 +110,31 @@
 .exist {
   color: var(--color-red);
 }
+
+.selectContainer {
+  // border: solid red 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.selectInput {
+  width: 280px;
+    height: 40px;
+    color: var(--color-dark-grey);
+    border: solid var(--color-grey-100) 1px;
+    border-radius: 12px;
+    // padding: 20px;
+
+    @include size-laptop {
+        width: 230px;
+        height: 35px;
+      }
+
+    @include size-tablet {
+        font-size: 16px;
+      }
+}
