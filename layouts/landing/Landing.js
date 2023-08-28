@@ -219,10 +219,10 @@ export default function Landing() {
              />
              {!userCtx.userData ? (<div className={styles.btnBlock}>
            <Button variant='contained' className={styles.startBtn} onClick={continueHandler}>Начать обучение</Button>
-           <p className={styles.haveAccountBtn}>У меня уже есть аккаунт</p>
+           <p className={styles.haveAccountBtn} onClick={() => router.push('/authorization/login')}>У меня уже есть аккаунт</p>
            </div>) : <div className={styles.btnBlock}>
            <Button variant='contained' className={styles.startBtn} onClick={continueHandler}>Продолжить обучение</Button>
-           {!userCtx.userData && (<p className={styles.haveAccountBtn}>У меня уже есть аккаунт</p>)}
+           {!userCtx.userData && (<p className={styles.haveAccountBtn} onClick={() => router.push('/authorization/login')}>У меня уже есть аккаунт</p>)}
            
            </div>}
            
