@@ -4,7 +4,7 @@ import Google from '../../public/images/Google.svg'
 import Image from 'next/image'
 import { Button } from '@/components/Button'
 import { Typography } from '@/components/Typography'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import classNames from 'classnames'
 import { googleAuth, loginUser } from '@/api/user'
 import { useRouter } from 'next/router'
@@ -19,6 +19,9 @@ export default function Login() {
     const [userNotExists, setUserNotExists] = useState(false)
 
     const router = useRouter()
+
+    const emailRef = useRef()
+    const passwordRef = useRef()
 
     let serverUrl
     if(process.env.NEXT_PUBLIC_ENVIRONMENT === 'development') {
@@ -35,10 +38,7 @@ export default function Login() {
         setPasswordInputValue(event.target.value)
     }
 
-    const body = {
-        email: emailInputValue,
-        password: passwordInputValue
-    }
+    
 
     const userLoginHandler = async (event) => {
         event.preventDefault()
@@ -47,6 +47,11 @@ export default function Login() {
         
         setPasswordEmpty(false)
         setEmailEmpty(false)
+
+        const body = {
+          email: emailRef.current.value,
+          password: passwordRef.current.value
+      }
 
         if(!emailInputValue) {
             setEmailEmpty(true)
@@ -144,8 +149,8 @@ export default function Login() {
         
         <form type='submit' onSubmit={userLoginHandler} className={styles.form}>
         <div className={styles.inputs}>
-          <input placeholder='Email' type='email' id="user-text-field" className={classNames({[styles.errorInput]: emailEmpty}, {[styles.input]: !emailEmpty})} onChange={emailInputHandler} name='email' autoComplete='email'></input>
-          <input placeholder='Пароль' type='password' id="password-text-field" className={classNames({[styles.errorInput]: passwordEmpty}, {[styles.input]: !passwordEmpty})} onChange={passwordInputHandler} name='password' autoComplete='current-password'></input>
+          <input placeholder='Email' type='email' id="user-text-field" className={classNames({[styles.errorInput]: emailEmpty}, {[styles.input]: !emailEmpty})} onChange={emailInputHandler} name='email' autoComplete='email' ref={emailRef}></input>
+          <input placeholder='Пароль' type='password' id="password-text-field" className={classNames({[styles.errorInput]: passwordEmpty}, {[styles.input]: !passwordEmpty})} onChange={passwordInputHandler} name='password' autoComplete='current-password' ref={passwordRef}></input>
         </div>
         <p className={styles.forgotPassword} onClick={() => router.push('/authorization/forgot')}>Забыли пароль</p>
         <Button variant='authLargeContained' disabled={isLoading}>Войти</Button>
