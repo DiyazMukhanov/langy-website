@@ -140,6 +140,7 @@ export default function Registration() {
           if(userData?.data?.message === 'User exists') {
             setUserExists(true)
             setIsLoading(false)
+            return
           }
           
           if(userData) {
