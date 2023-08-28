@@ -182,10 +182,10 @@ export default function Registration() {
         
         <form onSubmit={userSignUpHandler}>
         <div className={styles.inputs}>
-          <input placeholder='Имя' className={classNames({[styles.errorInput]: nameEmpty}, {[styles.input]: !nameEmpty})} onChange={nameNameInputHandler} ref={nameRef} name='email' autoComplete='email'></input>
-          <input placeholder='Электронная почта' className={classNames({[styles.errorInput]: emailEmpty}, {[styles.input]: !emailEmpty})} onChange={emailInputHandler} ref={emailRef} name="email" autoComplete='off'></input>
-          <input placeholder='Пароль' className={classNames({[styles.errorInput]: passwordEmpty}, {[styles.input]: !passwordEmpty})} onChange={passwordInputHandler} ref={passwordRef} name="password" autoComplete='off'></input>
-          <input placeholder='Повторить пароль' className={classNames({[styles.errorInput]: passConfirmEmpty}, {[styles.input]: !passConfirmEmpty})} onChange={passwordConfirmInputHandler} ref={passwordConfirmRef} name="passwordConfirm" autoComplete='off'></input>
+          <input placeholder='Имя' className={classNames({[styles.errorInput]: nameEmpty}, {[styles.input]: !nameEmpty})} onChange={nameNameInputHandler} ref={nameRef}></input>
+          <input placeholder='Электронная почта' className={classNames({[styles.errorInput]: emailEmpty}, {[styles.input]: !emailEmpty})} onChange={emailInputHandler} ref={emailRef} name="email" autoComplete='email'></input>
+          <input placeholder='Пароль' id="new-password-text-field" className={classNames({[styles.errorInput]: passwordEmpty}, {[styles.input]: !passwordEmpty})} onChange={passwordInputHandler} ref={passwordRef} name="password" autoComplete='new-password'></input>
+          <input placeholder='Повторить пароль' id="confirm-password-text-field" className={classNames({[styles.errorInput]: passConfirmEmpty}, {[styles.input]: !passConfirmEmpty})} onChange={passwordConfirmInputHandler} ref={passwordConfirmRef} name="passwordConfirm" autoComplete='new-password'></input>
         </div>
         <Button 
         variant='authLargeContained' 
