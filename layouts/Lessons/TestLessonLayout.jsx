@@ -90,9 +90,9 @@ const ResultsShowing = ({rightAnswers, totalQuestions, questionsArr, nextUrl, le
                         }
                         </div>
                     </div>
-                    <div className={styles.description}>
+                    {/* <div className={styles.description}>
                         <p>{question.description}</p>
-                        </div>
+                    </div> */}
                         </>
                    ))}
                 </div>

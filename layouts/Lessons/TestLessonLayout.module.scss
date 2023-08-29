@@ -133,7 +133,8 @@
 .answersAllContainer {
     display: flex;
     gap: 10px;
-
+    margin-bottom: 20px;
+    
     @include size-tablet {
         flex-direction: column;
     }
@@ -185,19 +186,19 @@
         }
 }
 
-.description {
-    border: solid var(--color-grey) 1px;
-    border-radius: 6px;
-    width: 50vw;
-    padding: 10px;
-    font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 10px;
+// .description {
+//     border: solid var(--color-grey) 1px;
+//     border-radius: 6px;
+//     width: 50vw;
+//     padding: 10px;
+//     font-weight: bold;
+//     margin-top: 10px;
+//     margin-bottom: 10px;
 
-    @include size-tablet {
-    width: 85vw;
-    }
-}
+//     @include size-tablet {
+//     width: 85vw;
+//     }
+// }
 
 .buttonNextBottom {
     margin-top: 50px;
