@@ -1,7 +1,7 @@
 import TestLessonLayout from "@/layouts/Lessons/TestLessonLayout";
 import { questions } from "@/utils/lessonsMaterials/lesson2/test-materials";
 
-export default function Video() {
+export default function Test() {
    const lessonNumber = 2
    const currentLessonData = {
     currentChapter: 'test',

@@ -1,16 +1,19 @@
-// import VideoLessonLayout from "@/layouts/Lessons/VideoLessonLayout";
-// import { videoTasks } from "@/utils/lessonsMaterials/lesson9/video-materials";
-// import { videoUrl } from "@/utils/lessonsMaterials/lesson9/video-materials";
-
+import TestLessonLayout from "@/layouts/Lessons/TestLessonLayout";
+import { questions } from "@/utils/lessonsMaterials/lesson10/test-materials";
 
 export default function Test() {
-   // console.log(videoUrl)
-   // const lessonNumber = 10
+   const lessonNumber = 10
+   const currentLessonData = {
+    currentChapter: 'test',
+    currentLesson: 10
+ }
 
-   // const currentLessonData = {
-   //    currentChapter: 'video',
-   //    currentLesson: 10
-   // }
-
-   return <div>Need reworking</div>
+   
+   return <TestLessonLayout 
+   questions={questions} 
+   nextUrl='/lessons/lesson10/video'
+   lessonNumber={lessonNumber}
+   currentLessonData={currentLessonData}
+   subscriptionIsNeeded={true}
+   />
 }
