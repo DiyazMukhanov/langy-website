@@ -6,6 +6,7 @@ import classNames from 'classnames'
 export default function Sidebar({ lessonsSummary }) {
     const router = useRouter()
     const currentLessonRef = useRef(null)
+    console.log(lessonsSummary)
 
     const navigationHandler = (lessonNumber, lesson, level) => {
         const lessonsIndexes = {

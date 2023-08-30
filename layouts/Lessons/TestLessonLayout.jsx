@@ -181,7 +181,7 @@ export default function TestLessonLayout({questions, nextUrl, currentLessonData,
             <div style={{
             width: `${progress}%`,
             height: '100%',
-            background: '#48C61C',
+            background: '#3b92d1',
             borderRadius: '25px'
             }}/>
             </div>

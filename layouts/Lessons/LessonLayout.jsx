@@ -11,9 +11,44 @@ import ProtectPage from "@/components/ProtectPage";
 export default function LessonLayout({ children, chapter, withoutProgress, currentLessonData, subscriptionIsNeeded }) {
     const userCtx = useContext(UserContext)
     const [isLoading, setIsLoading] = useState(true)
+    const [progressValue, setProgressValue] = useState(0)
     const lessonsSummary = userCtx.lessonsSummary
     const updatedLessonsSummary = userCtx.getUpdatedLessonsSummary()
 
+    console.log(updatedLessonsSummary)
+
+    const getProgressValue = () => {
+        let currentLessonNumber
+        let currentSublessonNumber
+
+        updatedLessonsSummary.forEach(lesson => {
+            lesson.lessons.forEach((item, index) => {
+                if(item.isCurrent === false) {
+                    return
+                } else {
+                    if(lesson.lessonNumber < 9) {
+                        currentLessonNumber = lesson.lessonNumber
+                    }
+
+                    if(lesson.lessonNumber > 8 && lesson.lessonNumber < 17 ) {
+                        currentLessonNumber = lesson.lessonNumber - 8
+                    }
+
+                    if(lesson.lessonNumber > 16 ) {
+                        currentLessonNumber = lesson.lessonNumber - 16  
+                    }
+
+                    // currentLessonNumber = lesson.lessonNumber
+                    currentSublessonNumber = (currentLessonNumber - 1) * 4 + index + 1
+                }
+            }) 
+        })
+
+        return currentSublessonNumber/32*100
+    }
+
+    console.log(getProgressValue())
+    
     useEffect(() => {
         const getProgress = async () => {
             const lessonsIndexes = {
@@ -110,7 +145,7 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
                     </div>
                     {!withoutProgress && (<div className={styles.progressContainer}>
                         <div style={{
-                    width: `${progress[chapter]}%`,
+                    width: `${getProgressValue()}%`,
                     height: '100%',
                     background: '#48C61C',
                     borderRadius: '25px'
