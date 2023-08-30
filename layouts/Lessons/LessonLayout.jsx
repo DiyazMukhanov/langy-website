@@ -7,6 +7,7 @@ import { useContext, useEffect, useState } from "react";
 import  { getProgressData, setCurrentLessonData }  from "../../api/user";
 import Loader from "@/components/Loader";
 import ProtectPage from "@/components/ProtectPage";
+import { getThisLessonNumber } from "@/utils/getThisLessonNumber";
 
 export default function LessonLayout({ children, chapter, withoutProgress, currentLessonData, subscriptionIsNeeded }) {
     const userCtx = useContext(UserContext)
@@ -16,6 +17,8 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
     const updatedLessonsSummary = userCtx.getUpdatedLessonsSummary()
 
     console.log(currentLessonData)
+    let thisLessonNumber
+
 
     const getProgressValue = () => {
         let currentLessonNumber
@@ -154,10 +157,10 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
                     </div>)}
                     
                 <div className={styles.links}>
-                   {chapter === 'grammar' && <p className={styles.currentLink}>Грамматика - Урок {currentLessonData.currentLesson}</p>}
-                   {chapter === 'audio' && <p className={styles.currentLink}>Аудио/Чтение - Урок {currentLessonData.currentLesson}</p>}
-                   {chapter === 'writing' && <p className={styles.currentLink}>Письмо - Урок {currentLessonData.currentLesson}</p>}
-                   {chapter === 'test' && <p className={styles.currentLink}>Тест - Урок {currentLessonData.currentLesson}</p>}
+                   {chapter === 'grammar' && <p className={styles.currentLink}>Грамматика - Урок {getThisLessonNumber(currentLessonData.currentLesson)}</p>}
+                   {chapter === 'audio' && <p className={styles.currentLink}>Аудио/Чтение - Урок {getThisLessonNumber(currentLessonData.currentLesson)}</p>}
+                   {chapter === 'writing' && <p className={styles.currentLink}>Письмо - Урок {getThisLessonNumber(currentLessonData.currentLesson)}</p>}
+                   {chapter === 'test' && <p className={styles.currentLink}>Тест - Урок {getThisLessonNumber(currentLessonData.currentLesson)}</p>}
                 </div>
                 {children}
                 </div>
