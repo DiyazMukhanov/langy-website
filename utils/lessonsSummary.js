@@ -1,6 +1,6 @@
 export const lessonsSummaryInitial = [
     {
-        title: 'Урок 1',
+        title: 'Elementary - Урок 1',
         lessonNumber: 1,
         isCompleted: false,
         isCurrent: false,
@@ -37,7 +37,7 @@ export const lessonsSummaryInitial = [
         ]
     },
     {
-        title: 'Урок 2',
+        title: 'Тут',
         lessonNumber: 2,
         isCompleted: false,
         isCurrent: false,

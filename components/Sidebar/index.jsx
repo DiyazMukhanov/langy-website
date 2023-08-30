@@ -37,6 +37,7 @@ export default function Sidebar({ lessonsSummary }) {
              )}
              >
              {lessonBlock.title}
+             
              </div>
              {lessonBlock.lessons.map(lesson => (
                  <div key={lesson.chapter} className={classNames(
