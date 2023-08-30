@@ -1,0 +1,1 @@
+export { default } from '../../../lessons/lesson24/test'

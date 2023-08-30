@@ -5,7 +5,7 @@ export const text = {
     en,
     ru
 }
-// complete
+
 export const audioTasks = [
     {
         number: 1,

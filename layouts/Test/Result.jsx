@@ -13,11 +13,19 @@ export default function Result({level}) {
    const [isLoading, setIsLoading] = useState(true)
 
    let levelType;
-   if(level >= 3) {
-    levelType = 'Pre-intermediate'
-   } else {
+   if(level < 8) {
     levelType = 'Elementary'
    }
+
+   if(level > 7 && level < 15) {
+      levelType = 'Pre-intermediate'
+     }
+
+     if(level > 14) {
+      levelType = 'Intermediate'
+     }
+
+
 
    useEffect(() => {
       let levelForBody

@@ -33,109 +33,425 @@ export default function Test() {
     const questions = [
         {
             number: 1,
-            question: 'My parrot _______ speak',
+            question: ' I ____ a student of English.',
             answers: [
                 {
                     id: 1,
-                    answer: 'can',
-                    isRight: true
-                },
-                {
-                    id: 2,
-                    answer: 'may',
+                    answer: 'are',
                     isRight: false
                 },
                 {
+                    id: 2,
+                    answer: 'am',
+                    isRight: true
+                },
+                {
                     id: 3,
-                    answer: 'must',
+                    answer: 'is',
                     isRight: false
                 }
             ]
         },
         {
             number: 2,
-            question: 'My cat _______ speak',
+            question: "This is Carlos. He's ______",
             answers: [
                 {
                     id: 1,
-                    answer: 'may',
+                    answer: 'Japan',
                     isRight: false
                 },
                 {
                     id: 2,
-                    answer: 'can',
-                    isRight: true
+                    answer: 'France',
+                    isRight: false
                 },
                 {
                     id: 3,
-                    answer: 'must',
-                    isRight: false
+                    answer: 'Spainish',
+                    isRight: true
                 }
             ]
         },
         {
             number: 3,
-            question: 'My dog _______ speak',
+            question: "She's from Tokyo. She _____ Japanese.",
             answers: [
                 {
                     id: 1,
-                    answer: 'must',
-                    isRight: false
+                    answer: 'is',
+                    isRight: true
                 },
                 {
                     id: 2,
-                    answer: 'may',
+                    answer: 'was',
                     isRight: false
                 },
                 {
                     id: 3,
-                    answer: 'can',
-                    isRight: true
+                    answer: 'are',
+                    isRight: false
                 }
             ]
         },
         {
             number: 4,
-            question: 'My kitten _______ speak',
+            question: 'They _____ Spanish. They’re from Italy.',
             answers: [
                 {
                     id: 1,
-                    answer: 'can',
-                    isRight: true
+                    answer: 'are',
+                    isRight: false
                 },
                 {
                     id: 2,
-                    answer: 'may',
+                    answer: 'is',
                     isRight: false
                 },
                 {
                     id: 3,
-                    answer: 'must',
-                    isRight: false
+                    answer: "aren’t",
+                    isRight: true
                 }
             ]
         },
         {
             number: 5,
-            question: 'My squirrel _______ speak',
+            question: '___ is your first name?',
             answers: [
                 {
                     id: 1,
-                    answer: 'can',
+                    answer: 'What',
                     isRight: true
                 },
                 {
                     id: 2,
-                    answer: 'may',
+                    answer: 'Who',
                     isRight: false
                 },
                 {
                     id: 3,
-                    answer: 'must',
+                    answer: 'How',
                     isRight: false
                 }
             ]
-        }
+        },
+        {
+            number: 6,
+            question: 'These are your books and _____ are mine. ',
+            answers: [
+                {
+                    id: 1,
+                    answer: 'this',
+                    isRight: false
+                },
+                {
+                    id: 2,
+                    answer: 'those',
+                    isRight: true
+                },
+                {
+                    id: 3,
+                    answer: 'that',
+                    isRight: false
+                }
+            ]
+        },
+        {
+            number: 7,
+            question: '_____ she like sport? ',
+            answers: [
+                {
+                    id: 1,
+                    answer: 'Does',
+                    isRight: true
+                },
+                {
+                    id: 2,
+                    answer: 'Do',
+                    isRight: false
+                },
+                {
+                    id: 3,
+                    answer: 'Are',
+                    isRight: false
+                }
+            ]
+        },
+        {
+            number: 8,
+            question: 'When _____ have lunch?',
+            answers: [
+                {
+                    id: 1,
+                    answer: 'is he',
+                    isRight: false
+                },
+                {
+                    id: 2,
+                    answer: 'do he',
+                    isRight: false
+                },
+                {
+                    id: 3,
+                    answer: 'does he',
+                    isRight: true
+                }
+            ]
+        },
+        {
+            number: 9,
+            question: 'Do you like ______ films?',
+            answers: [
+                {
+                    id: 1,
+                    answer: 'watch',
+                    isRight: false
+                },
+                {
+                    id: 2,
+                    answer: 'watching',
+                    isRight: true
+                },
+                {
+                    id: 3,
+                    answer: 'watches',
+                    isRight: false
+                }
+            ]
+        },
+        {
+            number: 10,
+            question: `Peter's _____ name is Michael`,
+            answers: [
+                {
+                    id: 1,
+                    answer: `brother's`,
+                    isRight: true
+                },
+                {
+                    id: 2,
+                    answer: `sister's`,
+                    isRight: false
+                },
+                {
+                    id: 3,
+                    answer: `mother's`,
+                    isRight: false
+                }
+            ]
+        },
+        {
+            number: 11,
+            question: ` I love books but I ______ like TV.`,
+            answers: [
+                {
+                    id: 1,
+                    answer: `do`,
+                    isRight: false
+                },
+                {
+                    id: 2,
+                    answer: `doesn't`,
+                    isRight: false
+                },
+                {
+                    id: 3,
+                    answer: `don't`,
+                    isRight: true
+                }
+            ]
+        },
+        {
+            number: 12,
+            question: `He hasn't got ______ brothers and sisters.`,
+            answers: [
+                {
+                    id: 1,
+                    answer: `some`,
+                    isRight: false
+                },
+                {
+                    id: 2,
+                    answer: `the`,
+                    isRight: false
+                },
+                {
+                    id: 3,
+                    answer: `any`,
+                    isRight: true
+                }
+            ]
+        },
+        {
+            number: 13,
+            question: `How many children ______ got?`,
+            answers: [
+                {
+                    id: 1,
+                    answer: `they`,
+                    isRight: false
+                },
+                {
+                    id: 2,
+                    answer: `have they`,
+                    isRight: true
+                },
+                {
+                    id: 3,
+                    answer: `do they`,
+                    isRight: false
+                }
+            ]
+        },
+        {
+            number: 14,
+            question: `There are a lot of CDs on the ______.`,
+            answers: [
+                {
+                    id: 1,
+                    answer: `cupboard`,
+                    isRight: false
+                },
+                {
+                    id: 2,
+                    answer: `sink`,
+                    isRight: false
+                },
+                {
+                    id: 3,
+                    answer: `shelves`,
+                    isRight: true
+                }
+            ]
+        },
+        {
+            number: 15,
+            question: `______ a sofa and two armchairs in the living room.`,
+            answers: [
+                {
+                    id: 1,
+                    answer: `There have `,
+                    isRight: false
+                },
+                {
+                    id: 2,
+                    answer: "It's",
+                    isRight: false
+                },
+                {
+                    id: 3,
+                    answer: `There's`,
+                    isRight: true
+                }
+            ]
+        },
+        {
+            number: 16,
+            question: `Are there _______ wardrobes in the bedroom?`,
+            answers: [
+                {
+                    id: 1,
+                    answer: `any`,
+                    isRight: true
+                },
+                {
+                    id: 2,
+                    answer: "the",
+                    isRight: false
+                },
+                {
+                    id: 3,
+                    answer: `some`,
+                    isRight: false
+                }
+            ]
+        },
+        {
+            number: 17,
+            question: `The cinema is _______ the bank.`,
+            answers: [
+                {
+                    id: 1,
+                    answer: `next`,
+                    isRight: false
+                },
+                {
+                    id: 2,
+                    answer: "in front",
+                    isRight: false
+                },
+                {
+                    id: 3,
+                    answer: `opposite`,
+                    isRight: true
+                }
+            ]
+        },
+        {
+            number: 18,
+            question: `You ______ buy shoes in a post office.`,
+            answers: [
+                {
+                    id: 1,
+                    answer: `can to`,
+                    isRight: false
+                },
+                {
+                    id: 2,
+                    answer: "can't",
+                    isRight: false
+                },
+                {
+                    id: 3,
+                    answer: `can`,
+                    isRight: true
+                }
+            ]
+        },
+        {
+            number: 19,
+            question: `How ______ vegetables do you eat every day?`,
+            answers: [
+                {
+                    id: 1,
+                    answer: `many`,
+                    isRight: true
+                },
+                {
+                    id: 2,
+                    answer: "more",
+                    isRight: false
+                },
+                {
+                    id: 3,
+                    answer: `long`,
+                    isRight: false
+                }
+            ]
+        },
+        {
+            number: 20,
+            question: ` Is there ______ butter in the fridge?`,
+            answers: [
+                {
+                    id: 1,
+                    answer: `one`,
+                    isRight: false
+                },
+                {
+                    id: 2,
+                    answer: "some",
+                    isRight: false
+                },
+                {
+                    id: 3,
+                    answer: `any`,
+                    isRight: true
+                }
+            ]
+        },
+
     ]
 
     const questionsTotal = questions.length;
