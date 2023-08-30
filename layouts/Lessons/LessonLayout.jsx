@@ -15,7 +15,7 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
     const lessonsSummary = userCtx.lessonsSummary
     const updatedLessonsSummary = userCtx.getUpdatedLessonsSummary()
 
-    console.log(updatedLessonsSummary)
+    console.log(currentLessonData)
 
     const getProgressValue = () => {
         let currentLessonNumber
@@ -141,7 +141,8 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
                 <div className={styles.rightSide}>
                     <div>
                     <Typography size='small' element='h3' className={styles.text}>{currentLessonData.level}</Typography>
-                    {formattedDate && <p>подписка действует до {formattedDate}</p>}
+                    {formattedDate && <p className={styles.subscriptionPeriodMobileOnly}>подписка действует до {formattedDate}</p>}
+                    {chapter === 'audio' && <p className={styles.mobileViewOnly}>Для более эффективного усвоения, рекомендуем прослушивать и прочитывать текст до полного понимания</p>}
                     </div>
                     {!withoutProgress && (<div className={styles.progressContainer}>
                         <div style={{
@@ -153,10 +154,10 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
                     </div>)}
                     
                 <div className={styles.links}>
-                   {chapter === 'grammar' && <p className={styles.currentLink}>Грамматика</p>}
-                   {chapter === 'audio' && <p className={styles.currentLink}>Аудио/Чтение</p>}
-                   {chapter === 'writing' && <p className={styles.currentLink}>Письмо</p>}
-                   {chapter === 'test' && <p className={styles.currentLink}>Тест</p>}
+                   {chapter === 'grammar' && <p className={styles.currentLink}>Грамматика - Урок {currentLessonData.currentLesson}</p>}
+                   {chapter === 'audio' && <p className={styles.currentLink}>Аудио/Чтение - Урок {currentLessonData.currentLesson}</p>}
+                   {chapter === 'writing' && <p className={styles.currentLink}>Письмо - Урок {currentLessonData.currentLesson}</p>}
+                   {chapter === 'test' && <p className={styles.currentLink}>Тест - Урок {currentLessonData.currentLesson}</p>}
                 </div>
                 {children}
                 </div>

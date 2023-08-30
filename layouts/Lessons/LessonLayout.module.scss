@@ -43,6 +43,20 @@
     }
 }
 
+.subscriptionPeriodMobileOnly {
+    @include size-tablet {
+        display: none;
+    }
+}
+
+.mobileViewOnly {
+    display: none;
+
+    @include size-tablet {
+        display: block;
+    }
+}
+
 .currentLink {
     color: var(--color-primary);
 }
