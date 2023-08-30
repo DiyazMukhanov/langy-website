@@ -193,8 +193,8 @@ export default function Registration() {
           <div className={styles.selectContainer}>
             <label>Ваш пол:</label>
           <select className={styles.selectInput} name='Ваш пол' onChange={(e) => setGenderValue(e.target.value)}>
-            <option value="male">Благородный мужчина</option>
-            <option value="female">Прекрасная женщина</option>
+            <option value="male">Мужчина</option>
+            <option value="female">Женщина</option>
           </select>
           </div>
         </div>

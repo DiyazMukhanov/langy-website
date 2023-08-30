@@ -6,7 +6,8 @@ import { wordsWithTranslations } from "../../utils/lessonsMaterials/lesson14/aud
 export default function Audio() {
    const currentLessonData = {
       currentChapter: 'audio',
-      currentLesson: 14
+      currentLesson: 14,
+      level: 'Pre-Intermediate'
    }
 
    const audioSrc = `/audio/lesson-${currentLessonData.currentLesson}.mp3`

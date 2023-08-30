@@ -105,7 +105,7 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
                 <SideBarDesktop lessonsSummary={updatedLessonsSummary} expires={formattedDate}/>
                 <div className={styles.rightSide}>
                     <div>
-                    <Typography size='small' element='h3' className={styles.text}>Beginner</Typography>
+                    <Typography size='small' element='h3' className={styles.text}>{currentLessonData.level}</Typography>
                     {formattedDate && <p>подписка действует до {formattedDate}</p>}
                     </div>
                     {!withoutProgress && (<div className={styles.progressContainer}>

@@ -5,7 +5,8 @@ export default function Writing() {
 
    const currentLessonData = {
     currentChapter: 'writing',
-    currentLesson: lessonNumber
+    currentLesson: lessonNumber,
+    level: 'Intermediate'
  }
 
    const nextUrl = `/lessons/lesson${lessonNumber}/test`

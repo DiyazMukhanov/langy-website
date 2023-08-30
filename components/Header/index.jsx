@@ -115,8 +115,8 @@ export default function Header({ variant }) {
                 <div className={styles.whiteContainerMobile}>
                 <Modal isOpen={isModalOpened} onClose={modalCloseHandler}>
                 <div className={styles.modalContainer}>
-                  <div className={styles.modalLogos} onClick={() => router.push('/')}>
-                    <Image
+                  <div className={styles.modalLogos} onClick={() => router.push('/profile')}>
+                    {/* <Image
                     priority
                     src={LogoBlue}
                     height={38}
@@ -125,7 +125,8 @@ export default function Header({ variant }) {
                     <Image
                     priority
                     src={LogoBlueBottom}
-                    />
+                    /> */}
+                    <p className={styles.goToProfile}>Личный кабинет</p>
                     </div>
                     <Image
                     priority

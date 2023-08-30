@@ -9,7 +9,8 @@ export default function Video() {
 
    const currentLessonData = {
       currentChapter: 'video',
-      currentLesson: lessonNumber
+      currentLesson: lessonNumber,
+      level: 'Pre-Intermediate'
    }
 
    const nextUrl = `/lessons/lesson${lessonNumber}/audio`

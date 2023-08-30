@@ -7,7 +7,7 @@ export const lessonsSummaryInitial = [
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: video lesson',
+                chapter: 'Grammar: Articles',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,
@@ -37,14 +37,14 @@ export const lessonsSummaryInitial = [
         ]
     },
     {
-        title: 'Тут',
+        title: 'Elementary - Урок 2',
         lessonNumber: 2,
         isCompleted: false,
         isCurrent: false,
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: video lesson',
+                chapter: 'Grammar: Singular/Plural nouns',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,
@@ -74,14 +74,14 @@ export const lessonsSummaryInitial = [
         ]
     },
     {
-        title: 'Урок 3',
+        title: 'Elementary - Урок 3',
         lessonNumber: 3,
         isCompleted: false,
         isCurrent: false,
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: video lesson',
+                chapter: 'Grammar: Pronouns',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,
@@ -111,14 +111,14 @@ export const lessonsSummaryInitial = [
         ]
     },
     {
-        title: 'Урок 4',
+        title: 'Elementary - Урок 4',
         lessonNumber: 4,
         isCompleted: false,
         isCurrent: false,
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: video lesson',
+                chapter: 'Grammar: To be',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,
@@ -148,14 +148,14 @@ export const lessonsSummaryInitial = [
         ]
     },
     {
-        title: 'Урок 5',
+        title: 'Elementary - Урок 5',
         lessonNumber: 5,
         isCompleted: false,
         isCurrent: false,
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: video lesson',
+                chapter: 'Grammar: Present simple',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,
@@ -185,14 +185,14 @@ export const lessonsSummaryInitial = [
         ]
     },
     {
-        title: 'Урок 6',
+        title: 'Elementary - Урок 6',
         lessonNumber: 6,
         isCompleted: false,
         isCurrent: false,
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: video lesson',
+                chapter: 'Grammar: Prepositions',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,
@@ -222,14 +222,14 @@ export const lessonsSummaryInitial = [
         ]
     },
     {
-        title: 'Урок 7',
+        title: 'Elementary - Урок 7',
         lessonNumber: 7,
         isCompleted: false,
         isCurrent: false,
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: video lesson',
+                chapter: 'Grammar: Present continuous',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,
@@ -259,14 +259,14 @@ export const lessonsSummaryInitial = [
         ]
     },
     {
-        title: 'Урок 8',
+        title: 'Elementary - Урок 8',
         lessonNumber: 8,
         isCompleted: false,
         isCurrent: false,
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: video lesson',
+                chapter: 'Grammar: This,that,these,those',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,
@@ -296,14 +296,14 @@ export const lessonsSummaryInitial = [
         ]
     },
     {
-        title: 'Урок 9',
+        title: 'Pre-intermediate - Урок 1',
         lessonNumber: 9,
         isCompleted: false,
         isCurrent: false,
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: video lesson',
+                chapter: 'Grammar: Past simple',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,
@@ -333,14 +333,14 @@ export const lessonsSummaryInitial = [
         ]
     },
     {
-        title: 'Урок 10',
+        title: 'Pre-intermediate - Урок 2',
         lessonNumber: 10,
         isCompleted: false,
         isCurrent: false,
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: video lesson',
+                chapter: 'Grammar: Reported speech',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,
@@ -370,14 +370,14 @@ export const lessonsSummaryInitial = [
         ]
     },
     {
-        title: 'Урок 11',
+        title: 'Pre-intermediate - Урок 3',
         lessonNumber: 11,
         isCompleted: false,
         isCurrent: false,
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: video lesson',
+                chapter: 'Grammar: Future simple',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,
@@ -407,14 +407,14 @@ export const lessonsSummaryInitial = [
         ]
     },
     {
-        title: 'Урок 12',
+        title: 'Pre-intermediate - Урок 4',
         lessonNumber: 12,
         isCompleted: false,
         isCurrent: false,
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: video lesson',
+                chapter: 'Grammar: There is/are',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,
@@ -444,14 +444,14 @@ export const lessonsSummaryInitial = [
         ]
     },
     {
-        title: 'Урок 13',
+        title: 'Pre-intermediate - Урок 5',
         lessonNumber: 13,
         isCompleted: false,
         isCurrent: false,
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: video lesson',
+                chapter: 'Grammar: Present pefect',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,
@@ -481,14 +481,14 @@ export const lessonsSummaryInitial = [
         ]
     },
     {
-        title: 'Урок 14',
+        title: 'Pre-intermediate - Урок 6',
         lessonNumber: 14,
         isCompleted: false,
         isCurrent: false,
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: video lesson',
+                chapter: 'Grammar: Comparative adjectives',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,
@@ -518,14 +518,14 @@ export const lessonsSummaryInitial = [
         ]
     },
     {
-        title: 'Урок 15',
+        title: 'Pre-intermediate - Урок 7',
         lessonNumber: 15,
         isCompleted: false,
         isCurrent: false,
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: video lesson',
+                chapter: 'Grammar: Superlative adjectives',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,
@@ -555,14 +555,14 @@ export const lessonsSummaryInitial = [
         ]
     },
     {
-        title: 'Урок 16',
+        title: 'Pre-intermediate - Урок 8',
         lessonNumber: 16,
         isCompleted: false,
         isCurrent: false,
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: video lesson',
+                chapter: 'Grammar: Modal verbs',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,
@@ -592,14 +592,14 @@ export const lessonsSummaryInitial = [
         ]
     },
     {
-        title: 'Урок 17',
+        title: 'Intermediate - Урок 1',
         lessonNumber: 17,
         isCompleted: false,
         isCurrent: false,
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: video lesson',
+                chapter: 'Grammar: much, many, few',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,
@@ -629,14 +629,14 @@ export const lessonsSummaryInitial = [
         ]
     },
     {
-        title: 'Урок 18',
+        title: 'Intermediate - Урок 2',
         lessonNumber: 18,
         isCompleted: false,
         isCurrent: false,
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: video lesson',
+                chapter: 'Grammar: Used to',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,
@@ -666,14 +666,14 @@ export const lessonsSummaryInitial = [
         ]
     },
     {
-        title: 'Урок 19',
+        title: 'Intermediate - Урок 3',
         lessonNumber: 19,
         isCompleted: false,
         isCurrent: false,
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: video lesson',
+                chapter: 'Grammar: very/too',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,
@@ -703,14 +703,14 @@ export const lessonsSummaryInitial = [
         ]
     },
     {
-        title: 'Урок 20',
+        title: 'Intermediate - Урок 4',
         lessonNumber: 20,
         isCompleted: false,
         isCurrent: false,
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: video lesson',
+                chapter: 'Grammar: this/it',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,
@@ -740,14 +740,14 @@ export const lessonsSummaryInitial = [
         ]
     },
     {
-        title: 'Урок 21',
+        title: 'Intermediate - Урок 5',
         lessonNumber: 21,
         isCompleted: false,
         isCurrent: false,
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: video lesson',
+                chapter: 'Grammar: will/going to',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,
@@ -777,14 +777,14 @@ export const lessonsSummaryInitial = [
         ]
     },
     {
-        title: 'Урок 22',
+        title: 'Intermediate - Урок 6',
         lessonNumber: 22,
         isCompleted: false,
         isCurrent: false,
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: video lesson',
+                chapter: 'Grammar: If',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,
@@ -814,14 +814,14 @@ export const lessonsSummaryInitial = [
         ]
     },
     {
-        title: 'Урок 23',
+        title: 'Intermediate - Урок 7',
         lessonNumber: 23,
         isCompleted: false,
         isCurrent: false,
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: video lesson',
+                chapter: 'Grammar: too,so,either,neither',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,
@@ -851,14 +851,14 @@ export const lessonsSummaryInitial = [
         ]
     },
     {
-        title: 'Урок 24',
+        title: 'Intermediate - Урок 8',
         lessonNumber: 24,
         isCompleted: false,
         isCurrent: false,
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: video lesson',
+                chapter: 'Grammar: Plural forms',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,

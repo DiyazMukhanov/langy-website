@@ -6,7 +6,8 @@ import { wordsWithTranslations } from "../../utils/lessonsMaterials/lesson7/audi
 export default function Audio() {
    const currentLessonData = {
       currentChapter: 'audio',
-      currentLesson: 7
+      currentLesson: 7,
+      level: 'Elementary'
    }
 
    return <AudioLessonLayout 

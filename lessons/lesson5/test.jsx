@@ -5,7 +5,8 @@ export default function Test() {
    const lessonNumber = 5
    const currentLessonData = {
     currentChapter: 'test',
-    currentLesson: 5
+    currentLesson: 5,
+    level: 'Elementary'
  }
 
    

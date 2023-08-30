@@ -219,7 +219,7 @@ export default function Landing() {
              />
              {!userCtx.userData ? (<div className={styles.btnBlock}>
            <Button variant='contained' className={styles.startBtn} onClick={continueHandler}>Начать обучение</Button>
-           <p className={styles.haveAccountBtn} onClick={() => router.push('/authorization/login')}>У меня уже есть аккаунт</p>
+           {/* <p className={styles.haveAccountBtn} onClick={() => router.push('/authorization/login')}>У меня уже есть аккаунт</p> */}
            </div>) : <div className={styles.btnBlock}>
            <Button variant='contained' className={styles.startBtn} onClick={continueHandler}>Продолжить обучение</Button>
            {!userCtx.userData && (<p className={styles.haveAccountBtn} onClick={() => router.push('/authorization/login')}>У меня уже есть аккаунт</p>)}
@@ -236,7 +236,7 @@ export default function Landing() {
   
         <div className={styles.advantages}>
             <Advantage text='Все на одной платформе'/>
-            <Advantage text='Для тех, кто никогда не учил английский'/>
+            <Advantage text='Для тех, кто хочет владеть английским языком'/>
             <Advantage text='Бесплатный пробный урок'/>
             <Advantage text='Для любого возраста'/>
         </div>
@@ -250,7 +250,7 @@ export default function Landing() {
              className={styles.logoTwo}
              />
          <div className={styles.leftSideText}>
-         - платформа, предоставляющая изучение английского языка через интернет. Платформа открыта 
+         - онлайн-платформа, предоставляющая изучение английского языка. Платформа открыта 
           24 часа в сутки, 12 месяцев в году. 
           И вы можете учиться в любом удобном для вас месте.
           </div>    
@@ -339,18 +339,18 @@ export default function Landing() {
   
           <div className={styles.howcardTwo}>
           <HowCard 
+            number='2' 
+            text='После успешного пробного урока и определения  своего уровня знания языка. Вам нужно произвести оплату для дальнейшего обучения'
+            color='orange'
+            />
+          </div>
+  
+           <HowCard 
             number='3' 
             text='Доступ открыт!
             Наслаждайтесь обучением!'
             color='purple'
             type='small'
-            />
-          </div>
-            
-             <HowCard 
-            number='2' 
-            text='После успешного пробного урока и определения  своего уровня знания языка. Вам нужно выбрать произвести оплату для дальнейшего обучения'
-            color='orange'
             />
             
           </div>

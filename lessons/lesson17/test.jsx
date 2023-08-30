@@ -5,7 +5,8 @@ export default function Test() {
    const lessonNumber = 17
    const currentLessonData = {
     currentChapter: 'test',
-    currentLesson: lessonNumber
+    currentLesson: lessonNumber,
+    level: 'Intermediate'
  }
 
    const nextUrl = `/lessons/lesson${currentLessonData.currentLesson + 1}/video`

@@ -5,7 +5,8 @@ export default function Writing() {
 
    const currentLessonData = {
     currentChapter: 'writing',
-    currentLesson: 10
+    currentLesson: 10,
+    level: 'Pre-Intermediate'
  }
 
    return <WritingLessonLayout 

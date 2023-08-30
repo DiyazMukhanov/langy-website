@@ -9,7 +9,8 @@ export default function Video() {
 
    const currentLessonData = {
       currentChapter: 'video',
-      currentLesson: 8
+      currentLesson: 8,
+      level: 'Elementary'
    }
 
    return <VideoLessonLayout 
