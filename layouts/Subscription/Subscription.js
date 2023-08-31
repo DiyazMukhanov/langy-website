@@ -15,13 +15,13 @@ export default function Subscription() {
     const router = useRouter()
 
     const monthBody = {
-        days: 30,
-        subscriptionType: 'month'
+        days: 90,
+        subscriptionType: 'month' // now 3 months
     }
 
     const yearBody = {
-        days: 365,
-        subscriptionType: 'year'
+        days: 180,
+        subscriptionType: 'year' // now 6 months
     }
 
     const continueHandler = () => {

@@ -7,28 +7,28 @@ export default function OptionCard({type, onClick}) {
       <div className={styles.container} onClick={onClick}>
         <div 
         className={classNames(
-            {[styles.headerMonth]: type === 'month'},
-            {[styles.headerYear]: type === 'year'}
+            {[styles.headerMonth]: type === 'month'}, //3 months now
+            {[styles.headerYear]: type === 'year'} // 6 months now
             )}>
-            {type === 'month' ? (<p className={styles.white}>Месячная</p>) : (<p className={styles.white}>Годовая</p>)}    
+            {type === 'month' ? (<p className={styles.white}>3 месяца</p>) : (<p className={styles.white}>6 месяцев</p>)}    
         </div>
          <div className={classNames({[styles.middle]: type === 'month'}, {[styles.middleYear]: type === 'year'})}>
             <div className={styles.price}>
             <span className={classNames({[styles.blue]: type === 'month'}, {[styles.orange]: type === 'year'})}>
-              {type === 'month' ? 2500 : 25000}    
+              {type === 'month' ? 4830 : 6970}    
             </span> 
             
             <span>
-            {type === 'month' ? (<> тг/месяц</>) : (<> тг/год</>)} 
+            {type === 'month' ? (<> тг/за 90 дней</>) : (<> тг/за 180 дней</>)} 
             </span>
             </div>
 
-            {type === 'year' && (
-                <div className={styles.discount}>
-                    <p>Экономия</p>
-                    <p className={styles.deleted}>5000 тг</p>
-                </div>
-            )}
+            {/* {type === 'year' && (
+                // <div className={styles.discount}>
+                //     <p>Экономия</p>
+                //     <p className={styles.deleted}>5000 тг</p>
+                // </div>
+            )} */}
          </div>
       </div>
     )
