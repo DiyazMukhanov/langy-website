@@ -15,7 +15,7 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
     const [progressValue, setProgressValue] = useState(0)
     const lessonsSummary = userCtx.lessonsSummary
     const updatedLessonsSummary = userCtx.getUpdatedLessonsSummary()
-
+   
     let thisLessonNumber
 
     const getProgressValue = () => {
@@ -138,7 +138,7 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
                 <SideBarDesktop lessonsSummary={updatedLessonsSummary} expires={formattedDate}/>
                 <div className={styles.rightSide}>
                     <div>
-                    <Typography size='small' element='h3' className={styles.text}>{currentLessonData.level}</Typography>
+                    <Typography size='small' element='h3' className={styles.text}>{currentLessonData.level} - Урок {getThisLessonNumber(currentLessonData.currentLesson)}</Typography>
                     {formattedDate && <p className={styles.subscriptionPeriodMobileOnly}>подписка действует до {formattedDate}</p>}
                     {chapter === 'audio' && <p className={styles.mobileViewOnly}>Для более эффективного усвоения, рекомендуем прослушивать и прочитывать текст до полного понимания</p>}
                     </div>
@@ -152,10 +152,10 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
                     </div>)}
                     
                 <div className={styles.links}>
-                   {chapter === 'grammar' && <p className={styles.currentLink}>Грамматика - Урок {getThisLessonNumber(currentLessonData.currentLesson)}</p>}
-                   {chapter === 'audio' && <p className={styles.currentLink}>Аудио/Чтение - Урок {getThisLessonNumber(currentLessonData.currentLesson)}</p>}
-                   {chapter === 'writing' && <p className={styles.currentLink}>Письмо - Урок {getThisLessonNumber(currentLessonData.currentLesson)}</p>}
-                   {chapter === 'test' && <p className={styles.currentLink}>Тест - Урок {getThisLessonNumber(currentLessonData.currentLesson)}</p>}
+                   {chapter === 'grammar' && <p className={styles.currentLink}>Грамматика</p>}
+                   {chapter === 'audio' && <p className={styles.currentLink}>Аудио/Чтение</p>}
+                   {chapter === 'writing' && <p className={styles.currentLink}>Письмо</p>}
+                   {chapter === 'test' && <p className={styles.currentLink}>Тест</p>}
                 </div>
                 {children}
                 </div>

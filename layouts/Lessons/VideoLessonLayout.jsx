@@ -37,7 +37,7 @@ export default function VideoLessonLayout({videoTasks, nextUrl, lessonNumber, cu
         router.push(nextUrl)
         
         } catch (err) {
-            console.log(err)
+           
             setIsLoading(false)
             router.push(nextUrl)
         }
