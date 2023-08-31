@@ -83,19 +83,19 @@ export default function Login() {
                       } else {
                         if(userData?.data?.data?.user?.level === 'preIntermediate') {
                           router.push('/lessons/lesson9/video')
-                          console.log('preIntermediate ok')
+                        
                           setIsLoading(false)
                         }
             
                         if(userData?.data?.data?.user?.level === 'intermediate') {
                           router.push('/lessons/lesson17/video')
-                          console.log('intermediate ok')
+                         
                           setIsLoading(false)
                         }
             
                         if(userData?.data?.data?.user?.level === 'elementary') {
                           router.push('/lessons/lesson1/video')
-                          console.log('elementary ok')
+                         
                           setIsLoading(false)
                         }
                       }
@@ -121,14 +121,6 @@ export default function Login() {
 
     const goToMainHandler = () => {
     router.push('/')
-    }
-
-    const testGoogleAuth = async () => {
-        try {
-          const response = await axios.get(`https://langy.su/api/api/auth`, { withCredentials: true, headers: { 'Content-Type': 'application/json'}})
-        } catch (err) {
-            console.log(err)
-        }
     }
 
     return (

@@ -50,11 +50,10 @@ export default function Subscription() {
 
        } catch (error) {
          setIsLoading(false)
-         console.log(error)
          alert('Произошла ошибка!')
        }
     }
-    console.log(userCtx?.userData?.isSubscribed)
+
     useEffect(() => {
        if(userCtx?.userData?.isSubscribed) {
         continueHandler()

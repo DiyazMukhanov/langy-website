@@ -45,7 +45,6 @@ export default function Result({level}) {
             }
          } catch(error) {
             alert('Что-то пошло не так')
-            console.log(error)
             setIsLoading(false)
          } 
       }
@@ -58,7 +57,6 @@ export default function Result({level}) {
             }
          } catch (err) {
             alert('Что-то пошло не так')
-            console.log(error)
             setIsLoading(false)
          }
       }
@@ -66,7 +64,6 @@ export default function Result({level}) {
       if(levelType !== 'Elementary') {
          setLevelCheckedHandler()
       } else {
-         console.log('Elementary method!')
          setLevelCheckedElementary()
       }
 

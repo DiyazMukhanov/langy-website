@@ -19,7 +19,6 @@ const ResultsShowing = ({rightAnswers, totalQuestions, questionsArr, nextUrl, le
 
     const checkIsRight = (question, chosenAnswer) => {
         const trueAnswer = question.answers.filter(answer => answer.isCorrect === true)
-        console.log(trueAnswer)
         const trueResult = trueAnswer[0].answer
         return trueResult === chosenAnswer
     }
@@ -30,16 +29,13 @@ const ResultsShowing = ({rightAnswers, totalQuestions, questionsArr, nextUrl, le
     }
 
     const setProgressHandler = async () => {
-        console.log('clicked next')
         setIsLoading(true)
         try{
         const data = await setProgressData({lessonNumber: lessonNumber, chapterCode: 'ts'})
         if(data) {
-            console.log(data)
             router.push(nextUrl)
         }
         } catch (err) {
-            console.log(err)
             setIsLoading(false)
             router.push(nextUrl)
         }

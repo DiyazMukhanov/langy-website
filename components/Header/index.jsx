@@ -36,9 +36,7 @@ export default function Header({ variant }) {
         try{
           const response = await userLogout()
           router.reload()
-          console.log(response)
         } catch (err) {
-          console.log(err)
           alert('Произошла ошибка выхода')
         }
       }

@@ -16,9 +16,7 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
     const lessonsSummary = userCtx.lessonsSummary
     const updatedLessonsSummary = userCtx.getUpdatedLessonsSummary()
 
-    console.log(currentLessonData)
     let thisLessonNumber
-
 
     const getProgressValue = () => {
         let currentLessonNumber
@@ -50,8 +48,6 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
         return currentSublessonNumber/32*100
     }
 
-    console.log(getProgressValue())
-    
     useEffect(() => {
         const getProgress = async () => {
             const lessonsIndexes = {
@@ -100,7 +96,6 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
                 }
                 
               } catch (err) {
-                console.log(err)
                 setIsLoading(false)
               }
         }

@@ -42,15 +42,15 @@ export default function Landing() {
   
   
   useEffect(() => {
-    console.log(process.env.NEXT_PUBLIC_SERVER_URL)
+    
     const getUser = async () => {
       try{
         const userData = await getMe()
-        console.log(userData)
+        
         userCtx.setUserData(userData.data.data)
         setIsLoading(false)
       } catch (err) {
-        console.log(err)
+        
         setIsLoading(false)
       }
     }
@@ -116,9 +116,9 @@ export default function Landing() {
     try{
       const response = await userLogout()
       router.reload()
-      console.log(response)
+     
     } catch (err) {
-      console.log(err)
+     
       alert('Произошла ошибка выхода')
     }
   }

@@ -4,7 +4,6 @@ import { videoUrl } from "@/utils/lessonsMaterials/lesson10/video-materials";
 
 
 export default function Video() {
-   console.log(videoUrl)
    const lessonNumber = 10
 
    const currentLessonData = {

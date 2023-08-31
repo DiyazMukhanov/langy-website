@@ -172,7 +172,7 @@ const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc, l
     router.push(nextUrl)
     
     } catch (err) {
-        console.log(err)
+       
         setIsLoading(false)
         router.push(nextUrl)
     }
