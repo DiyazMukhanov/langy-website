@@ -258,6 +258,13 @@ const clickHandler = (id) => {
          <div className={styles.textButtons}>
             <p className={styles.bold}>Нажмите на любое слово, чтобы увидеть перевод</p>
             {isShowingEn ? <div className={styles.textShowEn}>
+            <Image
+                        priority
+                        src={ButtonClose}
+                        width={30}
+                        onClick={cancelShowEnHandler}
+                        className={styles.cancel}
+                    />
                     {hoveredWord && <div className={styles.cardContainer}>
                         <TranslationCard 
                         word={hoveredWord} 
@@ -266,7 +273,7 @@ const clickHandler = (id) => {
                         innerRef={innerRef}/>
                         </div>
                         }
-                       <p>
+                       <p className={styles.textCommonSize}>
                             {textByWords.map((word, index) => (
                                 
                                 <span 
@@ -281,24 +288,19 @@ const clickHandler = (id) => {
                                 </span>
                         ))}
                         </p>
-                    <Image
-                        priority
-                        src={ButtonClose}
-                        width={30}
-                        onClick={cancelShowEnHandler}
-                        className={styles.cancel}
-                    />
+                    
             </div> : <Button variant="standardMiddleOutlined" onClick={showEnglishHandler}>Показать текст</Button>}
             
             {isShowingRu ? <div className={styles.textShowRu}>
-                    <p>{text.ru}</p>
-                    <Image
+            <Image
                         priority
                         src={ButtonClose}
                         width={30}
                         onClick={cancelShowRuHandler}
                         className={styles.cancel}
                     />
+                    <p className={styles.textCommonSize}>{text.ru}</p>
+                    
             </div> : <Button variant="standardMiddleOutlined" onClick={showTranslationHandler}>Показать перевод</Button>}
          </div>
 
