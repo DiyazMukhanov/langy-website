@@ -25,8 +25,6 @@ export default function Result({level}) {
       levelType = 'Intermediate'
      }
 
-
-
    useEffect(() => {
       let levelForBody
       if(levelType === 'Pre-intermediate') {
@@ -98,6 +96,7 @@ export default function Result({level}) {
                      />
                   <p>Поздравляем!</p>
                   <p>Ваш уровень <span className={styles.level}>{levelType}!</span></p>
+                  <p>Вы ответили правильно на {level}/20 вопросов!</p>
                   <Button 
                   variant='standardNextContained'
                   onClick={nextHandler}

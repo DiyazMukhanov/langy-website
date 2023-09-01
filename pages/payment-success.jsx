@@ -12,6 +12,7 @@ import { useEffect, useState } from "react"
 export default function PaymentSuccess() {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(false)
    
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -38,21 +39,27 @@ export default function PaymentSuccess() {
                        }
                    }
                 } catch (err) {
-                    console.log(err)
+                    setError(true)
                 }
             }
 
             if(savedPaymentId === router.query?.pg_payment_id) {
                 saveSubscribedToDbHandler()
             } else {
-                router.push('/')
+                setError(true)
             }
     }
   }, [router.query?.pg_payment_id])
 
   if(isLoading) {
     return <Loader></Loader>
-  } else {
+  } 
+
+  if(error) {
+    return <div>Ошибка...</div>
+  } 
+  
+  {
     return <div>Payment Success</div>
   }
     

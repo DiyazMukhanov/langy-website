@@ -16,8 +16,6 @@ const Forgot = () => {
     const [error, setError] = useState(false)
     const [emptyField, setEmptyField] = useState(false)
 
-    console.log(emptyField)
-
     const forgotHandler = async (event) => {
         event.preventDefault()
         setError(false)

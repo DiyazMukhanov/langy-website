@@ -18,6 +18,7 @@ const passwordReset = () => {
     const [passConfirmEmpty, setPassConfirmEmpty] = useState(false)
     const [invalidPassword, setInvalidPassword] = useState(false)
     const [passWordsDiffer, setPasswordsDiffers] = useState(false)
+    const [passChanged, setPassChanged] = useState(false)
 
 
     // error handling
@@ -28,6 +29,7 @@ const passwordReset = () => {
     }
 
     const resetPasswordHandler = async (event) => {
+        setPassChanged(false)
         event.preventDefault()
         setPasswordEmpty(false)
         setPassConfirmEmpty(false)
@@ -60,6 +62,8 @@ const passwordReset = () => {
 
         try{
             const data = await resetPassword(passwordValue, passwordConfirmValue, token)
+            setPassChanged(true)
+            setIsLoading(false)
             console.log(data)
         } catch (err) {
             if(err.response.data.message === 'Token is invalid or has expired') {
@@ -69,18 +73,24 @@ const passwordReset = () => {
         }   
     }
 
+    const goToManHandler = (e) => {
+        e.preventDefault()
+        router.push('/')
+    }
+
     return (
         <div className={styles.container}>
             <form
                 className={styles.form}
-                onSubmit={resetPasswordHandler}
             >
                 <p className={styles.paragraph}>Сброс пароля</p>
 
                 <div className={styles.formBlock}><label className={styles.label}>Придумайте новый пароль</label>
+                  
                     <input
                         type='password'
                         placeholder='Придумайте новый пароль'
+                        autoComplete='new-password'
                         className={classNames({[styles.warningInput]: passwordEmpty}, styles.input)}
                         onChange={(event) => setPasswordValue(event.target.value)}
                     >
@@ -90,20 +100,34 @@ const passwordReset = () => {
                     <input
                         type='password'
                         placeholder='Повторите новый пароль'
+                        autoComplete='new-password'
                         className={classNames({[styles.warningInput]: passConfirmEmpty}, styles.input)}
                         onChange={(event) => setPasswordConfirmValue(event.target.value)}
                     >
                     </input>
                 </div>
                 <div className={styles.buttonContainer}>
+                 
                 <Button
                     variant='standardNextContained'
                     className={styles.button}
                     disabled={isLoading}
+                    onClick={resetPasswordHandler}
                 >
                     Обновить пароль
                 </Button>
+                
+                <Button
+                    variant='standardNextContained'
+                    className={styles.button}
+                    // disabled={isLoading}
+                    onClick={goToManHandler}
+                >
+                    Вернуться на главную
+                </Button>
+                
                 </div>
+                
 
                 
 
@@ -112,6 +136,7 @@ const passwordReset = () => {
 
                 {invalidPassword && <p className={styles.warning}>Пароль должен состоять из латинских букв или цифр. Длина пароля минимум 8 букв</p>}
                 {passWordsDiffer && <p className={styles.warning}>Пароли не совпадают</p>}
+                {passChanged && <p className={styles.warning}>Пароль успешно обновлён!</p>}
             </form>
 
             <div className={styles.buttonContainer}>
