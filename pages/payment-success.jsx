@@ -1,5 +1,7 @@
+import { saveSubscriptionInBd } from "@/api/user"
+import Loader from "@/components/Loader"
 import { useRouter } from "next/router"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 // 1) click susbcribe on the suscribtion page
 // 2) if no active subscription (add in express server and remove in previous) and will go to the testPAyment method in server
@@ -9,10 +11,49 @@ import { useState } from "react"
 
 export default function PaymentSuccess() {
   const router = useRouter()
-  const [paymentSign, setPaymentSign] = useState()
-  const {pg_sig} = router.query
-//   if(pg_sig) {
-//     setPaymentSign(pg_sig)
-//   }
+  const [isLoading, setIsLoading] = useState(true)
+   
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+            const savedPaymentId = localStorage.getItem('paymentId')
+            const savedDays = localStorage.getItem('days')
+            
+            const saveSubscribedToDbHandler = async () => {
+                const bodyData = {
+                   days: savedDays
+                }
+
+                try {
+                  localStorage.setItem('paymentId', '')
+                   const data = await saveSubscriptionInBd(bodyData)
+                   if(data) {
+                    if(data?.data?.data?.levelChecked === true) {
+                        if(data?.data?.data?.currentLesson !== 0 && data?.data?.data?.currentChapter !== 'no') {
+                            router.push(`/lessons/lesson${data?.data?.data?.currentLesson}/${data?.data?.data?.currentChapter}`)
+                            setIsLoading(false)
+                          } else {
+                            router.push('/lessons/lesson1/video')
+                            setIsLoading(false)
+                          }
+                       }
+                   }
+                } catch (err) {
+                    console.log(err)
+                }
+            }
+
+            if(savedPaymentId === router.query?.pg_payment_id) {
+                saveSubscribedToDbHandler()
+            } else {
+                router.push('/')
+            }
+    }
+  }, [router.query?.pg_payment_id])
+
+  if(isLoading) {
+    return <Loader></Loader>
+  } else {
     return <div>Payment Success</div>
+  }
+    
 }

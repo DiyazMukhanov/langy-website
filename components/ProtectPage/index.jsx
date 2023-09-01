@@ -6,13 +6,14 @@ import { setCurrentLessonData } from "../../api/user"
 import { useRouter } from "next/router"
 
 
-export default function ProtectPage({children, currentLesson, currentChapter, subscriptionIsNeeded, adminNeeded}) {
+export default function ProtectPage({children, currentLesson, currentChapter, subscriptionIsNeeded, adminNeeded, levelChecked}) {
    const userCtx = useContext(UserContext)
    const [isLoading, setIsLoading] = useState(true)
    const router = useRouter()
     
    useEffect(() => {
-    const fetchUserData = async () => {       
+    const fetchUserData = async () => {
+                  
                   if(currentLesson && currentChapter) {
                     const bodyData = {
                       currentLesson: currentLesson,
@@ -60,6 +61,20 @@ export default function ProtectPage({children, currentLesson, currentChapter, su
                           router.push('/')
                         }
                       }
+                      
+                      if(levelChecked) {
+                        console.log(userData?.data?.data?.levelChecked)
+                        if(userData?.data?.data?.levelChecked === true) {
+                          if(userData?.data?.data?.currentLesson !== 0 && userData?.data?.data?.currentChapter !== 'no') {
+                              router.push(`/lessons/lesson${userData?.data?.data?.currentLesson}/${userData?.data?.data?.currentChapter}`)
+                              setIsLoading(false)
+                            } else {
+                              router.push('/lessons/lesson1/video')
+                              setIsLoading(false)
+                            }
+                         }
+                      }
+                   
 
                       if(!adminNeeded) {
                         setIsLoading(false)

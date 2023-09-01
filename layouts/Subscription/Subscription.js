@@ -13,14 +13,17 @@ export default function Subscription() {
     const [isLoading, setIsLoading] = useState(true)
     const userCtx = useContext(UserContext)
     const router = useRouter()
+    console.log('thats it')
 
     const monthBody = {
         days: 90,
+        amount: 4830,
         subscriptionType: 'month' // now 3 months
     }
 
     const yearBody = {
         days: 180,
+        amount: 6970,
         subscriptionType: 'year' // now 6 months
     }
 
@@ -44,11 +47,17 @@ export default function Subscription() {
             if(response?.data?.message === 'Already subscribed') {
                 alert('У вас уже есть подписка!')
             }
-            setIsLoading(false)
-            continueHandler()
+            console.log(response?.data)
+            localStorage.setItem('paymentId', response?.data?.paymentId)
+            localStorage.setItem('days', plan?.days)
+            // console.log('sign from server', response?.data?.paymentSign)
+            router.push(response?.data?.redirectUrl)
+            // setIsLoading(false)
+            // continueHandler()
          }
 
        } catch (error) {
+        console.log(error)
          setIsLoading(false)
          alert('Произошла ошибка!')
        }

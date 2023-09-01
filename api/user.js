@@ -71,6 +71,11 @@ export const setCurrentLessonData = async (bodyData) => {
 
  export const subscribeMe = async (subscribeBody) => {
   
+  return await axios.post(`${apiUrl}/users/payment`, subscribeBody, options);
+ } 
+
+ export const saveSubscriptionInBd = async (subscribeBody) => {
+  
   return await axios.patch(`${apiUrl}/users/subscribe`, subscribeBody, options);
  } 
 
