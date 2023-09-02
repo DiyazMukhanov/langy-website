@@ -8,8 +8,8 @@ function MyApp({ Component, pageProps }) {
   return (
       <>
           <Head>
-              <title>Langy</title>
-              <meta name="описание" content="Уроки английского языка"/>
+              <title>Langy - Онлайн платформа для изучения английского языка</title>
+              <meta name="описание" content="Онлайн уроки английского языка"/>
           </Head>  
               <UserProvider>
                  <Component {...pageProps} />

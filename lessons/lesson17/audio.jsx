@@ -21,6 +21,6 @@ export default function Audio() {
    lessonNumber={currentLessonData.currentLesson}
    nextUrl={nextUrl}
    currentLessonData={currentLessonData}
-   subscriptionIsNeeded={true}
+   subscriptionIsNeeded={false}
    />
 }

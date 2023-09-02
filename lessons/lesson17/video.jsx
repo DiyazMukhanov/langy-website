@@ -21,7 +21,7 @@ export default function Video() {
    nextUrl={nextUrl}
    lessonNumber={lessonNumber}
    currentLessonData={currentLessonData}
-   subscriptionIsNeeded={true}
+   subscriptionIsNeeded={false}
    topic='Much, many, few'
    />
 }

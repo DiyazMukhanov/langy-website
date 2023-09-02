@@ -39,8 +39,6 @@ export default function Landing() {
   const userCtx = useContext(UserContext)
   const [isLoading, setIsLoading] = useState(true)
 
-  
-  
   useEffect(() => {
     
     const getUser = async () => {
