@@ -23,15 +23,20 @@ export default function ProtectPage({children, currentLesson, currentChapter, su
                   try {
                       const userData = await setCurrentLessonData(bodyData)
                       
-                      if(userData?.data?.data?.role === 'admin' || userData?.data?.data?.role === 'manager') {
-                          router.push('/admin/main')
-                      }
+                      // if(userData?.data?.data?.role === 'admin' || userData?.data?.data?.role === 'manager') {
+                      //     router.push('/admin/main')
+                      // }
                       if(userData) {
                           userCtx.setUserData(userData.data.data)
 
                           if(subscriptionIsNeeded) {
                             if(userData?.data?.data?.isSubscribed === false) {
-                              router.push('/subscription')
+                              if(userData?.data?.data?.role === 'admin' || userData?.data?.data?.role === 'manager') {
+                                 setIsLoading(false)
+                              } else {
+                                router.push('/subscription')
+                              }
+                             
                             } else {
                               setIsLoading(false)
                             }
@@ -46,16 +51,15 @@ export default function ProtectPage({children, currentLesson, currentChapter, su
                   } else {
                     try {
                       const userData = await getMe()
-                      if(userData?.data?.data?.role === 'admin' || userData?.data?.data?.role === 'manager') {
-                        router.push('/admin/main')
-                    }
+                    //   if(userData?.data?.data?.role === 'admin' || userData?.data?.data?.role === 'manager') {
+                    //     router.push('/admin/main')
+                    // }
                       userCtx.setUserData(userData?.data?.data)
                       
                       if(adminNeeded) {
-                        console.log(userData?.data?.data?.role)
+                        
                         if(userData?.data?.data?.role === 'admin' || userData?.data?.data?.role === 'manager') {
                           
-                          // setIsLoading(false)
                           setIsLoading(false)
                         } else {
                           router.push('/')
@@ -75,7 +79,6 @@ export default function ProtectPage({children, currentLesson, currentChapter, su
                          }
                       }
                    
-
                       if(!adminNeeded) {
                         setIsLoading(false)
                       }

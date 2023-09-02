@@ -73,11 +73,11 @@ export const audioTasks = [
 ]
 
 export const wordsWithTranslations = [
-    { en: 'The', ru: 'Она' },
+    { en: 'The', ru: 'артикль' },
     { en: 'United', ru: 'Объединенное' },
     { en: 'Kingdom', ru: 'Королевство' },
     { en: 'is', ru: 'является' },
-    { en: 'an', ru: 'одним' },
+    { en: 'an', ru: 'артикль' },
     { en: 'advanced', ru: 'развитым' },
     { en: 'European', ru: 'европейским' },
     { en: 'island', ru: 'островом' },
@@ -85,13 +85,13 @@ export const wordsWithTranslations = [
     { en: 'It', ru: 'Это' },
     { en: 'surrounded', ru: 'окружено' },
     { en: 'by', ru: 'тремя' },
-    { en: 'three', ru: 'телами' },
-    { en: 'bodies', ru: 'воды' },
+    { en: 'three', ru: '3' },
+    { en: 'bodies', ru: 'телами' },
     { en: 'of', ru: 'из' },
     { en: 'water', ru: 'воды' },
-    { en: 'the', ru: 'Северным' },
-    { en: 'North', ru: 'морем' },
-    { en: 'Sea', ru: 'Северным' },
+    { en: 'the', ru: 'артикль' },
+    { en: 'North', ru: 'Северным' },
+    { en: 'Sea', ru: 'морем' },
     { en: 'in', ru: 'в' },
     { en: 'eastern', ru: 'восточной' },
     { en: 'part', ru: 'части' },
@@ -101,7 +101,7 @@ export const wordsWithTranslations = [
     { en: 'and', ru: 'и' },
     { en: 'Atlantic', ru: 'Атлантическим' },
     { en: 'Ocean', ru: 'океаном' },
-    { en: 'west', ru: 'на' },
+    { en: 'west', ru: 'запад' },
     { en: 'consists', ru: 'состоит' },
     { en: 'England', ru: 'Англия' },
     { en: 'Scotland', ru: 'Шотландия' },
@@ -304,4 +304,11 @@ export const wordsWithTranslations = [
     { en: 'developed', ru: 'развивается' },
     { en: 'established', ru: 'основанный' },
     { en: 'scientific', ru: 'научный' },
+    { en: '“United', ru: 'Соединённое' },
+    { en: 'Kingdom”', ru: 'Королевство' },
+    { en: '“Great', ru: 'Великая' },
+    { en: 'Britain”', ru: 'Британия' },
+    { en: 'nation’s', ru: 'нации' },
+    
+    
 ];

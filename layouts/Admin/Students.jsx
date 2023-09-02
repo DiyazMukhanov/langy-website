@@ -67,8 +67,8 @@ export default function Students() {
                         <p>ID: {user?._id}</p>
                         <p>Subscription Expiration date: {user?.subscriptionExpirationDate}</p>
                         <div className={styles.btns}>
-                        <button onClick={() => subscribeHandler(31)}>Подписать на месяц</button>
-                        <button onClick={() => subscribeHandler(365)}>Подписать на год</button>
+                        <button onClick={() => subscribeHandler(90)}>Подписать на 3 месяца</button>
+                        <button onClick={() => subscribeHandler(180)}>Подписать на 6 месяцев</button>
                         </div>
                         </>
                     )}
