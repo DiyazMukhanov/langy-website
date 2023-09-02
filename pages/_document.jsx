@@ -7,7 +7,12 @@ export default function Document() {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link crossOrigin="true" rel="preconnect" href="https://fonts.gstatic.com" />
       <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
-      {
+      
+        </Head>
+      <body>
+        <Main />
+        <NextScript />
+        
          <script dangerouslySetInnerHTML={ {
           __html: `(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
           m[i].l=1*new Date();
@@ -22,16 +27,12 @@ export default function Document() {
           }););`,
       } }
 />
-      }
+      
 
       {<noscript>
         <div><img src="https://mc.yandex.ru/watch/94815906" style={{ position: 'absolute', left: '-9999px' }} alt="" /></div>
     </noscript>
       }
-        </Head>
-      <body>
-        <Main />
-        <NextScript />
       </body>
     </Html>
   )
