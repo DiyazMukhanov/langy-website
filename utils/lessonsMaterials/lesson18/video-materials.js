@@ -58,7 +58,7 @@ export const videoTasks = [
             {
                 id: 3,
                 answer: "was not use to",
-                isCorrect: true
+                isCorrect: false
             }
         ]
     },

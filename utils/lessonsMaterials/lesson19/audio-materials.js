@@ -73,18 +73,18 @@ export const audioTasks = [
 ]
 
 export const wordsWithTranslations = [
-    { en: 'The', ru: 'Статья' },
+    { en: 'The', ru: 'Артикль' },
     { en: 'system', ru: 'система' },
     { en: 'of', ru: 'из' },
     { en: 'education', ru: 'образование' },
     { en: 'in', ru: 'в' },
-    { en: 'the', ru: 'з' },
+    { en: 'the', ru: 'артикль' },
     { en: 'United', ru: 'Объединенное' },
     { en: 'Kingdom', ru: 'Королевство' },
     { en: 'is', ru: 'является' },
     { en: 'based', ru: 'основанным' },
     { en: 'on', ru: 'на' },
-    { en: 'a', ru: 'a' },
+    { en: 'a', ru: 'артикль' },
     { en: 'well', ru: 'хорошо' },
     { en: 'developed', ru: 'развитый' },
     { en: 'approach', ru: 'подход' },
@@ -278,8 +278,8 @@ export const wordsWithTranslations = [
   { en: 'postgraduate', ru: 'последипломное' },
   { en: 'Bachelor', ru: 'Бакалавр' },
   { en: 'Master', ru: 'Магистр' },
-  { en: 'Ph', ru: 'Ф' },
-  { en: 'D', ru: 'Д' },
+  { en: 'Ph', ru: 'докторантура' },
+  { en: 'D', ru: 'докторантура' },
   { en: 'degrees', ru: 'степени' },
   { en: 'undergraduate', ru: 'бакалавры' },
   { en: 'general', ru: 'общие' },
@@ -298,5 +298,11 @@ export const wordsWithTranslations = [
   { en: 'provides', ru: 'предоставляет' },
   { en: 'entire', ru: 'всему' },
   { en: 'community', ru: 'сообществу' },
+  { en: 'selfdiscipline', ru: 'самодисциплина' },
+  { en: 'children’s', ru: 'детей' },
+  { en: 'Bachelor’s', ru: 'бакалавр' },
+  { en: 'Master’s', ru: 'Магистратура' },
+  { en: 'PhD', ru: 'докторантура' },
+  
   ];
   
