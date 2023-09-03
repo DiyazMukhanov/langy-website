@@ -19,10 +19,9 @@ const UserProvider = (props) => {
     const lessonSummaryForMutation = [...lessonsSummaryInitial]
     
     // const [lessonsSummary, setLessonsSummary] = useState(lessonSummaryForMutation)
-    console.log('lessonsSummaryInitial', lessonsSummaryInitial)
-    
+  
     const [progressData, setProgressData] = useState(null)
-    console.log('progressData', progressData)
+  
     const lessonsIndexes = {
         gr: 0,
         au: 1,

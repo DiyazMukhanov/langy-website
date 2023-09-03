@@ -106,6 +106,7 @@ const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc, l
       if (isPlaying) {
         audioRef?.current?.play();
         playAnimationRef.current = requestAnimationFrame(progressUpdate);
+        audioRef.current.playbackRate = 0.5
       } else {
         audioRef?.current?.pause();
         cancelAnimationFrame(playAnimationRef.current);
@@ -127,6 +128,7 @@ const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc, l
         if (isPlaying) {
             audioRef?.current?.play();
             playAnimationRef.current = requestAnimationFrame(repeat);
+            audioRef.current.playbackRate = 0.8
           } else {
             audioRef?.current?.pause();
             cancelAnimationFrame(playAnimationRef.current);

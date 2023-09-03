@@ -16,8 +16,6 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
     const [progressValue, setProgressValue] = useState(0)
     const lessonsSummary = userCtx.lessonsSummary
     const updatedLessonsSummary = userCtx.getUpdatedLessonsSummary()
-//    console.log(lessonsSummaryInitial)
-    let thisLessonNumber
 
     const getProgressValue = () => {
         let currentLessonNumber

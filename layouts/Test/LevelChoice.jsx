@@ -43,7 +43,7 @@ export default function LevelChoice() {
         }
         
       } catch (err) {
-        console.log(err)
+      
         alert('Произошла ошибка')
         setIsLoading(false)
       }  

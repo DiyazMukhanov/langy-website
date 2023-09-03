@@ -10,7 +10,7 @@ import Loader from "@/components/Loader"
 
 export default function Profile() {
     const userCtx = useContext(UserContext)
-    console.log(userCtx.userData)
+    
     const router = useRouter()
     const [isLoading, setIsLoading] = useState(false)
 
@@ -25,7 +25,7 @@ export default function Profile() {
        if(!userChoice) {
           return
        } else {
-        console.log('clicked on yes')
+       
         setIsLoading(true)
         try {
             const response = await resetProgress()
@@ -35,7 +35,7 @@ export default function Profile() {
                 
             
         } catch (err) {
-            console.log(err)
+          
             alert('Что-то пошло не так. Повторите попытку')
             setIsLoading(false)
         }
@@ -53,7 +53,7 @@ export default function Profile() {
                       <p className={styles.name}>{userCtx?.userData?.name}</p>
                       <h2>Мой уровень</h2>
                       <div className={styles.level}>{capitalizeFirst(userCtx?.userData?.level)}</div>
-                      <p className={styles.service} onClick={() => router.push('/service')}>Написать в службу поддержки</p>
+                      <p className={styles.service} onClick={() => router.push('/service')}>Написать в службу поддержки / Оставить отзыв</p>
                       <p className={styles.service} onClick={handleResetProgress}>Сбросить мой прогресс</p>
                   </div>
                   <SubscriptionCard userData={userCtx?.userData}/>
