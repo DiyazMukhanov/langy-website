@@ -59,7 +59,7 @@
 }
 
 .dropZone {
-    width: 130px;
+    width: 100px;
     height: 44px;
     font-weight: 500;
     border: solid var(--color-grey) 1px;
@@ -74,6 +74,11 @@
     align-items: center;
     gap: 10px;
     font-weight: 600;
+    
+
+    @include size-tablet {
+        flex-wrap: wrap;
+    }
 }
 
 .bottom {

@@ -189,7 +189,10 @@ export default function TestLessonLayout({questions, nextUrl, currentLessonData,
             </div>
 
             <div className={styles.middle}>
+                <div className={styles.firstPartBlock}>
                 {questions[currentQuestion - 1].firstPart}
+                </div>
+                
                 <div 
                 className={classNames(
                 styles.dropZone,
