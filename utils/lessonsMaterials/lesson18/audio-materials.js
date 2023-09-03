@@ -138,7 +138,7 @@ export const wordsWithTranslations = [
     { en: 'Grande', ru: 'Гранде' },
     { en: 'These', ru: 'Эти' },
     { en: 'provide', ru: 'обеспечивают' },
-    { en: 'a', ru: 'достаточное' },
+    { en: 'a', ru: 'артикль' },
     { en: 'sufficient', ru: 'достаточное' },
     { en: 'amount', ru: 'количество' },
     { en: 'drinking', ru: 'питьевой' },
@@ -352,6 +352,4 @@ export const wordsWithTranslations = [
     { en: '“melting', ru: 'тающий' },
     { en: 'pot”', ru: 'котёл' },
     { en: 'crosscultural', ru: 'межкультурный' },
-    
-    
 ];

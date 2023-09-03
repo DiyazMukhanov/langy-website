@@ -74,7 +74,17 @@ export default function VideoLessonLayout({videoTasks, nextUrl, lessonNumber, cu
                             width="100%"
                             height="100%"
                             controls={true}
+                            // config={{
+                            //     youtube: {
+                            //       playerVars: {
+                            //         modestbranding: 1, // Minimal YouTube branding
+                            //         rel: 0, // Prevent related videos
+                            //         origin: window.location.origin, // Specify your website's domain
+                            //       },
+                            //     },
+                            //   }}
                         />}
+                        
                         </div>   
                     </div>
     
