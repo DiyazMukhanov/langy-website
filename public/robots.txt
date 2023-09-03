@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /lessons
+Disallow: /profile
+Disallow: /subscription
+Disallow: /admin
