@@ -15,7 +15,7 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
     const [progressValue, setProgressValue] = useState(0)
     const lessonsSummary = userCtx.lessonsSummary
     const updatedLessonsSummary = userCtx.getUpdatedLessonsSummary()
-    console.log(updatedLessonsSummary)
+    
     const getProgressValue = () => {
         let currentLessonNumber
         let currentSublessonNumber
@@ -29,8 +29,7 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
                         currentLessonNumber = lesson.lessonNumber
                     }
 
-                    if(lesson.lessonNumber > 8 && lesson.lessonNumber < 17 ) {
-                        console.log('here')
+                    if(lesson.lessonNumber > 8 && lesson.lessonNumber < 17 ) { 
                         currentLessonNumber = lesson.lessonNumber - 8
                     }
 
@@ -46,8 +45,6 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
         
         return currentSublessonNumber/32*100
     }
-
-    console.log(getProgressValue())
 
     useEffect(() => {
         const getProgress = async () => {
