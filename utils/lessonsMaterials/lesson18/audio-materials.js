@@ -344,5 +344,14 @@ export const wordsWithTranslations = [
     { en: 'celebrations', ru: 'празднования' },
     { en: 'holidays', ru: 'праздники' },
     { en: 'unite', ru: 'объединяют' },
-    { en: 'Americans', ru: 'американцев' }
+    { en: 'Americans', ru: 'американцев' },
+    { en: 'country’s', ru: 'страны' },
+    { en: 'socalled', ru: 'так называемых' },
+    { en: 'lawmaking', ru: 'законо выспускающий' },
+    { en: 'wellknown', ru: 'известный' },
+    { en: '“melting', ru: 'тающий' },
+    { en: 'pot”', ru: 'котёл' },
+    { en: 'crosscultural', ru: 'межкультурный' },
+    
+    
 ];

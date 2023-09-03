@@ -1,4 +1,4 @@
-export const lessonsSummaryInitial = [
+export const lessonsDefault = [
     {
         title: 'Elementary - Урок 1',
         lessonNumber: 1,

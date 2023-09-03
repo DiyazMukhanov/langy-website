@@ -8,7 +8,6 @@ import  { getProgressData, setCurrentLessonData }  from "../../api/user";
 import Loader from "@/components/Loader";
 import ProtectPage from "@/components/ProtectPage";
 import { getThisLessonNumber } from "@/utils/getThisLessonNumber";
-// import { lessonsSummaryInitial } from "@/utils/lessonsSummary";
 
 export default function LessonLayout({ children, chapter, withoutProgress, currentLessonData, subscriptionIsNeeded }) {
     const userCtx = useContext(UserContext)
@@ -16,7 +15,7 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
     const [progressValue, setProgressValue] = useState(0)
     const lessonsSummary = userCtx.lessonsSummary
     const updatedLessonsSummary = userCtx.getUpdatedLessonsSummary()
-
+    console.log(updatedLessonsSummary)
     const getProgressValue = () => {
         let currentLessonNumber
         let currentSublessonNumber
@@ -31,6 +30,7 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
                     }
 
                     if(lesson.lessonNumber > 8 && lesson.lessonNumber < 17 ) {
+                        console.log('here')
                         currentLessonNumber = lesson.lessonNumber - 8
                     }
 
@@ -43,9 +43,11 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
                 }
             }) 
         })
-
+        
         return currentSublessonNumber/32*100
     }
+
+    console.log(getProgressValue())
 
     useEffect(() => {
         const getProgress = async () => {
@@ -65,27 +67,27 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
 
             let indexOfCurrentLesson
 
-            // const updatedLessonsSummary = lessonsSummary.map((lesson, index) => {
+            const updatedLessonsSummary = lessonsSummary.map((lesson, index) => {
                 
-            //     if(currentLessonData.currentLesson === index + 1) {
-            //         lesson.lessons[lessonsIndexes[currentLessonData.currentChapter]].isCurrent = true
-            //         indexOfCurrentLesson = lessonsIndexes[currentLessonData.currentChapter]
-            //     }
+                if(currentLessonData.currentLesson === index + 1) {
+                    lesson.lessons[lessonsIndexes[currentLessonData.currentChapter]].isCurrent = true
+                    indexOfCurrentLesson = lessonsIndexes[currentLessonData.currentChapter]
+                }
 
-            //     lesson.lessons.map(item => {
+                lesson.lessons.map(item => {
                 
-            //         if(item.isCurrent === true ) {
+                    if(item.isCurrent === true ) {
                         
-            //             if(chapterCodes[item.chapterCode] !== currentLessonData.currentChapter ) {
-            //                item.isCurrent = false
-            //             }
-            //         }
-            //     })
+                        if(chapterCodes[item.chapterCode] !== currentLessonData.currentChapter ) {
+                           item.isCurrent = false
+                        }
+                    }
+                })
 
-            //     return lesson
-            // })
+                return lesson
+            })
 
-            // userCtx.setLessonsSummary(updatedLessonsSummary)
+            userCtx.setLessonsSummary(updatedLessonsSummary)
 
             try {
                 const progressData = await getProgressData()

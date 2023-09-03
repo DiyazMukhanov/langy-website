@@ -1,12 +1,13 @@
 import React, { useState } from "react"
 import { useRouter } from "next/router"
-import { getLessonsSummaryInitial } from "./../utils/lessonsSummary"
+import { lessonsSummaryInitial } from "./../utils/lessonsSummary"
+import { lessonsDefault } from "@/utils/lessonsDefault"
 
 export const UserContext = React.createContext({
     userData: {},
     setUserData: () => {},
     logOut: () => {},
-    // lessonsSummary: [],
+    lessonsSummary: [],
     setProgressData: () => {},
     progressData: [],
     getUpdatedLessonsSummary: () => {}
@@ -15,10 +16,10 @@ export const UserContext = React.createContext({
 const UserProvider = (props) => {
     const [userData, setUserData] = useState(null)
     const router = useRouter()
-    const lessonsSummaryInitial = getLessonsSummaryInitial()
-    const lessonSummaryForMutation = [...lessonsSummaryInitial]
     
-    // const [lessonsSummary, setLessonsSummary] = useState(lessonSummaryForMutation)
+    // const lessonSummaryForMutation = [...lessonsSummaryInitial]
+    
+    const [lessonsSummary, setLessonsSummary] = useState(lessonsSummaryInitial)
   
     const [progressData, setProgressData] = useState(null)
   
@@ -33,9 +34,9 @@ const UserProvider = (props) => {
     const getUpdatedLessonsSummary = () => {
         let updatedLessonsSummary;
         if(progressData === null || progressData.length === 0) {
-            return lessonsSummaryInitial
+            return lessonsDefault
         } else {
-            updatedLessonsSummary = lessonSummaryForMutation.map(lesson => {
+            updatedLessonsSummary = lessonsSummary.map(lesson => {
                 progressData.map(progressItem => {
                     if(progressItem.lesson === lesson.lessonNumber) {
                         
@@ -63,8 +64,8 @@ const UserProvider = (props) => {
         userData,
         setUserData,
         logOut,
-        // lessonsSummary,
-        // setLessonsSummary,
+        lessonsSummary,
+        setLessonsSummary,
         setProgressData,
         progressData,
         getUpdatedLessonsSummary
