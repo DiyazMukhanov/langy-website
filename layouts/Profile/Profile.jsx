@@ -25,13 +25,15 @@ export default function Profile() {
        if(!userChoice) {
           return
        } else {
+        console.log('clicked on yes')
         setIsLoading(true)
         try {
             const response = await resetProgress()
-            if(response) {
-                setIsLoading(false)
-                alert('Ваш прогресс сброшен!')
-            }
+            alert('Ваш прогресс сброшен!')
+            userCtx.setProgressData(null)
+            setIsLoading(false)
+                
+            
         } catch (err) {
             console.log(err)
             alert('Что-то пошло не так. Повторите попытку')

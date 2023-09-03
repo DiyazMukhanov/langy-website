@@ -1,12 +1,12 @@
 import React, { useState } from "react"
 import { useRouter } from "next/router"
-import { lessonsSummaryInitial } from "./../utils/lessonsSummary"
+import { getLessonsSummaryInitial } from "./../utils/lessonsSummary"
 
 export const UserContext = React.createContext({
     userData: {},
     setUserData: () => {},
     logOut: () => {},
-    lessonsSummary: [],
+    // lessonsSummary: [],
     setProgressData: () => {},
     progressData: [],
     getUpdatedLessonsSummary: () => {}
@@ -15,11 +15,14 @@ export const UserContext = React.createContext({
 const UserProvider = (props) => {
     const [userData, setUserData] = useState(null)
     const router = useRouter()
+    const lessonsSummaryInitial = getLessonsSummaryInitial()
+    const lessonSummaryForMutation = [...lessonsSummaryInitial]
     
-    const [lessonsSummary, setLessonsSummary] = useState(lessonsSummaryInitial)
+    // const [lessonsSummary, setLessonsSummary] = useState(lessonSummaryForMutation)
+    console.log('lessonsSummaryInitial', lessonsSummaryInitial)
     
     const [progressData, setProgressData] = useState(null)
-    
+    console.log('progressData', progressData)
     const lessonsIndexes = {
         gr: 0,
         au: 1,
@@ -30,8 +33,10 @@ const UserProvider = (props) => {
     // Get updated lessonsSummary upon updating of progressData which we get from server
     const getUpdatedLessonsSummary = () => {
         let updatedLessonsSummary;
-        if(progressData !== null) {
-             updatedLessonsSummary = lessonsSummary.map(lesson => {
+        if(progressData === null || progressData.length === 0) {
+            return lessonsSummaryInitial
+        } else {
+            updatedLessonsSummary = lessonSummaryForMutation.map(lesson => {
                 progressData.map(progressItem => {
                     if(progressItem.lesson === lesson.lessonNumber) {
                         
@@ -41,9 +46,6 @@ const UserProvider = (props) => {
 
                 return lesson
             })
-
-        } else {
-            return lessonsSummary
         }
         
         return updatedLessonsSummary
@@ -62,8 +64,8 @@ const UserProvider = (props) => {
         userData,
         setUserData,
         logOut,
-        lessonsSummary,
-        setLessonsSummary,
+        // lessonsSummary,
+        // setLessonsSummary,
         setProgressData,
         progressData,
         getUpdatedLessonsSummary
