@@ -8,9 +8,9 @@ export default function Document() {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link crossOrigin="true" rel="preconnect" href="https://fonts.gstatic.com" />
       <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
-      <meta name="description">
-					Уроки английского языка онлайн.
-				</meta>
+      <meta name="description" content="Уроки английского языка онлайн"/>
+					
+				
       <Script
       id='yandex'
       strategy="beforeInteractive"
