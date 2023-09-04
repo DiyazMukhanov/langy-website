@@ -77,7 +77,7 @@ export const wordsWithTranslations = [
     { en: "higher", ru: "высшее" },
     { en: "education", ru: "образование" },
     { en: "path", ru: "путь" },
-    { en: "is", ru: "это" },  // "is" is the same in both languages
+    { en: "is", ru: "есть" },  // "is" is the same in both languages
     { en: "always", ru: "всегда" },
     { en: "hard", ru: "трудно" },
     { en: "You", ru: "Вы" },
@@ -98,7 +98,7 @@ export const wordsWithTranslations = [
     { en: "this", ru: "этом" },
     { en: "field", ru: "область" },
     { en: "I", ru: "Я" },
-    { en: "am", ru: "я" },
+    { en: "am", ru: "есть" },
     { en: "going", ru: "собираюсь" },
     { en: "tell", ru: "рассказать" },
     { en: "about", ru: "о" },
@@ -115,7 +115,7 @@ export const wordsWithTranslations = [
     { en: "Management", ru: "Управление" },
     { en: "program", ru: "программа" },
     { en: "at", ru: "в" },
-    { en: "the", ru: "в" },
+    { en: "the", ru: "определенный артикль" },
     { en: "faculty", ru: "факультет" },
     { en: "of", ru: "из" },
     { en: "Economics", ru: "Экономика" },
@@ -126,7 +126,7 @@ export const wordsWithTranslations = [
     { en: "years", ru: "года" },
     { en: "when", ru: "когда" },
     { en: "finish", ru: "закончите" },
-    { en: "will", ru: "вы" },
+    { en: "will", ru: ",будет" },
     { en: "get", ru: "получите" },
     { en: "bachelor", ru: "бакалавр" },
     { en: "s", ru: "s" },  // Possibly the same in both languages
@@ -134,12 +134,12 @@ export const wordsWithTranslations = [
     { en: "After", ru: "После" },
     { en: "planning", ru: "планирования" },
     { en: "apply", ru: "подать заявку" },
-    { en: "master", ru: "мастер" },
+    { en: "master", ru: "магистратура" },
     { en: "which", ru: "который" },
     { en: "2", ru: "2" },
     { en: "more", ru: "ещё" },
     { en: "University", ru: "Университет" },
-    { en: "Pecs", ru: "Печ" },
+    { en: "Pecs", ru: "Печский" },
     { en: "huge", ru: "огромный" },
     { en: "with", ru: "с" },
     { en: "many", ru: "множеством" },
@@ -223,5 +223,9 @@ export const wordsWithTranslations = [
     { en: "hope", ru: "надежда" },
     { en: "dream", ru: "мечта" },
     { en: "after", ru: "после" },
-    { en: "job", ru: "работы" }
+    { en: "job", ru: "работы" },
+    { en: "master’s", ru: "магистратура" },
+    { en: "bachelor’s", ru: "бакалавр" },
+    
+
 ];

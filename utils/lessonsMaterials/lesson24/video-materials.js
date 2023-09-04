@@ -32,7 +32,7 @@ export const videoTasks = [
             {
                 id: 2,
                 answer: "leaves",
-                isCorrect: false
+                isCorrect: true
             },
             {
                 id: 3,

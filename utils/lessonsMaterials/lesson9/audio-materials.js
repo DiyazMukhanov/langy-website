@@ -77,7 +77,7 @@ export const wordsWithTranslations = [
     { en: 'my', ru: 'мои' },
     { en: 'weekends', ru: 'выходные' },
     { en: 'in', ru: 'в' },
-    { en: 'a', ru: 'в' },
+    { en: 'a', ru: 'не определенный артикль' },
     { en: 'variety', ru: 'разнообразие' },
     { en: 'of', ru: 'из' },
     { en: 'ways', ru: 'способов' },
@@ -86,8 +86,8 @@ export const wordsWithTranslations = [
     { en: 'like', ru: 'нравится' },
     { en: 'to', ru: 'чтобы' },
     { en: 'relax', ru: 'расслабиться' },
-    { en: 'at', ru: 'дома' },
-    { en: 'home', ru: 'или' },
+    { en: 'at', ru: 'не переводится' },
+    { en: 'home', ru: 'дом' },
     { en: 'and', ru: 'и' },
     { en: 'catch', ru: 'поймать' },
     { en: 'up', ru: 'догонять' },
@@ -116,10 +116,10 @@ export const wordsWithTranslations = [
     { en: 'include', ru: 'включает' },
     { en: 'going', ru: 'пойти' },
     { en: 'for', ru: 'на' },
-    { en: 'hike', ru: 'поход' },
+    { en: 'hike', ru: 'пеший поход' },
     { en: 'bike', ru: 'велосипед' },
     { en: 'ride', ru: 'поездка' },
-    { en: 'the', ru: 'в' },
+    { en: 'the', ru: 'определенный артикль' },
     { en: 'park', ru: 'парк' },
     { en: 'playing', ru: 'играть' },
     { en: 'sport', ru: 'спорт' },
@@ -141,7 +141,7 @@ export const wordsWithTranslations = [
     { en: 'lot', ru: 'много' },
     { en: 'homework', ru: 'домашней работы' },
     { en: 'projects', ru: 'проектов' },
-    { en: 'due', ru: 'должно быть сдано' },
+    { en: 'due', ru: 'крайний срок' },
     { en: 'studying', ru: 'учимся' },
     { en: 'working', ru: 'работаем' },
     { en: 'school', ru: 'школе' },
@@ -175,5 +175,6 @@ export const wordsWithTranslations = [
     { en: 'doing', ru: 'делая' },
     { en: 'things', ru: 'вещи' },
     { en: 'that', ru: 'которые' }
+
   ];
   

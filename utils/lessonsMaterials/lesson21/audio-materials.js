@@ -73,7 +73,6 @@ export const audioTasks = [
 ]
 
 export const wordsWithTranslations = [
-    { en: '0', ru: '0' }, // Assuming these are placeholders or indices
     { en: 'New', ru: 'Нью' },
     { en: 'York', ru: 'Йорк' },
     { en: 'City', ru: 'Город' },
@@ -107,10 +106,10 @@ export const wordsWithTranslations = [
     { en: '8', ru: '8' },
     { en: 'million', ru: 'миллионов' },
     { en: 'people', ru: 'людей' },
-    { en: 'There', ru: 'Есть' },
-    { en: 'are', ru: 'много' },
-    { en: 'many', ru: 'вещей' },
-    { en: 'things', ru: 'которые' },
+    { en: 'There', ru: 'Там' },
+    { en: 'are', ru: 'есть' },
+    { en: 'many', ru: 'много' },
+    { en: 'things', ru: 'вещей' },
     { en: 'make', ru: 'делают' },
     { en: 'unique', ru: 'уникальным' },
     { en: 'Its', ru: 'Его' },
@@ -128,7 +127,7 @@ export const wordsWithTranslations = [
     { en: 'Trade', ru: 'Торговый' },
     { en: 'Center', ru: 'Центр' },
     { en: 'recognized', ru: 'признанный' },
-    { en: 'around', ru: 'во' },
+    { en: 'around', ru: 'вокруг' },
     { en: 'world', ru: 'мире' },
     { en: 'The', ru: 'Этот' },
     { en: 'also', ru: 'также' },

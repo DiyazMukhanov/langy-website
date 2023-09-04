@@ -1,4 +1,4 @@
-const en = `There are four seasons in a year: spring, summer, fall (also known as autumn), and winter. Spring is characterized by warmer temperatures, melting snow, and the return of colorful flowers and plants. It is a time of renewal and growth, as the earth emerges from the cold of winter. Summer is the hottest season of the year, with long, sunny days and high temperatures. It is a time of outdoor activities and vacations, as people take advantage of the warm weather. Fall, or autumn, is a time of change, as the leaves on the trees turn vibrant shades of red, orange, and yellow before falling to the ground. The temperatures begin to cool, and people start to prepare for the colder months ahead. Winter is the coldest season of the year, with shorter days and lower temperatures. It is a time of snow and ice, as well as holiday celebrations like Christmas. Each season brings its own unique beauty and characteristics, and they all play an important role in the natural cycle of the earth. Whether you enjoy the warmth of summer or the snowy landscapes of winter, there is something special about each season of the year.`
+const en = `There are four seasons in a year: spring, summer, fall (also known as autumn), and winter. Spring is characterized by warmer temperatures, melting snow, and the return of colorful flowers and plants. It is a time of renewal and growth, as the earth emerges from the cold of winter. Summer is the hottest season of the year, with long, sunny days and high temperatures. It is a time of outdoor activities and vacations, as people take advantage of the warm weather. Fall, or autumn, is a time of change, as the leaves on the trees turn vibrant shades of red, orange, and yellow before falling to the ground. The temperatures begin to cool, and people start to prepare for the colder months ahead. Winter is the coldest season of the year, with shorter days and lower temperatures. It is a time of snow and ice. Each season brings its own unique beauty and characteristics, and they all play an important role in the natural cycle of the earth. Whether you enjoy the warmth of summer or the snowy landscapes of winter, there is something special about each season of the year.`
 const ru = `В году четыре времени года: весна, лето, осень (также известная как осенний период) и зима. Весна характеризуется повышением температуры, таянием снега и возвращением ярких цветов и растений. Это время обновления и роста, когда земля пробуждается от зимнего холода. Лето - самое жаркое время года, с долгими солнечными днями и высокими температурами. Это время активного отдыха и каникул, так как люди пользуются теплой погодой. Осень - это время перемен, когда листья на деревьях приобретают яркие оттенки красного, оранжевого и желтого, прежде чем упасть на землю. Температура начинает понижаться, и люди начинают готовиться к предстоящим холодным месяцам. Зима - самое холодное время года, с более короткими днями и более низкими температурами. Это время снега и льда, а также праздничных торжеств, таких как Рождество. Каждое время года привносит свою неповторимую красоту и особенности, и все они играют важную роль в естественном круговороте земли. Наслаждаетесь ли вы теплом лета или снежными пейзажами зимы, в каждом времени года есть что-то особенное.`
 
 export const text = {
@@ -91,12 +91,12 @@ export const wordsWithTranslations = [
     { en: 'Spring', ru: 'Весна' },
     { en: 'is', ru: 'является' },
     { en: 'characterized', ru: 'характеризуется' },
-    { en: 'by', ru: 'теплыми' },
-    { en: 'warmer', ru: 'температурами' },
-    { en: 'temperatures', ru: 'расплавленным' },
+    { en: 'by', ru: 'предлог' },
+    { en: 'warmer', ru: 'теплее' },
+    { en: 'temperatures', ru: 'температурами' },
     { en: 'melting', ru: 'таянием' },
     { en: 'snow', ru: 'снега' },
-    { en: 'the', ru: 'возвращением' },
+    { en: 'the', ru: 'арткиль' },
     { en: 'return', ru: 'ярких' },
     { en: 'of', ru: 'цветов' },
     { en: 'colorful', ru: 'растений' },
@@ -187,4 +187,6 @@ export const wordsWithTranslations = [
     { en: 'special', ru: 'особенное' },
     { en: 'about', ru: 'в' },
     { en: 'each', ru: 'каждом' },
+    { en: 'year', ru: 'год' },
+     
 ];

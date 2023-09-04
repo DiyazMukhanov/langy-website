@@ -92,7 +92,7 @@ export const wordsWithTranslations = [
     { en: 'more', ru: 'больше' },
     { en: 'enjoyable', ru: 'приятным' },
     { en: 'I', ru: 'Я' },
-    { en: 'am', ru: 'я' },
+    { en: 'am', ru: 'есть' },
     { en: 'going', ru: 'собираюсь' },
     { en: 'tell', ru: 'рассказать' },
     { en: 'you', ru: 'тебе' },
@@ -106,7 +106,7 @@ export const wordsWithTranslations = [
     { en: 'This', ru: 'Этот' },
     { en: 'called', ru: 'называется' },
     { en: 'history', ru: 'история' },
-    { en: 'the', ru: 'в' },
+    { en: 'the', ru: 'определенный артикль' },
     { en: 'class', ru: 'классе' },
     { en: 'never', ru: 'никогда' },
     { en: 'skip', ru: 'пропускаю' },
@@ -131,7 +131,7 @@ export const wordsWithTranslations = [
     { en: 'for', ru: 'для' },
     { en: 'me', ru: 'меня' },
     { en: 'like', ru: 'как' },
-    { en: 'a', ru: 'как' },
+    { en: 'a', ru: 'не определенный артикль' },
     { en: 'breath', ru: 'вдохновение' },
     { en: 'fresh', ru: 'свежий' },
     { en: 'air', ru: 'воздух' },
@@ -201,6 +201,8 @@ export const wordsWithTranslations = [
     { en: 'important', ru: 'важно' },
     { en: 'better', ru: 'лучше' },
     { en: 'than', ru: 'чем' },
-    { en: 'others', ru: 'другие' }
+    { en: 'others', ru: 'другие' },
+    { en: 'can’t', ru: 'не можешь' }
+    
     ];
   

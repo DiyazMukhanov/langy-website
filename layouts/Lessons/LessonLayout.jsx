@@ -137,7 +137,7 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
                 <div className={styles.rightSide}>
                     <div>
                     <Typography size='small' element='h3' className={styles.text}>{currentLessonData.level} - Lesson {getThisLessonNumber(currentLessonData.currentLesson)}</Typography>
-                    {/* {formattedDate && <p className={styles.subscriptionPeriodMobileOnly}>подписка действует до {formattedDate}</p>} */}
+                    
                     {chapter === 'audio' && <p className={styles.mobileViewOnly}>Для более эффективного усвоения, рекомендуем прослушивать и прочитывать текст до полного понимания</p>}
                     </div>
                     {!withoutProgress && (<div className={styles.progressContainer}>

@@ -75,7 +75,7 @@ export const audioTasks = [
 export const wordsWithTranslations = [
     { en: "Today", ru: "Сегодня" },
     { en: "was", ru: "был" },
-    { en: "a", ru: "обычный" },
+    { en: "a", ru: "не определенный артикль" },
     { en: "typical", ru: "типичный" },
     { en: "school", ru: "школьный" },
     { en: "day", ru: "день" },
@@ -90,13 +90,13 @@ export const wordsWithTranslations = [
     { en: "and", ru: "и" },
     { en: "got", ru: "подготовился" },
     { en: "ready", ru: "готов" },
-    { en: "the", ru: "затем" },
+    { en: "the", ru: "определенный артикль" },
     { en: "had", ru: "поел" },
     { en: "breakfast", ru: "завтрак" },
     { en: "packed", ru: "упаковал" },
     { en: "my", ru: "свою" },
     { en: "bag", ru: "сумку" },
-    { en: "with", ru: "со всеми" },
+    { en: "with", ru: "со" },
     { en: "all", ru: "всеми" },
     { en: "things", ru: "вещами" },
     { en: "needed", ru: "необходимыми" },
@@ -172,5 +172,7 @@ export const wordsWithTranslations = [
     { en: "rest", ru: "отдых" },
     { en: "tonight", ru: "сегодня вечером" },
     { en: "fresh", ru: "свежий" },
-    { en: "tomorrow", ru: "завтра" }
+    { en: "tomorrow", ru: "завтра" },
+
+
 ];

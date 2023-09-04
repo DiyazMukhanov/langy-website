@@ -73,12 +73,12 @@ export const audioTasks = [
 ]
 
 export const wordsWithTranslations = [
-    { en: 'The', ru: 'The' },
+    { en: 'The', ru: 'Артикль' },
   { en: 'system', ru: 'система' },
   { en: 'of', ru: 'из' },
   { en: 'education', ru: 'образования' },
   { en: 'in', ru: 'в' },
-  { en: 'the', ru: 'the' },
+  { en: 'the', ru: 'артикль' },
   { en: 'United', ru: 'United' },
   { en: 'States', ru: 'States' },
   { en: 'is', ru: 'является' },
@@ -130,7 +130,7 @@ export const wordsWithTranslations = [
   { en: 'age', ru: 'возрастов' },
   { en: 'groups', ru: 'групп' },
   { en: 'from', ru: 'от' },
-  { en: 'kindergarten', ru: 'дошкольника' },
+  { en: 'kindergarten', ru: 'детский сад' },
   { en: 'years', ru: 'лет' },
   { en: 'old', ru: 'старый' },
   { en: '12th', ru: '12-й' },
@@ -278,5 +278,8 @@ export const wordsWithTranslations = [
   { en: 'volunteering', ru: 'волонтерство' },
   { en: 'work', ru: 'работу' },
   { en: 'traveling', ru: 'путешествия' },
+  { en: 'children’s', ru: 'детей' },
+  { en: 'nontraditional', ru: 'нетрадиционный' },
+   
   ];
   

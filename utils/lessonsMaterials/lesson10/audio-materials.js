@@ -79,12 +79,12 @@ export const wordsWithTranslations = [
     { en: 'time', ru: 'время' },
     { en: 'I', ru: 'я' },
     { en: 'enjoy', ru: 'наслаждаюсь' },
-    { en: 'a', ru: 'разнообразием' },
-    { en: 'variety', ru: 'активностей' },
+    { en: 'a', ru: 'не определенный артикль' },
+    { en: 'variety', ru: ' разнообразием' },
     { en: 'of', ru: 'из' },
     { en: 'activities', ru: 'деятельности' },
     { en: 'On', ru: 'В' },
-    { en: 'the', ru: 'в' },
+    { en: 'the', ru: 'определенный артикль' },
     { en: 'weekends', ru: 'выходные' },
     { en: 'often', ru: 'часто' },
     { en: 'spend', ru: 'провожу' },
@@ -97,7 +97,7 @@ export const wordsWithTranslations = [
     { en: 'mall', ru: 'торговый центр' },
     { en: 'or', ru: 'или' },
     { en: 'out', ru: 'на улицу' },
-    { en: 'eat', ru: 'поедание' },
+    { en: 'eat', ru: 'кушать' },
     { en: 'also', ru: 'также' },
     { en: 'playing', ru: 'играя' },
     { en: 'sports', ru: 'спорт' },
@@ -158,7 +158,7 @@ export const wordsWithTranslations = [
   { en: 'local', ru: 'местном' },
   { en: 'park', ru: 'парке' },
   { en: 'helping', ru: 'помогая' },
-  { en: 'at', ru: 'в' },
+  { en: 'at', ru: 'не преводится' },
   { en: 'food', ru: 'пищевом' },
   { en: 'bank', ru: 'банке' },
   { en: 'Overall', ru: 'В целом' },
@@ -174,6 +174,8 @@ export const wordsWithTranslations = [
   { en: 'relax', ru: 'расслабиться' },
   { en: 'while', ru: 'в то время как' },
   { en: 'staying', ru: 'оставаясь' },
-  { en: 'engaged', ru: 'занятым' }
+  { en: 'engaged', ru: 'занятым' },
+
+
   ];
   
