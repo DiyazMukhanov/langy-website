@@ -22,5 +22,6 @@ export default function Audio() {
    nextUrl={nextUrl}
    currentLessonData={currentLessonData}
    subscriptionIsNeeded={true}
+   textTitle='Global Warming'
    />
 }

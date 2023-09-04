@@ -19,5 +19,6 @@ export default function Audio() {
    nextUrl='/lessons/lesson9/writing'
    currentLessonData={currentLessonData}
    subscriptionIsNeeded={false}
+   textTitle='How I spend my weekends'
    />
 }

@@ -47,7 +47,7 @@ const TranslationCard = ({ word, translation, onRemove, innerRef }) => {
     )
 }
 
-const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc, lessonNumber, nextUrl, currentLessonData, subscriptionIsNeeded}) => {
+const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc, lessonNumber, nextUrl, currentLessonData, subscriptionIsNeeded, textTitle}) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [timeProgress, setTimeProgress] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -276,7 +276,9 @@ const clickHandler = (id) => {
                         </div>
                         }
                        <p className={styles.textCommonSize}>
-                            {textByWords.map((word, index) => (
+                        <p className={styles.textTitle}>{textTitle}</p>
+                        <div className={styles.textBody}>
+                        {textByWords.map((word, index) => (
                                 
                                 <span 
                                 key={index} 
@@ -289,6 +291,8 @@ const clickHandler = (id) => {
                                     {word}{" "}
                                 </span>
                         ))}
+                        </div>
+                        
                         </p>
                     
             </div> : <Button variant="standardMiddleOutlined" onClick={showEnglishHandler}>Показать текст</Button>}
