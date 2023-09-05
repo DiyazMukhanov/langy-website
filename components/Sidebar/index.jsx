@@ -7,6 +7,18 @@ export default function Sidebar({ lessonsSummary }) {
     const router = useRouter()
     const currentLessonRef = useRef(null)
     
+    let found = false
+    for(let i = 0; i < lessonsSummary.length; i++) {
+        for(let j = 0; j< lessonsSummary[i].lessons.length; j++) {
+            if(lessonsSummary[i].lessons[j].isCompleted === false) {
+                if (found) break
+                lessonsSummary[i].lessons[j].isOpened = true
+                found = true
+            }
+        }
+        if (found) break
+    }
+
     const navigationHandler = (lessonNumber, lesson, level) => {
         const lessonsIndexes = {
             gr: 'video',
@@ -43,7 +55,7 @@ export default function Sidebar({ lessonsSummary }) {
                      styles.chapter,
                      {[styles.currentChapter]: lesson.isCurrent},
                      {[styles.completed]: lesson.isCompleted},
-                     {[styles.disabled]: lesson.isCompleted === false},
+                     {[styles.disabled]: lesson.isCompleted === false && !lesson.isOpened},
                  )}
                  ref={lesson.isCurrent ? currentLessonRef : null}
                  onClick={() => navigationHandler(lessonBlock.lessonNumber, lesson, lessonBlock.level)}
