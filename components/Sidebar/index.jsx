@@ -53,7 +53,7 @@ export default function Sidebar({ lessonsSummary }) {
              {lessonBlock.lessons.map(lesson => (
                  <div key={lesson.chapter} className={classNames(
                      styles.chapter,
-                     {[styles.currentChapter]: lesson.isCurrent},
+                     {[styles.currentChapter]: lesson.isOpened},
                      {[styles.completed]: lesson.isCompleted},
                      {[styles.disabled]: lesson.isCompleted === false && !lesson.isOpened},
                  )}

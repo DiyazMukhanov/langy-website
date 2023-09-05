@@ -64,4 +64,4 @@ export const videoTasks = [
     },
 ]
 
-export const videoUrl = 'https://www.youtube.com/watch?v=rglxaZ2-4i4' 
+export const videoUrl = 'https://www.youtube.com/watch?v=RDkx4J__-QY&t=90s' 
