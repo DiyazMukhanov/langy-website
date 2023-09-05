@@ -22,7 +22,7 @@ const UserProvider = (props) => {
     const [lessonsSummary, setLessonsSummary] = useState(lessonsSummaryInitial)
   
     const [progressData, setProgressData] = useState(null)
-    
+    console.log(progressData)
     const lessonsIndexes = {
         gr: 0,
         au: 1,
@@ -39,7 +39,6 @@ const UserProvider = (props) => {
             updatedLessonsSummary = lessonsSummary.map(lesson => {
                 progressData.map(progressItem => {
                     if(progressItem.lesson === lesson.lessonNumber) {
-                        
                         lesson.lessons[lessonsIndexes[progressItem.chapter]].isCompleted = true
                     }
                 })
