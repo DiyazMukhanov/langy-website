@@ -14,39 +14,52 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
     const [isLoading, setIsLoading] = useState(true)
     const [progressValue, setProgressValue] = useState(0)
     const lessonsSummary = userCtx.lessonsSummary
-    const updatedLessonsSummary = userCtx.getUpdatedLessonsSummary()
     
-    const getProgressValue = () => {
-        let currentLessonNumber
-        let currentSublessonNumber
-
-        updatedLessonsSummary.forEach(lesson => {
-            lesson.lessons.forEach((item, index) => {
-                if(item.isCurrent === false) {
-                    return
-                } else {
-                    if(lesson.lessonNumber < 9) {
-                        currentLessonNumber = lesson.lessonNumber
-                    }
-
-                    if(lesson.lessonNumber > 8 && lesson.lessonNumber < 17 ) { 
-                        currentLessonNumber = lesson.lessonNumber - 8
-                    }
-
-                    if(lesson.lessonNumber > 16 ) {
-                        currentLessonNumber = lesson.lessonNumber - 16  
-                    }
-
-                    // currentLessonNumber = lesson.lessonNumber
-                    currentSublessonNumber = (currentLessonNumber - 1) * 4 + index + 1
-                }
-            }) 
-        })
+    const updatedLessonsSummary = userCtx.getUpdatedLessonsSummary()
+     
+    useEffect(() => {
+        // const getProgressValue = () => {
+            let currentLessonNumber = 0
+            let currentSublessonNumber = 0
+            
+                updatedLessonsSummary.forEach(lesson => {
+                    lesson.lessons.forEach((item, index) => {
+                        if(item.isCurrent === false) {
+                            return
+                        } else {
+                            if(lesson.lessonNumber < 9) {
+                                // currentLessonNumber = lesson.lessonNumber
+                                console.log('less 9')
+                                setProgressValue((lesson.lessonNumber - 1) * 4 + index + 1)
+                            }
         
-        return currentSublessonNumber/32*100
-    }
+                            if(lesson.lessonNumber > 8 && lesson.lessonNumber < 17 ) { 
+                                // currentLessonNumber = lesson.lessonNumber - 8
+                                console.log('less 17')
+                                // console.log(lesson.lessonNumber)
+                                setProgressValue((lesson.lessonNumber - 8 - 1) * 4 + index + 1)
+                            }
+        
+                            if(lesson.lessonNumber > 16 ) {
+                                // currentLessonNumber = lesson.lessonNumber - 16  
+                                console.log('more 16')
+                                setProgressValue((lesson.lessonNumber - 16) * 4 + index + 1)
+                            }
+        
+                            currentSublessonNumber = (currentLessonNumber - 1) * 4 + index + 1
+                        }
+                    }) 
+                })
+                
+            
+           
+        // }
+
+        // getProgressValue()
+    }, [userCtx])
 
     useEffect(() => {
+
         const getProgress = async () => {
             const lessonsIndexes = {
                 video: 0,
@@ -142,7 +155,7 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
                     </div>
                     {!withoutProgress && (<div className={styles.progressContainer}>
                         <div style={{
-                    width: `${getProgressValue()}%`,
+                    width: `${progressValue/32*100}%`,
                     height: '100%',
                     background: '#48C61C',
                     borderRadius: '25px'

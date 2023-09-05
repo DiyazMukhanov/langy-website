@@ -22,7 +22,7 @@ const UserProvider = (props) => {
     const [lessonsSummary, setLessonsSummary] = useState(lessonsSummaryInitial)
   
     const [progressData, setProgressData] = useState(null)
-  
+    
     const lessonsIndexes = {
         gr: 0,
         au: 1,
@@ -50,8 +50,7 @@ const UserProvider = (props) => {
         
         return updatedLessonsSummary
     }
-
-   
+    
     const logOut = () => {
         localStorage.setItem('token', null)
         if(router.asPath === '/') {
