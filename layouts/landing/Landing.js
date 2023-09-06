@@ -407,6 +407,11 @@ export default function Landing() {
              />
              </a>
           </div>
+          <div className={styles.footerBottom}>
+            <p onClick={() => router.push('/agreement')}>Публичный договор-оферта</p>
+            <p onClick={() => router.push('/confindentiality')}>Политика конфиденциальности</p>
+            <p onClick={() => router.push('/procedure')}>Описание процедуры оплаты</p>
+          </div>
         </footer>
         </div>        
       )

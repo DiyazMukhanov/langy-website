@@ -481,3 +481,24 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+.footerBottom {
+    // border: solid red 1px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    // gap: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 0;
+    color: white;
+    cursor: pointer;
+
+    & p {
+        margin: 0;
+    }
+
+    @include size-tablet {
+        margin-top: 20px;
+        gap: 10px;
+      }
+}
