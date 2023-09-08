@@ -64,4 +64,4 @@ export const videoTasks = [
     },
 ]
 
-export const videoUrl = 'https://www.youtube.com/watch?v=y0CFWCoxY_U' 
+export const videoUrl = 'https://storage.googleapis.com/langy.su/videos/intermediate/intermediate_2.mov' 
