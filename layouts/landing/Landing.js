@@ -208,7 +208,7 @@ export default function Landing() {
              src={DropOne}
              className={styles.dropOneMobile}
              />
-           <Typography element='h1' className={styles.mainHeading}>Онлайн - платформа для изучения английского языка</Typography>
+           <Typography element='h1' className={styles.mainHeading}>Платформа для изучения английского языка</Typography>
            <div className={styles.headerBottomBlock}>
            <Image
              priority
