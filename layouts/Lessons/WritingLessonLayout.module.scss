@@ -24,6 +24,8 @@
     display: flex;
     justify-content: flex-start;
     resize: none;
+    font-size: 16px;
+    font-style: italic;
 
     @include size-tablet {
         width: 92vw;

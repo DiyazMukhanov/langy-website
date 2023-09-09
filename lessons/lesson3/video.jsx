@@ -20,6 +20,6 @@ export default function Video() {
    lessonNumber={lessonNumber}
    currentLessonData={currentLessonData}
    subscriptionIsNeeded={true}
-   topic='Pronouns / Местоимения'
+   topic='Pronouns'
    />
 }

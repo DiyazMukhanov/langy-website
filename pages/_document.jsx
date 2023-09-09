@@ -9,8 +9,7 @@ export default function Document() {
       <link crossOrigin="true" rel="preconnect" href="https://fonts.gstatic.com" />
       <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
       <meta name="description" content="Уроки английского языка онлайн"/>
-					
-				
+      <meta name="описание" content="Онлайн уроки английского языка"/>		
       <Script
       id='yandex'
       strategy="beforeInteractive"

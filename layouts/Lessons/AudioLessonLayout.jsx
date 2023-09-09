@@ -62,8 +62,8 @@ const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc, l
   
   const innerRef = useRef(null)
   const router = useRouter()
-
   const totalQuestions = audioTasks?.length
+  const playBackRate = lessonNumber < 9 ? 0.8 : 1
   
   useEffect(() => {
     if(typeof window !== 'undefined') {
@@ -106,7 +106,7 @@ const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc, l
       if (isPlaying) {
         audioRef?.current?.play();
         playAnimationRef.current = requestAnimationFrame(progressUpdate);
-        audioRef.current.playbackRate = 0.5
+        audioRef.current.playbackRate = playBackRate
       } else {
         audioRef?.current?.pause();
         cancelAnimationFrame(playAnimationRef.current);
@@ -118,7 +118,9 @@ const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc, l
   const repeat = useCallback(() => {
     const currentTime = audioRef?.current?.currentTime;
     setTimeProgress(currentTime);
-    progressBarRef.current.value = currentTime;
+    if(progressBarRef !== null && progressBarRef.current !== null) {
+      progressBarRef.current.value = currentTime;
+    }
 
     playAnimationRef.current = requestAnimationFrame(repeat);
   }, [audioRef, duration, progressBarRef, setTimeProgress]);
@@ -128,7 +130,7 @@ const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc, l
         if (isPlaying) {
             audioRef?.current?.play();
             playAnimationRef.current = requestAnimationFrame(repeat);
-            audioRef.current.playbackRate = 0.8
+            audioRef.current.playbackRate = playBackRate
           } else {
             audioRef?.current?.pause();
             cancelAnimationFrame(playAnimationRef.current);

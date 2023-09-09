@@ -22,6 +22,6 @@ export default function Video() {
    lessonNumber={lessonNumber}
    currentLessonData={currentLessonData}
    subscriptionIsNeeded={true}
-   topic='Very/Too'
+   topic='Passive voice'
    />
 }

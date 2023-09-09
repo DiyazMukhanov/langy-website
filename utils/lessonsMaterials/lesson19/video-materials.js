@@ -1,64 +1,64 @@
 export const videoTasks = [
     {
         number: 1,
-        title: `She is ___ tired to go out tonight`,
+        title: `The cake was _____ by Mary yesterday.`,
         answers: [
             {
                 id: 1,
-                answer: "very",
+                answer: "bakes",
                 isCorrect: false
             },
             {
                 id: 2,
-                answer: "too",
-                isCorrect: true
+                answer: "is baking",
+                isCorrect: false
             },
             {
                 id: 3,
-                answer: "so",
-                isCorrect: false
+                answer: "baked",
+                isCorrect: true
             }
         ]
     },
     {
         number: 2,
-        title: "2. The cake is ___ delicious I can't stop eating it",
+        title: "2. The book ________ by millions of people.",
         answers: [
             {
                 id: 1,
-                answer: "very",
-                isCorrect: true
+                answer: "reads",
+                isCorrect: false
             },
             {
                 id: 2,
-                answer: "too",
+                answer: "is reading",
                 isCorrect: false
             },
             {
                 id: 3,
-                answer: 'much',
-                isCorrect: false
+                answer: 'has been read',
+                isCorrect: true
             }
         ]
     },
     {
         number: 3,
-        title: '3. The movie was ___ long that I fell asleep',
+        title: '3. The keys ________ in the kitchen.',
         answers: [
             {
                 id: 1,
-                answer: "very",
+                answer: "lost",
                 isCorrect: false
             },
             {
                 id: 2,
-                answer: "too",
-                isCorrect: true
+                answer: "were losing",
+                isCorrect: false
             },
             {
                 id: 3,
-                answer: "much",
-                isCorrect: false
+                answer: "were lost",
+                isCorrect: true
             }
         ]
     },

@@ -59,8 +59,6 @@ export default function WritingLessonLayout({writingTask, nextUrl, currentLesson
       setProgressHandler()
     }
 
-
- 
         return (
             <>
             <LessonLayout chapter='writing' currentLessonData={currentLessonData} subscriptionIsNeeded={subscriptionIsNeeded}>
