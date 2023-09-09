@@ -115,6 +115,7 @@
     width: fit-content;
     font-size: 3.75em;
     color: var(--color-white);
+    text-align: center;
 
     @include size-tablet {
         font-size: 2em;
