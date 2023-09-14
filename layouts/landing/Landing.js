@@ -17,6 +17,7 @@ import Sandwich from '../../public/images/Sandwich.svg'
 import ButtonClose from '../../public/images/Button-close.svg'
 import LogoBlue from '../../public/images/Logo-blue.svg'
 import LogoBlueBottom from '../../public/images/Logo-blue-bottom.svg'
+import Visa from '../../public/images/visa.png'
 import { Typography } from '@/components/Typography'
 import { Button } from '@/components/Button'
 import Advantage from './Advantage'
@@ -26,9 +27,7 @@ import { useState, useContext, useEffect } from 'react'
 import Modal from './Modal'
 import classNames from 'classnames'
 import {useRouter} from "next/router"
-import ProtectPage from '@/components/ProtectPage'
 import { getMe, userLogout } from '@/api/user'
-import { setCurrentLessonData } from '@/api/user'
 import { UserContext } from '@/store/userContext'
 import Loader from '@/components/Loader'
 
@@ -413,6 +412,11 @@ export default function Landing() {
             <p onClick={() => router.push('/procedure')}>Описание процедуры оплаты</p>
             <p>email: admin@langy.su контактный телефон: +7 707 880 51 25</p>
             <p>ИП Куанышева</p>
+            <Image
+             priority
+             src={Visa}
+             className={styles.visa}
+             />
           </div>
         </footer>
         </div>        

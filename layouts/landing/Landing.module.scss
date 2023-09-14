@@ -493,15 +493,22 @@
     padding-bottom: 20px;
     margin-bottom: 0;
     color: white;
-    cursor: pointer;
+    
 
     & p {
         margin: 0;
         // border: solid red 1px;
+        cursor: pointer;
+        width: fit-content;
     }
 
     @include size-tablet {
         margin-top: 20px;
         gap: 10px;
       }
+}
+
+.visa {
+    height: 100px;
+    width: 200px;
 }
