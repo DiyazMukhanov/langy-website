@@ -411,6 +411,8 @@ export default function Landing() {
             <p onClick={() => router.push('/agreement')}>Публичный договор-оферта</p>
             <p onClick={() => router.push('/confindentiality')}>Политика конфиденциальности</p>
             <p onClick={() => router.push('/procedure')}>Описание процедуры оплаты</p>
+            <p>email: admin@langy.su контактный телефон: +7 707 880 51 25</p>
+            <p>ИП Куанышева</p>
           </div>
         </footer>
         </div>        

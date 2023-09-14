@@ -441,8 +441,9 @@
 }
 
 .footer {
-    height: 13.875em;
+    // height: 13.875em;
     background-color: var(--color-primary);
+    // border: solid red 1px;
 
     @include size-tablet {
         height: auto;
@@ -488,14 +489,15 @@
     padding-left: 20px;
     display: flex;
     flex-direction: column;
-    // gap: 10px;
-    padding-bottom: 10px;
+    gap: 10px;
+    padding-bottom: 20px;
     margin-bottom: 0;
     color: white;
     cursor: pointer;
 
     & p {
         margin: 0;
+        // border: solid red 1px;
     }
 
     @include size-tablet {
