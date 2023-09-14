@@ -7,7 +7,7 @@ import Loader from '@/components/Loader'
 import { useRouter } from 'next/router'
 import { setProgressData } from '@/api/user'
 
-export default function WritingLessonLayout({writingTask, nextUrl, currentLessonData, subscriptionIsNeeded, lessonNumber})  {
+export default function WritingLessonLayout({writingTask, nextUrl, currentLessonData, subscriptionIsNeeded, lessonNumber, isBeginner})  {
     const [essay, setEssay] = useState('')
     const [response, setResponse] = useState('')
     const [isLoading, setIsLoading] = useState(false)
@@ -61,7 +61,7 @@ export default function WritingLessonLayout({writingTask, nextUrl, currentLesson
 
         return (
             <>
-            <LessonLayout chapter='writing' currentLessonData={currentLessonData} subscriptionIsNeeded={subscriptionIsNeeded}>
+            <LessonLayout chapter='writing' currentLessonData={currentLessonData} subscriptionIsNeeded={subscriptionIsNeeded} isBeginner={isBeginner}>
                <div className={styles.lessonContainer}>
                   <p className={styles.title}>
                      {writingTask}

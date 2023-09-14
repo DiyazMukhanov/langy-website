@@ -8,14 +8,12 @@ import  { getProgressData, setCurrentLessonData }  from "../../api/user";
 import Loader from "@/components/Loader";
 import ProtectPage from "@/components/ProtectPage";
 import { getThisLessonNumber } from "@/utils/getThisLessonNumber";
-import { useRouter } from "next/router";
-import { lessonsDefault } from "@/utils/lessonsDefault"
 
-export default function LessonLayout({ children, chapter, withoutProgress, currentLessonData, subscriptionIsNeeded }) {
+export default function LessonLayout({ children, chapter, withoutProgress, currentLessonData, subscriptionIsNeeded, isBeginner }) {
     const userCtx = useContext(UserContext)
     const [isLoading, setIsLoading] = useState(true)
     // const [progressValue, setProgressValue] = useState(0)
-    const lessonsSummary = userCtx.getUpdatedLessonsSummary()
+    const lessonsSummary = isBeginner ? userCtx.getUpdatedBeginnerLessonsSummary() : userCtx.getUpdatedLessonsSummary()
     
     let progressValue
     if(currentLessonData.currentLesson < 9) {
@@ -87,13 +85,6 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
       
     }, [])
 
-    const progress = {
-        grammar: 25,
-        audio: 50,
-        writing: 75,
-        test: 100
-    }
-
     let dateObject 
     let options 
     let formattedDate 
@@ -118,7 +109,7 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
         <ProtectPage currentLesson={currentLessonData.currentLesson} currentChapter={currentLessonData.currentChapter} subscriptionIsNeeded={subscriptionIsNeeded}>
             <Header variant='white' lessonsSummary={lessonsSummary}/>
             <div className={styles.container}>
-                <SideBarDesktop lessonsSummary={lessonsSummary} expires={formattedDate}/>
+                <SideBarDesktop lessonsSummary={lessonsSummary} expires={formattedDate} isBeginner={isBeginner}/>
                 <div className={styles.rightSide}>
                     <div>
                     <Typography size='small' element='h3' className={styles.text}>{currentLessonData.level} - Lesson {getThisLessonNumber(currentLessonData.currentLesson)}</Typography>

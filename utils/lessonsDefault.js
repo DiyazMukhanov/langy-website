@@ -673,7 +673,7 @@ export const lessonsDefault = [
         level: 'elementary',
         lessons: [
             {
-                chapter: 'Grammar: Passive voice',
+                chapter: 'Grammar: very/too',
                 chapterCode: 'gr',
                 ru: 'Грамматика',
                 isCurrent: false,

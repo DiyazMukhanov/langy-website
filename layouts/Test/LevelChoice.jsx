@@ -24,6 +24,11 @@ export default function LevelChoice() {
     const goToHigherLevelHandler = async (level) => {
       setIsLoading(true)
 
+      if(level === 'beginner') {
+        router.push('/lessons/beginner/lesson1/video')
+        // setIsLoading(false)
+      }
+
       if(level === 'elementary') {
         router.push('/lessons/lesson1/video')
         // setIsLoading(false)
@@ -58,6 +63,7 @@ export default function LevelChoice() {
         <div className={styles.container}>
             <Typography size='small' element='h3'>Выберите уровень</Typography>
             <div className={styles.levels}>
+               <LevelBlock onClick={() => goToHigherLevelHandler('beginner')}>Beginner</LevelBlock>
                <LevelBlock onClick={() => goToHigherLevelHandler('elementary')}>Elementary</LevelBlock>
                <LevelBlock onClick={() => goToHigherLevelHandler('preIntermediate')}>Pre-Intermediate</LevelBlock>
                <LevelBlock onClick={() => goToHigherLevelHandler('intermediate')}>Intermediate</LevelBlock>

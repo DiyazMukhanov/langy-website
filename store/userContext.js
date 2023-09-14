@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import { useRouter } from "next/router"
 import { lessonsSummaryInitial } from "./../utils/lessonsSummary"
+import { beginnerLessonsInitial } from "./../utils/beginnerLessonsInitial"
+import { beginnerLessonsDefault } from "./../utils/beginnerLessonsDefault" 
 import { lessonsDefault } from "@/utils/lessonsDefault"
 
 export const UserContext = React.createContext({
@@ -10,7 +12,8 @@ export const UserContext = React.createContext({
     lessonsSummary: [],
     setProgressData: () => {},
     progressData: [],
-    getUpdatedLessonsSummary: () => {}
+    getUpdatedLessonsSummary: () => {},
+    getUpdatedBeginnerLessonsSummary: () => {},
 })
 
 const UserProvider = (props) => {
@@ -20,6 +23,7 @@ const UserProvider = (props) => {
     // const lessonSummaryForMutation = [...lessonsSummaryInitial]
     
     const [lessonsSummary, setLessonsSummary] = useState(lessonsSummaryInitial)
+    const [beginnerLessonsSummary, setBeginnerLessonsSummary] = useState(beginnerLessonsInitial)
   
     const [progressData, setProgressData] = useState(null)
 
@@ -49,6 +53,25 @@ const UserProvider = (props) => {
         
         return updatedLessonsSummary
     }
+
+    const getUpdatedBeginnerLessonsSummary = () => {
+        let updatedLessonsSummary;
+        if(progressData === null || progressData.length === 0) {
+            return beginnerLessonsDefault
+        } else {
+            updatedLessonsSummary = beginnerLessonsSummary.map(lesson => {
+                progressData.map(progressItem => {
+                    if(progressItem.lesson === lesson.lessonNumber) {
+                        lesson.lessons[lessonsIndexes[progressItem.chapter]].isCompleted = true
+                    }
+                })
+
+                return lesson
+            })
+        }
+        
+        return updatedLessonsSummary
+    }
     
     const logOut = () => {
         localStorage.setItem('token', null)
@@ -66,7 +89,8 @@ const UserProvider = (props) => {
         setLessonsSummary,
         setProgressData,
         progressData,
-        getUpdatedLessonsSummary
+        getUpdatedLessonsSummary,
+        getUpdatedBeginnerLessonsSummary
     }
 
     return (
