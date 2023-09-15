@@ -1,14 +1,9 @@
 import { useState } from 'react';
 import { DragDropContainer, DropTarget } from 'react-drag-drop-container';
+import styles from './Vocabulary.module.scss'
 
 export default function Vocabulary() {
     const [draggedWord, setDraggedWord] = useState(null)
-    // console.log(draggedWord)
-
-    // const onDragHandler = (dragData) => {
-    //     // setDraggedWord(dragData)
-    //     console.log('dragged: ', dragData)
-    // }
 
     const onDropHandler = (e) => {
         // setDraggedWord(dragData)
@@ -25,14 +20,19 @@ export default function Vocabulary() {
 
     return <>
       <DragDropContainer targetKey="foo" 
-    dragData={'lion'}   
-    // onDragStart={onDragHandler}
-    >  
-    <div>Drag Me!</div>
-</DragDropContainer>
+        dragData={'lion'}   
+        >  
+        <div className={styles.draggable}>Right word</div>
+      </DragDropContainer>
+
+      <DragDropContainer targetKey="foo" 
+        dragData={'rabbit'}   
+        >  
+        <div className={styles.draggable}>Wrong word</div>
+      </DragDropContainer>
 
 <DropTarget targetKey="foo" onHit={onDropHandler} >
-    <p>I'm a valid drop target for the object above since we both have the same targetKey!</p>
+    <div className={styles.dropTarget}>Перетащи сюда</div>
 </DropTarget>
     </>
 }
