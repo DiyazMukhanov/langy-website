@@ -20,6 +20,7 @@ export default function TextLesson({lessonNumber, text}) {
   const audioSrc = {
     2: "/audio/beginner_2.mp3",
     4: "/audio/beginner_4.mp3",
+    5: "/audio/beginner_5.mp3"
   }    
   
   useEffect(() => {

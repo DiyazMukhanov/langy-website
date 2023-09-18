@@ -12,7 +12,6 @@ import Loader from '@/components/Loader';
 import { useRouter } from 'next/router';
 import VocabularyLesson from '@/components/VocabularyLesson';
 
-
 export default function BeginnerLessonLayout({ children, videoUrl, lessonNumber, isVideoLesson, isTextLesson, isVocabulary, text, nextUrl, words_1, words_2, words_3, wordsToAsk_1, wordsToAsk_2, wordsToAsk_3 }) {
     const [isLoading, setIsLoading] = useState(false)
     const [beginnerProgress, setBeginnerProgress] = useState(null)
@@ -121,6 +120,7 @@ export default function BeginnerLessonLayout({ children, videoUrl, lessonNumber,
                                     wordsToAsk_3={wordsToAsk_3}/>
                                 )
                             }
+
                             <div className={styles.btnContainer}>
                                 <Button 
                                 variant="standardNextOutlined" 
