@@ -19,7 +19,7 @@ export default function TextLesson({lessonNumber, text}) {
 
   const audioSrc = {
     2: "/audio/beginner_2.mp3",
-    3: "/audio/elementary-2.mp3",
+    4: "/audio/beginner_4.mp3",
   }    
   
   useEffect(() => {
@@ -152,9 +152,7 @@ export default function TextLesson({lessonNumber, text}) {
                 </div>                                           
             </div> 
          </div>
-        <div className={styles.btnContainer}>
-            <Button variant="standardNextOutlined" className={styles.nextButton}>Далее</Button>
-        </div>     
+         
     </>
   );
  }  

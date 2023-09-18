@@ -1,0 +1,50 @@
+.top {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.bottom {
+    display: flex;
+    gap: 20px;
+    // margin-top: 20px;
+    flex-direction: column;
+}
+
+.dropTarget {
+    border: solid var(--color-grey) 1px;
+    border-radius: 6px;
+    width: fit-content;
+    padding: 10px;
+}
+
+.dropTargetRight {
+    background-color: var(--color-green);
+    color: var(--color-white);
+    border-radius: 6px;
+    width: fit-content;
+    padding: 10px;
+}
+
+.draggable {
+    border: solid var(--color-grey) 1px;
+    border-radius: 6px;
+    width: fit-content;
+    padding: 10px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.empty {
+    width: 100px;
+    height: 40px;
+}
+
+.moreBtn {
+    margin-top: 50px;
+}
+
+.wordsContainer {
+    display: flex;
+    gap: 50px;
+}

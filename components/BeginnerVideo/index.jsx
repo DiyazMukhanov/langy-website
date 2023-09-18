@@ -11,43 +11,7 @@ export default function BeginnerVideo({videoUrl, lessonNumber, nextUrl}) {
     const [showVideo, setShowVideo] = useState(false)
     
     const router= useRouter()
-    const currentLesson = lessonNumber + 1
-
-    const updateNextBeginnerProgressBody = {
-        currentLesson: currentLesson,
-        completedLesson: lessonNumber
-    }
-
-    const updateCurrentBeginnerProgressBody = {
-        currentLesson: lessonNumber
-    }
     
-    const updateBeginnerProgressHandler = async (body, isNext) => {
-        try {
-          setIsLoading(true)
-          const response = await updateBeginnerProgress(body)
-          if(isNext) router.push(nextUrl)
-          setIsLoading(false)
-        } catch (err) {
-          alert('Произошла ошибка. Повторите попытку')
-          console.log(err)
-          setIsLoading(false)
-        }
-    }
-
-    // useEffect(() => {
-    //     if(typeof window !== 'undefined') {
-    //         setHasWindow(true)
-    //     }
-    // }, [])
-
-    useEffect(() => {
-        setIsLoading(true)
-        updateBeginnerProgressHandler(updateCurrentBeginnerProgressBody, false)
-        setIsLoading(false)
-
-    }, [])
-
     if(isLoading) {
         return <Loader />
     } else {
@@ -63,15 +27,7 @@ export default function BeginnerVideo({videoUrl, lessonNumber, nextUrl}) {
                     controls={true}
                 />
             </div>
-            <div className={styles.btnContainer}>
-                    <Button 
-                    variant="standardNextOutlined" 
-                    className={styles.nextButton} 
-                    onClick={() => updateBeginnerProgressHandler(updateNextBeginnerProgressBody, true)}
-                    >
-                        Далее
-                    </Button>
-                </div> 
+            
             </>
             )
     }

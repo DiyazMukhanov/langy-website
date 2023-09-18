@@ -27,7 +27,7 @@ import { useState, useContext, useEffect } from 'react'
 import Modal from './Modal'
 import classNames from 'classnames'
 import {useRouter} from "next/router"
-import { getMe, userLogout } from '@/api/user'
+import { getBeginnerProgress, getMe, userLogout } from '@/api/user'
 import { UserContext } from '@/store/userContext'
 import Loader from '@/components/Loader'
 
@@ -37,7 +37,8 @@ export default function Landing() {
   const router = useRouter()
   const userCtx = useContext(UserContext)
   const [isLoading, setIsLoading] = useState(true)
-
+  const [currentBeginnerLesson, setCurrentBeginnerLesson] = useState(undefined)
+  
   useEffect(() => {
     
     const getUser = async () => {
@@ -51,9 +52,26 @@ export default function Landing() {
         setIsLoading(false)
       }
     }
+
+    const getBeginnerProgressHandler = async () => {
+      try{
+        const beginnerProgress = await getBeginnerProgress()
+        if(beginnerProgress.data.data !== null) {
+          setCurrentBeginnerLesson(beginnerProgress.data.data.currentLesson)
+        }
+        setIsLoading(false)
+      } catch (err) {
+        console.log(err)
+        setIsLoading(false)
+      }
+    }
+
     getUser()
+    getBeginnerProgressHandler()
 
   }, [])
+
+  
 
   const frequentQuestions = [
     {
@@ -104,7 +122,11 @@ export default function Landing() {
       if(userCtx?.userData?.currentLesson !== 0 && userCtx?.userData?.currentChapter !== 'no') {
         router.push(`/lessons/lesson${userCtx?.userData?.currentLesson}/${userCtx?.userData?.currentChapter}`)
       } else {
-        router.push('/test/level')
+        if(currentBeginnerLesson) {
+          router.push(`/lessons/beginner/lesson${currentBeginnerLesson}`)
+        } else {
+          router.push('/test/level')
+        }
       }
     }
   };

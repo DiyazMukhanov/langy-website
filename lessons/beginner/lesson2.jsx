@@ -1,6 +1,6 @@
 import BeginnerLessonLayout from "@/layouts/Lessons/BeginnerLessonLayout";
 
-export default function BeginnerLesson1() {
+export default function BeginnerLesson2() {
    const text = <><p>1. Hello, my name is John. - Привет, моё имя - Джон. </p>
    <p>2.	I am 25 years old. – Мне 25 лет. </p>
    <p>3. Goodbye, see you later. - До свидания, увидимся позже. </p>
@@ -15,7 +15,7 @@ export default function BeginnerLesson1() {
 
    return (
    <>
-   <BeginnerLessonLayout lessonNumber={2} isTextLesson={true} text={text}/>
+   <BeginnerLessonLayout lessonNumber={2} isTextLesson={true} text={text} nextUrl='/lessons/beginner/lesson3'/>
    </>
    )
 }
