@@ -2,9 +2,8 @@ import Header from '@/components/Header'
 import styles from './LevelChoice.module.scss'
 import { Typography } from '@/components/Typography'
 import { useRouter } from 'next/router'
-import { assignLevel } from '@/api/user'
-import { useEffect, useContext, useState } from 'react'
-import { UserContext } from '@/store/userContext'
+import { assignLevel, createBeginnerProgress } from '@/api/user'
+import { useState } from 'react'
 import Loader from '@/components/Loader'
 import ProtectPage from '@/components/ProtectPage'
 
@@ -18,15 +17,20 @@ const LevelBlock = ({ children, onClick }) => {
 
 export default function LevelChoice() {
     const router = useRouter()
-    const userCtx = useContext(UserContext)
     const [isLoading, setIsLoading] = useState(false)
     
     const goToHigherLevelHandler = async (level) => {
       setIsLoading(true)
 
       if(level === 'beginner') {
-        router.push('/lessons/beginner/lesson1/video')
-        // setIsLoading(false)
+        setIsLoading(true)
+        try {
+          createBeginnerProgress()
+          router.push('/lessons/beginner/lesson1')
+        } catch (err) {
+          console.log(err)
+          alert('Произошла ошибка. Повторите попытку')
+        }
       }
 
       if(level === 'elementary') {

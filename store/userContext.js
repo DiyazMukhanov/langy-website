@@ -1,8 +1,6 @@
 import React, { useState } from "react"
 import { useRouter } from "next/router"
 import { lessonsSummaryInitial } from "./../utils/lessonsSummary"
-import { beginnerLessonsInitial } from "./../utils/beginnerLessonsInitial"
-import { beginnerLessonsDefault } from "./../utils/beginnerLessonsDefault" 
 import { lessonsDefault } from "@/utils/lessonsDefault"
 
 export const UserContext = React.createContext({
@@ -23,8 +21,7 @@ const UserProvider = (props) => {
     // const lessonSummaryForMutation = [...lessonsSummaryInitial]
     
     const [lessonsSummary, setLessonsSummary] = useState(lessonsSummaryInitial)
-    const [beginnerLessonsSummary, setBeginnerLessonsSummary] = useState(beginnerLessonsInitial)
-  
+    
     const [progressData, setProgressData] = useState(null)
 
     const lessonsIndexes = {

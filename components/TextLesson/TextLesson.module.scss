@@ -1,0 +1,224 @@
+@import "styles/breakpoints";
+
+.time {
+    display: flex;
+    width: 54vw;
+    justify-content: flex-end;
+    margin-top: 20px;
+    // border: solid red 1px;
+
+    & span {
+        margin-right: 30px;
+    }
+    
+}
+
+.play {
+    cursor: pointer;
+}
+
+.rangeContainer {
+    width: 54vw;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    // border: solid red 1px;
+    margin-top: 20px;
+
+    @include size-tablet {
+        width: 80vw;
+    }
+}
+
+.rangeSlider {
+    width: 50vw;
+    height: 17px;
+    border: solid var(--color-grey) 1px;
+    background-color: var(--color-white);
+    appearance: none;
+    outline: none;
+    background-image: linear-gradient(to right, #007bff 0%, #007bff calc((100% * var(--current-time)) / var(--duration)), var(--color-white) calc((100% * var(--current-time)) / var(--duration)), var(--color-white) 100%);
+    cursor: pointer;
+
+    @include size-tablet {
+        width: 80vw;
+    }
+  }
+
+.rangeSlider::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #007bff;
+    cursor: pointer;
+
+    /* Hide the thumb */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+
+  /* Custom transparent background and no border for the thumb */
+  background: transparent;
+  border: none;
+  }
+
+.rangeSlider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border: none;
+    border-radius: 50%;
+    background-color: #007bff;
+    cursor: pointer;
+
+       /* Hide the thumb */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+
+  /* Custom transparent background and no border for the thumb */
+  background: transparent;
+  border: none;
+  }
+
+.textButtons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    @include size-tablet {
+        align-items: center;
+    }
+}
+
+.textShowEn {
+  width: 50vw;
+  background-color: var(--color-light-blue);
+  padding: 10px;
+  border-radius: 12px;
+
+  @include size-tablet {
+    width: 80vw;
+}
+}
+
+.answerContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 350px;    
+    margin-bottom: 50px;
+    margin-top: 40px;
+    
+    // border: solid red 1px;
+
+    @include size-tablet {
+        width: 80vw;
+        justify-content: center;
+        padding-right: 0; 
+        margin-top: 25px;
+    }
+}
+
+.nextButton {
+    color: var(--color-primary);
+    border: solid var(--color-primary) 1px;
+    border-radius: 40px;
+}
+
+.translationCard {
+    border: solid var(--color-primary) 1px;
+    width: 200px;
+    height: 100px;
+    // position: absolute;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    top: -50px;
+    left: 250px;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+    position: fixed;
+    top: 150px;
+    left: 45vw;
+
+    @include size-tablet {
+        left: 20vw;
+        top: 30vh;
+    }
+}
+
+.textTitle {
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 0;
+    font-weight: bold;
+}
+
+.textBody {
+    padding-left: 20px;
+    padding-right: 20px;
+
+    @include size-tablet {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+
+.textCommonSize {
+    font-size: 19px;
+    // border: solid red 1px;
+    line-height: 1.8;
+}
+
+.cardTop {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cardMiddle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.cardContainer {
+    width: 90vw;
+    position: absolute;
+    height: 100px;
+}
+
+.span {
+    cursor: pointer;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.disabled {
+pointer-events: none;
+}
+
+.wordPlay {
+    margin-left: 10px;
+}
+
+
+  

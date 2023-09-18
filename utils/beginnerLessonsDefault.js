@@ -1,63 +1,74 @@
 export const beginnerLessonsDefault = [
     {
-        title: 'Beginner - Урок 1',
         lessonNumber: 1,
-        isCompleted: false,
-        isCurrent: false,
-        level: 'beginner',
-        lessons: [
-            {
-                chapter: 'Grammar: Articles',
-                chapterCode: 'gr',
-                ru: 'Грамматика',
-                isCurrent: false,
-                isCompleted: false
-            },
-            {
-                chapter: 'Listening/Reading',
-                chapterCode: 'au',
-                ru: 'Аудио/Чтение',
-                isCurrent: false,
-                isCompleted: false
-            },
-            {
-                chapter: 'Writing',
-                chapterCode: 'wr',
-                ru: 'Письмо',
-                isCurrent: false,
-                isCompleted: false
-            },
-        ]
+        isCompleted: false
     },
     {
-        title: 'Beginner - Урок 2',
         lessonNumber: 2,
-        isCompleted: false,
-        isCurrent: false,
-        level: 'beginner',
-        lessons: [
-            {
-                chapter: 'Grammar: Articles',
-                chapterCode: 'gr',
-                ru: 'Грамматика',
-                isCurrent: false,
-                isCompleted: false
-            },
-            {
-                chapter: 'Listening/Reading',
-                chapterCode: 'au',
-                ru: 'Аудио/Чтение',
-                isCurrent: false,
-                isCompleted: false
-            },
-            {
-                chapter: 'Writing',
-                chapterCode: 'wr',
-                ru: 'Письмо',
-                isCurrent: false,
-                isCompleted: false
-            },
-        ]
+        isCompleted: false
     },
-    
+    {
+        lessonNumber: 3,
+        isCompleted: false
+    },
+    {
+        lessonNumber: 4,
+        isCompleted: false
+    },
+    {
+        lessonNumber: 5,
+        isCompleted: false
+    },
+    {
+        lessonNumber: 6,
+        isCompleted: false
+    },
+    {
+        lessonNumber: 7,
+        isCompleted: false
+    },
+    {
+        lessonNumber: 8,
+        isCompleted: false
+    },
+    {
+        lessonNumber: 9,
+        isCompleted: false
+    },
+    {
+        lessonNumber: 10,
+        isCompleted: false
+    },
+    {
+        lessonNumber: 11,
+        isCompleted: false
+    },
+    {
+        lessonNumber: 12,
+        isCompleted: false
+    },
+    {
+        lessonNumber: 13,
+        isCompleted: false
+    },
+    {
+        lessonNumber: 14,
+        isCompleted: false
+    },
+    {
+        lessonNumber: 15,
+        isCompleted: false
+    },
+    {
+        lessonNumber: 16,
+        isCompleted: false
+    },
+    {
+        lessonNumber: 17,
+        isCompleted: false
+    },
+    {
+        lessonNumber: 18,
+        isCompleted: false
+    },
 ]

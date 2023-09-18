@@ -123,6 +123,23 @@ export const setCurrentLessonData = async (bodyData) => {
     return await axios.get(`${apiUrl}/users/statistics`, options);
   }
 
+  export const getBeginnerProgress = async () => {
+
+    return await axios.get(`${apiUrl}/beginner`, options);
+  }
+
+  export const createBeginnerProgress = async () => {
+  
+    return await axios.post(`${apiUrl}/beginner`, {}, options);
+   } 
+
+  export const updateBeginnerProgress = async (updateBody) => {
+  
+    return await axios.patch(`${apiUrl}/beginner`, updateBody, options);
+   } 
+
+
+
 
 
 
