@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { Button } from '@/components/Button'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
-import { assignLevel, setLevelChecked } from '@/api/user'
+import { assignLevel, createBeginnerProgress, setLevelChecked } from '@/api/user'
 import Loader from '@/components/Loader'
 
 export default function Result({level}) {
@@ -13,7 +13,11 @@ export default function Result({level}) {
    const [isLoading, setIsLoading] = useState(true)
 
    let levelType;
-   if(level < 16) {
+   if(level < 11) {
+      levelType = 'Beginner'
+     }
+
+   if(level > 10 && level < 16) {
     levelType = 'Elementary'
    }
 
@@ -35,6 +39,10 @@ export default function Result({level}) {
          levelForBody = 'intermediate'
       }
 
+      if(levelType === 'Elementary') {
+         levelForBody = 'elementary'
+      }
+
       const setLevelCheckedHandler = async () => {
          try{
             const result = await assignLevel(levelForBody)
@@ -47,27 +55,30 @@ export default function Result({level}) {
          } 
       }
 
-      const setLevelCheckedElementary = async () => {
-         try{
-            const result = await setLevelChecked()
-            if(result) {
-               setIsLoading(false)
-            }
-         } catch (err) {
-            alert('Что-то пошло не так')
+      const enterBeginnerHandler = async () => {
+         try {
+            const response = await createBeginnerProgress()
+            setIsLoading(false)
+         } catch(err) {
+            console.log(err)
             setIsLoading(false)
          }
       }
 
-      if(levelType !== 'Elementary') {
-         setLevelCheckedHandler()
-      } else {
-         setLevelCheckedElementary()
-      }
+         if(levelType !== 'Beginner') {
+            setLevelCheckedHandler()
+         } else {
+            enterBeginnerHandler()
+         }
+         
 
    }, [])
 
    const nextHandler = () => {
+    if(levelType == 'Beginner') {
+      router.push('/lessons/beginner/lesson1')
+      } 
+
     if(levelType == 'Elementary') {
       router.push('/lessons/lesson1/video')
     } 

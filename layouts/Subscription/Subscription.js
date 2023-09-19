@@ -13,7 +13,6 @@ export default function Subscription() {
     const [isLoading, setIsLoading] = useState(true)
     const userCtx = useContext(UserContext)
     const router = useRouter()
-    console.log('thats it')
 
     const monthBody = {
         days: 90,
@@ -47,10 +46,9 @@ export default function Subscription() {
             if(response?.data?.message === 'Already subscribed') {
                 alert('У вас уже есть подписка!')
             }
-            console.log(response?.data)
             localStorage.setItem('paymentId', response?.data?.paymentId)
             localStorage.setItem('days', plan?.days)
-            // console.log('sign from server', response?.data?.paymentSign)
+            
             router.push(response?.data?.redirectUrl)
             // setIsLoading(false)
             // continueHandler()

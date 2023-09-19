@@ -47,7 +47,6 @@ export default function BeginnerLessonLayout({ isNextToElementary, children, vid
    const exitBeginnerHandler = async () => {
     try {
        const response = await exitBeginnerProgress()
-       console.log(response)
        router.push('/lessons/lesson1/video')
     } catch(err) {
        console.log(err)

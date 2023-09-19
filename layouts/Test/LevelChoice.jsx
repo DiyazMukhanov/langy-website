@@ -22,35 +22,38 @@ export default function LevelChoice() {
     const goToHigherLevelHandler = async (level) => {
       setIsLoading(true)
 
-      if(level === 'beginner') {
-        setIsLoading(true)
-        try {
-          createBeginnerProgress()
-          router.push('/lessons/beginner/lesson1')
-        } catch (err) {
-          console.log(err)
-          alert('Произошла ошибка. Повторите попытку')
-        }
-      }
-
-      if(level === 'elementary') {
-        router.push('/lessons/lesson1/video')
-        // setIsLoading(false)
-      }
-
       try {
-        const data = await assignLevel(level)
-        
-        if(level === 'preIntermediate') {
-          router.push('/lessons/lesson9/video')
-          // setIsLoading(false)
-        }
+        if(level === 'beginner') {
+          setIsLoading(true)
+          try {
+            await createBeginnerProgress()
+            router.push('/lessons/beginner/lesson1')
+          } catch (err) {
+            console.log(err)
+            alert('Произошла ошибка. Повторите попытку')
+          }
+        } else {
+          
+          const data = await assignLevel(level)
+          
+          if(level === 'elementary') {
+            
+            router.push('/lessons/lesson1/video')
+            // setIsLoading(false)
+          }
+          
+          if(level === 'preIntermediate') {
+            router.push('/lessons/lesson9/video')
+            // setIsLoading(false)
+          }
+  
+          if(level === 'intermediate') {
+            router.push('/lessons/lesson17/video')
+            // setIsLoading(false)
+          }
 
-        if(level === 'intermediate') {
-          router.push('/lessons/lesson17/video')
-          // setIsLoading(false)
         }
-        
+   
       } catch (err) {
       
         alert('Произошла ошибка')
