@@ -138,6 +138,11 @@ export const setCurrentLessonData = async (bodyData) => {
     return await axios.patch(`${apiUrl}/beginner`, updateBody, options);
    } 
 
+   export const exitBeginnerProgress = async () => {
+  
+    return await axios.patch(`${apiUrl}/beginner/exit`, {}, options);
+   } 
+
 
 
 

@@ -34,7 +34,7 @@ export default function VocabularyLesson({words_1, words_2, words_3, wordsToAsk_
                 indexOfRightWord = index
                } 
             })
-            console.log(indexOfRightWord)
+            
             switch (indexOfRightWord) {
                 case 0:
                     setFirstRight(true)

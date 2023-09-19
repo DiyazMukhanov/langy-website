@@ -54,21 +54,5 @@ export const beginnerLessonsDefault = [
     {
         lessonNumber: 14,
         isCompleted: false
-    },
-    {
-        lessonNumber: 15,
-        isCompleted: false
-    },
-    {
-        lessonNumber: 16,
-        isCompleted: false
-    },
-    {
-        lessonNumber: 17,
-        isCompleted: false
-    },
-    {
-        lessonNumber: 18,
-        isCompleted: false
-    },
+    }
 ]

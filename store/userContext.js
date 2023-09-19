@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useRouter } from "next/router"
 import { lessonsSummaryInitial } from "./../utils/lessonsSummary"
-import { lessonsDefault } from "@/utils/lessonsDefault"
+import { resetLessons } from "@/utils/lessonsDefault"
 
 export const UserContext = React.createContext({
     userData: {},
@@ -18,12 +18,10 @@ const UserProvider = (props) => {
     const [userData, setUserData] = useState(null)
     const router = useRouter()
     
-    // const lessonSummaryForMutation = [...lessonsSummaryInitial]
-    
     const [lessonsSummary, setLessonsSummary] = useState(lessonsSummaryInitial)
     
     const [progressData, setProgressData] = useState(null)
-
+    console.log(progressData)
     const lessonsIndexes = {
         gr: 0,
         au: 1,
@@ -35,7 +33,7 @@ const UserProvider = (props) => {
     const getUpdatedLessonsSummary = () => {
         let updatedLessonsSummary;
         if(progressData === null || progressData.length === 0) {
-            return lessonsDefault
+            return resetLessons()
         } else {
             updatedLessonsSummary = lessonsSummary.map(lesson => {
                 progressData.map(progressItem => {

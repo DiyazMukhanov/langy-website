@@ -4,7 +4,7 @@ import { beginnerLessonsDefault } from "@/utils/beginnerLessonsDefault";
 import ProtectPage from '@/components/ProtectPage';
 import { Button } from '@/components/Button';
 import BeginnerSideBarDesktop from "./BeginnerSideBarDesktop";
-import { getBeginnerProgress, updateBeginnerProgress } from "@/api/user";
+import { exitBeginnerProgress, getBeginnerProgress, updateBeginnerProgress } from "@/api/user";
 import BeginnerVideo from "@/components/BeginnerVideo";
 import BeginnerHeader from "@/components/BeginnerHeader";
 import TextLesson from "@/components/TextLesson";
@@ -12,7 +12,7 @@ import Loader from '@/components/Loader';
 import { useRouter } from 'next/router';
 import VocabularyLesson from '@/components/VocabularyLesson';
 
-export default function BeginnerLessonLayout({ children, videoUrl, lessonNumber, isVideoLesson, isTextLesson, isVocabulary, text, nextUrl, words_1, words_2, words_3, wordsToAsk_1, wordsToAsk_2, wordsToAsk_3 }) {
+export default function BeginnerLessonLayout({ isNextToElementary, children, videoUrl, lessonNumber, isVideoLesson, isTextLesson, isVocabulary, text, nextUrl, words_1, words_2, words_3, wordsToAsk_1, wordsToAsk_2, wordsToAsk_3 }) {
     const [isLoading, setIsLoading] = useState(false)
     const [beginnerProgress, setBeginnerProgress] = useState(null)
     const [hasWindow, setHasWindow] = useState(false)
@@ -34,7 +34,7 @@ export default function BeginnerLessonLayout({ children, videoUrl, lessonNumber,
         try {
           setIsLoading(true)
           const response = await updateBeginnerProgress(body)
-          console.log('here')
+
           if(isNext) router.push(nextUrl)
           setIsLoading(false)
         } catch (err) {
@@ -43,6 +43,16 @@ export default function BeginnerLessonLayout({ children, videoUrl, lessonNumber,
           setIsLoading(false)
         }
     }
+
+   const exitBeginnerHandler = async () => {
+    try {
+       const response = await exitBeginnerProgress()
+       console.log(response)
+       router.push('/lessons/lesson1/video')
+    } catch(err) {
+       console.log(err)
+    }
+   }
     
     useEffect(() => {
         const getBeginnerProgressHandler = async () => {
@@ -77,7 +87,7 @@ export default function BeginnerLessonLayout({ children, videoUrl, lessonNumber,
       updateBeginnerProgressHandlerInit()
     }, [])
 
-    const progressValue = lessonNumber/6*100
+    const progressValue = lessonNumber/14*100
    
         if(isLoading) {
             return <Loader />
@@ -125,14 +135,14 @@ export default function BeginnerLessonLayout({ children, videoUrl, lessonNumber,
                                 <Button 
                                 variant="standardNextOutlined" 
                                 
-                                onClick={() => updateBeginnerProgressHandler(updateNextBeginnerProgressBody, true)}
+                                onClick={!isNextToElementary ? () => updateBeginnerProgressHandler(updateNextBeginnerProgressBody, true) : exitBeginnerHandler}
                                 >
                                     Далее
                                 </Button>
                             </div> 
                             
         
-                        {children}
+                        {/* {children} */}
                         </div>
                     </div>
                     

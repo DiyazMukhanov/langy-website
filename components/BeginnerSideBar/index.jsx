@@ -19,6 +19,7 @@ export default function BeginnerSidebar({ lessonsSummary, beginnerProgress }) {
              {[styles.completed]: beginnerProgress?.completed.includes(lessonBlock.lessonNumber)},
              {[styles.currentChapter]: beginnerProgress?.currentLesson === lessonBlock.lessonNumber}
              )}
+             key={lessonBlock.lessonNumber}
              onClick={() => navigationHandler(lessonBlock.lessonNumber)}
              >
              Lesson {lessonBlock.lessonNumber}

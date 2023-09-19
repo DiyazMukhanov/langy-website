@@ -31,58 +31,59 @@ export default function BeginnerLesson6() {
 
   const words_2 = [
    {
-       enWord: 'Nice',
-       ruWord: 'Приятный'
-   },
-   {
-       enWord: 'Day',
-       ruWord: 'День'
-   },
-   {
-       enWord: 'She',
-       ruWord: 'Она'
-   },
-]
-
-const wordsToAsk_2 = [  {
-   enWord: 'Day',
-   ruWord: 'День'
-},
-{
-   enWord: 'She',
-   ruWord: 'Она'
-},
-{
-   enWord: 'Nice',
-   ruWord: 'Приятный'
-},]
-
-const words_3 = [
-   {
-       enWord: 'Friend',
-       ruWord: 'Друг'
-   },
-   {
-       enWord: 'He',
-       ruWord: 'Он'
+       enWord: 'Apple',
+       ruWord: 'Яблоко'
    },
    {
        enWord: 'Dog',
        ruWord: 'Собака'
    },
+   {
+       enWord: 'Sky',
+       ruWord: 'Небо'
+   },
 ]
 
-const wordsToAsk_3 = [  {
-   enWord: 'Dog',
-   ruWord: 'Собака'
+const wordsToAsk_2 = [{
+    enWord: 'Apple',
+    ruWord: 'Яблоко'
 },
 {
-   enWord: 'He',
-   ruWord: 'Он'
+    enWord: 'Sky',
+    ruWord: 'Небо'
 },
 {
-   enWord: 'Friend',
-   ruWord: 'Друг'
+    enWord: 'Dog',
+    ruWord: 'Собака'
+},
+]
+
+const words_3 = [
+   {
+       enWord: 'Big',
+       ruWord: 'Большой'
+   },
+   {
+       enWord: 'Car',
+       ruWord: 'Машина'
+   },
+   {
+       enWord: 'Small',
+       ruWord: 'Маленький'
+   },
+]
+
+const wordsToAsk_3 = [{
+    enWord: 'Small',
+    ruWord: 'Маленький'
+},
+{
+    enWord: 'Car',
+    ruWord: 'Машина'
+},
+{
+    enWord: 'Big',
+    ruWord: 'Большой'
 },]
 
    return (
@@ -96,7 +97,7 @@ const wordsToAsk_3 = [  {
    wordsToAsk_1={wordsToAsk_1} 
    wordsToAsk_2={wordsToAsk_2} 
    wordsToAsk_3={wordsToAsk_3}
-   nextUrl='/lessons/beginner/lesson4'
+   nextUrl='/lessons/beginner/lesson7'
    />
    </>
    )
