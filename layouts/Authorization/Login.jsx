@@ -98,6 +98,12 @@ export default function Login() {
                          
                           setIsLoading(false)
                         }
+
+                        if(userData?.data?.data?.user?.level === 'beginner') {
+                          router.push('/')
+                         
+                          setIsLoading(false)
+                        }
                       }
                    } else {
                     setIsLoading(false)

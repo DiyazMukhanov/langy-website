@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { Button } from '@/components/Button'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
-import { assignLevel, setLevelChecked } from '@/api/user'
+import { assignLevel, createBeginnerProgress, setLevelChecked } from '@/api/user'
 import Loader from '@/components/Loader'
 
 export default function Result({level}) {
@@ -13,15 +13,19 @@ export default function Result({level}) {
    const [isLoading, setIsLoading] = useState(true)
 
    let levelType;
-   if(level < 16) {
+   if(level < 7) {
+      levelType = 'Beginner'
+     }
+
+   if(level > 6 && level < 14) {
     levelType = 'Elementary'
    }
 
-   if(level > 15 && level < 20) {
+   if(level > 13 && level < 17) {
       levelType = 'Pre-intermediate'
      }
 
-     if(level === 20) {
+     if(level > 16 && level < 21) {
       levelType = 'Intermediate'
      }
 
@@ -33,6 +37,10 @@ export default function Result({level}) {
 
       if(levelType === 'Intermediate') {
          levelForBody = 'intermediate'
+      }
+
+      if(levelType === 'Elementary') {
+         levelForBody = 'elementary'
       }
 
       const setLevelCheckedHandler = async () => {
@@ -47,27 +55,30 @@ export default function Result({level}) {
          } 
       }
 
-      const setLevelCheckedElementary = async () => {
-         try{
-            const result = await setLevelChecked()
-            if(result) {
-               setIsLoading(false)
-            }
-         } catch (err) {
-            alert('Что-то пошло не так')
+      const enterBeginnerHandler = async () => {
+         try {
+            const response = await createBeginnerProgress()
+            setIsLoading(false)
+         } catch(err) {
+            console.log(err)
             setIsLoading(false)
          }
       }
 
-      if(levelType !== 'Elementary') {
-         setLevelCheckedHandler()
-      } else {
-         setLevelCheckedElementary()
-      }
+         if(levelType !== 'Beginner') {
+            setLevelCheckedHandler()
+         } else {
+            enterBeginnerHandler()
+         }
+         
 
    }, [])
 
    const nextHandler = () => {
+    if(levelType == 'Beginner') {
+      router.push('/lessons/beginner/lesson1')
+      } 
+
     if(levelType == 'Elementary') {
       router.push('/lessons/lesson1/video')
     } 

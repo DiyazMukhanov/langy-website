@@ -11,7 +11,7 @@ import classNames from "classnames"
 import { setProgressData } from "@/api/user"
 import Loader from "@/components/Loader"
 
-export default function VideoLessonLayout({videoTasks, nextUrl, lessonNumber, currentLessonData, subscriptionIsNeeded, videoUrl, topic}) {
+export default function VideoLessonLayout({videoTasks, nextUrl, lessonNumber, currentLessonData, subscriptionIsNeeded, videoUrl, topic, isBeginner}) {
     const [currentQuestion, setCurrentQuestion] = useState(1)
     const [wasClicked, setWasClicked] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
@@ -62,7 +62,7 @@ export default function VideoLessonLayout({videoTasks, nextUrl, lessonNumber, cu
         return <Loader />
     } else {
         return (
-            <LessonLayout chapter='grammar' currentLessonData={currentLessonData} subscriptionIsNeeded={subscriptionIsNeeded}>
+            <LessonLayout chapter='grammar' currentLessonData={currentLessonData} subscriptionIsNeeded={subscriptionIsNeeded} isBeginner={isBeginner}>
                 <div className={styles.container}>
                     <div className={styles.top}>
                         <p className={styles.topic}>Тема: {topic}</p>

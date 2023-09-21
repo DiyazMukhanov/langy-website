@@ -47,7 +47,7 @@ const TranslationCard = ({ word, translation, onRemove, innerRef }) => {
     )
 }
 
-const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc, lessonNumber, nextUrl, currentLessonData, subscriptionIsNeeded, textTitle}) => {
+const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc, lessonNumber, nextUrl, currentLessonData, subscriptionIsNeeded, textTitle, isBeginner}) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [timeProgress, setTimeProgress] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -57,7 +57,6 @@ const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc, l
   const [currentQuestion, setCurrentQuestion] = useState(1)
   const [wasClicked, setWasClicked] = useState(null)
   const [hoveredWord, setHoveredWord] = useState(null)
-  // const [hoveredWordIndex, setHoveredWordIndex] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   
   const innerRef = useRef(null)
@@ -229,7 +228,7 @@ const clickHandler = (id) => {
  } else {
   return (
     <>
-      <LessonLayout chapter="audio" currentLessonData={currentLessonData} subscriptionIsNeeded={subscriptionIsNeeded}>
+      <LessonLayout chapter="audio" currentLessonData={currentLessonData} subscriptionIsNeeded={subscriptionIsNeeded} isBeginner={isBeginner}>
         
          {hasWindow && <audio src={audioSrc} ref={audioRef} preload="metadata" onLoadedMetadata={onLoadedMetadata}/>}
          
@@ -284,8 +283,6 @@ const clickHandler = (id) => {
                                 
                                 <span 
                                 key={index} 
-                                // onMouseEnter={handleWordHover}
-                                // onMouseLeave={handleMouseLeave}
                                 onClick={handleWordClick}
                                 className={styles.span}
                                 >

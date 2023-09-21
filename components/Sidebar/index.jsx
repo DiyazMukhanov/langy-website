@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react'
 import styles from './Sidebar.module.scss'
 import classNames from 'classnames'
 
-export default function Sidebar({ lessonsSummary }) {
+export default function Sidebar({ lessonsSummary, isBeginner }) {
     const router = useRouter()
     const currentLessonRef = useRef(null)
     
@@ -11,7 +11,7 @@ export default function Sidebar({ lessonsSummary }) {
     for(let i = 0; i < lessonsSummary.length; i++) {
         for(let j = 0; j< lessonsSummary[i].lessons.length; j++) {
             if(lessonsSummary[i].lessons[j].isCompleted === false) {
-                if (found) break
+                if (found) break 
                 lessonsSummary[i].lessons[j].isOpened = true
                 found = true
             }
@@ -27,8 +27,13 @@ export default function Sidebar({ lessonsSummary }) {
             ts: 'test'
         }
         const chapterName = lessonsIndexes[lesson.chapterCode]
-      
-        router.push(`/lessons/lesson${lessonNumber}/${chapterName}`)
+        
+        if(!isBeginner) {
+            router.push(`/lessons/lesson${lessonNumber}/${chapterName}`)
+        } else {
+            router.push(`/lessons/beginner/lesson${lessonNumber}/${chapterName}`)
+        }
+        
     }
 
     useEffect(() => {
