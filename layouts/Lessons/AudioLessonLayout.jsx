@@ -62,7 +62,7 @@ const AudioLessonLayout = ({text, audioTasks, wordsWithTranslations, audioSrc, l
   const innerRef = useRef(null)
   const router = useRouter()
   const totalQuestions = audioTasks?.length
-  const playBackRate = lessonNumber < 9 ? 0.8 : 1
+  const playBackRate = 1
   
   useEffect(() => {
     if(typeof window !== 'undefined') {

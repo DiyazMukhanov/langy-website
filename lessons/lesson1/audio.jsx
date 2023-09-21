@@ -14,7 +14,7 @@ export default function Audio() {
    text={text} 
    audioTasks={audioTasks} 
    wordsWithTranslations={wordsWithTranslations} 
-   audioSrc="/audio/elementary-1.mp3"
+   audioSrc="/audio/lesson-1.mp3"
    lessonNumber={1}
    nextUrl='/lessons/lesson1/writing'
    currentLessonData={currentLessonData}
