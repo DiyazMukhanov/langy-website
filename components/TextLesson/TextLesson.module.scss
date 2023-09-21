@@ -99,7 +99,7 @@
   background-color: var(--color-light-blue);
   padding: 10px;
   border-radius: 12px;
-
+  margin-left: -13px;
   @include size-tablet {
     width: 80vw;
 }
@@ -209,6 +209,11 @@
 }
 
 .bold {
+    font-weight: bold;
+}
+
+.effective {
+    margin-top: 0;
     font-weight: bold;
 }
 

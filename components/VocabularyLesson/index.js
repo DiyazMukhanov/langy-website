@@ -74,7 +74,9 @@ export default function VocabularyLesson({words_1, words_2, words_3, wordsToAsk_
 
     return (
     <>
+    <p className={styles.task}>Перетащите слова согласно их переводу</p>
     <div className={styles.wordsContainer}>
+        
        <div className={styles.top}>
        {
                 !rightStateIndexes[findIndexOfRightWord(wordsToAsk[0].enWord)] ? (

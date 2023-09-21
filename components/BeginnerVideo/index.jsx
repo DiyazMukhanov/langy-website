@@ -8,7 +8,6 @@ import Loader from "../Loader"
 
 export default function BeginnerVideo({videoUrl, lessonNumber, nextUrl}) {
     const [isLoading, setIsLoading] = useState(false)
-    const [showVideo, setShowVideo] = useState(false)
     
     const router= useRouter()
     
@@ -17,7 +16,7 @@ export default function BeginnerVideo({videoUrl, lessonNumber, nextUrl}) {
     } else {
         return (
             <>
-            <p className={styles.task}>Просмотрите видео</p>
+            <p className={styles.task}>Просмотрите видео и выучите алфавит</p>
             <div className={styles.wrapper}>
              
                 <ReactPlayer

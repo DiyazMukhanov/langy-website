@@ -4,7 +4,7 @@ export default function BeginnerLesson4() {
    const text = <>
    <p>1. I have a red car. - У меня есть красная машина.</p>
    <p>2. She likes blue apples. - Ей нравятся синие яблоки.</p>
-   <p>3. He has two green dogs. - У него две зеленые собаки.</p>
+   <p>3. He has two white dogs. - У него две белые собаки.</p>
    <p>4. The sky is blue. - Небо синее.</p>
    <p>5. This is a big car. - Это большая машина.</p>
    <p>6. She has a small cat. - У неё есть маленькая кошка.</p>

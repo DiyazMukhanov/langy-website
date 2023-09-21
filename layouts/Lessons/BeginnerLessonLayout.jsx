@@ -12,7 +12,7 @@ import Loader from '@/components/Loader';
 import { useRouter } from 'next/router';
 import VocabularyLesson from '@/components/VocabularyLesson';
 
-export default function BeginnerLessonLayout({ isNextToElementary, children, videoUrl, lessonNumber, isVideoLesson, isTextLesson, isVocabulary, text, nextUrl, words_1, words_2, words_3, wordsToAsk_1, wordsToAsk_2, wordsToAsk_3 }) {
+export default function BeginnerLessonLayout({ isNextToElementary, videoUrl, lessonNumber, isVideoLesson, isTextLesson, isVocabulary, text, nextUrl, words_1, words_2, words_3, wordsToAsk_1, wordsToAsk_2, wordsToAsk_3 }) {
     const [isLoading, setIsLoading] = useState(false)
     const [beginnerProgress, setBeginnerProgress] = useState(null)
     const [hasWindow, setHasWindow] = useState(false)
@@ -107,7 +107,7 @@ export default function BeginnerLessonLayout({ isNextToElementary, children, vid
                             borderRadius: '25px'
                             }}/>
                             </div>
-        
+                            <h1>Beginner</h1>
                             <h2>Lesson {lessonNumber}</h2>
                             {(isVideoLesson && hasWindow) && (
                                <BeginnerVideo videoUrl={videoUrl} lessonNumber={lessonNumber} nextUrl={nextUrl} />

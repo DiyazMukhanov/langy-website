@@ -13,19 +13,19 @@ export default function Result({level}) {
    const [isLoading, setIsLoading] = useState(true)
 
    let levelType;
-   if(level < 11) {
+   if(level < 7) {
       levelType = 'Beginner'
      }
 
-   if(level > 10 && level < 16) {
+   if(level > 6 && level < 14) {
     levelType = 'Elementary'
    }
 
-   if(level > 15 && level < 20) {
+   if(level > 13 && level < 17) {
       levelType = 'Pre-intermediate'
      }
 
-     if(level === 20) {
+     if(level > 16 && level < 21) {
       levelType = 'Intermediate'
      }
 

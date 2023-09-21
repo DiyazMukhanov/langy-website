@@ -47,4 +47,10 @@
 .wordsContainer {
     display: flex;
     gap: 50px;
+    margin-top: 40px;
+}
+
+.task {
+    color: var(--color-primary);
+    font-weight: bold;
 }

@@ -149,16 +149,13 @@ export default function TextLesson({lessonNumber, text}) {
                 />
             </div>
          </div>
-
-         <div className={styles.textButtons}>
-            <p className={styles.bold}>Прослушайте и прочитайте</p>
+            <p className={styles.bold}>Прослушайте и прочитайте. </p>
+            <p className={styles.effective}>Для эффективного усвоения рекомендуем прослушать и прочитать несколько раз до полного понимания материала.</p>
             <div className={styles.textShowEn}>
                 <div className={styles.textBody}>
                 {text}
                 </div>                                           
-            </div> 
-         </div>
-         
+            </div>         
     </>
   );
  }  
