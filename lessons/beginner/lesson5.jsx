@@ -29,7 +29,7 @@ export default function BeginnerLesson5() {
     }
 
    const style = { color: 'blue', paddingLeft: 5, paddingRight:5, fontWeight:600 }
-   const styleWord = { color: 'green', paddingLeft: 5, paddingRight:5, fontWeight:600 }
+   
    const text = <>
    <div className={styles.container}>1. <span style={style}>ee</span>/ i: / И <span className={styles.styleWord} ref={spanRef1} >bee <Image priority src={Play} width={30} onClick={() => readWordAloud(spanRef1)} className={styles.wordPlay}/></span> — пчела</div>
    <div className={styles.container}>2. <span style={style}>ea</span> / ı :/ И <span className={styles.styleWord} ref={spanRef2} >tea <Image priority src={Play} width={30} onClick={() => readWordAloud(spanRef2)} className={styles.wordPlay}/></span> — чай</div>
