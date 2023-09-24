@@ -1,4 +1,13 @@
 import BeginnerLessonLayout from "@/layouts/Lessons/BeginnerLessonLayout";
+import wordSrc_1 from '../../public/audio/lesson6/lesson_6_1.mp3'
+import wordSrc_2 from '../../public/audio/lesson6/lesson_6_2.mp3'
+import wordSrc_3 from '../../public/audio/lesson6/lesson_6_3.mp3'
+import wordSrc_4 from '../../public/audio/lesson6/lesson_6_4.mp3'
+import wordSrc_5 from '../../public/audio/lesson6/lesson_6_5.mp3'
+import wordSrc_6 from '../../public/audio/lesson6/lesson_6_6.mp3'
+import wordSrc_7 from '../../public/audio/lesson6/lesson_6_7.mp3'
+import wordSrc_8 from '../../public/audio/lesson6/lesson_6_8.mp3'
+import wordSrc_9 from '../../public/audio/lesson6/lesson_6_9.mp3'
 
 export default function BeginnerLesson6() {
    const words_1 = [
@@ -98,6 +107,15 @@ const wordsToAsk_3 = [{
    wordsToAsk_2={wordsToAsk_2} 
    wordsToAsk_3={wordsToAsk_3}
    nextUrl='/lessons/beginner/lesson7'
+   wordSrc_1={wordSrc_1}
+   wordSrc_2={wordSrc_2} 
+   wordSrc_3={wordSrc_3}
+   wordSrc_4={wordSrc_4}
+   wordSrc_5={wordSrc_5} 
+   wordSrc_6={wordSrc_6}
+   wordSrc_7={wordSrc_7}
+   wordSrc_8={wordSrc_8} 
+   wordSrc_9={wordSrc_9}
    />
    </>
    )

@@ -12,7 +12,7 @@ export default function VocabularyLesson({words_1, words_2, words_3, wordsToAsk_
     const [thirdRight, setThirdRight] = useState(false)
     const [words, setWords] = useState(words_1)
     const [wordsToAsk, setWordsToAsk] = useState(wordsToAsk_1)
-
+    
     function play() {
         new Audio(successSound).play()
     }

@@ -1,22 +1,121 @@
 import BeginnerLessonLayout from "@/layouts/Lessons/BeginnerLessonLayout";
+import wordSrc_1 from '../../public/audio/lesson4/lesson_4_1.mp3'
+import wordSrc_2 from '../../public/audio/lesson4/lesson_4_2.mp3'
+import wordSrc_3 from '../../public/audio/lesson4/lesson_4_3.mp3'
+import wordSrc_4 from '../../public/audio/lesson4/lesson_4_4.mp3'
+import wordSrc_5 from '../../public/audio/lesson4/lesson_4_5.mp3'
+import wordSrc_6 from '../../public/audio/lesson4/lesson_4_6.mp3'
+import wordSrc_7 from '../../public/audio/lesson4/lesson_4_7.mp3'
+import wordSrc_8 from '../../public/audio/lesson4/lesson_4_8.mp3'
+import wordSrc_9 from '../../public/audio/lesson4/lesson_4_9.mp3'
 
-export default function BeginnerLesson4() {
-   const text = <>
-   <p>1. I have a red car. - У меня есть красная машина.</p>
-   <p>2. She likes blue apples. - Ей нравятся синие яблоки.</p>
-   <p>3. He has two white dogs. - У него две белые собаки.</p>
-   <p>4. The sky is blue. - Небо синее.</p>
-   <p>5. This is a big car. - Это большая машина.</p>
-   <p>6. She has a small cat. - У неё есть маленькая кошка.</p>
-   <p>7. Three cats are playing. - Три кошки играют.</p>
-   <p>8. I see two birds. - Я вижу двух птиц.</p>
-   <p>9. My book is on the table. - Моя книга на столе.</p>
-   <p>10. The sun is yellow. - Солнце желтое.</p>
-   </>
+export default function BeginnerLesson3() {
+   const words_1 = [
+      {
+          enWord: 'I have a red car',
+          ruWord: 'У меня есть красная машина'
+      },
+      {
+          enWord: 'She likes blue apples',
+          ruWord: 'Ей нравятся синие яблоки'
+      },
+      {
+          enWord: 'He has two white dogs',
+          ruWord: 'У него есть две белые собаки'
+      },
+  ]
+
+  const wordsToAsk_1 = [  {
+   enWord: 'She likes blue apples',
+   ruWord: 'Ей нравятся синие яблоки'
+},
+  {
+   enWord: 'I have a red car',
+   ruWord: 'У меня есть красная машина'
+},
+{
+   enWord: 'He has two white dogs',
+   ruWord: 'У него есть две белые собаки'
+},]
+
+  const words_2 = [
+   {
+      enWord: 'The sky is blue',
+      ruWord: 'Небо синее'
+  },
+  {
+      enWord: 'This is a big car',
+      ruWord: 'Это большая машина'
+  },
+  {
+      enWord: 'She has a small cat',
+      ruWord: 'У неё есть маленькая кошка'
+  },
+]
+
+const wordsToAsk_2 = [ {
+   enWord: 'She has a small cat',
+   ruWord: 'У неё есть маленькая кошка'
+},
+{
+   enWord: 'The sky is blue',
+   ruWord: 'Небо синее'
+},
+{
+   enWord: 'This is a big car',
+   ruWord: 'Это большая машина'
+},]
+
+const words_3 = [
+   {
+       enWord: 'Three cats are playing',
+       ruWord: 'Три кошки играют'
+   },
+   {
+       enWord: 'I see two birds',
+       ruWord: 'Я вижу двух птиц'
+   },
+   {
+       enWord: 'My book is on the table',
+       ruWord: 'Моя книга на столе'
+   },
+]
+
+const wordsToAsk_3 = [{
+   enWord: 'Three cats are playing',
+   ruWord: 'Три кошки играют'
+},
+{
+   enWord: 'My book is on the table',
+   ruWord: 'Моя книга на столе'
+},
+{
+   enWord: 'I see two birds',
+   ruWord: 'Я вижу двух птиц'
+},]
 
    return (
    <>
-   <BeginnerLessonLayout lessonNumber={4} isTextLesson={true} text={text} nextUrl='/lessons/beginner/lesson5'/>
+   <BeginnerLessonLayout 
+   lessonNumber={4} 
+   isVocabulary={true} 
+   words_1={words_1} 
+   words_2={words_2} 
+   words_3={words_3} 
+   wordsToAsk_1={wordsToAsk_1} 
+   wordsToAsk_2={wordsToAsk_2} 
+   wordsToAsk_3={wordsToAsk_3}
+   nextUrl='/lessons/beginner/lesson5'
+   wordSrc_1={wordSrc_1}
+   wordSrc_2={wordSrc_2} 
+   wordSrc_3={wordSrc_3}
+   wordSrc_4={wordSrc_4}
+   wordSrc_5={wordSrc_5} 
+   wordSrc_6={wordSrc_6}
+   wordSrc_7={wordSrc_7}
+   wordSrc_8={wordSrc_8} 
+   wordSrc_9={wordSrc_9}
+   />
    </>
    )
 }
