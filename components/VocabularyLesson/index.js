@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from './VocabularyLesson.module.scss'
 import { DragDropContainer, DropTarget } from 'react-drag-drop-container';
 import { Button } from '../Button';
+import successSound from '../../public/audio/success.mp3'
 
 export default function VocabularyLesson({words_1, words_2, words_3, wordsToAsk_1, wordsToAsk_2, wordsToAsk_3}) {
     const [firstRight, setFirstRight] = useState(false)
@@ -9,6 +10,10 @@ export default function VocabularyLesson({words_1, words_2, words_3, wordsToAsk_
     const [thirdRight, setThirdRight] = useState(false)
     const [words, setWords] = useState(words_1)
     const [wordsToAsk, setWordsToAsk] = useState(wordsToAsk_1)
+    
+    function play() {
+        new Audio(successSound).play()
+    }
     
     const findIndexOfRightWord = (askEnword) => {
         let indexOfRightWord
@@ -28,6 +33,7 @@ export default function VocabularyLesson({words_1, words_2, words_3, wordsToAsk_
 
     const onDropHandler = (e, enWord) => {
         if(enWord === e.dragData) {
+            play()
             let indexOfRightWord
             const filteredArray = words.map((item, index) => {
                if(item.enWord === enWord) {
