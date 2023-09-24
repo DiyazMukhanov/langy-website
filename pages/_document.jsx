@@ -2,6 +2,8 @@ import { Html, Head, Main, NextScript } from 'next/document'
 import Script from 'next/script'
  
 export default function Document() {
+  const environment = process.env.NEXT_PUBLIC_ENVIRONMENT === 'dev' ? 'dev' : `production`
+  
   return (
     <Html lang="en">
       <Head>
@@ -9,23 +11,26 @@ export default function Document() {
       <link crossOrigin="true" rel="preconnect" href="https://fonts.gstatic.com" />
       <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
       <meta name="description" content="Уроки английского языка онлайн"/>
-      <meta name="описание" content="Онлайн уроки английского языка"/>		
-      <Script
-      id='yandex'
-      strategy="beforeInteractive"
-        >
-      {`  (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-   m[i].l=1*new Date();
-   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+      <meta name="описание" content="Онлайн уроки английского языка"/>
+      {environment === `production` && (
+          <Script
+          id='yandex'
+          strategy="beforeInteractive"
+            >
+          {`  (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+          (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-   ym(94815906, "init", {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true
-   });`}  
-      </Script>
+          ym(94815906, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+          });`}  
+          </Script>
+      )}		
+     
         </Head>
       <body>
         <Main />
