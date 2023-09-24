@@ -1,1 +1,1 @@
-export { default } from '../../../lessons/beginner/lesson1'
+export { default } from '../../../lessons/beginner/lesson2'

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './VocabularyLesson.module.scss'
 import { DragDropContainer, DropTarget } from 'react-drag-drop-container';
 import { Button } from '../Button';
-// import successSound from '../../public/audio/success.mp3'
+import successSound from '../../public/audio/success.mp3'
 import Play from "../../public/images/Play.svg";
 import Image from "next/image";
 
@@ -13,9 +13,9 @@ export default function VocabularyLesson({words_1, words_2, words_3, wordsToAsk_
     const [words, setWords] = useState(words_1)
     const [wordsToAsk, setWordsToAsk] = useState(wordsToAsk_1)
 
-    // function play() {
-    //     new Audio(successSound).play()
-    // }
+    function play() {
+        new Audio(successSound).play()
+    }
 
     function playWord(wordNumber) {
         let wordSrc;
@@ -66,7 +66,7 @@ export default function VocabularyLesson({words_1, words_2, words_3, wordsToAsk_
                  break;    
             }
          }
-        // new Audio(wordSrc).play()
+        new Audio(wordSrc).play()
     }
     
     const findIndexOfRightWord = (askEnword) => {
