@@ -29,7 +29,23 @@ export default function Document() {
             accurateTrackBounce:true
           });`}  
           </Script>
+      )}
+
+      {process.env.NEXT_PUBLIC_ENVIRONMENT === `production` && (
+          <Script
+          async src="https://www.googletagmanager.com/gtag/js?id=G-BD995SMJR5"
+            ></Script>
+      )}
+      {process.env.NEXT_PUBLIC_ENVIRONMENT === `production` && (
+          <Script>
+           { `window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-BD995SMJR5')`}
+          </Script>
       )}			
+     
         </Head>
       <body>
         <Main />
