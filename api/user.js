@@ -1,6 +1,16 @@
 import axios from 'axios';
 
-const apiUrl = process.env.NEXT_PUBLIC_ENVIRONMENT === 'development' ? 'http://localhost:3000/api/v1' : `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1`
+let apiUrl
+
+if (process.env.NEXT_PUBLIC_ENVIRONMENT === 'development') {
+  apiUrl = 'http://localhost:3000/api/v1'
+} else if (process.env.NEXT_PUBLIC_ENVIRONMENT === 'dev') {
+  apiUrl = `${process.env.NEXT_PUBLIC_DEV_SERVER_URL}/api/v1`
+} else if (process.env.NEXT_PUBLIC_ENVIRONMENT === 'production') {
+  apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1`
+}
+
+// const apiUrl = process.env.NEXT_PUBLIC_ENVIRONMENT === 'development' ? 'http://localhost:3000/api/v1' : `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1`
 
 const options = { withCredentials: true, headers: { 'Content-Type': 'application/json'}}
 
