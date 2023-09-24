@@ -12,7 +12,7 @@ export default function Document() {
       <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
       <meta name="description" content="Уроки английского языка онлайн"/>
       <meta name="описание" content="Онлайн уроки английского языка"/>
-      {environment === `production` && (
+      {process.env.NEXT_PUBLIC_ENVIRONMENT === `production` && (
           <Script
           id='yandex'
           strategy="beforeInteractive"
@@ -29,7 +29,22 @@ export default function Document() {
             accurateTrackBounce:true
           });`}  
           </Script>
-      )}		
+      )}
+
+      {process.env.NEXT_PUBLIC_ENVIRONMENT === `production` && (
+          <Script
+          async src="https://www.googletagmanager.com/gtag/js?id=G-BD995SMJR5"
+            ></Script>
+      )}
+      {process.env.NEXT_PUBLIC_ENVIRONMENT === `production` && (
+          <Script>
+           { `window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-BD995SMJR5')`}
+          </Script>
+      )}			
      
         </Head>
       <body>
