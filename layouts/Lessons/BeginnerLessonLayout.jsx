@@ -11,8 +11,35 @@ import TextLesson from "@/components/TextLesson";
 import Loader from '@/components/Loader';
 import { useRouter } from 'next/router';
 import VocabularyLesson from '@/components/VocabularyLesson';
+import CardLesson from '@/components/CardsLesson';
 
-export default function BeginnerLessonLayout({ isNextToElementary, videoUrl, lessonNumber, isVideoLesson, isTextLesson, isVocabulary, text, nextUrl, words_1, words_2, words_3, wordsToAsk_1, wordsToAsk_2, wordsToAsk_3, wordSrc_1, wordSrc_2, wordSrc_3, wordSrc_4, wordSrc_5, wordSrc_6, wordSrc_7, wordSrc_8, wordSrc_9 }) {
+export default function BeginnerLessonLayout({ 
+    isNextToElementary, 
+    videoUrl, 
+    lessonNumber, 
+    isVideoLesson, 
+    isTextLesson, 
+    isVocabulary, 
+    text, 
+    nextUrl, 
+    words_1, 
+    words_2, 
+    words_3,
+    wordsToAsk_1, 
+    wordsToAsk_2, 
+    wordsToAsk_3, 
+    wordSrc_1, 
+    wordSrc_2, 
+    wordSrc_3, 
+    wordSrc_4, 
+    wordSrc_5, 
+    wordSrc_6, 
+    wordSrc_7, 
+    wordSrc_8, 
+    wordSrc_9, 
+    isCardLesson,
+    words 
+    }) {
     const [isLoading, setIsLoading] = useState(false)
     const [beginnerProgress, setBeginnerProgress] = useState(null)
     const [hasWindow, setHasWindow] = useState(false)
@@ -138,6 +165,12 @@ export default function BeginnerLessonLayout({ isNextToElementary, videoUrl, les
                                     wordSrc_9={wordSrc_9}
                                     />
                                     
+                                )
+                            }
+
+                            {
+                                isCardLesson && (
+                                    <CardLesson words={words}/>
                                 )
                             }
 

@@ -1,0 +1,50 @@
+@import "styles/breakpoints";
+
+.image {
+    width: 30vw;
+    height: 300px;
+
+    @include size-tablet {
+        width: 75vw;
+        height: 200px;
+      } 
+}
+
+.cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+    @include size-tablet {
+        width: 80vw;
+        margin-left: -10px;
+      }
+}
+
+.translationCard {
+    border: solid var(--color-grey) 1px;
+    width: fit-content;
+    padding: 10px;
+    font-size: 21px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.btnContainer {
+  text-align: center;
+}
+
+.moreButton {
+    margin-top: -10px;
+}
+
+.bottomContainer {
+    margin-bottom: 50px;
+}
+
+.right {
+    background-color: var(--color-green);
+}
+
