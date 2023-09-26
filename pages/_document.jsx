@@ -12,7 +12,7 @@ export default function Document() {
       <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
       <meta name="description" content="Уроки английского языка онлайн"/>
       <meta name="описание" content="Онлайн уроки английского языка"/>
-      {process.env.NEXT_PUBLIC_YANDEX === `yes` && (
+      {process.env.NEXT_PUBLIC_ENVIRONMENT === `production` && (
           <Script
           id='yandex'
           strategy="beforeInteractive"
