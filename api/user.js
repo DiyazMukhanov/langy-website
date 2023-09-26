@@ -147,10 +147,3 @@ export const setCurrentLessonData = async (bodyData) => {
 
 
 
-
-
-
- 
-
-
-

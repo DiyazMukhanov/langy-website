@@ -71,8 +71,6 @@ export default function Landing() {
 
   }, [])
 
-  
-
   const frequentQuestions = [
     {
       id: 1,
@@ -81,8 +79,8 @@ export default function Landing() {
     },
     {
       id: 2,
-      question: 'Есть ли у вас рассрочка?',
-      answer: 'Рассрочки нет. Но стоимость подписки доступна широкой массе студентов'
+      question: 'Для каких уровней подходит программа?',
+      answer: 'Программа подходит для всех уровней. От начинающих до продолжающих.'
     },
     {
       id: 3,
@@ -256,7 +254,7 @@ export default function Landing() {
         <div className={styles.advantages}>
             <Advantage text='Все на одной платформе'/>
             <Advantage text='Для тех, кто хочет владеть английским языком'/>
-            <Advantage text='Бесплатный пробный урок'/>
+            <Advantage text='Учись развлекаясь'/>
             <Advantage text='Для любого возраста'/>
         </div>
   
@@ -344,8 +342,7 @@ export default function Landing() {
           <div className={styles.manSection}>
             <HowCard 
             number='1' 
-            text='Для того, чтобы взять бесплатный пробный урок вам не понадобиться ничего, кроме собственного желания. 
-            Вам нужно пройти регистрацию и по желанию пройти тест для определения уровня знания языка.'
+            text='Пройдите регистрацию в пару кликов и приступайте к занятиям!'
             color='blue'
             />
             <Image
@@ -359,15 +356,15 @@ export default function Landing() {
           <div className={styles.howcardTwo}>
           <HowCard 
             number='2' 
-            text='После успешного пробного урока и определения  своего уровня знания языка. Вам нужно произвести оплату для дальнейшего обучения'
+            text='Внимательно проходите урок за уроком, и переходите к следующему уровню'
             color='orange'
             />
           </div>
   
            <HowCard 
             number='3' 
-            text='Доступ открыт!
-            Наслаждайтесь обучением!'
+            text='Удивите ваших друзей!
+            Покажите им ваши навыки!'
             color='purple'
             type='small'
             />

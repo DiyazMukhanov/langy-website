@@ -1,108 +1,86 @@
 import BeginnerLessonLayout from "@/layouts/Lessons/BeginnerLessonLayout";
 
 export default function BeginnerLesson9() {
-   const words_1 = [
-     {
-        enWord: 'Teacher',
-        ruWord: 'Учитель',
-      },
-      {
-        enWord: 'Swimming',
-        ruWord: 'Плавание',
-      },
-      {
-        enWord: 'Book',
-        ruWord: 'Книга',
-      },
-  ]
-
-  const wordsToAsk_1 = [
+  const words = [
     {
-    enWord: 'Swimming',
-    ruWord: 'Плавание',
-  },
-{
-    enWord: 'Teacher',
-    ruWord: 'Учитель',
-  },
-  {
-    enWord: 'Book',
-    ruWord: 'Книга',
-  },
-]
-
-  const words_2 = [
+      ru: 'врач',
+      enRight: 'doctor',
+      imageUrl: 'https://storage.googleapis.com/langy.su/images/professions/doctors.jpg',
+      enWrong: ['teacher', 'engineer'],
+      audioSrc: 'https://storage.googleapis.com/langy.su/audio/lesson8/doctor.mp3'
+    },
     {
-        enWord: 'Happy',
-        ruWord: 'Счастливый',
-      },
-      {
-        enWord: 'Sad',
-        ruWord: 'Грустный',
-      },
-      {
-        enWord: 'Brown',
-        ruWord: 'Коричневый',
-      },
-]
-
-const wordsToAsk_2 = [
+      ru: 'учитель',
+      enRight: 'teacher',
+      imageUrl: 'https://storage.googleapis.com/langy.su/images/professions/teachers.jpg',
+      enWrong: ['nurse', 'chef'],
+      audioSrc: 'https://storage.googleapis.com/langy.su/audio/lesson8/teacher.mp3'
+    },
     {
-        enWord: 'Happy',
-        ruWord: 'Счастливый',
-      },
-      {
-        enWord: 'Brown',
-        ruWord: 'Коричневый',
-      },
-      {
-        enWord: 'Sad',
-        ruWord: 'Грустный',
-      },
-]
-
-const words_3 = [
-      {
-        enWord: 'Tall',
-        ruWord: 'Высокий',
-      },
-      {
-        enWord: 'Student',
-        ruWord: 'Студент',
-      },
-      {
-        enWord: 'Black',
-        ruWord: 'Черный',
-      },
-]
-
-const wordsToAsk_3 = [
+      ru: 'инженер',
+      enRight: 'engineer',
+      imageUrl: 'https://storage.googleapis.com/langy.su/images/professions/engineer.jpg',
+      enWrong: ['lawyer', 'pilot'],
+      audioSrc: 'https://storage.googleapis.com/langy.su/audio/lesson8/engineer.mp3'
+    },
     {
-        enWord: 'Black',
-        ruWord: 'Черный',
-      },
-      {
-        enWord: 'Tall',
-        ruWord: 'Высокий',
-      },
-        {
-        enWord: 'Student',
-        ruWord: 'Студент',
-        },
-]
-
+      ru: 'повар',
+      enRight: 'chef',
+      imageUrl: 'https://storage.googleapis.com/langy.su/images/professions/chef.jpg',
+      enWrong: ['mechanic', 'artist'],
+      audioSrc: 'https://storage.googleapis.com/langy.su/audio/lesson8/chef.mp3'
+    },
+    {
+      ru: 'механик',
+      enRight: 'mechanic',
+      imageUrl: 'https://storage.googleapis.com/langy.su/images/professions/mechanic.jpg',
+      enWrong: ['dentist', 'journalist'],
+      audioSrc: 'https://storage.googleapis.com/langy.su/audio/lesson8/mechanic.mp3'
+    },
+    {
+      ru: 'юрист',
+      enRight: 'lawyer',
+      imageUrl: 'https://storage.googleapis.com/langy.su/images/professions/lawer.jpg',
+      enWrong: ['architect', 'waiter'],
+      audioSrc: 'https://storage.googleapis.com/langy.su/audio/lesson8/lawer.mp3'
+    },
+    {
+      ru: 'пилот',
+      enRight: 'pilot',
+      imageUrl: 'https://storage.googleapis.com/langy.su/images/professions/pilot.jpg',
+      enWrong: ['electrician', 'pharmacist'],
+      audioSrc: 'https://storage.googleapis.com/langy.su/audio/lesson8/pilot.mp3'
+    },
+    {
+      ru: 'архитектор',
+      enRight: 'architect',
+      imageUrl: 'https://storage.googleapis.com/langy.su/images/professions/architect.jpg',
+      enWrong: ['plumber', 'chef'],
+      audioSrc: 'https://storage.googleapis.com/langy.su/audio/lesson8/architect.mp3'
+    },
+    {
+      ru: 'журналист',
+      enRight: 'journalist',
+      imageUrl: 'https://storage.googleapis.com/langy.su/images/professions/journalist.jpg',
+      enWrong: ['veterinarian', 'scientist'],
+      audioSrc: 'https://storage.googleapis.com/langy.su/audio/lesson8/journalist.mp3'
+    },
+    {
+      ru: 'электрик',
+      enRight: 'electrician',
+      imageUrl: 'https://storage.googleapis.com/langy.su/images/professions/electrician.jpg',
+      enWrong: ['firefighter', 'waiter'],
+      audioSrc: 'https://storage.googleapis.com/langy.su/audio/lesson8/electrician.mp3'
+    }
+  ];
+   
    return (
    <>
    <BeginnerLessonLayout 
    lessonNumber={9} 
-   isVocabulary={true} 
-   words_1={words_1} 
-   words_2={words_2} 
-   words_3={words_3} 
-   wordsToAsk_1={wordsToAsk_1} 
-   wordsToAsk_2={wordsToAsk_2} 
-   wordsToAsk_3={wordsToAsk_3}
-   nextUrl='/lessons/beginner/lesson10'
+   isCardLesson={true}
+   words={words}
+   nextUrl = '/lessons/beginner/lesson10'
    />
    </>
    )

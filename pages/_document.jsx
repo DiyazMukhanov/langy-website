@@ -34,10 +34,10 @@ export default function Document() {
         </Head>
       <body>
         <Main />
-        {<noscript>
+        {/* {<noscript>
         <div><img src="https://mc.yandex.ru/watch/94815906" style={{ position: 'absolute', left: '-9999px' }} alt="" /></div>
-        </noscript>
-      }
+        </noscript> */}
+      {/* } */}
         <NextScript />
       </body>
     </Html>

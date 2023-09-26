@@ -1,3 +1,5 @@
+@import "styles/breakpoints";
+
 .top {
     display: flex;
     gap: 20px;
@@ -45,12 +47,22 @@
 }
 
 .wordsContainer {
-    display: flex;
-    gap: 50px;
+    display: flex;   
+    gap: 30px;
     margin-top: 40px;
+
+    @include size-tablet {
+        justify-content: center;
+      } 
 }
 
 .task {
     color: var(--color-primary);
     font-weight: bold;
+}
+
+.enContainer {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }

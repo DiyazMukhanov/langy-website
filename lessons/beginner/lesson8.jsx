@@ -1,53 +1,123 @@
 import BeginnerLessonLayout from "@/layouts/Lessons/BeginnerLessonLayout";
-import { useRef } from "react";
-import styles from './pronounce.module.scss'
-import Play from './../../public/images/Play.svg'
-import Image from "next/image"
+import wordSrc_1 from '../../public/audio/lesson7/lesson_7_1.mp3'
+import wordSrc_2 from '../../public/audio/lesson7/lesson_7_2.mp3'
+import wordSrc_3 from '../../public/audio/lesson7/lesson_7_3.mp3'
+import wordSrc_4 from '../../public/audio/lesson7/lesson_7_4.mp3'
+import wordSrc_5 from '../../public/audio/lesson7/lesson_7_5.mp3'
+import wordSrc_6 from '../../public/audio/lesson7/lesson_7_6.mp3'
+import wordSrc_7 from '../../public/audio/lesson7/lesson_7_7.mp3'
+import wordSrc_8 from '../../public/audio/lesson7/lesson_7_8.mp3'
+import wordSrc_9 from '../../public/audio/lesson7/lesson_7_9.mp3'
 
 export default function BeginnerLesson8() {
-  const spanRef1 = useRef(null)
-  const spanRef2 = useRef(null)
-  const spanRef3 = useRef(null)
-  const spanRef4 = useRef(null)
-  const spanRef5 = useRef(null)
-  const spanRef6 = useRef(null)
-  const spanRef7 = useRef(null)
-  const spanRef8 = useRef(null)
-  const spanRef9 = useRef(null)
-  const spanRef10 = useRef(null)
-  const spanRef11 = useRef(null)
-  const spanRef12 = useRef(null)
+   
+const words_1 = [
+  {
+      enWord: 'He is a teacher',
+      ruWord: 'Он учитель'
+  },
+  {
+      enWord: 'She likes swimming',
+      ruWord: 'Ей нравится плавать'
+  },
+  {
+      enWord: 'I have a book',
+      ruWord: 'У меня есть книга'
+  },
+]
 
-  const readWordAloud = (spanRef) => {
-     
-     if(spanRef.current) {
-        const spanText = spanRef.current.textContent
-        const speechSynthesis = window.speechSynthesis
-        const utterance = new SpeechSynthesisUtterance(spanText)
-        utterance.lang = 'en-US'
-        speechSynthesis.speak(utterance)
-     }     
-   }
+const wordsToAsk_1 = [{
+  enWord: 'He is a teacher',
+  ruWord: 'Он учитель'
+},
+{
+  enWord: 'I have a book',
+  ruWord: 'У меня есть книга'
+},
+{
+  enWord: 'She likes swimming',
+  ruWord: 'Ей нравится плавать'
+},]
 
-  const style = { color: 'blue', paddingLeft: 5, paddingRight:5, fontWeight:600 }
-  
-  const text = <>
-  <div className={styles.container}>1. <span style={style}>qu</span>/ kw /Куа<span className={styles.styleWord} ref={spanRef1} >queen<Image priority src={Play} width={30} onClick={() => readWordAloud(spanRef1)} className={styles.wordPlay}/></span> — королева</div>
-  <div className={styles.container}>2. <span style={style}>igh</span>/ aı /	Ай<span className={styles.styleWord} ref={spanRef2} >high<Image priority src={Play} width={30} onClick={() => readWordAloud(spanRef2)} className={styles.wordPlay}/></span> — высоко</div>
-  <div className={styles.container}>3. <span style={style}>all</span>/ Ɔ:l /Ол<span className={styles.styleWord} ref={spanRef3} >tall<Image priority src={Play} width={30} onClick={() => readWordAloud(spanRef3)} className={styles.wordPlay}/></span> — высокий</div>
-  <div className={styles.container}>4. <span style={style}>ai</span>/ eı /	Эй<span className={styles.styleWord} ref={spanRef4} >Spain<Image priority src={Play} width={30} onClick={() => readWordAloud(spanRef4)} className={styles.wordPlay}/></span> — Испания</div>
-  <div className={styles.container}>5. <span style={style}>ay</span>/ eı /	Эй<span className={styles.styleWord} ref={spanRef5} >May<Image priority src={Play} width={30} onClick={() => readWordAloud(spanRef5)} className={styles.wordPlay}/></span> — Май</div>
-  <div className={styles.container}>6. <span style={style}>oi</span>/ oı /	Ой<span className={styles.styleWord} ref={spanRef6} >point<Image priority src={Play} width={30} onClick={() => readWordAloud(spanRef6)} className={styles.wordPlay}/></span> — очко</div>
-  <div className={styles.container}>7. <span style={style}>oy</span>/ oı /	Ой<span className={styles.styleWord} ref={spanRef7} >toy<Image priority src={Play} width={30} onClick={() => readWordAloud(spanRef7)} className={styles.wordPlay}/></span> — игрушка</div>
-  <div className={styles.container}>8. <span style={style}>ow</span>/ oƱ /Оу<span className={styles.styleWord} ref={spanRef8} >grow<Image priority src={Play} width={30} onClick={() => readWordAloud(spanRef8)} className={styles.wordPlay}/></span> — расти</div>
-  <div className={styles.container}>9. <span style={style}>ou</span>/ aƱ /Ау<span className={styles.styleWord} ref={spanRef9} >out<Image priority src={Play} width={30} onClick={() => readWordAloud(spanRef9)} className={styles.wordPlay}/></span> — вне</div>
-  <div className={styles.container}>10. <span style={style}>ew</span>/ ju: /	Ю<span className={styles.styleWord} ref={spanRef10} >knew<Image priority src={Play} width={30} onClick={() => readWordAloud(spanRef10)} className={styles.wordPlay}/></span> — знал</div>
-  <div className={styles.container}>11. <span style={style}>aw</span>/ Ɔ:/	Ооо<span className={styles.styleWord} ref={spanRef11} >draw<Image priority src={Play} width={30} onClick={() => readWordAloud(spanRef11)} className={styles.wordPlay}/></span> — рисовать</div>
-  <div className={styles.container}>11. <span style={style}>ee+r</span>/ ıə/ Иа<span className={styles.styleWord} ref={spanRef12} >engineer<Image priority src={Play} width={30} onClick={() => readWordAloud(spanRef12)} className={styles.wordPlay}/></span> — инженер</div>
-  </>
+const words_2 = [
+{
+   enWord: 'She is a teacher',
+   ruWord: 'Она учитель'
+},
+{
+   enWord: 'He is happy',
+   ruWord: 'Он счастлив'
+},
+{
+   enWord: 'I am sad',
+   ruWord: 'Я грустный'
+},
+]
+
+const wordsToAsk_2 = [{
+  enWord: 'She is a teacher',
+  ruWord: 'Она учитель'
+},
+{
+  enWord: 'He is happy',
+  ruWord: 'Он счастлив'
+},
+{
+  enWord: 'I am sad',
+  ruWord: 'Я грустный'
+},
+]
+
+const words_3 = [
+{
+   enWord: 'The dog is brown',
+   ruWord: 'Собака коричневая'
+},
+{
+   enWord: 'He is tall',
+   ruWord: 'Он высокий'
+},
+{
+   enWord: 'I am a student',
+   ruWord: 'Я студент'
+},
+]
+
+const wordsToAsk_3 = [{
+  enWord: 'He is tall',
+  ruWord: 'Он высокий'
+},
+{
+  enWord: 'The dog is brown',
+  ruWord: 'Собака коричневая'
+},
+{
+  enWord: 'I am a student',
+  ruWord: 'Я студент'
+},]
+
    return (
    <>
-     <BeginnerLessonLayout lessonNumber={8} isTextLesson={true} text={text} nextUrl='/lessons/beginner/lesson9'/>
+        <BeginnerLessonLayout 
+   lessonNumber={8} 
+   isVocabulary={true} 
+   words_1={words_1} 
+   words_2={words_2} 
+   words_3={words_3} 
+   wordsToAsk_1={wordsToAsk_1} 
+   wordsToAsk_2={wordsToAsk_2} 
+   wordsToAsk_3={wordsToAsk_3}
+   nextUrl='/lessons/beginner/lesson9'
+   wordSrc_1={wordSrc_1}
+   wordSrc_2={wordSrc_2} 
+   wordSrc_3={wordSrc_3}
+   wordSrc_4={wordSrc_4}
+   wordSrc_5={wordSrc_5} 
+   wordSrc_6={wordSrc_6}
+   wordSrc_7={wordSrc_7}
+   wordSrc_8={wordSrc_8} 
+   wordSrc_9={wordSrc_9}
+   />
    </>
    )
 }
