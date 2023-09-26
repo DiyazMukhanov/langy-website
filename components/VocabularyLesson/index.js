@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import styles from './VocabularyLesson.module.scss'
 import { DragDropContainer, DropTarget } from 'react-drag-drop-container';
 import { Button } from '../Button';
@@ -12,9 +12,10 @@ export default function VocabularyLesson({words_1, words_2, words_3, wordsToAsk_
     const [thirdRight, setThirdRight] = useState(false)
     const [words, setWords] = useState(words_1)
     const [wordsToAsk, setWordsToAsk] = useState(wordsToAsk_1)
+    const audioRef = useRef(null)
     
     function play() {
-        new Audio(successSound).play()
+        audioRef.current.play();
     }
 
     function playWord(wordNumber) {
@@ -222,6 +223,10 @@ export default function VocabularyLesson({words_1, words_2, words_3, wordsToAsk_
        <div className={styles.moreBtn}>
               <Button variant='standardNextContained' onClick={nextWordsHandler}>Ещё</Button>
             </div>
+            <audio ref={audioRef} controls style={{ display: 'none' }}>
+                <source src='/audio/success.mp3' type="audio/mpeg" />
+                Your browser does not support the audio element.
+            </audio>
     </>
     )
 }

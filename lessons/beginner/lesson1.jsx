@@ -1,90 +1,121 @@
-// import BeginnerVideo from "@/components/BeginnerVideo";
 import BeginnerLessonLayout from "@/layouts/Lessons/BeginnerLessonLayout";
-
+import wordSrc_1 from '../../public/audio/lesson3/lesson_3_1.mp3'
+import wordSrc_2 from '../../public/audio/lesson3/lesson_3_2.mp3'
+import wordSrc_3 from '../../public/audio/lesson3/lesson_3_3.mp3'
+import wordSrc_4 from '../../public/audio/lesson3/lesson_3_4.mp3'
+import wordSrc_5 from '../../public/audio/lesson3/lesson_3_5.mp3'
+import wordSrc_6 from '../../public/audio/lesson3/lesson_3_6.mp3'
+import wordSrc_7 from '../../public/audio/lesson3/lesson_3_7.mp3'
+import wordSrc_8 from '../../public/audio/lesson3/lesson_3_8.mp3'
+import wordSrc_9 from '../../public/audio/lesson3/lesson_3_9.mp3'
 
 export default function BeginnerLesson1() {
-   const words = [
+   const words_1 = [
       {
-        ru: 'яблоко',
-        enRight: 'apple',
-        imageUrl: 'https://storage.googleapis.com/langy.su/images/food/apple.jpg',
-        enWrong: ['orange', 'bread'],
-        audioSrc: 'https://storage.googleapis.com/langy.su/audio/lesson1/apple.mp3'
+          enWord: 'Hello',
+          ruWord: 'Привет'
       },
       {
-          ru: 'хлеб',
-          enRight: 'bread',
-          imageUrl: 'https://storage.googleapis.com/langy.su/images/food/bread.jpg',
-          enWrong: ['cheese', 'tomato'],
-          audioSrc: 'https://storage.googleapis.com/langy.su/audio/lesson1/bread.mp3'
-        },
-        {
-          ru: 'сыр',
-          enRight: 'cheese',
-          imageUrl: 'https://storage.googleapis.com/langy.su/images/food/cheese.jpg',
-          enWrong: ['ice cream', 'fish'],
-          audioSrc: 'https://storage.googleapis.com/langy.su/audio/lesson1/cheese.mp3'
-        },
-        {
-          ru: 'помидор',
-          enRight: 'tomato',
-          imageUrl: 'https://storage.googleapis.com/langy.su/images/food/tomato.jpg',
-          enWrong: ['potato', 'chicken'],
-          audioSrc: 'https://storage.googleapis.com/langy.su/audio/lesson1/tomato.mp3'
-        },
-        {
-          ru: 'картофель',
-          enRight: 'potato',
-          imageUrl: 'https://storage.googleapis.com/langy.su/images/food/potato.jpg',
-          enWrong: ['soup', 'chocolate'],
-          audioSrc: 'https://storage.googleapis.com/langy.su/audio/lesson1/potato.mp3'
-        },
-        {
-          ru: 'рыба',
-          enRight: 'fish',
-          imageUrl: 'https://storage.googleapis.com/langy.su/images/food/fish.jpg',
-          enWrong: ['apple', 'bread'],
-          audioSrc: 'https://storage.googleapis.com/langy.su/audio/lesson1/fish.mp3'
-        },
-        {
-          ru: 'курица',
-          enRight: 'chicken',
-          imageUrl: 'https://storage.googleapis.com/langy.su/images/food/chicken.jpg',
-          enWrong: ['tomato', 'tea'],
-          audioSrc: 'https://storage.googleapis.com/langy.su/audio/lesson1/chicken.mp3'
-        },
-        {
-          ru: 'суп',
-          enRight: 'soup',
-          imageUrl: 'https://storage.googleapis.com/langy.su/images/food/soup.jpg',
-          enWrong: ['coffee', 'cheese'],
-          audioSrc: 'https://storage.googleapis.com/langy.su/audio/lesson1/soup.mp3'
-        },
-        {
-          ru: 'шоколад',
-          enRight: 'chocolate',
-          imageUrl: 'https://storage.googleapis.com/langy.su/images/food/chocolate.jpg',
-          enWrong: ['tomato', 'orange'],
-          audioSrc: 'https://storage.googleapis.com/langy.su/audio/lesson1/chocolate.mp3'
-        },
-        {
-          ru: 'мороженое',
-          enRight: 'ice cream',
-          imageUrl: 'https://storage.googleapis.com/langy.su/images/food/ice_cream.jpg',
-          enWrong: ['potato', 'fish'],
-          audioSrc: 'https://storage.googleapis.com/langy.su/audio/lesson1/ice_cream.mp3'
-        }
-    ];
-   
+          enWord: 'Name',
+          ruWord: 'Имя'
+      },
+      {
+          enWord: 'Goodbye',
+          ruWord: 'Пока'
+      },
+  ]
+
+  const wordsToAsk_1 = [  {
+      enWord: 'Name',
+      ruWord: 'Имя'
+  },
+  {
+      enWord: 'Hello',
+      ruWord: 'Привет'
+  },
+  {
+      enWord: 'Goodbye',
+      ruWord: 'Пока'
+  },]
+
+  const words_2 = [
+   {
+       enWord: 'Nice',
+       ruWord: 'Приятный'
+   },
+   {
+       enWord: 'Day',
+       ruWord: 'День'
+   },
+   {
+       enWord: 'She',
+       ruWord: 'Она'
+   },
+]
+
+const wordsToAsk_2 = [  {
+   enWord: 'Day',
+   ruWord: 'День'
+},
+{
+   enWord: 'She',
+   ruWord: 'Она'
+},
+{
+   enWord: 'Nice',
+   ruWord: 'Приятный'
+},]
+
+const words_3 = [
+   {
+       enWord: 'Friend',
+       ruWord: 'Друг'
+   },
+   {
+       enWord: 'He',
+       ruWord: 'Он'
+   },
+   {
+       enWord: 'Dog',
+       ruWord: 'Собака'
+   },
+]
+
+const wordsToAsk_3 = [  {
+   enWord: 'Dog',
+   ruWord: 'Собака'
+},
+{
+   enWord: 'He',
+   ruWord: 'Он'
+},
+{
+   enWord: 'Friend',
+   ruWord: 'Друг'
+},]
+
    return (
    <>
    <BeginnerLessonLayout 
    lessonNumber={1} 
-   isCardLesson={true}
-   words={words}
-   nextUrl = '/lessons/beginner/lesson2'
+   isVocabulary={true} 
+   words_1={words_1} 
+   words_2={words_2} 
+   words_3={words_3} 
+   wordsToAsk_1={wordsToAsk_1} 
+   wordsToAsk_2={wordsToAsk_2} 
+   wordsToAsk_3={wordsToAsk_3}
+   nextUrl='/lessons/beginner/lesson2'
+   wordSrc_1={wordSrc_1}
+   wordSrc_2={wordSrc_2} 
+   wordSrc_3={wordSrc_3}
+   wordSrc_4={wordSrc_4}
+   wordSrc_5={wordSrc_5} 
+   wordSrc_6={wordSrc_6}
+   wordSrc_7={wordSrc_7}
+   wordSrc_8={wordSrc_8} 
+   wordSrc_9={wordSrc_9}
    />
-   {/* <BeginnerVideo /> */}
    </>
    )
 }

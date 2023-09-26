@@ -44,7 +44,7 @@ export default function CardLesson({words}) {
  
       const [audioSrc, setAudioSrc] = useState(words[wordsIndex].audioSrc)
       const [rightAnswer, setRightAnswer] = useState(words[0].enRight)
-      console.log(audioSrc)
+      
       const moreWordsHandler = () => {
         audioRef.current.pause();
         const randomShowingVariant = Math.floor(Math.random() * 3)

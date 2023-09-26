@@ -1,97 +1,98 @@
 import BeginnerLessonLayout from "@/layouts/Lessons/BeginnerLessonLayout";
-import wordSrc_1 from '../../public/audio/lesson4/lesson_4_1.mp3'
-import wordSrc_2 from '../../public/audio/lesson4/lesson_4_2.mp3'
-import wordSrc_3 from '../../public/audio/lesson4/lesson_4_3.mp3'
-import wordSrc_4 from '../../public/audio/lesson4/lesson_4_4.mp3'
-import wordSrc_5 from '../../public/audio/lesson4/lesson_4_5.mp3'
-import wordSrc_6 from '../../public/audio/lesson4/lesson_4_6.mp3'
-import wordSrc_7 from '../../public/audio/lesson4/lesson_4_7.mp3'
-import wordSrc_8 from '../../public/audio/lesson4/lesson_4_8.mp3'
-import wordSrc_9 from '../../public/audio/lesson4/lesson_4_9.mp3'
+import wordSrc_1 from '../../public/audio/lesson6/lesson_6_1.mp3'
+import wordSrc_2 from '../../public/audio/lesson6/lesson_6_2.mp3'
+import wordSrc_3 from '../../public/audio/lesson6/lesson_6_3.mp3'
+import wordSrc_4 from '../../public/audio/lesson6/lesson_6_4.mp3'
+import wordSrc_5 from '../../public/audio/lesson6/lesson_6_5.mp3'
+import wordSrc_6 from '../../public/audio/lesson6/lesson_6_6.mp3'
+import wordSrc_7 from '../../public/audio/lesson6/lesson_6_7.mp3'
+import wordSrc_8 from '../../public/audio/lesson6/lesson_6_8.mp3'
+import wordSrc_9 from '../../public/audio/lesson6/lesson_6_9.mp3'
 
-export default function BeginnerLesson3() {
+export default function BeginnerLesson4() {
    const words_1 = [
       {
-          enWord: 'I have a red car',
-          ruWord: 'У меня есть красная машина'
+          enWord: 'Red',
+          ruWord: 'Красный'
       },
       {
-          enWord: 'She likes blue apples',
-          ruWord: 'Ей нравятся синие яблоки'
+          enWord: 'Blue',
+          ruWord: 'Синий'
       },
       {
-          enWord: 'He has two white dogs',
-          ruWord: 'У него есть две белые собаки'
+          enWord: 'Green',
+          ruWord: 'Зеленый'
       },
   ]
 
-  const wordsToAsk_1 = [  {
-   enWord: 'She likes blue apples',
-   ruWord: 'Ей нравятся синие яблоки'
-},
-  {
-   enWord: 'I have a red car',
-   ruWord: 'У меня есть красная машина'
+  const wordsToAsk_1 = [{
+    enWord: 'Blue',
+    ruWord: 'Синий'
 },
 {
-   enWord: 'He has two white dogs',
-   ruWord: 'У него есть две белые собаки'
+    enWord: 'Green',
+    ruWord: 'Зеленый'
+},
+{
+    enWord: 'Red',
+    ruWord: 'Красный'
 },]
 
   const words_2 = [
    {
-      enWord: 'The sky is blue',
-      ruWord: 'Небо синее'
-  },
-  {
-      enWord: 'This is a big car',
-      ruWord: 'Это большая машина'
-  },
-  {
-      enWord: 'She has a small cat',
-      ruWord: 'У неё есть маленькая кошка'
-  },
+       enWord: 'Apple',
+       ruWord: 'Яблоко'
+   },
+   {
+       enWord: 'Dog',
+       ruWord: 'Собака'
+   },
+   {
+       enWord: 'Sky',
+       ruWord: 'Небо'
+   },
 ]
 
-const wordsToAsk_2 = [ {
-   enWord: 'She has a small cat',
-   ruWord: 'У неё есть маленькая кошка'
+const wordsToAsk_2 = [{
+    enWord: 'Apple',
+    ruWord: 'Яблоко'
 },
 {
-   enWord: 'The sky is blue',
-   ruWord: 'Небо синее'
+    enWord: 'Sky',
+    ruWord: 'Небо'
 },
 {
-   enWord: 'This is a big car',
-   ruWord: 'Это большая машина'
-},]
+    enWord: 'Dog',
+    ruWord: 'Собака'
+},
+]
 
 const words_3 = [
    {
-       enWord: 'Three cats are playing',
-       ruWord: 'Три кошки играют'
+       enWord: 'Big',
+       ruWord: 'Большой'
    },
    {
-       enWord: 'I see two birds',
-       ruWord: 'Я вижу двух птиц'
+       enWord: 'Car',
+       ruWord: 'Машина'
    },
    {
-       enWord: 'My book is on the table',
-       ruWord: 'Моя книга на столе'
+       enWord: 'Small',
+       ruWord: 'Маленький'
    },
 ]
 
 const wordsToAsk_3 = [{
-   enWord: 'Three cats are playing',
-   ruWord: 'Три кошки играют'
+    enWord: 'Small',
+    ruWord: 'Маленький'
 },
 {
-   enWord: 'My book is on the table',
-   ruWord: 'Моя книга на столе'
+    enWord: 'Car',
+    ruWord: 'Машина'
 },
 {
-   enWord: 'I see two birds',
-   ruWord: 'Я вижу двух птиц'
+    enWord: 'Big',
+    ruWord: 'Большой'
 },]
 
    return (
