@@ -10,16 +10,16 @@ export default function OptionCard({type, onClick}) {
             {[styles.headerMonth]: type === 'month'}, //3 months now
             {[styles.headerYear]: type === 'year'} // 6 months now
             )}>
-            {type === 'month' ? (<p className={styles.white}>3 месяца</p>) : (<p className={styles.white}>6 месяцев</p>)}    
+            {type === 'month' ? (<p className={styles.white}>1 месяц</p>) : (<p className={styles.white}>3 месяца</p>)}    
         </div>
          <div className={classNames({[styles.middle]: type === 'month'}, {[styles.middleYear]: type === 'year'})}>
             <div className={styles.price}>
             <span className={classNames({[styles.blue]: type === 'month'}, {[styles.orange]: type === 'year'})}>
-              {type === 'month' ? 4830 : 6970}    
+              {type === 'month' ? 980 : 1980}    
             </span> 
             
             <span>
-            {type === 'month' ? (<> тг/за 90 дней</>) : (<> тг/за 180 дней</>)} 
+            {type === 'month' ? (<> тг/за 30 дней</>) : (<> тг/за 90 дней</>)} 
             </span>
             </div>
 
