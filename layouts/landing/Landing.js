@@ -227,7 +227,7 @@ export default function Landing() {
              src={DropOne}
              className={styles.dropOneMobile}
              />
-           <Typography element='h1' className={styles.mainHeading}>Платформа для изучения английского языка</Typography>
+           <Typography element='h1' className={styles.mainHeading}>Платформа для самостоятельного изучения английского языка</Typography>
            <div className={styles.headerBottomBlock}>
            <Image
              priority
@@ -252,10 +252,10 @@ export default function Landing() {
         </main>
   
         <div className={styles.advantages}>
-            <Advantage text='Все на одной платформе'/>
-            <Advantage text='Для тех, кто хочет владеть английским языком'/>
-            <Advantage text='Учись развлекаясь'/>
-            <Advantage text='Для любого возраста'/>
+            <Advantage text='Самостоятельное изучение'/>
+            <Advantage text='Новая методика'/>
+            <Advantage text='Уникальная программа'/>
+            <Advantage text='Наслаждайся обучением'/>
         </div>
   
         <section className={styles.middleSection}>
