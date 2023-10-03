@@ -252,10 +252,10 @@ export default function Landing() {
         </main>
   
         <div className={styles.advantages}>
-            <Advantage text='Самостоятельное изучение'/>
-            <Advantage text='Новая методика'/>
-            <Advantage text='Уникальная программа'/>
-            <Advantage text='Наслаждайся обучением'/>
+            <div data-aos='fade-up'><Advantage text='Самостоятельное изучение'/></div>
+            <div data-aos='fade-up'><Advantage text='Новая методика'/></div>
+            <div data-aos='fade-up'><Advantage text='Уникальная программа'/></div>
+            <div data-aos='fade-up'><Advantage text='Наслаждайся обучением'/></div>
         </div>
   
         <section className={styles.middleSection}>
@@ -305,26 +305,30 @@ export default function Landing() {
           </div>
           <div className={styles.advantagesMain}>
             <div className={styles.advantageCards}>
+            <div data-aos='fade-right'>
               <AdvantageCard 
                iconType='tick' 
                textLineOne='Погрузитесь'
                textLineTwo='в интерактивность'
                textLineThree='обучения!'
                />
-  
+             </div>
+             <div data-aos='fade-right'>
               <AdvantageCard 
                iconType='tick' 
                textLineOne='Вы освоите'
                textLineTwo='4 основных'
                textLineThree='языковых навыка!'
                />
-                 
+               </div>
+              <div data-aos='fade-right'> 
               <AdvantageCard 
                iconType='tick' 
                textLineOne='Занимайтесь в'
                textLineTwo='удобное для вас'
                textLineThree='время!'
                />
+               </div> 
             </div>
             {!userCtx.userData ? 
             (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Попробуйте сейчас</Button>): 

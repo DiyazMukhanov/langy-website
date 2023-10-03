@@ -1,10 +1,18 @@
 import '../styles/globals.scss'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Head from "next/head";
 import UserProvider from '@/store/userContext';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function MyApp({ Component, pageProps }) {
- 
+ useEffect(() => {
+  AOS.init({
+    duration: 800,
+    once: false
+  })
+ }, [])
+
   return (
       <>
           <Head>
