@@ -4,7 +4,7 @@ import SideBarDesktop from "./SideBarDesktop";
 import { Typography } from "@/components/Typography";
 import { UserContext } from "@/store/userContext";
 import { useContext, useEffect, useState } from "react";
-import  { getProgressData, setCurrentLessonData }  from "../../api/user";
+import  { getProgressData, setCurrentLearningField, setCurrentLessonData }  from "../../api/user";
 import Loader from "@/components/Loader";
 import ProtectPage from "@/components/ProtectPage";
 import { getThisLessonNumber } from "@/utils/getThisLessonNumber";
@@ -75,6 +75,9 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
                     userCtx.setProgressData(progressData?.data?.data)
                     setIsLoading(false)
                 }
+
+                const currentLearningField = await setCurrentLearningField({currentLearningField: "higher"})
+                console.log(currentLearningField)
                 
               } catch (err) {
                 setIsLoading(false)

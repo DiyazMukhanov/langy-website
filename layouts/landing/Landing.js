@@ -44,7 +44,7 @@ export default function Landing() {
     const getUser = async () => {
       try{
         const userData = await getMe()
-        
+        console.log(userData.data.data)
         userCtx.setUserData(userData.data.data)
         setIsLoading(false)
       } catch (err) {
@@ -117,15 +117,32 @@ export default function Landing() {
     if(!userCtx.userData) {
       router.push('authorization/registration')
     } else {
-      if(userCtx?.userData?.currentLesson !== 0 && userCtx?.userData?.currentChapter !== 'no') {
-        router.push(`/lessons/lesson${userCtx?.userData?.currentLesson}/${userCtx?.userData?.currentChapter}`)
-      } else {
-        if(currentBeginnerLesson) {
-          router.push(`/lessons/beginner/lesson${currentBeginnerLesson}`)
-        } else {
-          router.push('/test/level')
-        }
+      //Check if currentLearningField is beginner
+      if(userCtx?.userData?.currentLearningField === 'starter') {
+        router.push(`/lessons/beginner/lesson${currentBeginnerLesson}`)
       }
+
+      //Check if currentLearningField is higher
+      if(userCtx?.userData?.currentLearningField === 'higher') {
+        router.push(`/lessons/lesson${userCtx?.userData?.currentLesson}/${userCtx?.userData?.currentChapter}`)
+      }
+
+      //Check if user reloaded his progress
+      if(!userCtx?.userData?.currentLearningField) {
+        router.push('/test/level')
+      }
+
+
+
+      // if(userCtx?.userData?.currentLesson !== 0 && userCtx?.userData?.currentChapter !== 'no') {
+      //   router.push(`/lessons/lesson${userCtx?.userData?.currentLesson}/${userCtx?.userData?.currentChapter}`)
+      // } else {
+      //   if(currentBeginnerLesson) {
+      //     router.push(`/lessons/beginner/lesson${currentBeginnerLesson}`)
+      //   } else {
+      //     router.push('/test/level')
+      //   }
+      // }
     }
   };
 

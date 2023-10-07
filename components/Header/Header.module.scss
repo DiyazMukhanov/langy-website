@@ -137,4 +137,14 @@
     margin-left: 10px;
 }
 
+.menuContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    & p {
+        margin: 0;
+    }
+}
+
 

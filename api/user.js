@@ -143,6 +143,11 @@ export const setCurrentLessonData = async (bodyData) => {
     return await axios.patch(`${apiUrl}/beginner/exit`, {}, options);
    } 
 
+   export const setCurrentLearningField = async (bodyData) => {
+  
+    return await axios.post(`${apiUrl}/users/currentLearningField`, bodyData, options);
+   } 
+
 
 
 
