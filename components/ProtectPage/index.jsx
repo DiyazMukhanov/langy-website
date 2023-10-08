@@ -22,10 +22,7 @@ export default function ProtectPage({children, currentLesson, currentChapter, su
         
                   try {
                       const userData = await setCurrentLessonData(bodyData)
-                      
-                      // if(userData?.data?.data?.role === 'admin' || userData?.data?.data?.role === 'manager') {
-                      //     router.push('/admin/main')
-                      // }
+              
                       if(userData) {
                           userCtx.setUserData(userData.data.data)
 

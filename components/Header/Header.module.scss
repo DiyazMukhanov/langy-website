@@ -132,9 +132,18 @@
 }
 
 .goToProfile {
+    cursor: pointer;
     color: var(--color-primary);
     font-weight: bold;
     margin-left: 10px;
+}
+
+.leftMenuContainer {
+    // border: solid red 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .menuContainer {

@@ -90,18 +90,23 @@ export default function Header({ variant }) {
         return (
             <>
               <div className={styles.whiteContainer}>
-              <div className={styles.logo} onClick={goToMainHandler}>
-                <Image
-                    priority
-                    src={LogoBlue}
-                    width={60}
-                />
-                <Image
-                    priority
-                    src={LogoBlueBottom}
-                    width={20}
-                />
-                </div>
+                <div className={styles.leftMenuContainer}>
+                  <div className={styles.logo} onClick={goToMainHandler}>
+                      <Image
+                          priority
+                          src={LogoBlue}
+                          width={60}
+                      />
+                      <Image
+                          priority
+                          src={LogoBlueBottom}
+                          width={20}
+                      />
+                    </div>
+                    <div className={styles.modalLogos} onClick={() => router.push('/menu')}>
+                          <p className={styles.goToProfile}>Меню</p>
+                    </div>
+                  </div>
                 <div className={styles.profile}>
                    <p className={styles.exit} onClick={logOutHandler}>Выйти</p>
                    <div className={styles.circle} onClick={() => router.push('/profile')}>
