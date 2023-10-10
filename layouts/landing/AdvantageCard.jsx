@@ -19,8 +19,8 @@ export default function AdvantageCard({ iconType, textLineOne, textLineTwo, text
            />
            <div className={styles.text}>
             <div className={styles.textLineOne}>{textLineOne}</div>
-            <div className={styles.textLineTwo}>{textLineTwo}</div>
-            <div className={styles.textLineThree}>{textLineThree}</div>
+            {/* <div className={styles.textLineTwo}>{textLineTwo}</div>
+            <div className={styles.textLineThree}>{textLineThree}</div> */}
            </div>
         </div>
     )

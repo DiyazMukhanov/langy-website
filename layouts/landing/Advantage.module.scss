@@ -3,11 +3,14 @@
 .advantage {
     width: fit-content;
     display: flex;
+    align-items: center;
     gap: 20px;
+    height: 100px;
 
     @include size-phone-large {
         color: var(--color-primary);
         width: 300px;
+        height: auto;
      }
 }
 

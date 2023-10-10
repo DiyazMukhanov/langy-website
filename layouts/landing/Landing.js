@@ -131,18 +131,6 @@ export default function Landing() {
       if(!userCtx?.userData?.currentLearningField) {
         router.push('/test/level')
       }
-
-
-
-      // if(userCtx?.userData?.currentLesson !== 0 && userCtx?.userData?.currentChapter !== 'no') {
-      //   router.push(`/lessons/lesson${userCtx?.userData?.currentLesson}/${userCtx?.userData?.currentChapter}`)
-      // } else {
-      //   if(currentBeginnerLesson) {
-      //     router.push(`/lessons/beginner/lesson${currentBeginnerLesson}`)
-      //   } else {
-      //     router.push('/test/level')
-      //   }
-      // }
     }
   };
 
@@ -191,8 +179,12 @@ export default function Landing() {
              <p>Служба поддержки</p>
              </div>
              {userCtx.userData && (
-              <p className={styles.profileLink} onClick={() => router.push('/profile')}>Личный кабинет</p>
+              <div className={styles.loggedInNavContainer}>
+                  <p className={styles.profileLink} onClick={() => router.push('/profile')}>Личный кабинет</p>
+                  <p className={styles.profileLink} onClick={() => router.push('/menu')}>Меню</p>
+              </div>
              )}
+             
              
              {!userCtx.userData ? 
              (<div className={styles.modalButtons}>
@@ -269,10 +261,10 @@ export default function Landing() {
         </main>
   
         <div className={styles.advantages}>
-            <div data-aos='fade-up'><Advantage text='Самостоятельное изучение'/></div>
-            <div data-aos='fade-up'><Advantage text='Новая методика'/></div>
-            <div data-aos='fade-up'><Advantage text='Уникальная программа'/></div>
-            <div data-aos='fade-up'><Advantage text='Наслаждайся обучением'/></div>
+            <div data-aos='fade-up'><Advantage text='Другой подход к обучению' color='#7F5DC1'/></div>
+            <div data-aos='fade-up'><Advantage text='Новая методика' color='#FF69B4'/></div>
+            <div data-aos='fade-up'><Advantage text='Новая программа' color='#1676D8'/></div>
+            <div data-aos='fade-up'><Advantage text='Самостоятельное обучение' color='#E28731'/></div>
         </div>
   
         <section className={styles.middleSection}>
@@ -325,25 +317,25 @@ export default function Landing() {
             <div data-aos='fade-right'>
               <AdvantageCard 
                iconType='tick' 
-               textLineOne='Погрузитесь'
-               textLineTwo='в интерактивность'
-               textLineThree='обучения!'
+               textLineOne='Свободный график'
+              //  textLineTwo=''
+              //  textLineThree='график!'
                />
              </div>
              <div data-aos='fade-right'>
               <AdvantageCard 
                iconType='tick' 
-               textLineOne='Вы освоите'
-               textLineTwo='4 основных'
-               textLineThree='языковых навыка!'
+               textLineOne='Экономия средств'
+              //  textLineTwo='4 основных'
+              //  textLineThree='языковых навыка!'
                />
                </div>
               <div data-aos='fade-right'> 
               <AdvantageCard 
                iconType='tick' 
-               textLineOne='Занимайтесь в'
-               textLineTwo='удобное для вас'
-               textLineThree='время!'
+               textLineOne='Личностное развитие'
+              //  textLineTwo='удобное для вас'
+              //  textLineThree='время!'
                />
                </div> 
             </div>

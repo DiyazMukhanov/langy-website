@@ -1,14 +1,9 @@
 import styles from './Advantage.module.scss'
-import Image from 'next/image'
-import Circle from '../../public/images/circle.svg'
 
-export default function Advantage({ text }) {
+export default function Advantage({ text, color }) {
     return (
     <div className={styles.advantage}>
-        <Image
-           priority
-           src={Circle}
-           />
+        <div style={{ borderRadius: '50%', backgroundColor: color, width: '25px', height: '25px'}}></div>
          <div className={styles.text}>
         {text}
         </div>
