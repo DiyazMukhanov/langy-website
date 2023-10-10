@@ -4,7 +4,7 @@ import { beginnerLessonsDefault } from "@/utils/beginnerLessonsDefault";
 import ProtectPage from '@/components/ProtectPage';
 import { Button } from '@/components/Button';
 import BeginnerSideBarDesktop from "./BeginnerSideBarDesktop";
-import { exitBeginnerProgress, getBeginnerProgress, updateBeginnerProgress } from "@/api/user";
+import { exitBeginnerProgress, getBeginnerProgress, updateBeginnerProgress, setCurrentLearningField } from "@/api/user";
 import BeginnerVideo from "@/components/BeginnerVideo";
 import BeginnerHeader from "@/components/BeginnerHeader";
 import TextLesson from "@/components/TextLesson";
@@ -63,11 +63,11 @@ export default function BeginnerLessonLayout({
           const response = await updateBeginnerProgress(body)
 
           if(isNext) router.push(nextUrl)
-          setIsLoading(false)
+        //   setIsLoading(false)
         } catch (err) {
           alert('Произошла ошибка. Повторите попытку')
           console.log(err)
-          setIsLoading(false)
+        //   setIsLoading(false)
         }
     }
 
@@ -85,6 +85,8 @@ export default function BeginnerLessonLayout({
             try {
                 const beginnerProgress = await getBeginnerProgress()
                 setBeginnerProgress(beginnerProgress.data.data)
+                const currentLearningField = await setCurrentLearningField({currentLearningField: "starter"})
+                console.log(currentLearningField)
             } catch (err) {
                 console.log(err)
             }

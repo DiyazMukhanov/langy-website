@@ -1,5 +1,5 @@
 import styles from "./Loader.module.scss";
-import {ThreeDots} from "react-loader-spinner";
+import {FallingLines} from "react-loader-spinner";
 import classNames from "classnames";
 
 
@@ -10,7 +10,7 @@ const Loader = ({small}) => {
             {[styles.small]: small === true},
             {[styles.spinner]: small === undefined},
             )}>
-            <ThreeDots
+            <FallingLines
                 height="80"
                 width="80"
                 radius="9"
