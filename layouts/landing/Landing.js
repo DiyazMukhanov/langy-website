@@ -79,8 +79,8 @@ export default function Landing() {
     },
     {
       id: 2,
-      question: 'Какую пользу я получу, помимо навыков английского языка?',
-      answer: 'Помимо языковых навыков, самостоятельное изучение английского языка развивает вышу самодисциплину и навык управления временем.'
+      question: 'Какой график учебы?',
+      answer: 'Вы сами решаете когда, где и сколько времени уделять изучению английского языка. Вы можете подстроить обучение под свой ритм жизни и предпочтения.'
     },
     {
       id: 3,
@@ -316,7 +316,7 @@ export default function Landing() {
             <div className={styles.advantageCards}>
             <div data-aos='fade-right'>
               <AdvantageCard 
-               iconType='tick' 
+               iconType='clock' 
                textLineOne='Свободный график'
               //  textLineTwo=''
               //  textLineThree='график!'
@@ -332,7 +332,7 @@ export default function Landing() {
                </div>
               <div data-aos='fade-right'> 
               <AdvantageCard 
-               iconType='tick' 
+               iconType='pc' 
                textLineOne='Личностное развитие'
               //  textLineTwo='удобное для вас'
               //  textLineThree='время!'
@@ -340,7 +340,7 @@ export default function Landing() {
                </div> 
             </div>
             {!userCtx.userData ? 
-            (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Попробуйте сейчас</Button>): 
+            (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Пробуй сейчас</Button>): 
             (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Продолжить обучение</Button>)
             }
             
