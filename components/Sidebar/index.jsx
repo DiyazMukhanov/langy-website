@@ -60,7 +60,6 @@ export default function Sidebar({ lessonsSummary, isBeginner }) {
                      styles.chapter,
                      {[styles.currentChapter]: lesson.isOpened},
                      {[styles.completed]: lesson.isCompleted},
-                     {[styles.disabled]: lesson.isCompleted === false && !lesson.isOpened},
                  )}
                  ref={lesson.isCurrent ? currentLessonRef : null}
                  onClick={() => navigationHandler(lessonBlock.lessonNumber, lesson, lessonBlock.level)}
