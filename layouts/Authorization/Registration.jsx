@@ -65,13 +65,6 @@ export default function Registration() {
       setPasswordConfirmInputValue(event.target.value)
     }
 
-    //   const body = {
-    //     name: nameInputValue,
-    //     email: emailInputValue,
-    //     password: passwordInputValue,
-    //     passwordConfirm: passwordConfirmInputValue
-    // }
-
       const userSignUpHandler = async (e) => {
         e.preventDefault()
         const body = {
@@ -112,11 +105,6 @@ export default function Registration() {
           setIsLoading(false)
           }
           
-          // if(!nameInputValue || !emailInputValue || !passwordInputValue || !passwordConfirmInputValue ) {
-          //   console.log('Empty fields detected')
-          //   setIsLoading(false)
-          // }
-
           if(!onlyLatinCharacters(passwordInputValue) || passwordInputValue.length < 7) {
             setInvalidPassword(true)
             alert('Используйте латинские буквы и цифры. Длина больше 8 символов.')
@@ -137,8 +125,7 @@ export default function Registration() {
           setIsLoading(false)
           return
       }
-      
-       
+             
         try {
           const userData = await registerUser(body)
           if(userData?.data?.message === 'User exists') {
@@ -148,10 +135,8 @@ export default function Registration() {
           }
           
           if(userData) {
-            console.log(userData)
-            // localStorage.setItem('token', userData.data.token)
             setIsLoading(false)
-            router.push('/test/level')
+            router.push('/menu')
           }
         } catch (error) {
             setIsLoading(false)
@@ -185,26 +170,25 @@ export default function Registration() {
            <Typography size='small' element='h2' className={styles.formHeading}>Создайте аккаунт</Typography>
         
         <form onSubmit={userSignUpHandler}>
-        <div className={styles.inputs}>
-          <input placeholder='Имя' className={classNames({[styles.errorInput]: nameEmpty}, {[styles.input]: !nameEmpty})} onChange={nameNameInputHandler} ref={nameRef}></input>
-          <input placeholder='Электронная почта' type='email' className={classNames({[styles.errorInput]: emailEmpty}, {[styles.input]: !emailEmpty})} onChange={emailInputHandler} ref={emailRef} name="email" autoComplete='email'></input>
-          <input placeholder='Пароль' type='password' id="new-password-text-field" className={classNames({[styles.errorInput]: passwordEmpty}, {[styles.input]: !passwordEmpty})} onChange={passwordInputHandler} ref={passwordRef} name="password" autoComplete='new-password'></input>
-          <input placeholder='Повторить пароль' type='password' id="confirm-password-text-field" className={classNames({[styles.errorInput]: passConfirmEmpty}, {[styles.input]: !passConfirmEmpty})} onChange={passwordConfirmInputHandler} ref={passwordConfirmRef} name="passwordConfirm" autoComplete='new-password'></input>
-          <div className={styles.selectContainer}>
-            <label>Ваш пол:</label>
-          <select className={styles.selectInput} name='Ваш пол' onChange={(e) => setGenderValue(e.target.value)}>
-            <option value="male">Мужчина</option>
-            <option value="female">Женщина</option>
-          </select>
+          <div className={styles.inputs}>
+            <input placeholder='Имя' className={classNames({[styles.errorInput]: nameEmpty}, {[styles.input]: !nameEmpty})} onChange={nameNameInputHandler} ref={nameRef}></input>
+            <input placeholder='Электронная почта' type='email' className={classNames({[styles.errorInput]: emailEmpty}, {[styles.input]: !emailEmpty})} onChange={emailInputHandler} ref={emailRef} name="email" autoComplete='email'></input>
+            <input placeholder='Пароль' type='password' id="new-password-text-field" className={classNames({[styles.errorInput]: passwordEmpty}, {[styles.input]: !passwordEmpty})} onChange={passwordInputHandler} ref={passwordRef} name="password" autoComplete='new-password'></input>
+            <input placeholder='Повторить пароль' type='password' id="confirm-password-text-field" className={classNames({[styles.errorInput]: passConfirmEmpty}, {[styles.input]: !passConfirmEmpty})} onChange={passwordConfirmInputHandler} ref={passwordConfirmRef} name="passwordConfirm" autoComplete='new-password'></input>
+            <div className={styles.selectContainer}>
+              <label>Ваш пол:</label>
+            <select className={styles.selectInput} name='Ваш пол' onChange={(e) => setGenderValue(e.target.value)}>
+              <option value="male">Мужчина</option>
+              <option value="female">Женщина</option>
+            </select>
+            </div>
           </div>
-        </div>
         <Button 
-        variant='authLargeContained' 
-        // onClick={userSignUpHandler} 
-        disabled={isLoading}
-        className={styles.buttonRegister}
-        >
-          Зарегистрироваться
+          variant='authLargeContained' 
+          disabled={isLoading}
+          className={styles.buttonRegister}
+          >
+            Зарегистрироваться
         </Button>
         </form>
         <p>или</p>
