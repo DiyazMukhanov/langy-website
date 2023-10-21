@@ -409,21 +409,32 @@ export default function Landing() {
             ))}
           </div>
         </section>
+
+        <section className={styles.whyContainer}>
+            <h2>5 преимуществ изучения английского языка</h2>
+            <h3>Если вы еще не уверены, зачем учить английский, вот вам несколько причин:</h3>
+            <p>- Изучение английского повышает уверенность. Начинаешь гордиться собой, когда получается то, над чем давно работал.</p>
+            <p>- Повышение карьерных возможностей.</p>
+            <p>- Улучшение коммуникативных навыков.</p>
+            <p>- Доступ к мировой информации - больше 50% сайтов и топовых изданий написаны на английском. Информация на русском языке занимает только 6% всего интернета.</p>
+            <p>- Изучение английского помогает почувствовать себя как дома практически в любой стране. Он сделает ваши путешествия более комфортными, вы сможете легче ориентироваться и общаться в разных уголках мира.</p>
+            <p>- Изучение английского языка позволяет стать гражданином мира и найти друзей в разных странах.</p>
+        </section>
   
         <footer className={styles.footer}>
           <div className={styles.footerTop}>
-          <Image
+            <Image
              priority
              src={Logo}
              height={44}
              width={101}
              />
              <div className={styles.service}>
-             <Image
-             priority
-             src={Service}
-             />
-             <p onClick={() => router.push('/service')}>Служба поддержки</p>
+                <Image
+                priority
+                src={Service}
+                />
+                <p onClick={() => router.push('/service')}>Служба поддержки</p>
              </div>
              {!userCtx.userData ? 
              (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Действуй!</Button>): 
