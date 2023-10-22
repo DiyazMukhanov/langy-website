@@ -35,7 +35,7 @@ export default function Menu() {
 
     const routingObject = {
         starter: beginnerProgress === null ? `/lessons/beginner/lesson1` : `/lessons/beginner/lesson${beginnerProgress?.currentLesson}`,
-        higher: user?.currentLesson === 0 ? `/test/level` : `/lessons/lesson${user?.currentLesson}/${user?.currentChapter}`
+        higher: user?.currentLesson === 0 ? `/lessons/lesson1/video` : `/lessons/lesson${user?.currentLesson}/${user?.currentChapter}`
     }
 
     const goToLearningFieldHandler = (learningField) => {

@@ -129,7 +129,7 @@ export default function Landing() {
 
       //Check if user reloaded his progress
       if(!userCtx?.userData?.currentLearningField) {
-        router.push('/test/level')
+        router.push('/menu')
       }
     }
   };
@@ -231,18 +231,18 @@ export default function Landing() {
         </header>
         
         <main className={styles.main}>
-            <Image
+            {/* <Image
              priority
              src={DropOne}
              className={styles.dropOneMobile}
-             />
-           <Typography element='h1' className={styles.mainHeading}>Платформа для самостоятельного изучения английского языка</Typography>
+             /> */}
+           <Typography element='h1' className={styles.mainHeading}>Aнглийский язык по современной методике</Typography>
            <div className={styles.headerBottomBlock}>
-           <Image
+           {/* <Image
              priority
              src={DropOne}
              className={styles.dropOne}
-             />
+             /> */}
              {!userCtx.userData ? (<div className={styles.btnBlock}>
            <Button variant='contained' className={styles.startBtn} onClick={continueHandler}>Начать обучение</Button>
            {/* <p className={styles.haveAccountBtn} onClick={() => router.push('/authorization/login')}>У меня уже есть аккаунт</p> */}
@@ -252,19 +252,19 @@ export default function Landing() {
            
            </div>}
            
-           <Image
+           {/* <Image
              priority
              src={DropTwo}
              className={styles.dropTwo}
-             />
+             /> */}
            </div>
         </main>
   
         <div className={styles.advantages}>
-            <div data-aos='fade-up'><Advantage text='Другой подход к обучению' color='#7F5DC1'/></div>
-            <div data-aos='fade-up'><Advantage text='Новая методика' color='#FF69B4'/></div>
-            <div data-aos='fade-up'><Advantage text='Новая программа' color='#1676D8'/></div>
-            <div data-aos='fade-up'><Advantage text='Самостоятельное обучение' color='#E28731'/></div>
+            <div data-aos='fade-up'><Advantage text='Всего за 980 тенге в месяц' color='#7F5DC1'/></div>
+            <div data-aos='fade-up'><Advantage text='Простота в обучении' color='#FF69B4'/></div>
+            <div data-aos='fade-up'><Advantage text='Весёлые интерактивные уроки' color='#1676D8'/></div>
+            <div data-aos='fade-up'><Advantage text='Удиви друзей своими познаниями' color='#E28731'/></div>
         </div>
   
         <section className={styles.middleSection}>
@@ -409,21 +409,39 @@ export default function Landing() {
             ))}
           </div>
         </section>
+
+        <section className={styles.whyContainer}>
+            <h2>5 преимуществ изучения английского языка</h2>
+            <h3>Если вы еще не уверены, зачем учить английский, вот вам несколько причин:</h3>
+            <p>- Изучение английского повышает уверенность. Начинаешь гордиться собой, когда получается то, над чем давно работал.</p>
+            <p>- Повышение карьерных возможностей.</p>
+            <p>- Улучшение коммуникативных навыков.</p>
+            <p>- Доступ к мировой информации - больше 50% сайтов и топовых изданий написаны на английском. Информация на русском языке занимает только 6% всего интернета.</p>
+            <p>- Изучение английского помогает почувствовать себя как дома практически в любой стране. Он сделает ваши путешествия более комфортными, вы сможете легче ориентироваться и общаться в разных уголках мира.</p>
+            <p>- Изучение английского языка позволяет стать гражданином мира и найти друзей в разных странах.</p>
+        </section>
+
+        <section className={styles.whyContainer}>
+            <h2>Советы по изучению английского языка</h2>
+            <p>Добавьте английский в свою повседневную жизнь. Установите английский язык на свой телефон, компьютер и магнитолу в автомобиле. </p>
+            <p>Через некоторое время ваше подсознание начнет свободно воспринимать английский язык на ваших гаджетах. </p>
+            <p>Также старайтесь читать много коротких и легких текстов, так как это очень помогает запоминать новые слова и правила грамматики автоматически.</p>
+        </section>
   
         <footer className={styles.footer}>
           <div className={styles.footerTop}>
-          <Image
+            <Image
              priority
              src={Logo}
              height={44}
              width={101}
              />
              <div className={styles.service}>
-             <Image
-             priority
-             src={Service}
-             />
-             <p onClick={() => router.push('/service')}>Служба поддержки</p>
+                <Image
+                priority
+                src={Service}
+                />
+                <p onClick={() => router.push('/service')}>Служба поддержки</p>
              </div>
              {!userCtx.userData ? 
              (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Действуй!</Button>): 

@@ -45,13 +45,14 @@ export default function Header({ variant }) {
         return (
             <>
             <div className={styles.blueContainer}>
-            <Image
+            {/* <Image
             priority
             src={Logo}
             width={60}
             className={styles.pointer}
             onClick={goToMainHandler}
-            />
+            /> */}
+            <p onClick={() => router.push('/')}>На главную</p>
             <div className={styles.headerRight}>
             <p onClick={() => router.push('/profile')}>Личный кабинет</p>
             <p onClick={logOutHandler}>Выйти</p>
@@ -60,7 +61,7 @@ export default function Header({ variant }) {
 
             <div className={styles.blueContainerMobile}>
               <div className={styles.logo}>
-                <Image
+                {/* <Image
                     priority
                     src={LogoBlue}
                     width={60}
@@ -70,7 +71,8 @@ export default function Header({ variant }) {
                     priority
                     src={LogoBlueBottom}
                     width={20}
-                />
+                /> */}
+                <p onClick={() => router.push('/')}>На главную</p>
                 </div>
                 <div className={styles.mobileHeaderRight}>
                   <p onClick={() => router.push('/profile')}>Личный кабинет</p>

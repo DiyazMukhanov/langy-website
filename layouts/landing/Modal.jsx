@@ -21,12 +21,6 @@ export default function Modal({ isOpen, onClose, children }) {
     };
   }, [isOpen, onClose]);
 
-  // useEffect(() => {
-  //   if (!isOpen) {
-  //     setTimeout(() => setModalVisible(false), 700); // Delay hiding the modal to match the transition time
-  //   }
-  // }, [isOpen]);
-
   if (!modalVisible) return null;
 
   return (
