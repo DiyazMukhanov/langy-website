@@ -40,7 +40,7 @@
 
 .header {
     // border: solid red 1px;
-    background-color: var(--color-primary);
+    background-color: #99ceff;
     // padding: $header-padding-vertical $header-padding-horizontal;
     padding: 2em 3.75em;
     display: flex;
@@ -98,7 +98,10 @@
 }
 
 .main {
-    background-color: var(--color-primary);
+    // background-color: var(--color-primary);
+    background-image: url('../../public/images/students-3.png');
+    background-size: cover;
+    height: 70vh;
     // margin-top: 0;
     padding: 3.125em 12.5em 9.375em 12.5em;
     display: flex;
@@ -106,7 +109,10 @@
     align-items: center;
 
     @include size-tablet {
+        background-image: url('../../public/images/students-3.png');
+        background-size: cover;
         padding: 20px 0 0 0;
+        height: auto;
     }
 }
 
@@ -129,7 +135,8 @@
 .headerBottomBlock {
     display: flex;
     width: 90vw;
-    justify-content: space-between;
+    justify-content: center;
+    margin-top: 80px;
 
     @include size-tablet {
         flex-direction: column;

@@ -231,18 +231,18 @@ export default function Landing() {
         </header>
         
         <main className={styles.main}>
-            <Image
+            {/* <Image
              priority
              src={DropOne}
              className={styles.dropOneMobile}
-             />
-           <Typography element='h1' className={styles.mainHeading}>Платформа для самостоятельного изучения английского языка</Typography>
+             /> */}
+           <Typography element='h1' className={styles.mainHeading}>Aнглийский язык по современной методике</Typography>
            <div className={styles.headerBottomBlock}>
-           <Image
+           {/* <Image
              priority
              src={DropOne}
              className={styles.dropOne}
-             />
+             /> */}
              {!userCtx.userData ? (<div className={styles.btnBlock}>
            <Button variant='contained' className={styles.startBtn} onClick={continueHandler}>Начать обучение</Button>
            {/* <p className={styles.haveAccountBtn} onClick={() => router.push('/authorization/login')}>У меня уже есть аккаунт</p> */}
@@ -252,19 +252,19 @@ export default function Landing() {
            
            </div>}
            
-           <Image
+           {/* <Image
              priority
              src={DropTwo}
              className={styles.dropTwo}
-             />
+             /> */}
            </div>
         </main>
   
         <div className={styles.advantages}>
-            <div data-aos='fade-up'><Advantage text='Другой подход к обучению' color='#7F5DC1'/></div>
-            <div data-aos='fade-up'><Advantage text='Новая методика' color='#FF69B4'/></div>
-            <div data-aos='fade-up'><Advantage text='Новая программа' color='#1676D8'/></div>
-            <div data-aos='fade-up'><Advantage text='Самостоятельное обучение' color='#E28731'/></div>
+            <div data-aos='fade-up'><Advantage text='Всего за 980 тенге в месяц' color='#7F5DC1'/></div>
+            <div data-aos='fade-up'><Advantage text='Простота в обучении' color='#FF69B4'/></div>
+            <div data-aos='fade-up'><Advantage text='Весёлые интерактивные уроки' color='#1676D8'/></div>
+            <div data-aos='fade-up'><Advantage text='Удиви друзей своими познаниями' color='#E28731'/></div>
         </div>
   
         <section className={styles.middleSection}>
