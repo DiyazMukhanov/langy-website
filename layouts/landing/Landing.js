@@ -129,7 +129,7 @@ export default function Landing() {
 
       //Check if user reloaded his progress
       if(!userCtx?.userData?.currentLearningField) {
-        router.push('/test/level')
+        router.push('/menu')
       }
     }
   };
