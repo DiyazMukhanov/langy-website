@@ -261,10 +261,10 @@ export default function Landing() {
         </main>
   
         <div className={styles.advantages}>
-            <div data-aos='fade-up'><Advantage text='Всего за 980 тенге в месяц' color='#7F5DC1'/></div>
-            <div data-aos='fade-up'><Advantage text='Простота в обучении' color='#FF69B4'/></div>
-            <div data-aos='fade-up'><Advantage text='Весёлые интерактивные уроки' color='#1676D8'/></div>
-            <div data-aos='fade-up'><Advantage text='Удиви друзей своими познаниями' color='#E28731'/></div>
+        <div data-aos='fade-up'><Advantage text='НАУЧИТЕСЬ ПОНИМАТЬ РАЗГОВОРНУЮ РЕЧЬ' color='#7F5DC1'/></div>
+            <div data-aos='fade-up'><Advantage text='ПРИОБРЕТЕТЕ НАВЫКИ ОБЩЕНИЯ' color='#FF69B4'/></div>
+            <div data-aos='fade-up'><Advantage text='БЫСТРО ПОПОЛНИТЕ СВОЙ СЛОВАРНЫЙ ЗАПАС' color='#1676D8'/></div>
+            <div data-aos='fade-up'><Advantage text='ПРИОБРЕТЕТЕ НАВЫКИ ПИСЬМА' color='#E28731'/></div>
         </div>
   
         <section className={styles.middleSection}>
