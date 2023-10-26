@@ -61,7 +61,6 @@ export default function BeginnerLessonLayout({
         try {
           setIsLoading(true)
           const response = await updateBeginnerProgress(body)
-
           if(isNext) router.push(nextUrl)
         //   setIsLoading(false)
         } catch (err) {

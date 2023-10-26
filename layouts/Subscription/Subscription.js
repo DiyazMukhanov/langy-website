@@ -7,6 +7,8 @@ import { useContext, useEffect, useState } from "react";
 import Loader from "@/components/Loader";
 import { UserContext } from "@/store/userContext";
 import { useRouter } from "next/router";
+import { Button } from "@/components/Button";
+import { resetProgress } from "@/api/user";
 
 
 export default function Subscription() {
@@ -37,6 +39,18 @@ export default function Subscription() {
           }
         }
       };
+
+      const goToFreeLessonsHandler = async () => {
+        setIsLoading(true)
+        try {
+          const response = await resetProgress()
+          userCtx.setProgressData(null)
+          router.push('/menu')   
+      } catch (err) {       
+          alert('Что-то пошло не так. Повторите попытку')
+          setIsLoading(false)
+      }
+      }
 
     const subscribeHandler = async (plan) => {
         setIsLoading(true)
@@ -76,6 +90,10 @@ export default function Subscription() {
         return (
             <ProtectPage>
                 <Header variant='blue'/>
+                <div className={styles.backButtonContainer}>
+                  <Button variant="standardLargeContained" className={styles.backButton} onClick={goToFreeLessonsHandler}>Вернуться на пробные уроки</Button>
+                </div>
+                
                 <div className={styles.container}>
                   <h2>Выберите подписку</h2>
                   <div className={styles.options}>

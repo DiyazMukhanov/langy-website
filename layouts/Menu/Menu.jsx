@@ -19,15 +19,15 @@ export default function Menu() {
     const [isLoading, setIsLoading] = useState(false)
     const [user, setUser] = useState(null)
     const [beginnerProgress, setBeginnerProgress] = useState(null)
-    console.log(user)
-    console.log(beginnerProgress)
 
     useEffect(() => {
+      setIsLoading(true)
       const fetchUser = async () => {
         const userData = await getMe()
         setUser(userData.data.data)
         const beginnerProgress = await getBeginnerProgress()
         setBeginnerProgress(beginnerProgress.data.data)
+        setIsLoading(false)
       }
 
       fetchUser()
