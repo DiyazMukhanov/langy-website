@@ -107,7 +107,7 @@ export default function Login() {
                       }
                    } else {
                     setIsLoading(false)
-                    router.push('/test/level')
+                    router.push('/menu')
                    }
 
                     // localStorage.setItem('token', userData.data.token)
