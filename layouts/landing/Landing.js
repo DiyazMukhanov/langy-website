@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import styles from './Landing.module.scss'
 import Image from 'next/image'
 import Logo from '../../public/images/Logo.svg'
@@ -163,7 +164,7 @@ export default function Landing() {
              priority
              src={LogoBlue}
              height={38}
-             width={80}
+             width={80} 
              />
              <Image
              priority
@@ -361,7 +362,7 @@ export default function Landing() {
   
         <section className={styles.howWorks}>
           <div className={styles.howHeading}>
-          <Typography size='small' element='h2'>Вы получите</Typography>
+          <h2>ОБУЧАЯСЬ У НАС, ВЫ ПОЛУЧИТЕ</h2>
           </div>
   
           {/* <div className={styles.manSection}> */}
@@ -424,6 +425,24 @@ export default function Landing() {
                 />
             </div>
           {/* </div> */}
+        </section>
+
+        <section className={styles.cases}>
+          <h2>Наши кейсы</h2>
+          <div className={styles.caseContainer}>
+              <p className={classNames(styles.caseName, styles.orangeCase)}>Данияр</p>
+              <p className={styles.myCase}>"Благодаря английскому языку, я успешно прошел собеседование и устроился на работу в иностранную компанию за рубежом, где я отработал 4 года, получил международный опыт, завел много друзей. Сейчас работаю в ТШО старшим инженером электриком."</p>
+          </div>
+
+          <div className={styles.caseContainer}>
+              <p className={classNames(styles.caseName, styles.blueCase)}>Аслан</p>
+              <p className={styles.myCase}>"Английский мне помог изучить язык программирования и возможность работать онлайн по всему миру. На данный момент работаю в одном американском стартапе удаленно."</p>
+          </div>
+
+          <div className={styles.caseContainer}>
+              <p className={classNames(styles.caseName, styles.purpleCase)}>Альбина</p>
+              <p className={styles.myCase}>"Я выучила английский и теперь сама обучаю этому языку других людей, получаю от этого удовольствие и еще на этом зарабатываю. А мои студенты получают высокие баллы и учатся в зарубежных вузах."</p>
+          </div>
         </section>
   
         <section className={styles.frequentQuestionsSection}>
@@ -513,6 +532,4 @@ export default function Landing() {
         </div>        
       )
     }
-    
-    
   }
