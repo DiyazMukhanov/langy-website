@@ -266,7 +266,7 @@ export default function Landing() {
         </main>
         
         <div className={styles.getSection}>
-          <h2>Уже за 3 месяца вы получите</h2>
+          <h2>УЖЕ ЧЕРЕЗ 3 МЕСЯЦА ВЫ</h2>
         <div className={styles.advantages}>
             <div data-aos='fade-up'><Advantage text='НАУЧИТЕСЬ ПОНИМАТЬ РАЗГОВОРНУЮ РЕЧЬ' color='#7F5DC1'/></div>
             <div data-aos='fade-up'><Advantage text='ПРИОБРЕТЕТЕ НАВЫКИ ОБЩЕНИЯ' color='#FF69B4'/></div>
@@ -322,7 +322,7 @@ export default function Landing() {
         </section>
         <section className={styles.advantagesSection}>
           <div className={styles.advantagesHeadingContainer}>
-            <Typography size='small' element='h2'>Наши преимущества</Typography>
+            <Typography size='small' element='h2'>НАШИ ПРЕИМУЩЕСТВА</Typography>
           </div>
           <div className={styles.advantagesMain}>
             <div className={styles.advantageCards}>
