@@ -7,6 +7,10 @@ import CardsVertical from '../../public/images/Cards-vertical.svg'
 import Laptop from '../../public/images/Laptop.svg'
 import DropOne from '../../public/images/drop-1.svg'
 import DropTwo from '../../public/images/drop-2.svg'
+import Listening from '../../public/images/listening-2.jpg'
+import Grammar from '../../public/images/grammar-1.jpg'
+import Reading from '../../public/images/reading.png'
+import Writing from '../../public/images/writing.jpg'
 import Man from '../../public/images/Man.svg'
 import Plus from '../../public/images/Plus.svg'
 import X from '../../public/images/X.svg'
@@ -30,6 +34,7 @@ import {useRouter} from "next/router"
 import { getBeginnerProgress, getMe, userLogout } from '@/api/user'
 import { UserContext } from '@/store/userContext'
 import Loader from '@/components/Loader'
+import ChapterCard from './ChapterCard'
 
 export default function Landing() {
   const [frequentOpenedId, setFrequentOpenedId] = useState(null)
@@ -259,16 +264,23 @@ export default function Landing() {
              /> */}
            </div>
         </main>
-  
+        
+        <div className={styles.getSection}>
+          <h2>УЖЕ ЧЕРЕЗ 3 МЕСЯЦА ВЫ</h2>
         <div className={styles.advantages}>
-        <div data-aos='fade-up'><Advantage text='НАУЧИТЕСЬ ПОНИМАТЬ РАЗГОВОРНУЮ РЕЧЬ' color='#7F5DC1'/></div>
+            <div data-aos='fade-up'><Advantage text='НАУЧИТЕСЬ ПОНИМАТЬ РАЗГОВОРНУЮ РЕЧЬ' color='#7F5DC1'/></div>
             <div data-aos='fade-up'><Advantage text='ПРИОБРЕТЕТЕ НАВЫКИ ОБЩЕНИЯ' color='#FF69B4'/></div>
             <div data-aos='fade-up'><Advantage text='БЫСТРО ПОПОЛНИТЕ СВОЙ СЛОВАРНЫЙ ЗАПАС' color='#1676D8'/></div>
             <div data-aos='fade-up'><Advantage text='ПРИОБРЕТЕТЕ НАВЫКИ ПИСЬМА' color='#E28731'/></div>
         </div>
+        </div>
   
         <section className={styles.middleSection}>
-        <div className={styles.leftSideOfMiddleSection}>
+          <ChapterCard chapterTitle='Аудио' imageSrc={Listening} color='green'/>
+          <ChapterCard chapterTitle='Грамматика' imageSrc={Grammar} color='blue'/>
+          <ChapterCard chapterTitle='Чтение' imageSrc={Reading} color='orange'/>
+          <ChapterCard chapterTitle='Письмо' imageSrc={Writing} color='purple'/>
+        {/* <div className={styles.leftSideOfMiddleSection}>
         <Image
              priority
              src={LogoTwo}
@@ -286,14 +298,14 @@ export default function Landing() {
             [styles.imageContainer]: !isModalOpened,
             [styles.noShow]: isModalOpened
            }
-          )}>
-        <Image
+          )}> */}
+        {/* <Image
              priority
              src={Laptop}
              width={300}
              className={styles.laptop}
-             />
-        <Image
+             /> */}
+        {/* <Image
              priority
              src={Cards}
              width={500}
@@ -306,11 +318,11 @@ export default function Landing() {
             //  width={500}
              className={styles.cardsMobile}
              />
-        </div>
+        </div> */}
         </section>
         <section className={styles.advantagesSection}>
           <div className={styles.advantagesHeadingContainer}>
-            <Typography size='small' element='h2'>Наши преимущества</Typography>
+            <Typography size='small' element='h2'>НАШИ ПРЕИМУЩЕСТВА</Typography>
           </div>
           <div className={styles.advantagesMain}>
             <div className={styles.advantageCards}>
@@ -325,7 +337,7 @@ export default function Landing() {
              <div data-aos='fade-right'>
               <AdvantageCard 
                iconType='tick' 
-               textLineOne='Экономия средств'
+               textLineOne='Экономия'
               //  textLineTwo='4 основных'
               //  textLineThree='языковых навыка!'
                />
@@ -333,14 +345,14 @@ export default function Landing() {
               <div data-aos='fade-right'> 
               <AdvantageCard 
                iconType='pc' 
-               textLineOne='Личностное развитие'
+               textLineOne='Легко и весело'
               //  textLineTwo='удобное для вас'
               //  textLineThree='время!'
                />
                </div> 
             </div>
             {!userCtx.userData ? 
-            (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Пробуй сейчас</Button>): 
+            (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Пробуй!</Button>): 
             (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Продолжить обучение</Button>)
             }
             
@@ -349,40 +361,69 @@ export default function Landing() {
   
         <section className={styles.howWorks}>
           <div className={styles.howHeading}>
-          <Typography size='small' element='h2'>Как работает платформа</Typography>
+          <Typography size='small' element='h2'>Вы получите</Typography>
           </div>
   
-          <div className={styles.manSection}>
-            <HowCard 
-            number='1' 
-            text='Пройдите регистрацию в пару кликов и приступайте к занятиям!'
-            color='blue'
-            />
-            <Image
-             priority
-             src={Man}
-             className={styles.man}
-             />
-          </div>
-          <div className={styles.twoThreeSection}>
-  
-          <div className={styles.howcardTwo}>
-          <HowCard 
-            number='2' 
-            text='Внимательно проходите урок за уроком, и переходите к следующему уровню'
-            color='orange'
-            />
-          </div>
-  
-           <HowCard 
-            number='3' 
-            text='Удивите ваших друзей!
-            Покажите им ваши навыки!'
-            color='purple'
-            type='small'
-            />
-            
-          </div>
+          {/* <div className={styles.manSection}> */}
+          <div className={styles.whatGetContainer}>
+                <HowCard 
+                number='1' 
+                text='МЕНТАЛЬНЫЙ РОСТ'
+                color='blue'
+                />
+                {/* <Image
+                priority
+                src={Man}
+                className={styles.man}
+                /> */}
+              {/* </div> */}
+              {/* <div className={styles.twoThreeSection}> */}
+      
+              {/* <div className={styles.howcardTwo}> */}
+              <HowCard 
+                number='2' 
+                text='СВОБОДУ КОММУНИКАЦИИ ПО МИРУ'
+                color='orange'
+                />
+              {/* </div> */}
+      
+              <HowCard 
+                number='3' 
+                text='САМОУТВЕРЖДЕНИЕ'
+                color='purple'
+                />
+
+              <HowCard 
+                number='4' 
+                text='НЕЗАВИСИМОСТЬ'
+                color='blue'
+                />
+
+              <HowCard 
+                number='5' 
+                text='УСПЕХ В БИЗНЕСЕ И ИНВЕСТИЦИЯХ'
+                color='orange'
+                />
+
+              <HowCard 
+                number='6' 
+                text='САМОРАЗВИТИЕ'
+                color='purple'
+                />
+
+              <HowCard 
+                number='7' 
+                text='ВОЗМОЖНОСТЬ ИММИГРАЦИИ'
+                color='blue'
+                />
+
+              <HowCard 
+                number='8' 
+                text='ЦЕННОСТЬ НА РЫНКЕ ТРУДА'
+                color='orange'
+                />
+            </div>
+          {/* </div> */}
         </section>
   
         <section className={styles.frequentQuestionsSection}>

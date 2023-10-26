@@ -266,20 +266,20 @@
 .middleSection {
     display: flex;
     justify-content: center;
-    gap: 6.25em;
+    gap: 20px;
     padding-top: 4.375em;
 
     @include size-tablet {
         flex-direction: column;
         align-items: center;
         font-size: 1.125em;
-        gap: 0;
+        gap: 30px;
      }
 }
 
-.leftSideOfMiddleSection {
-    // border: solid red 1px;
-}
+// .leftSideOfMiddleSection {
+//     // border: solid red 1px;
+// }
 
 .leftSideText {
     // border: solid red 1px;
@@ -297,6 +297,10 @@
     @include size-tablet {
         margin: 0;
      }
+}
+
+.advantagesSection {
+    margin-top: 30px;
 }
 
 .advantagesHeadingContainer {
@@ -383,6 +387,14 @@
         flex-direction: column;
         align-items: center;
       }
+}
+
+.whatGetContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    
 }
 
 .howWorks {
@@ -543,6 +555,21 @@
     & p {
         font-style: italic;
         font-weight: 600;
+    }
+}
+
+.getSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    // border: solid red 1px;
+
+    & h2 {
+        margin-bottom: 0;
     }
 }
 
