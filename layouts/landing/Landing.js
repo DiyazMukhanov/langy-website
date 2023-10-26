@@ -7,6 +7,7 @@ import CardsVertical from '../../public/images/Cards-vertical.svg'
 import Laptop from '../../public/images/Laptop.svg'
 import DropOne from '../../public/images/drop-1.svg'
 import DropTwo from '../../public/images/drop-2.svg'
+import Listening from '../../public/images/listening.jpg'
 import Man from '../../public/images/Man.svg'
 import Plus from '../../public/images/Plus.svg'
 import X from '../../public/images/X.svg'
@@ -30,6 +31,7 @@ import {useRouter} from "next/router"
 import { getBeginnerProgress, getMe, userLogout } from '@/api/user'
 import { UserContext } from '@/store/userContext'
 import Loader from '@/components/Loader'
+import ChapterCard from './ChapterCard'
 
 export default function Landing() {
   const [frequentOpenedId, setFrequentOpenedId] = useState(null)
@@ -259,16 +261,23 @@ export default function Landing() {
              /> */}
            </div>
         </main>
-  
+        
+        <div className={styles.getSection}>
+          <h2>Уже за 3 месяца вы получите</h2>
         <div className={styles.advantages}>
-        <div data-aos='fade-up'><Advantage text='НАУЧИТЕСЬ ПОНИМАТЬ РАЗГОВОРНУЮ РЕЧЬ' color='#7F5DC1'/></div>
+            <div data-aos='fade-up'><Advantage text='НАУЧИТЕСЬ ПОНИМАТЬ РАЗГОВОРНУЮ РЕЧЬ' color='#7F5DC1'/></div>
             <div data-aos='fade-up'><Advantage text='ПРИОБРЕТЕТЕ НАВЫКИ ОБЩЕНИЯ' color='#FF69B4'/></div>
             <div data-aos='fade-up'><Advantage text='БЫСТРО ПОПОЛНИТЕ СВОЙ СЛОВАРНЫЙ ЗАПАС' color='#1676D8'/></div>
             <div data-aos='fade-up'><Advantage text='ПРИОБРЕТЕТЕ НАВЫКИ ПИСЬМА' color='#E28731'/></div>
         </div>
+        </div>
   
         <section className={styles.middleSection}>
-        <div className={styles.leftSideOfMiddleSection}>
+          <ChapterCard chapterTitle='аудио' imageSrc={Listening} color='green'/>
+          <ChapterCard chapterTitle='грамматика' imageSrc={Listening}/>
+          <ChapterCard chapterTitle='чтение' imageSrc={Listening}/>
+          <ChapterCard chapterTitle='письмо' imageSrc={Listening}/>
+        {/* <div className={styles.leftSideOfMiddleSection}>
         <Image
              priority
              src={LogoTwo}
@@ -286,14 +295,14 @@ export default function Landing() {
             [styles.imageContainer]: !isModalOpened,
             [styles.noShow]: isModalOpened
            }
-          )}>
-        <Image
+          )}> */}
+        {/* <Image
              priority
              src={Laptop}
              width={300}
              className={styles.laptop}
-             />
-        <Image
+             /> */}
+        {/* <Image
              priority
              src={Cards}
              width={500}
@@ -306,7 +315,7 @@ export default function Landing() {
             //  width={500}
              className={styles.cardsMobile}
              />
-        </div>
+        </div> */}
         </section>
         <section className={styles.advantagesSection}>
           <div className={styles.advantagesHeadingContainer}>
