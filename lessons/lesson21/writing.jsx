@@ -16,6 +16,6 @@ export default function Writing() {
    nextUrl={nextUrl}
    lessonNumber={lessonNumber}
    currentLessonData={currentLessonData}
-   subscriptionIsNeeded={true}
+   subscriptionIsNeeded={false}
    />
 }

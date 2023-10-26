@@ -14,6 +14,6 @@ export default function Writing() {
    nextUrl='/lessons/lesson8/test'
    lessonNumber={lessonNumber}
    currentLessonData={currentLessonData}
-   subscriptionIsNeeded={true}
+   subscriptionIsNeeded={false}
    />
 }

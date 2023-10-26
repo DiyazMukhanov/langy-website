@@ -15,6 +15,6 @@ export default function Test() {
    nextUrl='/lessons/lesson6/video'
    lessonNumber={lessonNumber}
    currentLessonData={currentLessonData}
-   subscriptionIsNeeded={true}
+   subscriptionIsNeeded={false}
    />
 }

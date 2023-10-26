@@ -18,7 +18,7 @@ export default function Video() {
    nextUrl='/lessons/lesson10/audio'
    lessonNumber={lessonNumber}
    currentLessonData={currentLessonData}
-   subscriptionIsNeeded={true}
+   subscriptionIsNeeded={false}
    topic='Reported speech / Косвенная речь'
    />
 }

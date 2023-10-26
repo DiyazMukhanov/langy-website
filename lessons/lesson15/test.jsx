@@ -16,6 +16,6 @@ export default function Test() {
    nextUrl={nextUrl}
    lessonNumber={lessonNumber}
    currentLessonData={currentLessonData}
-   subscriptionIsNeeded={true}
+   subscriptionIsNeeded={false}
    />
 }

@@ -19,7 +19,7 @@ export default function Video() {
    nextUrl='/lessons/lesson3/audio'
    lessonNumber={lessonNumber}
    currentLessonData={currentLessonData}
-   subscriptionIsNeeded={true}
+   subscriptionIsNeeded={false}
    topic='Pronouns'
    />
 }
