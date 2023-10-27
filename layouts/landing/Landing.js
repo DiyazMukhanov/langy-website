@@ -36,6 +36,7 @@ import { getBeginnerProgress, getMe, userLogout } from '@/api/user'
 import { UserContext } from '@/store/userContext'
 import Loader from '@/components/Loader'
 import ChapterCard from './ChapterCard'
+import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 
 export default function Landing() {
   const [frequentOpenedId, setFrequentOpenedId] = useState(null)
@@ -471,22 +472,42 @@ export default function Landing() {
         </section>
 
         <section className={styles.whyContainer}>
-            <h2>5 преимуществ изучения английского языка</h2>
-            <h3>Если вы еще не уверены, зачем учить английский, вот вам несколько причин:</h3>
-            <p>- Изучение английского повышает уверенность. Начинаешь гордиться собой, когда получается то, над чем давно работал.</p>
-            <p>- Повышение карьерных возможностей.</p>
-            <p>- Улучшение коммуникативных навыков.</p>
-            <p>- Доступ к мировой информации - больше 50% сайтов и топовых изданий написаны на английском. Информация на русском языке занимает только 6% всего интернета.</p>
-            <p>- Изучение английского помогает почувствовать себя как дома практически в любой стране. Он сделает ваши путешествия более комфортными, вы сможете легче ориентироваться и общаться в разных уголках мира.</p>
-            <p>- Изучение английского языка позволяет стать гражданином мира и найти друзей в разных странах.</p>
-        </section>
-
-        <section className={styles.whyContainer}>
-            <h2>Советы по изучению английского языка</h2>
+            <h2>СОВЕТЫ ПО ИЗУЧЕНИЮ АНГЛИЙСКОГО</h2>
             <p>Добавьте английский в свою повседневную жизнь. Установите английский язык на свой телефон, компьютер и магнитолу в автомобиле. </p>
             <p>Через некоторое время ваше подсознание начнет свободно воспринимать английский язык на ваших гаджетах. </p>
             <p>Также старайтесь читать много коротких и легких текстов, так как это очень помогает запоминать новые слова и правила грамматики автоматически.</p>
         </section>
+
+        <section className={styles.whyContainer}>
+            <p className={styles.forget}>Забудьте о старых учебниках и занудных уроках. Мы создали уникальную систему обучения, которая адаптируется под ваши потребности и уровень владения языком.</p>
+        </section>
+
+        <div className={styles.doBtn}>
+            {!userCtx.userData ? 
+                (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Действуй!</Button>): 
+                (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Продолжить</Button>)
+              }
+        </div>
+
+        <div className={styles.contactsNav}>
+            <a 
+            href='https://instagram.com/langy.su?igshid=MzRlODBiNWFlZA=='
+            target="_blank"
+            >
+                  <div className={styles.instIcon}>
+                <FaInstagram />
+                </div>
+            </a> 
+
+             <a 
+            href={`https://api.whatsapp.com/send?phone=+77078805125`}
+            target="_blank"
+            >
+                  <div className={styles.whatsIcon}>
+                  <FaWhatsapp />
+                </div>
+            </a>  
+        </div>
   
         <footer className={styles.footer}>
           <div className={styles.footerTop}>
@@ -503,10 +524,7 @@ export default function Landing() {
                 />
                 <p onClick={() => router.push('/service')}>Служба поддержки</p>
              </div>
-             {!userCtx.userData ? 
-             (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Действуй!</Button>): 
-             (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Продолжить</Button>)
-             }
+             
              
              <a href='#top'>
              <Image

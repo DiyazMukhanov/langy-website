@@ -558,7 +558,7 @@
       }
 
     & p {
-        font-style: italic;
+        font-style: normal;
         font-weight: 600;
     }
 }
@@ -611,6 +611,34 @@
 
 .purpleCase {
     color: var(--color-purple);
+}
+
+.forget {
+    color: var(--color-primary);
+}
+
+.doBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.instIcon {
+    font-size: 40px;
+    color: var(--color-primary);
+}
+
+.whatsIcon {
+    font-size: 40px;
+    color: green;
+}
+
+.contactsNav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
 
 
