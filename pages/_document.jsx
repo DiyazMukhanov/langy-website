@@ -1,22 +1,21 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 import Script from 'next/script'
- 
+
 export default function Document() {
-  const environment = process.env.NEXT_PUBLIC_ENVIRONMENT === 'dev' ? 'dev' : `production`
-  
+
   return (
     <Html lang="en">
       <Head>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link crossOrigin="true" rel="preconnect" href="https://fonts.gstatic.com" />
-      <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link crossOrigin="true" rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
 
-      {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
+        {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,600&family=Roboto:wght@500;700&display=swap" rel="stylesheet" /> */}
-      <meta name="description" content="Уроки английского языка онлайн"/>
-      <meta name="описание" content="Онлайн уроки английского языка"/>
-      {/* {process.env.NEXT_PUBLIC_ENVIRONMENT === `production` && (
+        <meta name="description" content="Уроки английского языка онлайн" />
+        <meta name="описание" content="Онлайн уроки английского языка" />
+        {/* {process.env.NEXT_PUBLIC_ENVIRONMENT === `production` && (
           <Script
           id='yandex'
           strategy="beforeInteractive"
@@ -35,13 +34,13 @@ export default function Document() {
           </Script>
       )} */}
 
-        </Head>
+      </Head>
       <body>
         <Main />
         {/* {<noscript>
         <div><img src="https://mc.yandex.ru/watch/94815906" style={{ position: 'absolute', left: '-9999px' }} alt="" /></div>
         </noscript> */}
-      {/* } */}
+        {/* } */}
         <NextScript />
       </body>
     </Html>
