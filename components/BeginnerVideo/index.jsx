@@ -6,28 +6,28 @@ import { updateBeginnerProgress } from "@/api/user"
 import { useRouter } from "next/router"
 import Loader from "../Loader"
 
-export default function BeginnerVideo({videoUrl, lessonNumber, nextUrl}) {
+export default function BeginnerVideo({ videoUrl, lessonNumber, nextUrl }) {
     const [isLoading, setIsLoading] = useState(false)
-    
-    const router= useRouter()
-    
-    if(isLoading) {
+
+    const router = useRouter()
+
+    if (isLoading) {
         return <Loader />
     } else {
         return (
             <>
-            <p className={styles.task}>Просмотрите видео и выучите алфавит</p>
-            <div className={styles.wrapper}>
-             
-                <ReactPlayer
-                    url={videoUrl}
-                    width="100%"
-                    height="100%"
-                    controls={true}
-                />
-            </div>
-            
+                <p className={styles.task}>Просмотрите видео и выучите алфавит</p>
+                <div className={styles.wrapper}>
+
+                    <ReactPlayer
+                        url={videoUrl}
+                        width="100%"
+                        height="100%"
+                        controls={true}
+                    />
+                </div>
+
             </>
-            )
+        )
     }
 }

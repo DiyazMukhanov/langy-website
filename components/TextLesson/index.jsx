@@ -6,15 +6,15 @@ import Play from "../../public/images/Play.svg";
 import { Button } from "@/components/Button";
 import Image from "next/image";
 
-export default function TextLesson({lessonNumber, text}) {
+export default function TextLesson({ lessonNumber, text }) {
   const [isPlaying, setIsPlaying] = useState(false)
   const [timeProgress, setTimeProgress] = useState(0);
   const [duration, setDuration] = useState(0);
   const [hasWindow, setHasWindow] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  
+
   const router = useRouter()
-  
+
   const playBackRate = 1
 
   const audioSrc = {
@@ -26,13 +26,13 @@ export default function TextLesson({lessonNumber, text}) {
     10: "/audio/beginner_10.mp3",
     11: "/audio/beginner_11.mp3",
     13: "/audio/beginner_13.mp3",
-  }    
-  
+  }
+
   useEffect(() => {
-    if(typeof window !== 'undefined') {
-        setHasWindow(true);
+    if (typeof window !== 'undefined') {
+      setHasWindow(true);
     }
-    }, [])
+  }, [])
   const audioRef = useRef()
   const progressBarRef = useRef()
   const playAnimationRef = useRef();
@@ -54,10 +54,10 @@ export default function TextLesson({lessonNumber, text}) {
   const progressUpdate = useCallback(() => {
     const currentTime = audioRef?.current?.currentTime;
     setTimeProgress(currentTime);
-    if(progressBarRef !== null && progressBarRef.current !== null) {
+    if (progressBarRef !== null && progressBarRef.current !== null) {
       progressBarRef.current.value = currentTime;
     }
-  
+
     if (isPlaying || currentTime < duration) {
       // Continue updating progress during the pause state if audio hasn't ended
       playAnimationRef.current = requestAnimationFrame(progressUpdate);
@@ -81,7 +81,7 @@ export default function TextLesson({lessonNumber, text}) {
   const repeat = useCallback(() => {
     const currentTime = audioRef?.current?.currentTime;
     setTimeProgress(currentTime);
-    if(progressBarRef !== null && progressBarRef.current !== null) {
+    if (progressBarRef !== null && progressBarRef.current !== null) {
       progressBarRef.current.value = currentTime;
     }
 
@@ -89,17 +89,17 @@ export default function TextLesson({lessonNumber, text}) {
   }, [audioRef, duration, progressBarRef, setTimeProgress]);
 
   useEffect(() => {
-    if(hasWindow) {
-        if (isPlaying) {
-            audioRef?.current?.play();
-            playAnimationRef.current = requestAnimationFrame(repeat);
-            audioRef.current.playbackRate = playBackRate
-          } else {
-            audioRef?.current?.pause();
-            cancelAnimationFrame(playAnimationRef.current);
-          }
+    if (hasWindow) {
+      if (isPlaying) {
+        audioRef?.current?.play();
+        playAnimationRef.current = requestAnimationFrame(repeat);
+        audioRef.current.playbackRate = playBackRate
+      } else {
+        audioRef?.current?.pause();
+        cancelAnimationFrame(playAnimationRef.current);
+      }
     }
-   
+
   }, [isPlaying, audioRef, repeat])
 
   const onLoadedMetadata = () => {
@@ -116,47 +116,47 @@ export default function TextLesson({lessonNumber, text}) {
     audioRef.current.currentTime = progressBarRef.current.value;
   };
 
- if(isLoading) {
-  return <Loader />
- } else {
-  return (
-    <>
-       
-         {hasWindow && <audio src={audioSrc[lessonNumber]} ref={audioRef} preload="metadata" onLoadedMetadata={onLoadedMetadata} />}
-         
-         <div className={styles.progress}>
-            <div className={styles.time}>
-            <span>{formatTime(timeProgress)} / {formatTime(duration)}</span>
-            </div>
+  if (isLoading) {
+    return <Loader />
+  } else {
+    return (
+      <>
 
-            <div className={styles.rangeContainer}>
-                <Image
-                priority
-                src={isPlaying ? Pause : Play}
-                width={30}
-                onClick={togglePlayPause}
-                className={styles.play}
-                />
-                <input 
-                type="range" 
-                className={styles.rangeSlider} 
-                ref={progressBarRef} 
-                onChange={handleProgressChange}
-                style = {{
-                    '--current-time': timeProgress,
-                    '--duration': duration
-                }}
-                />
-            </div>
-         </div>
-            <p className={styles.bold}>Прослушайте и прочитайте. </p>
-            <p className={styles.effective}>Для эффективного усвоения рекомендуем прослушать и прочитать несколько раз до полного понимания материала.</p>
-            <div className={styles.textShowEn}>
-                <div className={styles.textBody}>
-                {text}
-                </div>                                           
-            </div>         
-    </>
-  );
- }  
+        {hasWindow && <audio src={audioSrc[lessonNumber]} ref={audioRef} preload="metadata" onLoadedMetadata={onLoadedMetadata} />}
+
+        <div className={styles.progress}>
+          <div className={styles.time}>
+            <span>{formatTime(timeProgress)} / {formatTime(duration)}</span>
+          </div>
+
+          <div className={styles.rangeContainer}>
+            <Image
+              priority
+              src={isPlaying ? Pause : Play}
+              width={30}
+              onClick={togglePlayPause}
+              className={styles.play}
+            />
+            <input
+              type="range"
+              className={styles.rangeSlider}
+              ref={progressBarRef}
+              onChange={handleProgressChange}
+              style={{
+                '--current-time': timeProgress,
+                '--duration': duration
+              }}
+            />
+          </div>
+        </div>
+        <p className={styles.bold}>Прослушайте и прочитайте. </p>
+        <p className={styles.effective}>Для эффективного усвоения рекомендуем прослушать и прочитать несколько раз до полного понимания материала.</p>
+        <div className={styles.textShowEn}>
+          <div className={styles.textBody}>
+            {text}
+          </div>
+        </div>
+      </>
+    );
+  }
 }

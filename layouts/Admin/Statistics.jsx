@@ -11,35 +11,35 @@ export default function Statisctics() {
     console.log(isLoading)
 
     useEffect(() => {
-    const getStats = async () => {
-        try {
-            const response = await getStatistics()
-            console.log(response?.data?.stats)
-            setStats(response?.data?.stats)
-            setIsLoading(false)
-        } catch (err) {
-            console.log(err)
-            alert('Произошла ошибка')
-            setIsLoading(false)
+        const getStats = async () => {
+            try {
+                const response = await getStatistics()
+                console.log(response?.data?.stats)
+                setStats(response?.data?.stats)
+                setIsLoading(false)
+            } catch (err) {
+                console.log(err)
+                alert('Произошла ошибка')
+                setIsLoading(false)
+            }
         }
-    }
 
-    getStats()
+        getStats()
     }, [])
 
-    if(isLoading) {
+    if (isLoading) {
         return <div>Loading...</div>
     } else {
         return (
             <div className={styles.container}>
-              <p>Всего студентов зарегистрировалось: {stats?.allStudentsQuantity}</p>
-              <p>Всего с активной подпиской: {stats?.subscibedNow}</p>
-              <p>Всего с активной подпиской Elementary: {stats?.subscibedNowElementary}</p>
-              <p>Всего с активной подпиской Pre-Intermediate: {stats?.subscibedNowPreIntermediate}</p>
-              <p>Всего с активной подпиской Intermediate: {stats?.subscibedNowIntermediate}</p>
-              <p>Всего когда-либо купивших подписку: {stats?.subscribedEverStudents}</p>
+                <p>Всего студентов зарегистрировалось: {stats?.allStudentsQuantity}</p>
+                <p>Всего с активной подпиской: {stats?.subscibedNow}</p>
+                <p>Всего с активной подпиской Elementary: {stats?.subscibedNowElementary}</p>
+                <p>Всего с активной подпиской Pre-Intermediate: {stats?.subscibedNowPreIntermediate}</p>
+                <p>Всего с активной подпиской Intermediate: {stats?.subscibedNowIntermediate}</p>
+                <p>Всего когда-либо купивших подписку: {stats?.subscribedEverStudents}</p>
             </div>
-          )
+        )
     }
-    
+
 }

@@ -1,18 +1,18 @@
 import classNames from "classnames"
 import styles from './button.module.scss'
 
-export const Button = ({ 
+export const Button = ({
     children,
     variant = 'contained',
     onClick,
     disabled,
-    className 
+    className
 }) => {
     const classes = classNames(styles.button,
         styles[variant],
         className
-        )
-    
+    )
+
     return <button className={classes} onClick={onClick} disabled={disabled}>
         {children}
     </button>
