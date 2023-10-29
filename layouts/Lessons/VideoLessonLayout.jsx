@@ -6,20 +6,20 @@ import Right from '../../public/images/Right.svg'
 import Mistake from '../../public/images/Mistake.svg'
 import { Button } from "@/components/Button"
 import Image from 'next/image'
-import {useRouter} from "next/router"
+import { useRouter } from "next/router"
 import classNames from "classnames"
 import { setProgressData } from "@/api/user"
 import Loader from "@/components/Loader"
 
-export default function VideoLessonLayout({videoTasks, nextUrl, lessonNumber, currentLessonData, subscriptionIsNeeded, videoUrl, topic, isBeginner}) {
+export default function VideoLessonLayout({ videoTasks, nextUrl, lessonNumber, currentLessonData, subscriptionIsNeeded, videoUrl, topic, isBeginner }) {
     const [currentQuestion, setCurrentQuestion] = useState(1)
     const [wasClicked, setWasClicked] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
     const router = useRouter()
     const [hasWindow, setHasWindow] = useState(false)
-    
+
     useEffect(() => {
-        if(typeof window !== 'undefined') {
+        if (typeof window !== 'undefined') {
             setHasWindow(true);
         }
     }, [])
@@ -27,25 +27,25 @@ export default function VideoLessonLayout({videoTasks, nextUrl, lessonNumber, cu
     const totalQuestions = videoTasks?.length
 
     const clickHandler = (id) => {
-       setWasClicked(id)
+        setWasClicked(id)
     }
 
     const setProgressHandler = async () => {
         setIsLoading(true)
-        try{
-        const data = await setProgressData({lessonNumber: lessonNumber, chapterCode: 'gr'})
-        router.push(nextUrl)
-        
+        try {
+            const data = await setProgressData({ lessonNumber: lessonNumber, chapterCode: 'gr' })
+            router.push(nextUrl)
+
         } catch (err) {
-           
+
             setIsLoading(false)
             router.push(nextUrl)
         }
     }
 
     const nextQuestionHandler = () => {
-        if(currentQuestion < totalQuestions) {
-            if(wasClicked) {
+        if (currentQuestion < totalQuestions) {
+            if (wasClicked) {
                 setCurrentQuestion(currentQuestion + 1)
                 setWasClicked(null)
             } else {
@@ -53,12 +53,12 @@ export default function VideoLessonLayout({videoTasks, nextUrl, lessonNumber, cu
             }
         }
 
-        if(currentQuestion === totalQuestions) {
+        if (currentQuestion === totalQuestions) {
             setProgressHandler(lessonNumber, nextUrl)
         }
     }
-    
-    if(isLoading) {
+
+    if (isLoading) {
         return <Loader />
     } else {
         return (
@@ -68,78 +68,78 @@ export default function VideoLessonLayout({videoTasks, nextUrl, lessonNumber, cu
                         <p className={styles.topic}>Тема: {topic}</p>
                         {/* <p className={styles.task}>Посмотрите следующее видео:</p> */}
                         <div className={styles.wrapper}>
-                        {hasWindow && <ReactPlayer
-                            url={videoUrl}
-                            className={styles.player}
-                            width="100%"
-                            height="100%"
-                            controls={true}
-                            config={{
-                                youtube: {
-                                  playerVars: { cc_lang_pref: 'ru' }, // Set the language code for subtitles
-                                },
-                              }}
-                        />}
-                        
-                        </div>   
+                            {hasWindow && <ReactPlayer
+                                url={videoUrl}
+                                className={styles.player}
+                                width="100%"
+                                height="100%"
+                                controls={true}
+                                config={{
+                                    youtube: {
+                                        playerVars: { cc_lang_pref: 'ru' }, // Set the language code for subtitles
+                                    },
+                                }}
+                            />}
+
+                        </div>
                     </div>
-    
+
                     <div className={styles.bottom}>
                         <p>Выполните тест:</p>
                         <div className={styles.questions}>
-                           <div className={styles.questionContainer}>
+                            <div className={styles.questionContainer}>
                                 <p className={styles.questionText}>{videoTasks[currentQuestion - 1].title}</p>
                                 <p>{currentQuestion}/{totalQuestions}</p>
-                           </div>
-                           {videoTasks[currentQuestion - 1].answers.map(answer => (
-                            <div className={styles.answerContainer} key={answer.id}>
-                                
+                            </div>
+                            {videoTasks[currentQuestion - 1].answers.map(answer => (
+                                <div className={styles.answerContainer} key={answer.id}>
+
                                     <div className={classNames(
-                                        styles.rectangle, 
-                                        {[styles.nonClickable]: wasClicked})} 
+                                        styles.rectangle,
+                                        { [styles.nonClickable]: wasClicked })}
                                         onClick={() => clickHandler(answer.id)}
-                                        >
+                                    >
                                         {wasClicked === answer.id && answer.isCorrect === true && (
                                             <Image
-                                            priority
-                                            src={Right}
-                                            width={20}
-                                            className={styles.tick}
+                                                priority
+                                                src={Right}
+                                                width={20}
+                                                className={styles.tick}
                                             />
                                         )}
                                         {wasClicked === answer.id && answer.isCorrect === false && (
                                             <Image
-                                            priority
-                                            src={Mistake}
-                                            width={20}
-                                            className={styles.tick}
+                                                priority
+                                                src={Mistake}
+                                                width={20}
+                                                className={styles.tick}
                                             />
                                         )}
-    
+
                                         {
-                                          wasClicked && answer.isCorrect === true && (
-                                            <Image
-                                            priority
-                                            src={Right}
-                                            width={20}
-                                            className={styles.tick}
-                                            />
-                                        )  
+                                            wasClicked && answer.isCorrect === true && (
+                                                <Image
+                                                    priority
+                                                    src={Right}
+                                                    width={20}
+                                                    className={styles.tick}
+                                                />
+                                            )
                                         }
                                     </div>
-                               
-                               <p>{answer.answer}</p>
-                            </div>    
-                           ))}
-                    
+
+                                    <p>{answer.answer}</p>
+                                </div>
+                            ))}
+
                         </div>
                         <div className={styles.btnContainer}>
-                        <Button onClick={nextQuestionHandler} variant="standardNextOutlined" className={styles.nextButton}>Далее</Button>
+                            <Button onClick={nextQuestionHandler} variant="standardNextOutlined" className={styles.nextButton}>Далее</Button>
                         </div>
                     </div>
                 </div>
             </LessonLayout>
         )
     }
-   
+
 }

@@ -3,9 +3,9 @@ import styles from './Main.module.scss'
 import { useRouter } from 'next/router'
 
 export default function Main() {
-    const router = useRouter()
+  const router = useRouter()
 
-    return (
+  return (
     <ProtectPage adminNeeded={true}>
       <div className={styles.container}>
         <p className={styles.link} onClick={() => router.push('/admin/students')}>Студенты</p>
@@ -13,5 +13,5 @@ export default function Main() {
         <p className={styles.link} onClick={() => router.push('/admin/services')}>Служба поддержки</p>
       </div>
     </ProtectPage>
-    )
+  )
 }

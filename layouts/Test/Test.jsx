@@ -16,18 +16,18 @@ export default function Test() {
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-      
-       if(userCtx?.userData?.levelChecked === true) {
-        if(userCtx?.userData?.currentLesson !== 0 && userCtx?.userData?.currentChapter !== 'no') {
-            router.push(`/lessons/lesson${userCtx?.userData?.currentLesson}/${userCtx?.userData?.currentChapter}`)
+
+        if (userCtx?.userData?.levelChecked === true) {
+            if (userCtx?.userData?.currentLesson !== 0 && userCtx?.userData?.currentChapter !== 'no') {
+                router.push(`/lessons/lesson${userCtx?.userData?.currentLesson}/${userCtx?.userData?.currentChapter}`)
+                setIsLoading(false)
+            } else {
+                router.push('/lessons/lesson1/video')
+                setIsLoading(false)
+            }
+        } else {
             setIsLoading(false)
-          } else {
-            router.push('/lessons/lesson1/video')
-            setIsLoading(false)
-          }
-       } else {
-        setIsLoading(false)
-       }
+        }
     }, [userCtx.userData])
 
     const questions = [
@@ -455,8 +455,8 @@ export default function Test() {
     ]
 
     const questionsTotal = questions.length;
-    const initalProgress = 1/questionsTotal*100
-    
+    const initalProgress = 1 / questionsTotal * 100
+
     const [currentQuestion, setCurrentQuestion] = useState(1)
     const [progress, setProgress] = useState(initalProgress)
     const [chosenId, setChosenId] = useState(null)
@@ -467,99 +467,99 @@ export default function Test() {
 
     useEffect(() => {
         setCurrentQuestionBlock(questions[currentQuestion - 1]);
-        setProgress(currentQuestion/questionsTotal*100)
+        setProgress(currentQuestion / questionsTotal * 100)
         setChosenId(null)
-      }, [currentQuestion]);
+    }, [currentQuestion]);
 
-      useEffect(() => {
+    useEffect(() => {
         const rightsArray = answerResults.filter(item => item === true)
         setNumberOfRightAnswers(rightsArray.length)
-        if(answerResults.length === questionsTotal) {
+        if (answerResults.length === questionsTotal) {
             setResultIsShowing(true)
         }
-      }, [answerResults])
+    }, [answerResults])
 
     const chooseHandler = (id) => {
         setChosenId(id)
     }
 
     const nextQuestionHandler = () => {
-        if(!chosenId) {
+        if (!chosenId) {
             alert('Пожалуйста, сделайте выбор')
             return
         }
 
-        if(currentQuestion < questionsTotal) {
+        if (currentQuestion < questionsTotal) {
             setCurrentQuestion(currentQuestion + 1)
         }
 
-        if(answerResults.length < questionsTotal) {
+        if (answerResults.length < questionsTotal) {
             const chosenAnswer = currentQuestionBlock.answers.filter(item => item.id === chosenId)
             const updatedAnswerResults = [...answerResults, chosenAnswer[0].isRight]
             setAnswerResults(updatedAnswerResults)
         }
     }
 
-    if(isLoading) {
+    if (isLoading) {
         return <Loader />
     }
 
-    if(!resultIsShowing) {
+    if (!resultIsShowing) {
         return (
             <ProtectPage>
-              <Header variant='blue'/>
-              <div className={styles.container}>
-              <div className={styles.progressContainer}>
-                 <div style={{
-              width: `${progress}%`,
-              height: '100%',
-              background: '#007bff',
-              borderRadius: '25px',
-            }}/>
-              </div>
-    
-              <div className={styles.questionsContainer}>
-                 <div className={styles.top}>
-                    <div className={styles.numberBlock}>
-                    <div className={styles.number}>
-                        {currentQuestion}
+                <Header variant='blue' />
+                <div className={styles.container}>
+                    <div className={styles.progressContainer}>
+                        <div style={{
+                            width: `${progress}%`,
+                            height: '100%',
+                            background: '#007bff',
+                            borderRadius: '25px',
+                        }} />
                     </div>
-                    <p className={styles.questionsHeading}>Вопрос</p>
-                    </div>
-    
-                    <div className={styles.numberFrom}>
-                        {currentQuestion}/{questionsTotal}
+
+                    <div className={styles.questionsContainer}>
+                        <div className={styles.top}>
+                            <div className={styles.numberBlock}>
+                                <div className={styles.number}>
+                                    {currentQuestion}
+                                </div>
+                                <p className={styles.questionsHeading}>Вопрос</p>
+                            </div>
+
+                            <div className={styles.numberFrom}>
+                                {currentQuestion}/{questionsTotal}
+                            </div>
+                        </div>
+                        <div className={styles.middle}>
+                            <div className={styles.question}>
+                                {currentQuestionBlock.question}
+                            </div>
+
+                            <div className={styles.answers}>
+                                {currentQuestionBlock.answers.map(item => (
+                                    <div className={styles.answerContainer} key={item.id}>
+                                        <div className={classNames(
+                                            styles.circle,
+                                            { [styles.rightChosenCircle]: chosenId === item.id && item.isRight === true },
+                                            { [styles.wrongChosenCircle]: chosenId === item.id && item.isRight === false },
+                                            { [styles.rightChosenCircle]: chosenId && item.isRight === true },
+                                            { [styles.disabled]: chosenId },
+                                        )}
+                                            onClick={() => chooseHandler(item.id)}
+                                        >
+                                        </div>
+                                        {item.answer}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className={styles.bottom}>
+                            <Button variant='standardLargeOutlined' onClick={nextQuestionHandler}>Далее</Button>
+                        </div>
                     </div>
                 </div>
-                    <div className={styles.middle}>
-                    <div className={styles.question}>
-                       {currentQuestionBlock.question}
-                    </div>
-    
-                    <div className={styles.answers}>
-                       {currentQuestionBlock.answers.map(item => (
-                        <div className={styles.answerContainer} key={item.id}>
-                           <div className={classNames(
-                            styles.circle,
-                            {[styles.rightChosenCircle]: chosenId === item.id && item.isRight === true},
-                            {[styles.wrongChosenCircle]: chosenId === item.id && item.isRight === false},
-                            {[styles.rightChosenCircle]: chosenId && item.isRight === true},
-                            {[styles.disabled]: chosenId},
-                            )} 
-                            onClick={() => chooseHandler(item.id)}
-                            >
-                            </div>
-                            {item.answer}
-                        </div>
-                       ))}
-                       </div>
-                    </div>
-                 
-                 <div className={styles.bottom}>
-                 <Button variant='standardLargeOutlined' onClick={nextQuestionHandler}>Далее</Button>
-                 </div>
-              </div>
-              </div>
             </ProtectPage>
         )
     } else {

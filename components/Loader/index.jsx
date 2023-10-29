@@ -1,15 +1,15 @@
 import styles from "./Loader.module.scss";
-import {FallingLines} from "react-loader-spinner";
+import { FallingLines } from "react-loader-spinner";
 import classNames from "classnames";
 
 
-const Loader = ({small}) => {
-   
+const Loader = ({ small }) => {
+
     return (
         <div className={classNames(
-            {[styles.small]: small === true},
-            {[styles.spinner]: small === undefined},
-            )}>
+            { [styles.small]: small === true },
+            { [styles.spinner]: small === undefined },
+        )}>
             <FallingLines
                 height="80"
                 width="80"

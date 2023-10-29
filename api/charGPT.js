@@ -11,14 +11,14 @@ const apiUrl = process.env.NEXT_PUBLIC_ENVIRONMENT === 'development' ? 'http://l
 //     return storedToken
 //   }
 
-const options = { withCredentials: true, headers: { 'Content-Type': 'application/json'}}
+const options = { withCredentials: true, headers: { 'Content-Type': 'application/json' } }
 
-  export const sendAssay = async (essay) => {
-    // const storedToken = token()
-    // const headers = {
-    //   'Authorization': `Bearer ${storedToken}`,
-    //   'Content-Type': 'application/json', 
-    // };
-  
-    return await axios.post(`${apiUrl}/users/essay`, { essay }, options);
-   } 
+export const sendAssay = async (essay) => {
+  // const storedToken = token()
+  // const headers = {
+  //   'Authorization': `Bearer ${storedToken}`,
+  //   'Content-Type': 'application/json', 
+  // };
+
+  return await axios.post(`${apiUrl}/users/essay`, { essay }, options);
+} 

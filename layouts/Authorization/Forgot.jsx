@@ -22,14 +22,14 @@ const Forgot = () => {
         setEmptyField(false)
         setIsLoading(true)
 
-        if(!emailValue) {
+        if (!emailValue) {
             setEmptyField(true)
             setInvalidEmail(false)
             setIsLoading(false)
             return
         }
 
-        if(!validator.isEmail(emailValue)) {
+        if (!validator.isEmail(emailValue)) {
             setInvalidEmail(true)
             setIsLoading(false)
             console.log('Invalid email')
@@ -38,7 +38,7 @@ const Forgot = () => {
 
         try {
             const data = await forgotPassword(emailValue)
-            if(data) {
+            if (data) {
                 setIsLoading(false)
                 setEmailSent(true)
             }
@@ -46,16 +46,16 @@ const Forgot = () => {
             console.log(err)
             setIsLoading(false)
         }
-        
+
     }
 
-    if(emailSent) {
+    if (emailSent) {
         return (
             <>
-            <div className={styles.complete}>
-            Ссылка для сброса отправлена на указанный почтовый ящик
-            <Button variant='authLargeContained' onClick={() => router.push('/')}>На главную</Button>
-            </div>
+                <div className={styles.complete}>
+                    Ссылка для сброса отправлена на указанный почтовый ящик
+                    <Button variant='authLargeContained' onClick={() => router.push('/')}>На главную</Button>
+                </div>
             </>
         )
     }
@@ -70,7 +70,7 @@ const Forgot = () => {
                 <div className={styles.formBlock}><label className={styles.label}>Email</label>
                     <input
                         placeholder='Укажите ваш почтовый адрес'
-                        className={classNames({[styles.warningInput]: emptyField}, styles.input)}
+                        className={classNames({ [styles.warningInput]: emptyField }, styles.input)}
                         onChange={(event) => setEmailValue(event.target.value)}
                     >
                     </input>

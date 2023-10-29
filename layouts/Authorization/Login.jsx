@@ -11,172 +11,172 @@ import { useRouter } from 'next/router'
 import axios from 'axios';
 
 export default function Login() {
-    const [emailInputValue, setEmailInputValue] = useState('')
-    const [passwordInputValue, setPasswordInputValue] = useState('')
-    const [emailEmpty, setEmailEmpty] = useState(false)
-    const [passwordEmpty, setPasswordEmpty] = useState(false)
-    const [isLoading, setIsLoading] = useState(false)
-    const [userNotExists, setUserNotExists] = useState(false)
+  const [emailInputValue, setEmailInputValue] = useState('')
+  const [passwordInputValue, setPasswordInputValue] = useState('')
+  const [emailEmpty, setEmailEmpty] = useState(false)
+  const [passwordEmpty, setPasswordEmpty] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [userNotExists, setUserNotExists] = useState(false)
 
-    const router = useRouter()
+  const router = useRouter()
 
-    const emailRef = useRef()
-    const passwordRef = useRef()
+  const emailRef = useRef()
+  const passwordRef = useRef()
 
-    let serverUrl
-    if(process.env.NEXT_PUBLIC_ENVIRONMENT === 'development') {
-      serverUrl = `http://localhost:3000`
-    } else {
-      serverUrl = process.env.NEXT_PUBLIC_SERVER_URL
+  let serverUrl
+  if (process.env.NEXT_PUBLIC_ENVIRONMENT === 'development') {
+    serverUrl = `http://localhost:3000`
+  } else {
+    serverUrl = process.env.NEXT_PUBLIC_SERVER_URL
+  }
+
+  const emailInputHandler = (event) => {
+    setEmailInputValue(event.target.value)
+  }
+
+  const passwordInputHandler = (event) => {
+    setPasswordInputValue(event.target.value)
+  }
+
+
+
+  const userLoginHandler = async (event) => {
+    event.preventDefault()
+    setUserNotExists(false)
+    setIsLoading(true)
+
+    setPasswordEmpty(false)
+    setEmailEmpty(false)
+
+    const body = {
+      email: emailRef.current.value,
+      password: passwordRef.current.value
     }
 
-    const emailInputHandler = (event) => {
-        setEmailInputValue(event.target.value)
-      }
-  
-    const passwordInputHandler = (event) => {
-        setPasswordInputValue(event.target.value)
+    if (!emailInputValue) {
+      setEmailEmpty(true)
     }
 
-    
+    if (!passwordInputValue) {
+      setPasswordEmpty(true)
+    }
 
-    const userLoginHandler = async (event) => {
-        event.preventDefault()
-        setUserNotExists(false)
-        setIsLoading(true)
-        
-        setPasswordEmpty(false)
-        setEmailEmpty(false)
+    if (!emailInputValue || !passwordInputValue) {
+      setIsLoading(false)
+      return
+    }
 
-        const body = {
-          email: emailRef.current.value,
-          password: passwordRef.current.value
-      }
+    try {
+      const userData = await loginUser(body)
 
-        if(!emailInputValue) {
-            setEmailEmpty(true)
-            }
+      if (userData) {
+        if (userData?.data?.data?.user?.role === 'manager') {
+          setIsLoading(false)
+          router.push('/admin/main')
+        }
 
-        if(!passwordInputValue) {
-            setPasswordEmpty(true)
-            }
-
-        if(!emailInputValue || !passwordInputValue) {
+        if (userData?.data?.data?.user?.levelChecked === true) {
+          //Routing
+          if (userData?.data?.data?.user?.currentLesson !== 0 && userData?.data?.data?.user?.currentChapter !== 'no') {
+            router.push(`/lessons/lesson${userData?.data?.data?.user?.currentLesson}/${userData?.data?.data?.user?.currentChapter}`)
             setIsLoading(false)
-            return
+          } else {
+            if (userData?.data?.data?.user?.level === 'preIntermediate') {
+              router.push('/lessons/lesson9/video')
+
+              setIsLoading(false)
             }
 
-        try {
-            const userData = await loginUser(body)
-            
-            if(userData) {
-                if(userData?.data?.data?.user?.role === 'manager') {
-                    setIsLoading(false)
-                    router.push('/admin/main')
-                }
-                
-                if(userData?.data?.data?.user?.levelChecked === true) {
-                    //Routing
-                    if(userData?.data?.data?.user?.currentLesson !== 0 && userData?.data?.data?.user?.currentChapter !== 'no') {
-                        router.push(`/lessons/lesson${userData?.data?.data?.user?.currentLesson}/${userData?.data?.data?.user?.currentChapter}`)
-                        setIsLoading(false)
-                      } else {
-                        if(userData?.data?.data?.user?.level === 'preIntermediate') {
-                          router.push('/lessons/lesson9/video')
-                        
-                          setIsLoading(false)
-                        }
-            
-                        if(userData?.data?.data?.user?.level === 'intermediate') {
-                          router.push('/lessons/lesson17/video')
-                         
-                          setIsLoading(false)
-                        }
-            
-                        if(userData?.data?.data?.user?.level === 'elementary') {
-                          router.push('/lessons/lesson1/video')
-                         
-                          setIsLoading(false)
-                        }
+            if (userData?.data?.data?.user?.level === 'intermediate') {
+              router.push('/lessons/lesson17/video')
 
-                        if(userData?.data?.data?.user?.level === 'beginner') {
-                          router.push('/')
-                         
-                          setIsLoading(false)
-                        }
-                      }
-                   } else {
-                    setIsLoading(false)
-                    router.push('/menu')
-                   }
-
-                    // localStorage.setItem('token', userData.data.token)
-                    
-                
-                
+              setIsLoading(false)
             }
-            } catch (error) {
-                setIsLoading(false)
-                setUserNotExists(true)
-            }
-    }
 
-    const goToSignUpHandler = () => {
-        router.push('/authorization/registration')
+            if (userData?.data?.data?.user?.level === 'elementary') {
+              router.push('/lessons/lesson1/video')
+
+              setIsLoading(false)
+            }
+
+            if (userData?.data?.data?.user?.level === 'beginner') {
+              router.push('/')
+
+              setIsLoading(false)
+            }
+          }
+        } else {
+          setIsLoading(false)
+          router.push('/menu')
+        }
+
+        // localStorage.setItem('token', userData.data.token)
+
+
+
       }
-
-    const goToMainHandler = () => {
-    router.push('/')
+    } catch (error) {
+      setIsLoading(false)
+      setUserNotExists(true)
     }
+  }
 
-    return (
+  const goToSignUpHandler = () => {
+    router.push('/authorization/registration')
+  }
+
+  const goToMainHandler = () => {
+    router.push('/')
+  }
+
+  return (
     <div className={styles.container}>
-        <div className={styles.header}>
+      <div className={styles.header}>
         <Image
-           priority
-           src={ButtonClose}
-           width={15}
-           className={styles.close}
-           onClick={goToMainHandler}
-           />
-           <Button variant='standardAuthOutlined' onClick={goToSignUpHandler}>Регистрация</Button>
-        </div>
+          priority
+          src={ButtonClose}
+          width={15}
+          className={styles.close}
+          onClick={goToMainHandler}
+        />
+        <Button variant='standardAuthOutlined' onClick={goToSignUpHandler}>Регистрация</Button>
+      </div>
 
-        <div className={styles.formContainer}>
-           <Typography size='small' element='h2' className={styles.formHeading}>Вход</Typography>
-        
+      <div className={styles.formContainer}>
+        <Typography size='small' element='h2' className={styles.formHeading}>Вход</Typography>
+
         <form type='submit' onSubmit={userLoginHandler} className={styles.form}>
-        <div className={styles.inputs}>
-          <input placeholder='Email' type='email' id="user-text-field" className={classNames({[styles.errorInput]: emailEmpty}, {[styles.input]: !emailEmpty})} onChange={emailInputHandler} name='email' autoComplete='email' ref={emailRef}></input>
-          <input placeholder='Пароль' type='password' id="password-text-field" className={classNames({[styles.errorInput]: passwordEmpty}, {[styles.input]: !passwordEmpty})} onChange={passwordInputHandler} name='password' autoComplete='current-password' ref={passwordRef}></input>
-        </div>
-        <p className={styles.forgotPassword} onClick={() => router.push('/authorization/forgot')}>Забыли пароль</p>
-        <Button variant='authLargeContained' disabled={isLoading}>Войти</Button>
+          <div className={styles.inputs}>
+            <input placeholder='Email' type='email' id="user-text-field" className={classNames({ [styles.errorInput]: emailEmpty }, { [styles.input]: !emailEmpty })} onChange={emailInputHandler} name='email' autoComplete='email' ref={emailRef}></input>
+            <input placeholder='Пароль' type='password' id="password-text-field" className={classNames({ [styles.errorInput]: passwordEmpty }, { [styles.input]: !passwordEmpty })} onChange={passwordInputHandler} name='password' autoComplete='current-password' ref={passwordRef}></input>
+          </div>
+          <p className={styles.forgotPassword} onClick={() => router.push('/authorization/forgot')}>Забыли пароль</p>
+          <Button variant='authLargeContained' disabled={isLoading}>Войти</Button>
         </form>
         <p>или</p>
         {/* <a href='http://localhost:3000/auth/google'> */}
-        <Button 
-        variant='google'
-        // onClick={testGoogleAuth}
-        onClick={() => router.push(`${serverUrl}/api/auth`)}
+        <Button
+          variant='google'
+          // onClick={testGoogleAuth}
+          onClick={() => router.push(`${serverUrl}/api/auth`)}
         // onClick={() => router.push(`http://localhost:3000/auth`)}
         // onClick={googleAuthHandler}
         >
-           <Image
-           priority
-           src={Google}
-           width={15}
-           className={styles.close}
-           />
-            Google
+          <Image
+            priority
+            src={Google}
+            width={15}
+            className={styles.close}
+          />
+          Google
         </Button>
         {/* </a> */}
-        </div>
+      </div>
 
-        <div className={styles.existContainer}>
+      <div className={styles.existContainer}>
         {userNotExists && <p className={styles.exist}>Неверные данные!</p>}
         {isLoading && <p className={styles.exist}>Идёт вход...</p>}
-        </div>
+      </div>
     </div>
-    )
+  )
 }

@@ -13,33 +13,33 @@ import { useRouter } from 'next/router';
 import VocabularyLesson from '@/components/VocabularyLesson';
 import CardLesson from '@/components/CardsLesson';
 
-export default function BeginnerLessonLayout({ 
-    isNextToElementary, 
-    videoUrl, 
-    lessonNumber, 
-    isVideoLesson, 
-    isTextLesson, 
-    isVocabulary, 
-    text, 
-    nextUrl, 
-    words_1, 
-    words_2, 
+export default function BeginnerLessonLayout({
+    isNextToElementary,
+    videoUrl,
+    lessonNumber,
+    isVideoLesson,
+    isTextLesson,
+    isVocabulary,
+    text,
+    nextUrl,
+    words_1,
+    words_2,
     words_3,
-    wordsToAsk_1, 
-    wordsToAsk_2, 
-    wordsToAsk_3, 
-    wordSrc_1, 
-    wordSrc_2, 
-    wordSrc_3, 
-    wordSrc_4, 
-    wordSrc_5, 
-    wordSrc_6, 
-    wordSrc_7, 
-    wordSrc_8, 
-    wordSrc_9, 
+    wordsToAsk_1,
+    wordsToAsk_2,
+    wordsToAsk_3,
+    wordSrc_1,
+    wordSrc_2,
+    wordSrc_3,
+    wordSrc_4,
+    wordSrc_5,
+    wordSrc_6,
+    wordSrc_7,
+    wordSrc_8,
+    wordSrc_9,
     isCardLesson,
-    words 
-    }) {
+    words
+}) {
     const [isLoading, setIsLoading] = useState(false)
     const [beginnerProgress, setBeginnerProgress] = useState(null)
     const [hasWindow, setHasWindow] = useState(false)
@@ -59,32 +59,32 @@ export default function BeginnerLessonLayout({
 
     const updateBeginnerProgressHandler = async (body, isNext) => {
         try {
-          setIsLoading(true)
-          const response = await updateBeginnerProgress(body)
-          if(isNext) router.push(nextUrl)
-        //   setIsLoading(false)
+            setIsLoading(true)
+            const response = await updateBeginnerProgress(body)
+            if (isNext) router.push(nextUrl)
+            //   setIsLoading(false)
         } catch (err) {
-          alert('Произошла ошибка. Повторите попытку')
-          console.log(err)
-        //   setIsLoading(false)
+            alert('Произошла ошибка. Повторите попытку')
+            console.log(err)
+            //   setIsLoading(false)
         }
     }
 
-   const exitBeginnerHandler = async () => {
-    try {
-       const response = await exitBeginnerProgress()
-       router.push('/lessons/lesson1/video')
-    } catch(err) {
-       console.log(err)
+    const exitBeginnerHandler = async () => {
+        try {
+            const response = await exitBeginnerProgress()
+            router.push('/lessons/lesson1/video')
+        } catch (err) {
+            console.log(err)
+        }
     }
-   }
-    
+
     useEffect(() => {
         const getBeginnerProgressHandler = async () => {
             try {
                 const beginnerProgress = await getBeginnerProgress()
                 setBeginnerProgress(beginnerProgress.data.data)
-                const currentLearningField = await setCurrentLearningField({currentLearningField: "starter"})
+                const currentLearningField = await setCurrentLearningField({ currentLearningField: "starter" })
                 console.log(currentLearningField)
             } catch (err) {
                 console.log(err)
@@ -92,68 +92,68 @@ export default function BeginnerLessonLayout({
         }
 
         getBeginnerProgressHandler()
-        
+
     }, [])
 
     useEffect(() => {
-        if(typeof window !== 'undefined') {
+        if (typeof window !== 'undefined') {
             setHasWindow(true)
         }
     }, [])
 
     useEffect(() => {
-      const updateBeginnerProgressHandlerInit = async () => {
-        try {
-             const response = await updateBeginnerProgress(updateCurrentBeginnerProgressBody)
-             setBeginnerProgress(response.data.data)
-        } catch (err) {
-            console.log(err)
+        const updateBeginnerProgressHandlerInit = async () => {
+            try {
+                const response = await updateBeginnerProgress(updateCurrentBeginnerProgressBody)
+                setBeginnerProgress(response.data.data)
+            } catch (err) {
+                console.log(err)
+            }
         }
-      }
 
-      updateBeginnerProgressHandlerInit()
+        updateBeginnerProgressHandlerInit()
     }, [])
 
-    const progressValue = lessonNumber/14*100
-   
-        if(isLoading) {
-            return <Loader />
-        } else {
-            return (
-                <ProtectPage >
-                
-                    <BeginnerHeader variant='white' lessonsSummary={lessonsSummary} beginnerProgress={beginnerProgress}/>
-                    <div className={styles.container}>
-                        <BeginnerSideBarDesktop lessonsSummary={lessonsSummary} beginnerProgress={beginnerProgress}/>
-                        <div className={styles.rightSide}>
-                            
-                           <div className={styles.progressContainer}>
-                                <div style={{
-                            width: `${progressValue}%`,
-                            height: '100%',
-                            background: '#48C61C',
-                            borderRadius: '25px'
-                            }}/>
-                            </div>
-                            <h1>Beginner</h1>
-                            <h2>Lesson {lessonNumber}</h2>
-                            {(isVideoLesson && hasWindow) && (
-                               <BeginnerVideo videoUrl={videoUrl} lessonNumber={lessonNumber} nextUrl={nextUrl} />
-                              )
-                            }
-        
-                            {isTextLesson && (
-                                <TextLesson lessonNumber={lessonNumber} text={text} nextUrl={nextUrl}/>
-                            )}
+    const progressValue = lessonNumber / 14 * 100
 
-                            {
-                                isVocabulary && (
-                                    <VocabularyLesson 
-                                    words_1={words_1} 
-                                    words_2={words_2} 
-                                    words_3={words_3} 
-                                    wordsToAsk_1={wordsToAsk_1} 
-                                    wordsToAsk_2={wordsToAsk_2} 
+    if (isLoading) {
+        return <Loader />
+    } else {
+        return (
+            <ProtectPage >
+
+                <BeginnerHeader variant='white' lessonsSummary={lessonsSummary} beginnerProgress={beginnerProgress} />
+                <div className={styles.container}>
+                    <BeginnerSideBarDesktop lessonsSummary={lessonsSummary} beginnerProgress={beginnerProgress} />
+                    <div className={styles.rightSide}>
+
+                        <div className={styles.progressContainer}>
+                            <div style={{
+                                width: `${progressValue}%`,
+                                height: '100%',
+                                background: '#48C61C',
+                                borderRadius: '25px'
+                            }} />
+                        </div>
+                        <h1>Beginner</h1>
+                        <h2>Lesson {lessonNumber}</h2>
+                        {(isVideoLesson && hasWindow) && (
+                            <BeginnerVideo videoUrl={videoUrl} lessonNumber={lessonNumber} nextUrl={nextUrl} />
+                        )
+                        }
+
+                        {isTextLesson && (
+                            <TextLesson lessonNumber={lessonNumber} text={text} nextUrl={nextUrl} />
+                        )}
+
+                        {
+                            isVocabulary && (
+                                <VocabularyLesson
+                                    words_1={words_1}
+                                    words_2={words_2}
+                                    words_3={words_3}
+                                    wordsToAsk_1={wordsToAsk_1}
+                                    wordsToAsk_2={wordsToAsk_2}
                                     wordsToAsk_3={wordsToAsk_3}
                                     wordSrc_1={wordSrc_1}
                                     wordSrc_2={wordSrc_2}
@@ -164,35 +164,35 @@ export default function BeginnerLessonLayout({
                                     wordSrc_7={wordSrc_7}
                                     wordSrc_8={wordSrc_8}
                                     wordSrc_9={wordSrc_9}
-                                    />
-                                    
-                                )
-                            }
+                                />
 
-                            {
-                                isCardLesson && (
-                                    <CardLesson words={words}/>
-                                )
-                            }
+                            )
+                        }
 
-                            <div className={styles.btnContainer}>
-                                <Button 
-                                variant="standardNextOutlined" 
-                                
+                        {
+                            isCardLesson && (
+                                <CardLesson words={words} />
+                            )
+                        }
+
+                        <div className={styles.btnContainer}>
+                            <Button
+                                variant="standardNextOutlined"
+
                                 onClick={!isNextToElementary ? () => updateBeginnerProgressHandler(updateNextBeginnerProgressBody, true) : exitBeginnerHandler}
-                                >
-                                    Далее
-                                </Button>
-                            </div> 
-                            
-        
-                        {/* {children} */}
+                            >
+                                Далее
+                            </Button>
                         </div>
+
+
+                        {/* {children} */}
                     </div>
-                    
-                    </ProtectPage>
-                    
-                    )
-        }
-        
+                </div>
+
+            </ProtectPage>
+
+        )
+    }
+
 }

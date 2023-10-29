@@ -2,7 +2,7 @@
 
 .noShow {
     display: none;
-   
+
     @include size-tablet {
         display: none;
     }
@@ -145,15 +145,15 @@
     @include size-tablet {
         flex-direction: column;
         padding-bottom: 70px;
-     }
-    
+    }
+
 }
 
 .dropOne {
     margin-top: 5em;
 
     @include size-tablet {
-       display: none;
+        display: none;
     }
 
 }
@@ -163,7 +163,7 @@
 
     @include size-tablet {
         display: none;
-     }
+    }
 }
 
 .btnBlock {
@@ -187,7 +187,7 @@
 
     @include size-tablet {
         width: 200px;
-     }
+    }
 }
 
 .haveAccountBtn {
@@ -208,7 +208,7 @@
     @include size-tablet {
         flex-direction: column;
         align-items: center;
-     }
+    }
 }
 
 .imageContainer {
@@ -221,16 +221,16 @@
         height: auto;
         display: flex;
         gap: 20px;
-     }
+    }
 }
 
-.laptop, 
+.laptop,
 .cards {
     position: absolute;
 
     @include size-tablet {
         position: static;
-     }
+    }
 }
 
 .cards {
@@ -238,7 +238,7 @@
 
     @include size-tablet {
         display: none;
-     }
+    }
 }
 
 .cardsMobile {
@@ -247,7 +247,7 @@
     @include size-tablet {
         display: block;
         padding-top: 50px;
-     }
+    }
 
 }
 
@@ -260,7 +260,7 @@
         width: 200px;
         left: 0;
         top: 0;
-     }
+    }
 }
 
 .middleSection {
@@ -274,7 +274,7 @@
         align-items: center;
         font-size: 1.125em;
         gap: 30px;
-     }
+    }
 }
 
 // .leftSideOfMiddleSection {
@@ -288,7 +288,7 @@
 
     @include size-tablet {
         margin-bottom: 0;
-     }
+    }
 }
 
 .logoTwo {
@@ -296,7 +296,7 @@
 
     @include size-tablet {
         margin: 0;
-     }
+    }
 }
 
 .advantagesSection {
@@ -306,10 +306,10 @@
 .advantagesHeadingContainer {
     display: flex;
     justify-content: center;
-    
+
     @include size-tablet {
         margin-top: 50px;
-     }
+    }
 }
 
 .advantagesMain {
@@ -322,7 +322,7 @@
     @include size-tablet {
         // border: solid red 1px;
         background-color: var(--color-white);
-     }
+    }
 }
 
 .advantageCards {
@@ -334,7 +334,7 @@
 
     @include size-tablet {
         flex-direction: column;
-     }
+    }
 }
 
 .tryButton {
@@ -349,17 +349,21 @@
 
     @include size-tablet {
         margin-bottom: 10px;
-     }
+    }
 }
 
 .howHeading {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin-top: 6.25em;
+    font-size: 18px;
 
     @include size-tablet {
-        margin-top: 0;
-     }
+        margin-top: 20px;
+        font-size: 12px;
+    }
 }
 
 .manSection {
@@ -375,7 +379,7 @@
 
     @include size-tablet {
         display: none;
-     }
+    }
 }
 
 .twoThreeSection {
@@ -386,7 +390,7 @@
     @include size-tablet {
         flex-direction: column;
         align-items: center;
-      }
+    }
 }
 
 .whatGetContainer {
@@ -394,16 +398,16 @@
     flex-direction: column;
     gap: 30px;
     align-items: center;
-    
+
 }
 
 .howWorks {
     padding-bottom: 6.25em;
 
     @include size-tablet {
-       display: flex;
-       flex-direction: column;
-     }
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .howcardTwo {
@@ -418,7 +422,7 @@
         // border: solid red 1px;
         width: 300px;
         text-align: center;
-      }
+    }
 }
 
 .frequentQuestionsSection {
@@ -426,6 +430,7 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 50px;
+    margin-top: 100px;
 }
 
 .questionsContainer {
@@ -438,11 +443,11 @@
         width: 90vw;
         padding-left: 20px;
         padding-right: 20px;
-      }
+    }
 }
 
 .questionBlock {
-     border-bottom: solid var(--color-dark-grey) 1px;
+    border-bottom: solid var(--color-dark-grey) 1px;
 }
 
 .question {
@@ -472,7 +477,7 @@
     @include size-tablet {
         height: auto;
         padding-bottom: 30px;
-      }
+    }
 }
 
 .footerTop {
@@ -484,7 +489,7 @@
         flex-direction: column;
         align-items: center;
         gap: 20px;
-      }
+    }
 }
 
 .service {
@@ -492,6 +497,7 @@
     // align-items: center;
     justify-content: center;
     gap: 0.625em;
+
     & p {
         color: var(--color-white);
         margin-top: 0;
@@ -516,7 +522,7 @@
     padding-bottom: 20px;
     margin-bottom: 0;
     color: white;
-    
+
 
     & p {
         margin: 0;
@@ -527,7 +533,7 @@
     @include size-tablet {
         margin-top: 20px;
         gap: 10px;
-      }
+    }
 }
 
 .visa {
@@ -541,21 +547,32 @@
 }
 
 .whyContainer {
-    padding: 20px;  
-    margin-bottom: 50px; 
+    padding: 20px;
+    font-size: 20px;
+    background: linear-gradient(to left, #005580, #004d4d);
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    // margin-bottom: 50px;
+    color: var(--color-white);
 
     & h2 {
-      color: var(--color-orange);
+        color: var(--color-orange);
     }
 
     & h3 {
         color: var(--color-primary);
-      }
+    }
 
     & p {
         font-style: italic;
         font-weight: 600;
     }
+}
+
+.forgetContainer {
+    margin-bottom: 50px;
 }
 
 .getSection {
@@ -573,5 +590,67 @@
     }
 }
 
+.cases h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    color: var(--color-primary);
+}
 
+.caseContainer {
+    font-size: 22px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
 
+.myCase {
+    font-style: italic;
+}
+
+.caseName {
+    font-weight: 600;
+    color: var(--color-orange);
+}
+
+.orangeCase {
+    color: var(--color-orange);
+}
+
+.blueCase {
+    color: var(--color-primary);
+}
+
+.purpleCase {
+    color: var(--color-purple);
+}
+
+// .forget {
+//     color: var(--color-primary);
+//     border-top: solid darkgray 3px;
+//     padding-top: 80px;
+// }
+
+.doBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.instIcon {
+    font-size: 40px;
+    color: var(--color-primary);
+}
+
+.whatsIcon {
+    font-size: 40px;
+    color: green;
+}
+
+.contactsNav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
