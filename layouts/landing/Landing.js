@@ -37,7 +37,6 @@ import { UserContext } from '@/store/userContext'
 import Loader from '@/components/Loader'
 import ChapterCard from './ChapterCard'
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
-import bg from './../../public/images/container.jpg'
 
 export default function Landing() {
   const [frequentOpenedId, setFrequentOpenedId] = useState(null)
@@ -472,14 +471,14 @@ export default function Landing() {
           </div>
         </section>
 
-        <section className={styles.whyContainer} style={{ backgroundImage: `url(${bg.src})`, backgroundPosition: 'center' }}>
+        <section className={styles.whyContainer}>
           <h2>СОВЕТЫ ПО ИЗУЧЕНИЮ АНГЛИЙСКОГО</h2>
           <p>Добавьте английский в свою повседневную жизнь. Установите английский язык на свой телефон, компьютер и магнитолу в автомобиле. </p>
           <p>Через некоторое время ваше подсознание начнет свободно воспринимать английский язык на ваших гаджетах. </p>
           <p>Также старайтесь читать много коротких и легких текстов, так как это очень помогает запоминать новые слова и правила грамматики автоматически.</p>
         </section>
 
-        <section className={classNames(styles.whyContainer, styles.forgetContainer)} style={{ backgroundImage: `url(${bg.src})`, backgroundPosition: 'center' }}>
+        <section className={classNames(styles.whyContainer, styles.forgetContainer)}>
           <p className={styles.forget}>Забудьте о старых учебниках и занудных уроках. Мы создали уникальную систему обучения, которая адаптируется под ваши потребности и уровень владения языком.</p>
         </section>
 
