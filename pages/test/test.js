@@ -1,1 +1,1 @@
-export { default } from '../../layouts/Test/Test'
+export { default } from '../../modules/study/level-test/Test'

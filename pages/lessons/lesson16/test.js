@@ -1,1 +1,1 @@
-export { default } from '../../../lessons/lesson16/test'
+export { default } from '../../../modules/study/lessons/lesson16/test'

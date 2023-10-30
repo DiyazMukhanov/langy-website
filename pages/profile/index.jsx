@@ -1,1 +1,1 @@
-export { default } from '../../layouts/Profile/Profile'
+export { default } from '../../modules/profile/Profile/Profile'

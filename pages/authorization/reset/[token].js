@@ -1,14 +1,14 @@
 import { useRouter } from 'next/router'
 import styles from "./reset.module.scss"
 import classNames from "classnames";
-import { Button } from '@/components/Button';
-import { resetPassword } from '@/api/user';
+import { Button } from '@/ui-kit/Button';
+import { resetPassword } from '@/modules/authentication/shared/api/resetPassword';
 import { useState } from "react";
 
 const passwordReset = () => {
     const router = useRouter()
-    const {token} = router.query
-    
+    const { token } = router.query
+
     const [passwordValue, setPasswordValue] = useState('')
     const [passwordConfirmValue, setPasswordConfirmValue] = useState('')
 
@@ -36,41 +36,41 @@ const passwordReset = () => {
         setInvalidPassword(false)
         setPasswordsDiffers(false)
 
-        if(!passwordValue) {
+        if (!passwordValue) {
             setPasswordEmpty(true)
         }
-        if(!passwordConfirmValue) {
+        if (!passwordConfirmValue) {
             setPassConfirmEmpty(true)
         }
 
-        if( !passwordValue || !passwordConfirmValue ) {
+        if (!passwordValue || !passwordConfirmValue) {
             setEmptyField(true)
             return
         }
 
-        if(!onlyLatinCharacters(passwordValue) || passwordValue.length < 7) {
+        if (!onlyLatinCharacters(passwordValue) || passwordValue.length < 7) {
             setInvalidPassword(true)
             return
         }
 
-        if(passwordValue !== passwordConfirmValue) {
+        if (passwordValue !== passwordConfirmValue) {
             setPasswordsDiffers(true)
             return
         }
 
         setIsLoading(true)
 
-        try{
+        try {
             const data = await resetPassword(passwordValue, passwordConfirmValue, token)
             setPassChanged(true)
             setIsLoading(false)
             console.log(data)
         } catch (err) {
-            if(err.response.data.message === 'Token is invalid or has expired') {
+            if (err.response.data.message === 'Token is invalid or has expired') {
                 alert('Время действия ссылки истекло. Нажмите "Повторить сброс"')
             }
             setIsLoading(false)
-        }   
+        }
     }
 
     const goToManHandler = (e) => {
@@ -86,12 +86,12 @@ const passwordReset = () => {
                 <p className={styles.paragraph}>Сброс пароля</p>
 
                 <div className={styles.formBlock}><label className={styles.label}>Придумайте новый пароль</label>
-                  
+
                     <input
                         type='password'
                         placeholder='Придумайте новый пароль'
                         autoComplete='new-password'
-                        className={classNames({[styles.warningInput]: passwordEmpty}, styles.input)}
+                        className={classNames({ [styles.warningInput]: passwordEmpty }, styles.input)}
                         onChange={(event) => setPasswordValue(event.target.value)}
                     >
                     </input>
@@ -101,35 +101,35 @@ const passwordReset = () => {
                         type='password'
                         placeholder='Повторите новый пароль'
                         autoComplete='new-password'
-                        className={classNames({[styles.warningInput]: passConfirmEmpty}, styles.input)}
+                        className={classNames({ [styles.warningInput]: passConfirmEmpty }, styles.input)}
                         onChange={(event) => setPasswordConfirmValue(event.target.value)}
                     >
                     </input>
                 </div>
                 <div className={styles.buttonContainer}>
-                 
-                <Button
-                    variant='standardNextContained'
-                    className={styles.button}
-                    disabled={isLoading}
-                    onClick={resetPasswordHandler}
-                >
-                    Обновить пароль
-                </Button>
-                
-                <Button
-                    variant='standardNextContained'
-                    className={styles.button}
-                    // disabled={isLoading}
-                    onClick={goToManHandler}
-                >
-                    Вернуться на главную
-                </Button>
-                
-                </div>
-                
 
-                
+                    <Button
+                        variant='standardNextContained'
+                        className={styles.button}
+                        disabled={isLoading}
+                        onClick={resetPasswordHandler}
+                    >
+                        Обновить пароль
+                    </Button>
+
+                    <Button
+                        variant='standardNextContained'
+                        className={styles.button}
+                        // disabled={isLoading}
+                        onClick={goToManHandler}
+                    >
+                        Вернуться на главную
+                    </Button>
+
+                </div>
+
+
+
 
                 {isLoading && <p className={styles.warning}>Идёт обновление пароля...</p>}
                 {emptyField && <p className={styles.warning}>Заполните все поля!</p>}
@@ -148,7 +148,7 @@ const passwordReset = () => {
                 >
                     Повторить сброс
                 </Button>
-                </div>
+            </div>
         </div>
     )
 }

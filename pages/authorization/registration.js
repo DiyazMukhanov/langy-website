@@ -1,1 +1,1 @@
-export { default } from '../../layouts/Authorization/Registration'
+export { default } from '../../modules/authentication/Registration'

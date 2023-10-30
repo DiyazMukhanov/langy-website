@@ -1,5 +1,5 @@
 import { saveSubscriptionInBd } from "@/api/user"
-import Loader from "@/components/Loader"
+import Loader from "@/modules/shared/Loader"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 
@@ -13,54 +13,54 @@ export default function PaymentSuccess() {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(false)
-   
+
   useEffect(() => {
     if (typeof window !== "undefined") {
-            const savedPaymentId = localStorage.getItem('paymentId')
-            const savedDays = localStorage.getItem('days')
-            
-            const saveSubscribedToDbHandler = async () => {
-                const bodyData = {
-                   days: savedDays
-                }
+      const savedPaymentId = localStorage.getItem('paymentId')
+      const savedDays = localStorage.getItem('days')
 
-                try {
-                  localStorage.setItem('paymentId', '')
-                   const data = await saveSubscriptionInBd(bodyData)
-                   if(data) {
-                    if(data?.data?.data?.levelChecked === true) {
-                        if(data?.data?.data?.currentLesson !== 0 && data?.data?.data?.currentChapter !== 'no') {
-                            router.push(`/lessons/lesson${data?.data?.data?.currentLesson}/${data?.data?.data?.currentChapter}`)
-                            setIsLoading(false)
-                          } else {
-                            router.push('/lessons/lesson1/video')
-                            setIsLoading(false)
-                          }
-                       }
-                   }
-                } catch (err) {
-                    setError(true)
-                }
-            }
+      const saveSubscribedToDbHandler = async () => {
+        const bodyData = {
+          days: savedDays
+        }
 
-            if(savedPaymentId === router.query?.pg_payment_id) {
-                saveSubscribedToDbHandler()
-            } else {
-                setError(true)
+        try {
+          localStorage.setItem('paymentId', '')
+          const data = await saveSubscriptionInBd(bodyData)
+          if (data) {
+            if (data?.data?.data?.levelChecked === true) {
+              if (data?.data?.data?.currentLesson !== 0 && data?.data?.data?.currentChapter !== 'no') {
+                router.push(`/lessons/lesson${data?.data?.data?.currentLesson}/${data?.data?.data?.currentChapter}`)
+                setIsLoading(false)
+              } else {
+                router.push('/lessons/lesson1/video')
+                setIsLoading(false)
+              }
             }
+          }
+        } catch (err) {
+          setError(true)
+        }
+      }
+
+      if (savedPaymentId === router.query?.pg_payment_id) {
+        saveSubscribedToDbHandler()
+      } else {
+        setError(true)
+      }
     }
   }, [router.query?.pg_payment_id])
 
-  if(isLoading) {
+  if (isLoading) {
     return <Loader></Loader>
-  } 
+  }
 
-  if(error) {
+  if (error) {
     return <div>Ошибка...</div>
-  } 
-  
+  }
+
   {
     return <div>Payment Success</div>
   }
-    
+
 }

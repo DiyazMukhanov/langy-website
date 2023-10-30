@@ -1,1 +1,1 @@
-export { default } from '../layouts/Menu/Menu'
+export { default } from '../modules/study/menu/Menu'

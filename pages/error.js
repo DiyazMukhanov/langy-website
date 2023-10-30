@@ -1,1 +1,1 @@
-export { default } from '../layouts/Error/ErrorPage'
+export { default } from '../modules/shared/Error/ErrorPage'

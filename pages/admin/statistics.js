@@ -1,1 +1,1 @@
-export { default } from '../../layouts/Admin/Statistics'
+export { default } from '../../modules/admin/statistics/Statistics'
