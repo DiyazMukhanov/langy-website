@@ -4,7 +4,6 @@ import styles from './Test.module.scss'
 import { useState, useEffect, useContext } from "react"
 import classNames from "classnames"
 import Result from "./Result"
-import { assignLevel, setLevelChecked } from '@/api/user'
 import { UserContext } from "@/store/userContext"
 import ProtectPage from "@/modules/shared/ProtectPage"
 import { useRouter } from "next/router"

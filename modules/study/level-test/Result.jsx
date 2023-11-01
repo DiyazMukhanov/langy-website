@@ -1,11 +1,12 @@
 import Header from '@/modules/shared/Header'
 import styles from './Result.module.scss'
-import ResultImage from '../../public/images/Result.svg'
+import ResultImage from '../../../../public/images/Result.svg'
 import Image from 'next/image'
 import { Button } from '@/ui-kit/Button'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
-import { assignLevel, createBeginnerProgress, setLevelChecked } from '@/api/user'
+import { assignLevel } from './shared/api/assignLevel'
+import { createBeginnerProgress } from './shared/api/createBeginnerProgress'
 import Loader from '@/modules/shared/Loader'
 
 export default function Result({ level }) {

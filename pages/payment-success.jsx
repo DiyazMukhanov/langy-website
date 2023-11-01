@@ -1,4 +1,4 @@
-import { saveSubscriptionInBd } from "@/api/user"
+import { saveSubscriptionInBd } from "@/modules/shared/api/saveSubscriptionInBd"
 import Loader from "@/modules/shared/Loader"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
