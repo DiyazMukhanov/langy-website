@@ -1,1 +1,1 @@
-export { default } from '../../layouts/Subscription/Subscription'
+export { default } from '../../modules/profile/Subscription/Subscription'

@@ -1,1 +1,1 @@
-export { default } from '../../layouts/Admin/Students'
+export { default } from '../../modules/admin/students/Students'

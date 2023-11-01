@@ -1,1 +1,1 @@
-export { default } from '../../layouts/Admin/Services'
+export { default } from '../../modules/admin/service/Services'

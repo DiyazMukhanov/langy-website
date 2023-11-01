@@ -1,1 +1,1 @@
-export { default } from '../../../layouts/Admin/ServiceProfile'
+export { default } from '../../../modules/admin/service/ServiceProfile'

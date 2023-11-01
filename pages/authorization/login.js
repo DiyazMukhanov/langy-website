@@ -1,1 +1,1 @@
-export { default } from '../../layouts/Authorization/Login'
+export { default } from '../../modules/authentication/Login'

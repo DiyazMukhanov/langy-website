@@ -1,1 +1,1 @@
-export { default } from '../layouts/landing/Landing'
+export { default } from '../modules/landing/Landing'
