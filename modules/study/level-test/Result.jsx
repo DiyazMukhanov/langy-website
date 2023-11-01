@@ -1,6 +1,6 @@
 import Header from '@/modules/shared/Header'
 import styles from './Result.module.scss'
-import ResultImage from '../../../../public/images/Result.svg'
+import ResultImage from '../../../public/images/Result.svg'
 import Image from 'next/image'
 import { Button } from '@/ui-kit/Button'
 import { useRouter } from 'next/router'
