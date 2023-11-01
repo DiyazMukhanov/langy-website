@@ -17,9 +17,7 @@ import CardLesson from './CardsLesson';
 
 export default function BeginnerLessonLayout({
     isNextToElementary,
-    videoUrl,
     lessonNumber,
-    isVideoLesson,
     isTextLesson,
     isVocabulary,
     text,
