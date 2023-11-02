@@ -7,6 +7,7 @@ import ButtonClose from "../../../../public/images/Button-close.svg";
 import Mistake from "../../../../public/images/Mistake.svg";
 import Right from "../../../../public/images/Right.svg";
 import Image from "next/image";
+import NextButton from '../../../../public/images/Next-button.svg'
 import { Button } from "@/ui-kit/Button";
 import { useRouter } from "next/router"
 import classNames from "classnames";
@@ -211,6 +212,10 @@ const AudioLessonLayout = ({ text, audioTasks, wordsWithTranslations, audioSrc, 
     setHoveredWord(null);
   }
 
+  const nextLessonHandler = () => {
+    setProgressHandler(lessonNumber, nextUrl)
+  }
+
   const textByWords = text.en.split(" ")
 
   const findTranslation = (englishWord) => {
@@ -357,9 +362,18 @@ const AudioLessonLayout = ({ text, audioTasks, wordsWithTranslations, audioSrc, 
                 </div>
               ))}
 
+              <div className={styles.buttonsContainer}>
+                <Image
+                  priority
+                  src={NextButton}
+                  className={styles.next}
+                  onClick={nextQuestionHandler}
+                />
+              </div>
             </div>
+
             <div className={styles.btnContainer}>
-              <Button onClick={nextQuestionHandler} variant="standardNextOutlined" className={styles.nextButton}>Далее</Button>
+              <Button onClick={nextLessonHandler} variant="standardNextOutlined" className={styles.nextButton}>Далее</Button>
             </div>
           </div>
 

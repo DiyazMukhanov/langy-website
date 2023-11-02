@@ -25,9 +25,9 @@
 }
 
 .task {
-     font-weight: 600;
+    font-weight: 600;
 
-     @include size-tablet {
+    @include size-tablet {
         font-weight: 400;
     }
 }
@@ -37,21 +37,21 @@
 }
 
 .questions {
-   background-color: var(--color-light-blue-2);
-   margin-right: 30px;
-   padding-top: 20px;
-   padding-left: 30px;
-   padding-bottom: 30px;
-//    height: 200px;
-   width: 460px;
-   margin-bottom: 70px;
+    background-color: var(--color-light-blue-2);
+    margin-right: 30px;
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-bottom: 10px;
+    //    height: 200px;
+    width: 460px;
+    margin-bottom: 70px;
 
-   @include size-tablet {
-    width: 75vw;
-    justify-content: center;
-    padding-left: 15px;
-    height: 35vh;
-}
+    @include size-tablet {
+        width: 75vw;
+        justify-content: center;
+        padding-left: 15px;
+        // padding-bottom: 0;
+    }
 }
 
 .answerContainer {
@@ -81,7 +81,7 @@
 .btnContainer {
     display: flex;
     justify-content: flex-end;
-    padding-right: 350px;    
+    padding-right: 350px;
     margin-bottom: 50px;
     margin-top: -30px;
 
@@ -99,4 +99,18 @@
 
 .nonClickable {
     pointer-events: none;
+}
+
+.buttonsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    // margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+
+    @include size-tablet {
+        margin: 0 10px 0 0;
+    }
 }
