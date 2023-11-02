@@ -6,6 +6,7 @@ import Right from '../../../../public/images/Right.svg'
 import Mistake from '../../../../public/images/Mistake.svg'
 import { Button } from "@/ui-kit/Button"
 import Image from 'next/image'
+import NextButton from '../../../../public/images/Next-button.svg'
 import { useRouter } from "next/router"
 import classNames from "classnames"
 import { setProgressData } from "../../shared/api/setProgressData"
@@ -56,6 +57,10 @@ export default function VideoLessonLayout({ videoTasks, nextUrl, lessonNumber, c
         if (currentQuestion === totalQuestions) {
             setProgressHandler(lessonNumber, nextUrl)
         }
+    }
+
+    const nextLessonHandler = () => {
+        setProgressHandler(lessonNumber, nextUrl)
     }
 
     if (isLoading) {
@@ -132,9 +137,18 @@ export default function VideoLessonLayout({ videoTasks, nextUrl, lessonNumber, c
                                 </div>
                             ))}
 
+                            <div className={styles.buttonsContainer}>
+                                <Image
+                                    priority
+                                    src={NextButton}
+                                    className={styles.next}
+                                    onClick={nextQuestionHandler}
+                                />
+                            </div>
+
                         </div>
                         <div className={styles.btnContainer}>
-                            <Button onClick={nextQuestionHandler} variant="standardNextOutlined" className={styles.nextButton}>Далее</Button>
+                            <Button onClick={nextLessonHandler} variant="standardNextOutlined" className={styles.nextButton}>Далее</Button>
                         </div>
                     </div>
                 </div>
