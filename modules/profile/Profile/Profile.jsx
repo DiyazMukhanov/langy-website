@@ -56,7 +56,7 @@ export default function Profile() {
                         <p className={styles.service} onClick={() => router.push('/service')}>Написать в службу поддержки / Оставить отзыв</p>
                         <p className={styles.service} onClick={handleResetProgress}>Сбросить мой прогресс</p>
                     </div>
-                    <SubscriptionCard userData={userCtx?.userData} />
+                    {/* <SubscriptionCard userData={userCtx?.userData} /> */}
                 </div>
             </ProtectPage>
         )
