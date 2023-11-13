@@ -11,7 +11,13 @@ const apiUrl = process.env.NEXT_PUBLIC_ENVIRONMENT === 'development' ? 'http://l
 //     return storedToken
 //   }
 
-const options = { withCredentials: true, headers: { 'Content-Type': 'application/json' } }
+let token
+
+if (typeof window !== 'undefined') {
+  token = localStorage.getItem('token')
+}
+
+const options = { withCredentials: true, headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` } }
 
 export const sendAssay = async (essay) => {
   // const storedToken = token()
