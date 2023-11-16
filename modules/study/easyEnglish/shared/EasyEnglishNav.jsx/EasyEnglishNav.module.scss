@@ -1,0 +1,22 @@
+.activeLink {
+    color: red;
+}
+
+.navContainer {
+
+    & li {
+        list-style: none;
+    }
+}
+
+.hidden {
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+    transition: visibility .5s, max-height .5s;
+}
+
+.shown {
+    visibility: visible;
+    max-height: 150px;
+}
