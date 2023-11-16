@@ -67,7 +67,6 @@ export default function Login() {
       const userData = await loginUser(body)
 
       if (userData) {
-        localStorage.setItem('token', userData.data.token)
         if (userData?.data?.data?.user?.role === 'manager') {
           setIsLoading(false)
           router.push('/admin/main')
