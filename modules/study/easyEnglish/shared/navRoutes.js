@@ -1,22 +1,24 @@
 const topics = ['Acquaintance', 'Coffee and tickets']
 
+const ROUTE = '/lessons/easyEnglish'
+
 const buildChildren = (lessonNumber) => {
     return [
         {
             title: 'Словарь',
-            route: `/lessons/easyEnglish/${lessonNumber}/vocabulary`
+            route: `${ROUTE}/${lessonNumber}/vocabulary`
         },
         {
             title: 'Карточки',
-            route: `/lessons/easyEnglish/${lessonNumber}/card`
+            route: `${ROUTE}/${lessonNumber}/card`
         },
         {
             title: 'Диалог',
-            route: `/lessons/easyEnglish/${lessonNumber}/dialogue`
+            route: `${ROUTE}/${lessonNumber}/dialogue`
         },
         {
             title: 'Кирпичики',
-            route: `/lessons/easyEnglish/${lessonNumber}/blocks`
+            route: `${ROUTE}/${lessonNumber}/blocks`
         },
     ]
 }
