@@ -1,5 +1,9 @@
 @import "styles/breakpoints";
 
+.vocabularyLessonContainer {
+    font-family: "Montserrat";
+}
+
 .top {
     display: flex;
     gap: 20px;
@@ -15,26 +19,35 @@
 
 .dropTarget {
     border: solid var(--color-grey) 1px;
-    border-radius: 6px;
+    border-radius: 40px;
+    box-shadow: 1px 2px 2px 0px var(--color-grey);
     width: fit-content;
     padding: 10px;
+}
+
+.dropTargetFrame {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: fit-content;
 }
 
 .dropTargetRight {
     background-color: var(--color-green);
     color: var(--color-white);
-    border-radius: 6px;
+    border-radius: 40px;
+    box-shadow: 1px 2px 2px 0px var(--color-grey);
     width: fit-content;
     padding: 10px;
 }
 
 .draggable {
     border: solid var(--color-grey) 1px;
-    border-radius: 6px;
+    border-radius: 40px;
+    box-shadow: 1px 2px 2px 0px var(--color-grey);
     width: fit-content;
     padding: 10px;
     background-color: var(--color-primary);
-    color: var(--color-white);
 }
 
 .empty {
@@ -46,10 +59,16 @@
     margin-top: 50px;
 }
 
+.play {
+    filter: drop-shadow(1px 2px 1px var(--color-grey));
+}
+
 .wordsContainer {
     display: flex;   
-    gap: 30px;
+    gap: 20%px;
     margin-top: 40px;
+    font-weight: bold;
+    justify-content: center;
 
     @include size-tablet {
         justify-content: center;
@@ -65,4 +84,5 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    color: var(--color-primary);
 }

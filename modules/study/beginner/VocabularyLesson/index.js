@@ -134,7 +134,7 @@ export default function VocabularyLesson({ words_1, words_2, words_3, wordsToAsk
     }
 
     return (
-        <>
+        <div className={styles.vocabularyLessonContainer}>
             <p className={styles.task}>Перетащите слова согласно их переводу</p>
             <div className={styles.wordsContainer}>
 
@@ -177,56 +177,67 @@ export default function VocabularyLesson({ words_1, words_2, words_3, wordsToAsk
                 <div className={styles.bottom}>
                     {
                         firstRight ? (<div className={styles.dropTargetRight}>{words[0].enWord} - {words[0].ruWord}</div>) : (
+                        <div className={styles.dropTargetFrame}>  
                             <DropTarget targetKey="foo" onHit={(e) => onDropHandler(e, words[0].enWord)} >
                                 <div className={styles.dropTarget}><div className={styles.enContainer}>{words[0].enWord}
-                                    <Image
-                                        priority
-                                        src={Play}
-                                        width={30}
-                                        onClick={() => playWord(1)}
-                                        className={styles.play}
-                                    />
                                 </div>
                                 </div>
-
                             </DropTarget>
+                            <Image
+                            priority
+                            src={newPlay}
+                            width={30}
+                            onClick={() => playWord(1)}
+                            className={styles.play}
+                         />
+                        </div>
                         )
                     }
                     {
                         secondRight ? (<div className={styles.dropTargetRight}>{words[1].enWord} - {words[1].ruWord}</div>) : (
+                        <div className={styles.dropTargetFrame}> 
                             <DropTarget targetKey="foo" onHit={(e) => onDropHandler(e, words[1].enWord)} >
-                                <div className={styles.dropTarget}><div className={styles.enContainer}>{words[1].enWord}<Image
-                                    priority
-                                    src={Play}
-                                    width={30}
-                                    onClick={() => playWord(2)}
-                                    className={styles.play}
-                                /></div></div>
+                                <div className={styles.dropTarget}><div className={styles.enContainer}>{words[1].enWord}
+                                </div>
+                                </div>
                             </DropTarget>
+                            <Image
+                            priority
+                            src={newPlay}
+                            width={30}
+                            onClick={() => playWord(2)}
+                            className={styles.play}
+                         />
+                        </div>
                         )
                     }
                     {
                         thirdRight ? (<div className={styles.dropTargetRight}>{words[2].enWord} - {words[2].ruWord}</div>) : (
+                        <div className={styles.dropTargetFrame}>
                             <DropTarget targetKey="foo" onHit={(e) => onDropHandler(e, words[2].enWord)} >
-                                <div className={styles.dropTarget}><div className={styles.enContainer}>{words[2].enWord}<Image
-                                    priority
-                                    src={Play}
-                                    width={30}
-                                    onClick={() => playWord(3)}
-                                    className={styles.play}
-                                /></div></div>
+                                <div className={styles.dropTarget}><div className={styles.enContainer}>{words[2].enWord}
+                                </div>
+                                </div>
                             </DropTarget>
+                            <Image
+                            priority
+                            src={newPlay}
+                            width={30}
+                            onClick={() => playWord(3)}
+                            className={styles.play}
+                         />
+                        </div>
                         )
                     }
                 </div>
             </div>
             <div className={styles.moreBtn}>
-                <Button variant='standardNextContained' onClick={nextWordsHandler}>Ещё</Button>
+                <Button variant='newStandardNextContained' onClick={nextWordsHandler}>Ещё</Button>
             </div>
             <audio ref={audioRef} controls style={{ display: 'none' }}>
                 <source src='/audio/success.mp3' type="audio/mpeg" />
                 Your browser does not support the audio element.
             </audio>
-        </>
+        </div>
     )
 }

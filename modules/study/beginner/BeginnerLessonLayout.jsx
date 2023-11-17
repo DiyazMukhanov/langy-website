@@ -172,7 +172,7 @@ export default function BeginnerLessonLayout({
 
                         <div className={styles.btnContainer}>
                             <Button
-                                variant="standardNextOutlined"
+                                variant="newStandardNextOutlined"
 
                                 onClick={!isNextToElementary ? () => updateBeginnerProgressHandler(updateNextBeginnerProgressBody, true) : exitBeginnerHandler}
                             >
