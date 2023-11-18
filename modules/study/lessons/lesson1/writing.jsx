@@ -9,7 +9,7 @@ export default function Writing() {
    }
    
    const nextUrl = nextLessonUrlGenerator(currentLessonData.currentChapter, currentLessonData.currentLesson)
-
+   
    return <WritingLessonLayout
       writingTask='Пожалуйста напишите короткое эссе на тему "Моя семья" (около 150 слов)'
       nextUrl={nextUrl}

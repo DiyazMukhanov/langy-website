@@ -14,5 +14,5 @@ export const nextLessonUrlGenerator = (chapterName, lessonNumber) => {
         }
     }
 
-    return `/lessons/lesson${lessonNumber}/${nextChapter.chapterName}`
+    return `/lessons/lesson${lessonNumber}/${nextChapter[chapterName]}`
 }

@@ -1,20 +1,20 @@
 import WritingLessonLayout from "@/modules/study/advanced/writing/WritingLessonLayout";
+import { nextLessonUrlGenerator } from "../shared/nextLessonUrlGenerator";
 
 export default function Writing() {
-   const lessonNumber = 20
-
    const currentLessonData = {
       currentChapter: 'writing',
-      currentLesson: lessonNumber,
+      currentLesson: 20,
       level: 'Intermediate'
    }
 
-   const nextUrl = `/lessons/lesson${lessonNumber}/test`
+   const nextUrl = nextLessonUrlGenerator(currentLessonData.currentChapter, currentLessonData.currentLesson)
 
    return <WritingLessonLayout
       writingTask='Напишите вкратце о системе обучения в вашей стране (около 100 слов)'
       nextUrl={nextUrl}
-      lessonNumber={lessonNumber}
+      currentChapter={currentLessonData.currentChapter}
+      lessonNumber={currentLessonData.currentLesson}
       currentLessonData={currentLessonData}
       subscriptionIsNeeded={false}
    />
