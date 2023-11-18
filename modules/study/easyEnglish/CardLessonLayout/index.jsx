@@ -1,5 +1,8 @@
-import Header from "@/modules/shared/Header"
 
-export default function Lesson1() {
-    return <div><Header /></div>
+
+export default function CardLessonLayout() {
+    console.log('here')
+    return <>
+        CardLesson layout here
+    </>
 }

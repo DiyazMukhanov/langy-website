@@ -1,4 +1,4 @@
-const topics = ['Acquaintance', 'Coffee and tickets']
+const topics = ['Acquaintance', 'Coffee and tickets', 'In the hotel', 'Relatives', 'Breakfast', 'Time', 'Vacation', 'Shopping', 'Food shopping']
 
 const ROUTE = '/lessons/easyEnglish'
 

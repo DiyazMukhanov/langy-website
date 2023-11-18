@@ -1,1 +1,1 @@
-export { default } from '../../../../modules/study/easyEnglish/EasyEnglishLayout'
+export { default } from '../../../../modules/study/lessons/easyEnglish/cardLesson'

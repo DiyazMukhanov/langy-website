@@ -19,8 +19,9 @@ export default function EasyEnglishNav({ lessonNumber }) {
 
     const navItems = setNavRoutes()
 
-    return (<div>
-        <ul>
+    return (
+
+        <ul className={styles.lessonsListContainer}>
             {navItems.map(topic => (
                 <div key={topic.id} className={styles.navContainer}>
                     <li onClick={() => toggleNavItemHandler(topic.id)} key={topic.id} className={styles.title}>{topic.title}</li>
@@ -45,6 +46,5 @@ export default function EasyEnglishNav({ lessonNumber }) {
             )
             )}
         </ul>
-    </div>
     )
 }
