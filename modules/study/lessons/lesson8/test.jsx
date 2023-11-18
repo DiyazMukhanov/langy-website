@@ -1,19 +1,21 @@
 import TestLessonLayout from "@/modules/study/advanced/test/TestLessonLayout";
 import { questions } from "@/utils/lessonsMaterials/lesson8/test-materials";
+import { nextLessonUrlGenerator } from "../shared/nextLessonUrlGenerator";
 
 export default function Test() {
-   const lessonNumber = 8
    const currentLessonData = {
       currentChapter: 'test',
       currentLesson: 8,
       level: 'Elementary'
    }
 
+   const nextUrl = nextLessonUrlGenerator(currentLessonData.currentChapter, currentLessonData.currentLesson)
 
    return <TestLessonLayout
       questions={questions}
-      nextUrl='/lessons/lesson9/video'
-      lessonNumber={lessonNumber}
+      nextUrl={nextUrl}
+      currentChapter={currentLessonData.currentChapter}
+      lessonNumber={currentLessonData.currentLesson}
       currentLessonData={currentLessonData}
       subscriptionIsNeeded={false}
    />

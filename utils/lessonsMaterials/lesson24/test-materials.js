@@ -116,7 +116,7 @@ export const questions = [
     },
     {
         id: 6,
-        firstPart: "The plural of 'leaf' is",
+        firstPart: "The plural of 'oxe' is",
         secondPart: ".",
         description: 'Нужно добавить объяснение',
         answers: [

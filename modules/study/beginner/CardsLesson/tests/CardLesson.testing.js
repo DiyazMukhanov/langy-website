@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react"
 import '@testing-library/jest-dom'
 
-import CardLesson from "../CardsLesson/index"
+import CardLesson from "../index"
 import userEvent from "@testing-library/user-event"
 
 const words = [

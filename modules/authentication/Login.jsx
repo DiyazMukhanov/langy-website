@@ -106,8 +106,6 @@ export default function Login() {
           setIsLoading(false)
           router.push('/menu')
         }
-
-        // localStorage.setItem('token', userData.data.token)
       }
     } catch (error) {
       setIsLoading(false)

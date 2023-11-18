@@ -2,6 +2,7 @@ import AudioLessonLayout from "@/modules/study/advanced/audio/AudioLessonLayout"
 import { text } from "../../../../utils/lessonsMaterials/lesson22/audio-materials";
 import { audioTasks } from "../../../../utils/lessonsMaterials/lesson22/audio-materials";
 import { wordsWithTranslations } from "../../../../utils/lessonsMaterials/lesson22/audio-materials";
+import { nextLessonUrlGenerator } from "../shared/nextLessonUrlGenerator";
 
 export default function Audio() {
    const currentLessonData = {
@@ -10,16 +11,16 @@ export default function Audio() {
       level: 'Intermediate'
    }
 
-   const audioSrc = `/audio/lesson-${currentLessonData.currentLesson}.mp3`
-   const nextUrl = `/lessons/lesson${currentLessonData.currentLesson}/writing`
+   const nextUrl = nextLessonUrlGenerator(currentLessonData.currentChapter, currentLessonData.currentLesson)
 
    return <AudioLessonLayout
       text={text}
       audioTasks={audioTasks}
       wordsWithTranslations={wordsWithTranslations}
-      audioSrc={audioSrc}
-      lessonNumber={currentLessonData.currentLesson}
+      audioSrc="/audio/lesson-22.mp3"
       nextUrl={nextUrl}
+      currentChapter={currentLessonData.currentChapter}
+      lessonNumber={currentLessonData.currentLesson}
       currentLessonData={currentLessonData}
       subscriptionIsNeeded={false}
       textTitle='The seasons of the year'
