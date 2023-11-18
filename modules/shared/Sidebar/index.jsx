@@ -19,7 +19,7 @@ export default function Sidebar({ lessonsSummary, isBeginner }) {
         if (found) break
     }
 
-    const navigationHandler = (lessonNumber, lesson, level) => {
+    const navigationHandler = (lessonNumber, lesson) => {
         const lessonsIndexes = {
             gr: 'video',
             au: 'audio',
