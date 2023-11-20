@@ -17,6 +17,7 @@ export default function Header({ variant, isEasyEnglish }) {
   }
 
   const modalOpenHandler = () => {
+    console.log('clicked')
     setIsModalOpened(true)
   }
 

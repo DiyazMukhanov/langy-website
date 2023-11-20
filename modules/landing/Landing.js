@@ -22,7 +22,7 @@ import Advantage from './shared/Advantage'
 import AdvantageCard from './shared/AdvantageCard'
 import HowCard from './shared/HowCard'
 import { useState, useContext, useEffect } from 'react'
-import Modal from './shared/Modal'
+import Modal from '../shared/Modal/Modal'
 import classNames from 'classnames'
 import { useRouter } from "next/router"
 import { getBeginnerProgress } from '../shared/api/getBeginnerProgress'
