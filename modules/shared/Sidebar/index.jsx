@@ -29,7 +29,7 @@ export default function Sidebar({ lessonsSummary, isBeginner }) {
         const chapterName = lessonsIndexes[lesson.chapterCode]
 
         if (!isBeginner) {
-            router.push(`/lessons/lesson${lessonNumber}/${chapterName}`)
+            router.push(`/lessons/${lessonNumber}/${chapterName}`)
         } else {
             router.push(`/lessons/beginner/lesson${lessonNumber}/${chapterName}`)
         }

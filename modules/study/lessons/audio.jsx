@@ -4,6 +4,7 @@ import { audioTasks } from "../../../utils/lessonsMaterials/lesson1/audio-materi
 import { wordsWithTranslations } from "../../../utils/lessonsMaterials/lesson1/audio-materials";
 import { useRouter } from "next/router";
 import { audioTexts } from "./utils/titles"
+import { nextLessonUrlGenerator } from "./shared/nextLessonUrlGenerator";
 
 export default function Audio() {
    const router = useRouter()
@@ -15,8 +16,9 @@ export default function Audio() {
       level: 'Elementary'
    }
 
+   const nextUrl = nextLessonUrlGenerator(currentLessonData.currentChapter, Number(lessonNumber))
+
    const audioSrc = `/audio/lesson-${lessonNumber}.mp3`
-   const nextUrl = `/lessons/${lessonNumber}/writing`
    const textTitle = audioTexts[lessonNumber]
 
    return <AudioLessonLayout
