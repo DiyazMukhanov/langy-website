@@ -4,6 +4,7 @@ import { videoUrl } from "@/utils/lessonsMaterials/lesson1/video-materials";
 import { useRouter } from "next/router";
 import { getLevel } from "./utils/getLevel";
 import { videoTopics } from "./utils/titles";
+import { nextLessonUrlGenerator } from "./shared/nextLessonUrlGenerator";
 
 export default function Video() {
    const router = useRouter()
@@ -19,7 +20,7 @@ export default function Video() {
 
    const topic = videoTopics[lessonNumber]
 
-   const nextUrl = `/lessons/${lessonNumber}/audio`
+   const nextUrl = nextLessonUrlGenerator(currentLessonData.currentChapter, Number(lessonNumber))
 
    return <VideoLessonLayout
       videoTasks={videoTasks}

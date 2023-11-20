@@ -2,6 +2,7 @@ import WritingLessonLayout from "@/modules/study/advanced/writing/WritingLessonL
 import { useRouter } from "next/router";
 import { getLevel } from "./utils/getLevel";
 import { writingtasks } from "./utils/titles";
+import { nextLessonUrlGenerator } from "./shared/nextLessonUrlGenerator";
 
 export default function Writing() {
    const router = useRouter()
@@ -11,13 +12,13 @@ export default function Writing() {
 
    const writingtask = writingtasks[lessonNumber]
 
-   const nextUrl = `/lessons/${lessonNumber}/test`
-
    const currentLessonData = {
       currentChapter: 'writing',
       currentLesson: lessonNumber,
       level: level
    }
+
+   const nextUrl = nextLessonUrlGenerator(currentLessonData.currentChapter, Number(lessonNumber))
 
    return <WritingLessonLayout
       writingTask={writingtask}
