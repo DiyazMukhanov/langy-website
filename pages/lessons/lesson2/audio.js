@@ -1,1 +1,0 @@
-export { default } from '../../../modules/study/lessons/lesson2/audio'

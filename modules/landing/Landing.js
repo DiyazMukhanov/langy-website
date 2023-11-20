@@ -2,17 +2,10 @@
 import styles from './Landing.module.scss'
 import Image from 'next/image'
 import Logo from '../../public/images/Logo.svg'
-import LogoTwo from '../../public/images/Logo-2.svg'
-import Cards from '../../public/images/Cards.svg'
-import CardsVertical from '../../public/images/Cards-vertical.svg'
-import Laptop from '../../public/images/Laptop.svg'
-import DropOne from '../../public/images/drop-1.svg'
-import DropTwo from '../../public/images/drop-2.svg'
 import Listening from '../../public/images/listening-2.jpg'
 import Grammar from '../../public/images/grammar-1.jpg'
 import Reading from '../../public/images/reading.png'
 import Writing from '../../public/images/writing.jpg'
-import Man from '../../public/images/Man.svg'
 import Plus from '../../public/images/Plus.svg'
 import X from '../../public/images/X.svg'
 import Service from '../../public/images/Service.svg'
@@ -133,7 +126,7 @@ export default function Landing() {
 
       //Check if currentLearningField is higher
       if (userCtx?.userData?.currentLearningField === 'higher') {
-        router.push(`/lessons/lesson${userCtx?.userData?.currentLesson}/${userCtx?.userData?.currentChapter}`)
+        router.push(`/lessons/${userCtx?.userData?.currentLesson}/${userCtx?.userData?.currentChapter}`)
       }
 
       //Check if user reloaded his progress
