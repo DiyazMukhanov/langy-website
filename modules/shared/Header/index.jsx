@@ -27,8 +27,8 @@ export default function Header({ variant, isEasyEnglish }) {
   const logOutHandler = async () => {
     try {
       const response = await userLogout()
+      userCtx.setUserData(null)
       router.push('/')
-
     } catch (err) {
       alert('Произошла ошибка выхода')
     }
