@@ -9,7 +9,9 @@ export default function EasyEnglishLayout({ lessonNumber, children }) {
         <ProtectPage>
             <Header variant='white' isEasyEnglish={true} />
             <div className={styles.container}>
-                <EasyEnglishNav lessonNumber={lessonNumber} />
+                <div className={styles.navContainer}>
+                    <EasyEnglishNav lessonNumber={lessonNumber} />
+                </div>
                 {children}
             </div>
         </ProtectPage>

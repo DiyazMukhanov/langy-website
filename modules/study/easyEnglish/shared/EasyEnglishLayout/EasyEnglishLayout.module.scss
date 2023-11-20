@@ -1,4 +1,12 @@
+@import "styles/breakpoints";
+
 .container {
     display: flex;
     gap: 10px;
+}
+
+.navContainer {
+    @include size-tablet {
+        display: none;
+    }
 }
