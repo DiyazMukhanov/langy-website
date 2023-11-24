@@ -1,3 +1,15 @@
+@import "styles/breakpoints";
+
+.lessonsListContainer {
+    height: 80vh;
+    overflow-y: scroll;
+
+    @include size-tablet {
+        margin-right: -30px;
+        margin-left: -50px;
+    }
+}
+
 .activeLink {
     background-color: var(--color-primary) !important;
     color: var(--color-white);
