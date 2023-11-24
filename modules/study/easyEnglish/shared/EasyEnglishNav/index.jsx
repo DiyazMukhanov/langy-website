@@ -25,7 +25,7 @@ export default function EasyEnglishNav({ lessonNumber }) {
             {navItems.map(topic => (
                 <div key={topic.id} className={styles.navContainer}>
                     <li onClick={() => toggleNavItemHandler(topic.id)} key={topic.id} className={styles.title}>{topic.title}</li>
-                    <div>
+                    <div className={styles.navItems}>
                         {topic.children.map(item => (
                             <li
                                 key={item.title}
@@ -34,7 +34,6 @@ export default function EasyEnglishNav({ lessonNumber }) {
                                         { [styles.activeLink]: router.asPath === `${item.route}` },
                                         { [styles.shown]: lessonNumber === `${topic.id}` },
                                         { [styles.shown]: navItemsOpened.includes(topic.id) },
-                                        styles.hidden
                                     )}
                                 onClick={() => router.push(item.route)}
                             >

@@ -8,6 +8,7 @@ import Sidebar from '../../Sidebar'
 import ButtonClose from '../../../../public/images/Button-close.svg'
 import { useRouter } from 'next/router'
 import EasyEnglishSidebar from '@/modules/study/easyEnglish/EasyEnglishSidebar'
+import { Button } from '@/ui-kit/Button'
 
 export default function WhiteHeader({
     modalCloseHandler,
@@ -37,9 +38,7 @@ export default function WhiteHeader({
                             width={20}
                         />
                     </div>
-                    <div className={styles.modalLogos} onClick={() => router.push('/menu')}>
-                        <p className={styles.goToProfile}>Меню</p>
-                    </div>
+                    <Button variant='menu' onClick={() => router.push('/menu')}>Меню</Button>
                 </div>
                 <div className={styles.profile}>
                     <p className={styles.exit} onClick={logOutHandler}>Выйти</p>
@@ -56,9 +55,7 @@ export default function WhiteHeader({
                             <div className={styles.modalLogos} onClick={() => router.push('/profile')}>
                                 <p className={styles.goToProfile}>Личный кабинет</p>
                             </div>
-                            <div className={styles.modalLogos} onClick={() => router.push('/menu')}>
-                                <p className={styles.goToProfile}>Меню</p>
-                            </div>
+                            <Button variant='menu' onClick={() => router.push('/menu')}>Меню</Button>
                         </div>
                         <Image
                             priority

@@ -1,0 +1,12 @@
+@import "styles/breakpoints";
+
+.container {
+    display: flex;
+    justify-content: flex-end;
+
+    @include size-tablet {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
