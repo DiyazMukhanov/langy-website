@@ -1,10 +1,16 @@
-import Header from "@/modules/shared/Header/index.jsx"
-import EasyEnglishNav from "../EasyEnglishNav/index.jsx"
-import ProtectPage from "@/modules/shared/ProtectPage/index.jsx"
+import Header from "@/modules/shared/Header/index"
+import EasyEnglishNav from "../EasyEnglishNav/index"
+import ProtectPage from "@/modules/shared/ProtectPage/index"
 import styles from './EasyEnglishLayout.module.scss'
-import EasyEnglishNextButtonSection from "../EasyEnglishNextButtonSection/index.jsx"
+import EasyEnglishNextButtonSection from "../EasyEnglishNextButtonSection/index"
+import { PropsWithChildren } from "react"
 
-export default function EasyEnglishLayout({ lessonNumber, children, chapter }) {
+type Props = {
+    lessonNumber: number
+    chapter: string
+}
+
+export default function EasyEnglishLayout({ lessonNumber, children, chapter }: PropsWithChildren<Props>) {
 
     return <>
         <ProtectPage>
