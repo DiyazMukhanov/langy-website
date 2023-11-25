@@ -1,4 +1,4 @@
-const topics = ['Acquaintance', 'Coffee and tickets', 'In the hotel', 'Relatives', 'Breakfast', 'Time', 'Vacation', 'Shopping', 'Food shopping']
+const topics = ['Acquaintance', 'Coffee and tickets', 'In the hotel', 'Relatives', 'Breakfast', 'Time', 'Vacation', 'Shopping', 'Food shopping', 'Acquaintance', 'Coffee and tickets', 'In the hotel', 'Relatives', 'Breakfast', 'Time', 'Vacation', 'Shopping', 'Food shopping']
 
 const ROUTE = '/lessons/easyEnglish'
 
@@ -8,7 +8,7 @@ export const CHAPTER_3 = 'dialogue'
 export const CHAPTER_4 = 'blocks'
 
 
-const buildChildren = (lessonNumber) => {
+const buildChildren = (lessonNumber: number) => {
     return [
         {
             title: 'Словарь',
@@ -39,7 +39,7 @@ export const setNavRoutes = () => {
     })
 }
 
-export const nextUrlGenerator = (lessonNumber, chapter) => {
+export const nextUrlGenerator = (lessonNumber: number, chapter: string) => {
     const nextChapters = {
         phrases: CHAPTER_2,
         cards: CHAPTER_3,
@@ -47,14 +47,14 @@ export const nextUrlGenerator = (lessonNumber, chapter) => {
         blocks: CHAPTER_1
     }
 
-    const nextLessonNumberForLastChapter = Number(lessonNumber) + 1
+    const nextLessonNumberForLastChapter = lessonNumber + 1
 
     let nextUrl
 
     if (chapter === CHAPTER_4) {
         lessonNumber = nextLessonNumberForLastChapter
 
-        if (Number(lessonNumber) === topics.length) {
+        if (lessonNumber === topics.length) {
             lessonNumber = 1
         }
     }

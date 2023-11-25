@@ -4,35 +4,21 @@ import DraggableCard from '../../../shared/DragComponents/DraggableCard';
 import { MouseSensor, TouchSensor, useSensor, useSensors } from '@dnd-kit/core';
 import { useState } from 'react';
 import { shuffleArray } from '../../lessons/utils/shuffleArray';
-import styles from './PhrasesLessonLayout.module.scss'
+import styles from './PhrasesLessonLayout.module.scss';
+import { Phrase } from './types/phrase';
+import Update from '../../../../public/images/update.svg';
+import Image from 'next/image'
 
+type Props = {
+    data: Phrase[]
+}
 
-export default function PhrasesLessonLayout() {
+export default function PhrasesLessonLayout({ data }: Props) {
     const [droppedIds, setdroppedIds] = useState([]);
+    const [iteration, setIteration] = useState(1)
     const mouseSensor = useSensor(MouseSensor)
     const touchSensor = useSensor(TouchSensor)
     const sensors = useSensors(mouseSensor, touchSensor)
-
-    const data = [
-        {
-            en: 'Hi, how are you?',
-            ru: 'Привет, как дела?',
-            id: 'phrase-1',
-        },
-        {
-            en: 'Great! My name is Dana.',
-            ru: 'Замечательно! Меня зовут Дана.',
-            id: 'phrase-2',
-        },
-        {
-            en: 'I am Assel. It’s nice to meet you.',
-            ru: 'Я – Асель. Приятно c тобой познакомиться.',
-            id: 'phrase-3',
-        }
-    ]
-
-
-    const droppables = shuffleArray([...data])
 
     const updateDroppedIds = (id) => {
         const newDropIds = [...droppedIds, id]
@@ -48,6 +34,19 @@ export default function PhrasesLessonLayout() {
         }
     }
 
+    const updateIterations = () => {
+        setdroppedIds([])
+        const maxIteration = data[data.length - 1].iteration
+        if (iteration === maxIteration) {
+            setIteration(1)
+        } else {
+            setIteration(iteration + 1)
+        }
+    }
+
+    const draggables = data.filter(item => item.iteration === iteration)
+    const droppables = shuffleArray([...draggables]) // перемешивает русские варианты
+
     return (
         <div className={styles.container}>
             <div>
@@ -56,7 +55,7 @@ export default function PhrasesLessonLayout() {
             <div className={styles.cardsContainer}>
                 <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
                     <div className={styles.cardsSection}>
-                        {data.map(item => (
+                        {draggables.map(item => (
                             !droppedIds.includes(item.id) &&
                             <DraggableCard
                                 draggableId={item.id}
@@ -85,6 +84,15 @@ export default function PhrasesLessonLayout() {
                     </div>
                 </DndContext >
             </div>
+            <Image
+                priority
+                src={Update}
+                height={38}
+                width={80}
+                alt='update'
+                onClick={updateIterations}
+                className={styles.update}
+            />
         </div>
     )
 }

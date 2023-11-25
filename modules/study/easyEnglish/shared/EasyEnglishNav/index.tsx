@@ -4,11 +4,15 @@ import { useRouter } from "next/router"
 import styles from './EasyEnglishNav.module.scss'
 import classNames from "classnames"
 
-export default function EasyEnglishNav({ lessonNumber }) {
+type Props = {
+    lessonNumber: number
+}
+
+export default function EasyEnglishNav({ lessonNumber }: Props) {
     const [navItemsOpened, setNavItemsOpened] = useState([])
     const router = useRouter()
 
-    const toggleNavItemHandler = (id) => {
+    const toggleNavItemHandler = (id: number) => {
 
         if (navItemsOpened.includes(id)) {
             setNavItemsOpened(navItemsOpened.filter(item => id !== item))
@@ -32,8 +36,9 @@ export default function EasyEnglishNav({ lessonNumber }) {
                                 className={
                                     classNames(
                                         { [styles.activeLink]: router.asPath === `${item.route}` },
-                                        { [styles.shown]: lessonNumber === `${topic.id}` },
+                                        { [styles.shown]: lessonNumber === topic.id },
                                         { [styles.shown]: navItemsOpened.includes(topic.id) },
+                                        styles.hidden
                                     )}
                                 onClick={() => router.push(item.route)}
                             >

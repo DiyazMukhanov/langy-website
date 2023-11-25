@@ -15,4 +15,8 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
+
+    @include size-tablet {
+        gap: 0;
+    }
 }
