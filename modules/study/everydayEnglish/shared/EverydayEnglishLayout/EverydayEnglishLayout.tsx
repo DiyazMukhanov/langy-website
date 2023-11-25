@@ -1,23 +1,23 @@
 import Header from "@/modules/shared/Header/index"
-import EasyEnglishNav from "../EasyEnglishNav/index"
 import ProtectPage from "@/modules/shared/ProtectPage/index"
-import styles from './EasyEnglishLayout.module.scss'
-import EasyEnglishNextButtonSection from "../EasyEnglishNextButtonSection/index"
+import styles from './EverydayEnglishLayout.module.scss'
+import EasyEnglishNextButtonSection from "../EverydayEnglishNextButtonSection/index"
 import { PropsWithChildren } from "react"
+import EverydayEnglishNav from "../EverydayEnglishNav/index"
 
 type Props = {
     lessonNumber: number
     chapter: string
 }
 
-export default function EasyEnglishLayout({ lessonNumber, children, chapter }: PropsWithChildren<Props>) {
+export default function EveryDayEnglishLayout({ lessonNumber, children, chapter }: PropsWithChildren<Props>) {
 
     return <>
         <ProtectPage>
             <Header variant='white' isEasyEnglish={true} />
             <div className={styles.container}>
                 <div className={styles.navContainer}>
-                    <EasyEnglishNav lessonNumber={lessonNumber} />
+                    <EverydayEnglishNav lessonNumber={lessonNumber} />
                 </div>
                 <div className={styles.mainSectionContainer}>
                     {children}

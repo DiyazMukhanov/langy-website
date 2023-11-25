@@ -8,6 +8,8 @@ import styles from './PhrasesLessonLayout.module.scss';
 import { Phrase } from './types/phrase';
 import Update from '../../../../public/images/update.svg';
 import Image from 'next/image'
+import AudioSuccess from '@/modules/shared/audioSuccess';
+import PlayAudioButton from '@/modules/shared/PlayAudioButton';
 
 type Props = {
     data: Phrase[]
@@ -16,8 +18,14 @@ type Props = {
 export default function PhrasesLessonLayout({ data }: Props) {
     const [droppedIds, setdroppedIds] = useState([]);
     const [iteration, setIteration] = useState(1)
-    const mouseSensor = useSensor(MouseSensor)
-    const touchSensor = useSensor(TouchSensor)
+    const [successAudioTrigger, setSuccessAudioTrigger] = useState(false)
+    const sensorConfig = {
+        activationConstraint: {
+            distance: 8
+        }
+    }
+    const mouseSensor = useSensor(MouseSensor, sensorConfig)
+    const touchSensor = useSensor(TouchSensor, sensorConfig)
     const sensors = useSensors(mouseSensor, touchSensor)
 
     const updateDroppedIds = (id) => {
@@ -31,6 +39,7 @@ export default function PhrasesLessonLayout({ data }: Props) {
 
         if (over && over.id === active.id) {
             updateDroppedIds(over.id)
+            setSuccessAudioTrigger(!successAudioTrigger)
         }
     }
 
@@ -45,7 +54,7 @@ export default function PhrasesLessonLayout({ data }: Props) {
     }
 
     const draggables = data.filter(item => item.iteration === iteration)
-    const droppables = shuffleArray([...draggables]) // перемешивает русские варианты
+    const droppables = shuffleArray([...draggables]) // перемешивает варианты
 
     return (
         <div className={styles.container}>
@@ -64,6 +73,7 @@ export default function PhrasesLessonLayout({ data }: Props) {
                                 key={item.id}
                             >
                                 {item.en}
+                                <PlayAudioButton src='https://storage.googleapis.com/langy.su/audio/lesson1/apple.mp3' />
                             </DraggableCard>
                         ))}
                     </div>
@@ -93,6 +103,7 @@ export default function PhrasesLessonLayout({ data }: Props) {
                 onClick={updateIterations}
                 className={styles.update}
             />
+            <AudioSuccess trigger={successAudioTrigger} />
         </div>
     )
 }

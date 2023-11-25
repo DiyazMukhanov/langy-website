@@ -1,14 +1,14 @@
 import { useState } from "react"
 import { setNavRoutes } from "../navRoutes"
 import { useRouter } from "next/router"
-import styles from './EasyEnglishNav.module.scss'
+import styles from './EverydayEnglishNav.module.scss'
 import classNames from "classnames"
 
 type Props = {
     lessonNumber: number
 }
 
-export default function EasyEnglishNav({ lessonNumber }: Props) {
+export default function EverydayEnglishNav({ lessonNumber }: Props) {
     const [navItemsOpened, setNavItemsOpened] = useState([])
     const router = useRouter()
 

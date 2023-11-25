@@ -1,9 +1,9 @@
 import { Button } from '@/ui-kit/Button'
-import styles from './EasyEnglishNextButtonSection.module.scss'
+import styles from './EverydayEnglishNextButtonSection.module.scss'
 import { nextUrlGenerator } from '../navRoutes'
 import { useRouter } from 'next/router'
 
-export default function EasyEnglishNextButtonSection({ lessonNumber, chapter }) {
+export default function EverydayEnglishNextButtonSection({ lessonNumber, chapter }) {
     const router = useRouter()
     const nextUrl = nextUrlGenerator(lessonNumber, chapter)
 

@@ -1,6 +1,6 @@
 const topics = ['Acquaintance', 'Coffee and tickets', 'In the hotel', 'Relatives', 'Breakfast', 'Time', 'Vacation', 'Shopping', 'Food shopping', 'Acquaintance', 'Coffee and tickets', 'In the hotel', 'Relatives', 'Breakfast', 'Time', 'Vacation', 'Shopping', 'Food shopping']
 
-const ROUTE = '/lessons/easyEnglish'
+const ROUTE = '/lessons/everydayEnglish'
 
 export const CHAPTER_1 = 'phrases'
 export const CHAPTER_2 = 'cards'

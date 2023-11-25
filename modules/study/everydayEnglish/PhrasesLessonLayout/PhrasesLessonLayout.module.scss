@@ -41,6 +41,8 @@
     width: fit-content;
     padding: 5px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 
     @include size-tablet {
         max-width: 150px;
