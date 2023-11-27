@@ -2,7 +2,6 @@ import { useState, useRef } from 'react';
 import styles from './VocabularyLesson.module.scss'
 import { DragDropContainer, DropTarget } from 'react-drag-drop-container';
 import { Button } from '@/ui-kit/Button';
-import successSound from '../../../../public/audio/success.mp3'
 import newPlay from "../../../../public/images/newPlay.svg";
 import Image from "next/image";
 

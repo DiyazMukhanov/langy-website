@@ -11,7 +11,7 @@ export const CHAPTER_4 = 'blocks'
 const buildChildren = (lessonNumber: number) => {
     return [
         {
-            title: 'Словарь',
+            title: 'Фразы',
             route: `${ROUTE}/${lessonNumber}/${CHAPTER_1}`
         },
         {

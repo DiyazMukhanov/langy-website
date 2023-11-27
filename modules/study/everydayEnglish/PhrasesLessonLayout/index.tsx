@@ -6,18 +6,18 @@ import { useState } from 'react';
 import { shuffleArray } from '../../lessons/utils/shuffleArray';
 import styles from './PhrasesLessonLayout.module.scss';
 import { Phrase } from './types/phrase';
-import Update from '../../../../public/images/update.svg';
-import Image from 'next/image'
 import AudioSuccess from '@/modules/shared/audioSuccess';
 import PlayAudioButton from '@/modules/shared/PlayAudioButton';
+import EverydayEnglishContainer from '../shared/EverydayEnglishContainer';
+import UpdateButton from '@/modules/shared/UpdateButton';
+import { useIterate } from '../../shared/hooks/useIterate';
 
 type Props = {
     data: Phrase[]
 }
 
 export default function PhrasesLessonLayout({ data }: Props) {
-    const [droppedIds, setdroppedIds] = useState([]);
-    const [iteration, setIteration] = useState(1)
+    const [droppedIds, setdroppedIds] = useState([])
     const [successAudioTrigger, setSuccessAudioTrigger] = useState(false)
     const sensorConfig = {
         activationConstraint: {
@@ -27,6 +27,8 @@ export default function PhrasesLessonLayout({ data }: Props) {
     const mouseSensor = useSensor(MouseSensor, sensorConfig)
     const touchSensor = useSensor(TouchSensor, sensorConfig)
     const sensors = useSensors(mouseSensor, touchSensor)
+
+    const { updateIteration, iteration } = useIterate(data)
 
     const updateDroppedIds = (id) => {
         const newDropIds = [...droppedIds, id]
@@ -43,23 +45,18 @@ export default function PhrasesLessonLayout({ data }: Props) {
         }
     }
 
-    const updateIterations = () => {
+    const updateIterationsHandler = () => {
         setdroppedIds([])
-        const maxIteration = data[data.length - 1].iteration
-        if (iteration === maxIteration) {
-            setIteration(1)
-        } else {
-            setIteration(iteration + 1)
-        }
+        updateIteration()
     }
 
     const draggables = data.filter(item => item.iteration === iteration)
     const droppables = shuffleArray([...draggables]) // перемешивает варианты
 
     return (
-        <div className={styles.container}>
+        <EverydayEnglishContainer className={styles.internalLayout}>
             <div>
-                <h1>Перетащите фразы к переводам</h1>
+                <h1 className={styles.h1}>Перетащите фразы к переводам</h1>
             </div>
             <div className={styles.cardsContainer}>
                 <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
@@ -94,16 +91,8 @@ export default function PhrasesLessonLayout({ data }: Props) {
                     </div>
                 </DndContext >
             </div>
-            <Image
-                priority
-                src={Update}
-                height={38}
-                width={80}
-                alt='update'
-                onClick={updateIterations}
-                className={styles.update}
-            />
+            <UpdateButton onClick={updateIterationsHandler} />
             <AudioSuccess trigger={successAudioTrigger} />
-        </div>
+        </EverydayEnglishContainer>
     )
 }
