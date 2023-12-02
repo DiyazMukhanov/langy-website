@@ -8,6 +8,10 @@
     justify-content: center;
     align-items: center;
     gap: 40px;
+
+    & h2 {
+        color: var(--color-primary);
+    }
 }
 
 .cards {

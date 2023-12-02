@@ -73,6 +73,7 @@ export default function BlocksLessonLayout() {
 
     return (
         <EverydayEnglishContainer className={styles.internalLayout}>
+            <h2>Составьте фразу</h2>
             <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
                 <div className={styles.cards}>
                     {droppables.map(item => (

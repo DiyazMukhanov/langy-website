@@ -1,0 +1,90 @@
+@import "styles/breakpoints";
+
+.internalLayout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    gap: 50px;
+
+    & h2 {
+        color: var(--color-primary);
+
+        @include size-tablet {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-left: 10px;
+        }
+    }
+}
+
+.moreBtn {
+    background: none;
+    border: solid var(--color-primary) 1px;
+    color: var(--color-primary);
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.microphone {
+    cursor: pointer;
+}
+
+.circle {
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-red);
+}
+
+.startRecording {
+    cursor: pointer;
+}
+
+.isRecording {
+    background-color: var(--color-red);
+    animation: ease pulse 1s infinite;
+}
+
+.stopRecordingButton {
+    width: 30px;
+    height: 30px;
+    background: var(--color-primary);
+    cursor: pointer;
+}
+
+.play {
+    cursor: pointer;
+}
+
+.recordingBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.showingAnswer {
+    color: var(--color-primary);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+@keyframes pulse {
+    0% {
+        background-color: var(--color-red);
+    }
+
+    50% {
+        background-color: var(--color-white);
+    }
+
+    100% {
+        background-color: var(--color-red);
+    }
+}

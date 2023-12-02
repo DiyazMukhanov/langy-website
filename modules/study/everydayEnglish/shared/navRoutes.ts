@@ -6,6 +6,7 @@ export const CHAPTER_1 = 'phrases'
 export const CHAPTER_2 = 'cards'
 export const CHAPTER_3 = 'dialogue'
 export const CHAPTER_4 = 'blocks'
+export const CHAPTER_5 = 'speaking'
 
 
 const buildChildren = (lessonNumber: number) => {
@@ -25,6 +26,10 @@ const buildChildren = (lessonNumber: number) => {
         {
             title: 'Кирпичики',
             route: `${ROUTE}/${lessonNumber}/${CHAPTER_4}`
+        }, ,
+        {
+            title: 'Речь',
+            route: `${ROUTE}/${lessonNumber}/${CHAPTER_5}`
         },
     ]
 }
@@ -44,14 +49,15 @@ export const nextUrlGenerator = (lessonNumber: number, chapter: string) => {
         phrases: CHAPTER_2,
         cards: CHAPTER_3,
         dialogue: CHAPTER_4,
-        blocks: CHAPTER_1
+        blocks: CHAPTER_5,
+        speaking: CHAPTER_1
     }
 
     const nextLessonNumberForLastChapter = lessonNumber + 1
 
     let nextUrl
 
-    if (chapter === CHAPTER_4) {
+    if (chapter === CHAPTER_5) {
         lessonNumber = nextLessonNumberForLastChapter
 
         if (lessonNumber === topics.length) {
