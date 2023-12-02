@@ -1,10 +1,14 @@
 import styles from './Card.module.scss'
 import PlayAudioButton from '@/modules/shared/PlayAudioButton'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import classNames from 'classnames'
 
-export default function Card() {
+export default function Card({ phrase }) {
     const [isEnglish, setIsEnglish] = useState(true)
+
+    useEffect(() => {
+        setIsEnglish(true)
+    }, [phrase])
 
     const toggleCardHanlder = () => {
         setIsEnglish(!isEnglish)
@@ -17,8 +21,8 @@ export default function Card() {
         )
         }>
             <div className={styles.top}>
-                <p>Hi! How are you?</p>
-                {isEnglish && <PlayAudioButton src='https://storage.googleapis.com/langy.su/audio/lesson1/apple.mp3' />}
+                <p>{isEnglish ? phrase.en : phrase.ru}</p>
+                {isEnglish && <PlayAudioButton src='https://storage.googleapis.com/langy.su/audio/lesson1/bread.mp3' />}
             </div>
             <p
                 className={classNames(

@@ -3,6 +3,15 @@
 .container {
     display: flex;
     gap: 10px;
+    flex-direction: column;
+
+    @include size-tablet {
+        gap: 70px;
+    }
+}
+
+.top {
+    display: flex;
 }
 
 .navContainer {

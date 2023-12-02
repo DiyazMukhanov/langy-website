@@ -2,7 +2,7 @@ import { DndContext } from '@dnd-kit/core';
 import DroppableCard from '../../../shared/DragComponents/DroppableCard';
 import DraggableCard from '../../../shared/DragComponents/DraggableCard';
 import { MouseSensor, TouchSensor, useSensor, useSensors } from '@dnd-kit/core';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { shuffleArray } from '../../lessons/utils/shuffleArray';
 import styles from './PhrasesLessonLayout.module.scss';
 import { Phrase } from './types/phrase';
@@ -11,13 +11,14 @@ import PlayAudioButton from '@/modules/shared/PlayAudioButton';
 import EverydayEnglishContainer from '../shared/EverydayEnglishContainer';
 import UpdateButton from '@/modules/shared/UpdateButton';
 import { useIterate } from '../../shared/hooks/useIterate';
+import classNames from 'classnames';
+import { useDroppedItems } from '../../shared/hooks/useDroppedItems';
 
 type Props = {
     data: Phrase[]
 }
 
 export default function PhrasesLessonLayout({ data }: Props) {
-    const [droppedIds, setdroppedIds] = useState([])
     const [successAudioTrigger, setSuccessAudioTrigger] = useState(false)
     const sensorConfig = {
         activationConstraint: {
@@ -29,11 +30,7 @@ export default function PhrasesLessonLayout({ data }: Props) {
     const sensors = useSensors(mouseSensor, touchSensor)
 
     const { updateIteration, iteration } = useIterate(data)
-
-    const updateDroppedIds = (id) => {
-        const newDropIds = [...droppedIds, id]
-        setdroppedIds(newDropIds)
-    }
+    const { updateDroppedIds, droppedIds, resetDroppedItems } = useDroppedItems()
 
     function handleDragEnd(event) {
         const { over } = event
@@ -46,12 +43,22 @@ export default function PhrasesLessonLayout({ data }: Props) {
     }
 
     const updateIterationsHandler = () => {
-        setdroppedIds([])
+        resetDroppedItems()
         updateIteration()
     }
 
-    const draggables = data.filter(item => item.iteration === iteration)
-    const droppables = shuffleArray([...draggables]) // перемешивает варианты
+    const getDraggables = (data: Phrase[]): any => {
+        const draggables = data.filter(item => item.iteration === iteration)
+        return draggables
+    }
+
+    const getNewDroppables = (arr: Phrase[]): any => {
+        const newDroppables: Phrase[] = shuffleArray([...arr]) // перемешивает варианты
+        return newDroppables
+    }
+
+    const draggables = useCallback(getDraggables(data), [iteration])
+    const droppables = useCallback(getNewDroppables(draggables), [draggables])
 
     return (
         <EverydayEnglishContainer className={styles.internalLayout}>
@@ -77,15 +84,20 @@ export default function PhrasesLessonLayout({ data }: Props) {
 
                     <div className={styles.cardsSection}>
                         {droppables.map(item => (
-                            !droppedIds.includes(item.id) &&
                             <DroppableCard
                                 droppableId={item.id}
-                                className={styles.card}
+                                className={classNames(
+                                    styles.card,
+                                    { [styles.right]: droppedIds.includes(item.id) }
+                                )}
                                 overStyle={styles.overStyle}
                                 keyProp={item.id}
                                 key={item.id}
                             >
-                                {item.ru}
+                                <div className={styles.droppedContainer}>
+                                    <span>{item.ru}</span>
+                                    {droppedIds.includes(item.id) && <span>{item.en}</span>}
+                                </div>
                             </DroppableCard>
                         ))}
                     </div>

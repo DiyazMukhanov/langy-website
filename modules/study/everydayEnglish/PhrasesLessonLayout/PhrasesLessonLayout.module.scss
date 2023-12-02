@@ -6,7 +6,7 @@
 
 .cardsContainer {
     display: flex;
-    gap: 50px;
+    gap: 20px;
 }
 
 .card {
@@ -43,9 +43,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 50px;
+    margin-top: 50px;
+    padding-bottom: 40px;
 
     @include size-tablet {
-        gap: 20px;
+        margin: 0;
+        padding-bottom: 0;
     }
+}
+
+.droppedContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.right {
+    background-color: var(--color-green);
+    color: var(--color-white);
 }

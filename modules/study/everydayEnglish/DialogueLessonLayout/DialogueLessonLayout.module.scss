@@ -1,0 +1,26 @@
+@import "styles/breakpoints";
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.internalLayout {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 30px;
+
+    & p {
+        margin: 0;
+    }
+
+    @include size-tablet {
+        align-items: center;
+        padding: 10px;
+    }
+}

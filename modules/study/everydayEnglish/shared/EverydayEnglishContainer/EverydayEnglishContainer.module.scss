@@ -1,12 +1,10 @@
 @import "styles/breakpoints";
 
 .container {
-    height: 60vh;
     width: 60vw;
     margin-left: 50px;
     border: solid var(--color-grey) 3px;
     border-radius: 16px;
-    margin-top: 80px;
 
     @include size-tablet {
         margin: 0;

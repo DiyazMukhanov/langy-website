@@ -1,9 +1,9 @@
 import Header from "@/modules/shared/Header/index"
 import ProtectPage from "@/modules/shared/ProtectPage/index"
 import styles from './EverydayEnglishLayout.module.scss'
-import EasyEnglishNextButtonSection from "../EverydayEnglishNextButtonSection/index"
 import { PropsWithChildren } from "react"
 import EverydayEnglishNav from "../EverydayEnglishNav/index"
+import EverydayEnglishNextButtonSection from "../EverydayEnglishNextButtonSection/index"
 
 type Props = {
     lessonNumber: number
@@ -16,13 +16,15 @@ export default function EveryDayEnglishLayout({ lessonNumber, children, chapter 
         <ProtectPage>
             <Header variant='white' isEasyEnglish={true} />
             <div className={styles.container}>
-                <div className={styles.navContainer}>
-                    <EverydayEnglishNav lessonNumber={lessonNumber} />
+                <div className={styles.top}>
+                    <div className={styles.navContainer}>
+                        <EverydayEnglishNav lessonNumber={lessonNumber} />
+                    </div>
+                    <div className={styles.mainSectionContainer}>
+                        {children}
+                    </div>
                 </div>
-                <div className={styles.mainSectionContainer}>
-                    {children}
-                    <EasyEnglishNextButtonSection lessonNumber={lessonNumber} chapter={chapter} />
-                </div>
+                <EverydayEnglishNextButtonSection lessonNumber={lessonNumber} chapter={chapter} />
             </div>
         </ProtectPage>
     </>

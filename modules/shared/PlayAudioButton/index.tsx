@@ -8,7 +8,7 @@ type Props = {
 
 export default function PlayAudioButton({ src }: Props) {
 
-    const playWordHandler = (src) => {
+    const playWordHandler = (src: string) => {
         new Audio(src).play()
     }
 
