@@ -26,7 +26,10 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "pages/lessons/easyEnglish/dialogue.js",
+    "modules/shared/ProtectPage/index.jsx",
+    "modules/shared/Audioplayer/index.jsx"
   ],
   "exclude": [
     "node_modules"

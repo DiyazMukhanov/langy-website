@@ -1,0 +1,47 @@
+@import "styles/breakpoints";
+
+.internalLayout {
+    padding: 10px;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    @include size-tablet {
+        width: 100vw;
+        padding: 5px;
+        gap: 5px;
+        flex-wrap: wrap;
+    }
+}
+
+.droppedContainer {
+    height: 30px;
+}
+
+.block {
+    width: 100px;
+    height: 30px;
+    border: solid var(--color-dark-grey) 1px;
+    border-radius: 6px;
+    box-shadow: 1px 2px 2px 0px var(--color-grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include size-tablet {
+        width: 70px;
+        min-height: 30px;
+        height: auto;
+        padding: 2px;
+    }
+}

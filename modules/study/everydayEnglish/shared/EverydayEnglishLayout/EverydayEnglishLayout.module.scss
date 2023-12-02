@@ -1,0 +1,31 @@
+@import "styles/breakpoints";
+
+.container {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+
+    @include size-tablet {
+        gap: 70px;
+    }
+}
+
+.top {
+    display: flex;
+}
+
+.navContainer {
+    @include size-tablet {
+        display: none;
+    }
+}
+
+.mainSectionContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @include size-tablet {
+        gap: 0;
+    }
+}

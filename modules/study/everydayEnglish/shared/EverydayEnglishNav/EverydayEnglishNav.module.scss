@@ -1,0 +1,52 @@
+@import "styles/breakpoints";
+
+.lessonsListContainer {
+    height: 80vh;
+    overflow-y: scroll;
+
+    @include size-tablet {
+        margin-right: -30px;
+        margin-left: -50px;
+    }
+}
+
+.activeLink {
+    background-color: var(--color-primary) !important;
+    color: var(--color-white);
+}
+
+.title {
+    font-weight: 700;
+}
+
+.navContainer {
+    background-color: var(--color-light-blue);
+    width: 250px;
+    border-left: solid var(--color-primary) 3px;
+
+    & li {
+        list-style: none;
+        background-color: var(--color-light-blue);
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    & ul {
+        margin: 0;
+    }
+}
+
+.hidden {
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+    transition: visibility .5s, max-height .5s;
+}
+
+.shown {
+    visibility: visible;
+    max-height: 100px;
+}

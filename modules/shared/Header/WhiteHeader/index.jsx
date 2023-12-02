@@ -7,7 +7,7 @@ import Modal from '../../Modal/Modal'
 import Sidebar from '../../Sidebar'
 import ButtonClose from '../../../../public/images/Button-close.svg'
 import { useRouter } from 'next/router'
-import EasyEnglishSidebar from '@/modules/study/easyEnglish/EasyEnglishSidebar'
+import EverydayEnglishSidebar from '@/modules/study/everydayEnglish/EverydayEnglishSidebar/index'
 import { Button } from '@/ui-kit/Button'
 
 export default function WhiteHeader({
@@ -64,7 +64,7 @@ export default function WhiteHeader({
                         />
                     </div>
                     <div className={styles.sidebarContainer}>
-                        {!isEasyEnglish ? <Sidebar lessonsSummary={lessonsSummary} /> : <EasyEnglishSidebar />}
+                        {!isEasyEnglish ? <Sidebar lessonsSummary={lessonsSummary} /> : <EverydayEnglishSidebar />}
                     </div>
                 </Modal>
 
