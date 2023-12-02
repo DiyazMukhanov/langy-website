@@ -13,7 +13,13 @@ type Props = {
 export default function EveryDayEnglishLayout({ lessonNumber, children, chapter }: PropsWithChildren<Props>) {
 
     return <>
-        <ProtectPage>
+        <ProtectPage
+            currentLesson={lessonNumber}
+            currentChapter={chapter}
+            subscriptionIsNeeded={false}
+            adminNeeded={false}
+            levelChecked={true}
+        >
             <Header variant='white' isEasyEnglish={true} />
             <div className={styles.container}>
                 <div className={styles.top}>
