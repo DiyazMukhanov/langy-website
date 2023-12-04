@@ -86,9 +86,6 @@ const ResultsShowing = ({ rightAnswers, totalQuestions, questionsArr, nextUrl, l
                                     }
                                 </div>
                             </div>
-                            {/* <div className={styles.description}>
-                        <p>{question.description}</p>
-                    </div> */}
                         </>
                     ))}
                 </div>

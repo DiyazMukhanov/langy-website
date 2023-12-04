@@ -85,7 +85,6 @@ export default function BeginnerLessonLayout({
                 const beginnerProgress = await getBeginnerProgress()
                 setBeginnerProgress(beginnerProgress.data.data)
                 const currentLearningField = await setCurrentLearningField({ currentLearningField: "starter" })
-                console.log(currentLearningField)
             } catch (err) {
                 console.log(err)
             }

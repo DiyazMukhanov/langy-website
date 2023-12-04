@@ -1,9 +1,10 @@
 import Header from "@/modules/shared/Header/index"
 import ProtectPage from "@/modules/shared/ProtectPage/index"
 import styles from './EverydayEnglishLayout.module.scss'
-import { PropsWithChildren } from "react"
+import { PropsWithChildren, useEffect } from "react"
 import EverydayEnglishNav from "../EverydayEnglishNav/index"
 import EverydayEnglishNextButtonSection from "../EverydayEnglishNextButtonSection/index"
+import { setCurrentLearningField } from "../../../shared/api/setCurrentLearningField"
 
 type Props = {
     lessonNumber: number
@@ -11,14 +12,17 @@ type Props = {
 }
 
 export default function EveryDayEnglishLayout({ lessonNumber, children, chapter }: PropsWithChildren<Props>) {
+    useEffect(() => {
+        const updateCurrentLearningField = async () => {
+            const currentLearningField = await setCurrentLearningField({ currentLearningField: "everyday" })
+        }
+        updateCurrentLearningField()
+    }, [])
 
     return <>
         <ProtectPage
-            currentLesson={lessonNumber}
-            currentChapter={chapter}
             subscriptionIsNeeded={false}
             adminNeeded={false}
-            levelChecked={true}
         >
             <Header variant='white' isEasyEnglish={true} />
             <div className={styles.container}>

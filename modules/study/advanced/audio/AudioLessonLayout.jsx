@@ -134,7 +134,8 @@ const AudioLessonLayout = ({
     setProgressHandler(lessonNumber, nextUrl)
   }
 
-  const textByWords = text.en.split(" ")
+
+  const textByWords = text?.en.split(" ")
 
   const findTranslation = (englishWord) => {
     const searchedWord = wordsWithTranslations.filter(word => word.en === englishWord)
