@@ -9,11 +9,11 @@ import { setCurrentLearningField } from "../../shared/api/setCurrentLearningFiel
 import Loader from "@/modules/shared/Loader";
 import ProtectPage from "@/modules/shared/ProtectPage";
 import { getThisLessonNumber } from "@/utils/getThisLessonNumber";
+import { setCurrentLessonData } from "../../../shared/api/setCurrentLessonData";
 
 export default function LessonLayout({ children, chapter, withoutProgress, currentLessonData, subscriptionIsNeeded, isBeginner }) {
     const userCtx = useContext(UserContext)
     const [isLoading, setIsLoading] = useState(true)
-    // const [progressValue, setProgressValue] = useState(0)
     const lessonsSummary = isBeginner ? userCtx.getUpdatedBeginnerLessonsSummary() : userCtx.getUpdatedLessonsSummary()
 
     let progressValue
@@ -70,15 +70,19 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
 
             userCtx.setLessonsSummary(updatedLessonsSummary)
 
+            const bodyData = {
+                currentLesson: currentLessonData.currentLesson,
+                currentChapter: currentLessonData.currentChapter
+            }
+
             try {
                 const progressData = await getProgressData()
                 if (progressData) {
                     userCtx.setProgressData(progressData?.data?.data)
                     setIsLoading(false)
                 }
-
+                await setCurrentLessonData(bodyData)
                 const currentLearningField = await setCurrentLearningField({ currentLearningField: "higher" })
-                console.log(currentLearningField)
 
             } catch (err) {
                 setIsLoading(false)

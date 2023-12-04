@@ -68,6 +68,8 @@ export default function Landing() {
       }
     }
 
+    // Add for everyday english: getEverydayEnglishProgress
+
     getUser()
     getBeginnerProgressHandler()
 
