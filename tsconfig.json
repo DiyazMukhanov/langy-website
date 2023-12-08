@@ -29,7 +29,8 @@
     "**/*.tsx",
     "pages/lessons/easyEnglish/dialogue.js",
     "modules/shared/ProtectPage/index.jsx",
-    "modules/shared/Audioplayer/index.jsx"
+    "modules/shared/Audioplayer/index.jsx",
+    "modules/shared/api/getEverydayProgress.js"
   ],
   "exclude": [
     "node_modules"

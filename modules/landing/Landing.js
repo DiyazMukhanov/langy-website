@@ -32,6 +32,7 @@ import { UserContext } from '@/store/userContext'
 import Loader from '@/modules/shared/Loader'
 import ChapterCard from './shared/ChapterCard'
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import { getEverydayProgress } from '../shared/api/getEverydayProgress'
 
 export default function Landing() {
   const [frequentOpenedId, setFrequentOpenedId] = useState(null)
@@ -40,27 +41,23 @@ export default function Landing() {
   const userCtx = useContext(UserContext)
   const [isLoading, setIsLoading] = useState(true)
   const [currentBeginnerLesson, setCurrentBeginnerLesson] = useState(undefined)
+  const [everydayProgress, setEverydayProgress] = useState(null)
 
   useEffect(() => {
 
-    const getUser = async () => {
+    const fetchUser = async () => {
       try {
         const userData = await getMe()
-        console.log(userData.data.data)
         userCtx.setUserData(userData.data.data)
-        setIsLoading(false)
-      } catch (err) {
 
-        setIsLoading(false)
-      }
-    }
-
-    const getBeginnerProgressHandler = async () => {
-      try {
         const beginnerProgress = await getBeginnerProgress()
         if (beginnerProgress.data.data !== null) {
           setCurrentBeginnerLesson(beginnerProgress.data.data.currentLesson)
         }
+
+        const everydayProgress = await getEverydayProgress()
+        setEverydayProgress(everydayProgress.data.data)
+
         setIsLoading(false)
       } catch (err) {
         console.log(err)
@@ -68,10 +65,7 @@ export default function Landing() {
       }
     }
 
-    // Add for everyday english: getEverydayEnglishProgress
-
-    getUser()
-    getBeginnerProgressHandler()
+    fetchUser()
 
   }, [])
 
@@ -131,6 +125,11 @@ export default function Landing() {
         router.push(`/lessons/${userCtx?.userData?.currentLesson}/${userCtx?.userData?.currentChapter}`)
       }
 
+      //Check if currentLearningField is everydayEnglish
+      if (userCtx?.userData?.currentLearningField === 'everydayEnglish') {
+        router.push(`/lessons/everydayEnglish/${everydayProgress.currentLesson}/${everydayProgress.currentChapter}`)
+      }
+
       //Check if user reloaded his progress
       if (!userCtx?.userData?.currentLearningField) {
         router.push('/menu')
@@ -142,9 +141,7 @@ export default function Landing() {
     try {
       const response = await userLogout()
       router.reload()
-
     } catch (err) {
-
       alert('Произошла ошибка выхода')
     }
   }
@@ -235,32 +232,15 @@ export default function Landing() {
         </header>
 
         <main className={styles.main}>
-          {/* <Image
-             priority
-             src={DropOne}
-             className={styles.dropOneMobile}
-             /> */}
           <Typography element='h1' className={styles.mainHeading}>Aнглийский язык по современной методике</Typography>
           <div className={styles.headerBottomBlock}>
-            {/* <Image
-             priority
-             src={DropOne}
-             className={styles.dropOne}
-             /> */}
             {!userCtx.userData ? (<div className={styles.btnBlock}>
               <Button variant='contained' className={styles.startBtn} onClick={continueHandler}>Начать обучение</Button>
-              {/* <p className={styles.haveAccountBtn} onClick={() => router.push('/authorization/login')}>У меня уже есть аккаунт</p> */}
             </div>) : <div className={styles.btnBlock}>
               <Button variant='contained' className={styles.startBtn} onClick={continueHandler}>Продолжить обучение</Button>
               {!userCtx.userData && (<p className={styles.haveAccountBtn} onClick={() => router.push('/authorization/login')}>У меня уже есть аккаунт</p>)}
 
             </div>}
-
-            {/* <Image
-             priority
-             src={DropTwo}
-             className={styles.dropTwo}
-             /> */}
           </div>
         </main>
 
@@ -279,45 +259,7 @@ export default function Landing() {
           <ChapterCard chapterTitle='Грамматика' imageSrc={Grammar} color='blue' />
           <ChapterCard chapterTitle='Чтение' imageSrc={Reading} color='orange' />
           <ChapterCard chapterTitle='Письмо' imageSrc={Writing} color='purple' />
-          {/* <div className={styles.leftSideOfMiddleSection}>
-        <Image
-             priority
-             src={LogoTwo}
-             width={200}
-             className={styles.logoTwo}
-             />
-         <div className={styles.leftSideText}>
-         - онлайн-платформа, предоставляющая изучение английского языка. Платформа открыта 
-          24 часа в сутки, 12 месяцев в году. 
-          И вы можете учиться в любом удобном для вас месте.
-          </div>    
-        </div>
-        <div className={classNames(
-           {
-            [styles.imageContainer]: !isModalOpened,
-            [styles.noShow]: isModalOpened
-           }
-          )}> */}
-          {/* <Image
-             priority
-             src={Laptop}
-             width={300}
-             className={styles.laptop}
-             /> */}
-          {/* <Image
-             priority
-             src={Cards}
-             width={500}
-             className={styles.cards}
-             />
-  
-         <Image
-             priority
-             src={CardsVertical}
-            //  width={500}
-             className={styles.cardsMobile}
-             />
-        </div> */}
+
         </section>
         <section className={styles.advantagesSection}>
           <div className={styles.advantagesHeadingContainer}>
@@ -329,24 +271,18 @@ export default function Landing() {
                 <AdvantageCard
                   iconType='clock'
                   textLineOne='Свободный график'
-                //  textLineTwo=''
-                //  textLineThree='график!'
                 />
               </div>
               <div data-aos='fade-right'>
                 <AdvantageCard
                   iconType='tick'
                   textLineOne='Экономия'
-                //  textLineTwo='4 основных'
-                //  textLineThree='языковых навыка!'
                 />
               </div>
               <div data-aos='fade-right'>
                 <AdvantageCard
                   iconType='pc'
                   textLineOne='Легко и весело'
-                //  textLineTwo='удобное для вас'
-                //  textLineThree='время!'
                 />
               </div>
             </div>
@@ -363,28 +299,17 @@ export default function Landing() {
             <h2>ОБУЧАЯСЬ У НАС, ВЫ ПОЛУЧИТЕ</h2>
           </div>
 
-          {/* <div className={styles.manSection}> */}
           <div className={styles.whatGetContainer}>
             <HowCard
               number='1'
               text='МЕНТАЛЬНЫЙ РОСТ'
               color='blue'
             />
-            {/* <Image
-                priority
-                src={Man}
-                className={styles.man}
-                /> */}
-            {/* </div> */}
-            {/* <div className={styles.twoThreeSection}> */}
-
-            {/* <div className={styles.howcardTwo}> */}
             <HowCard
               number='2'
               text='СВОБОДУ КОММУНИКАЦИИ ПО МИРУ'
               color='orange'
             />
-            {/* </div> */}
 
             <HowCard
               number='3'
@@ -422,7 +347,7 @@ export default function Landing() {
               color='orange'
             />
           </div>
-          {/* </div> */}
+
         </section>
 
         <section className={styles.cases}>
