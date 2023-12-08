@@ -1,10 +1,11 @@
 import Header from "@/modules/shared/Header/index"
 import ProtectPage from "@/modules/shared/ProtectPage/index"
 import styles from './EverydayEnglishLayout.module.scss'
-import { PropsWithChildren, useEffect } from "react"
+import { PropsWithChildren, useEffect, useState } from "react"
 import EverydayEnglishNav from "../EverydayEnglishNav/index"
 import EverydayEnglishNextButtonSection from "../EverydayEnglishNextButtonSection/index"
 import { setCurrentLearningField } from "../../../shared/api/setCurrentLearningField"
+import { updateEverydayProgress } from "../api/updateEverydayProgress"
 
 type Props = {
     lessonNumber: number
@@ -12,12 +13,26 @@ type Props = {
 }
 
 export default function EveryDayEnglishLayout({ lessonNumber, children, chapter }: PropsWithChildren<Props>) {
+
     useEffect(() => {
-        const updateCurrentLearningField = async () => {
-            const currentLearningField = await setCurrentLearningField({ currentLearningField: "everyday" })
+        const updateEverydayData = async () => {
+            try {
+                if (lessonNumber) {
+                    const currentLearningField = await setCurrentLearningField({ currentLearningField: "everydayEnglish" })
+                    const data = await updateEverydayProgress({
+                        currentLesson: lessonNumber,
+                        currentChapter: chapter
+                    })
+
+                }
+            } catch (err) {
+                console.log(err)
+            }
         }
-        updateCurrentLearningField()
-    }, [])
+
+        updateEverydayData()
+    }, [lessonNumber])
+
 
     return <>
         <ProtectPage
