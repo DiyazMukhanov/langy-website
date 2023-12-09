@@ -11,6 +11,7 @@ import { useRouter } from 'next/router'
 import { UserContext } from '@/store/userContext'
 import { userLogout } from '@/modules/shared/api/userLogout'
 import BeginnerSidebar from '../BeginnerSideBar'
+import { Button } from '../../../../../ui-kit/Button/index'
 
 export default function BeginnerHeader({ variant, lessonsSummary, beginnerProgress }) {
   const [isModalOpened, setIsModalOpened] = useState(false)
@@ -125,9 +126,10 @@ export default function BeginnerHeader({ variant, lessonsSummary, beginnerProgre
                   <div className={styles.modalLogos} onClick={() => router.push('/profile')}>
                     <p className={styles.goToProfile}>Личный кабинет</p>
                   </div>
-                  <div className={styles.modalLogos} onClick={() => router.push('/menu')}>
+                  {/* <div className={styles.modalLogos} onClick={() => router.push('/menu')}>
                     <p className={styles.goToProfile}>Меню</p>
-                  </div>
+                  </div> */}
+                  <Button variant='menu' onClick={() => router.push('/menu')}>Меню</Button>
                 </div>
               </div>
               <Image
