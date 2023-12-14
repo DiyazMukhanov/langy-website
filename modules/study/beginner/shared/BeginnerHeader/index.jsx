@@ -126,9 +126,6 @@ export default function BeginnerHeader({ variant, lessonsSummary, beginnerProgre
                   <div className={styles.modalLogos} onClick={() => router.push('/profile')}>
                     <p className={styles.goToProfile}>Личный кабинет</p>
                   </div>
-                  {/* <div className={styles.modalLogos} onClick={() => router.push('/menu')}>
-                    <p className={styles.goToProfile}>Меню</p>
-                  </div> */}
                   <Button variant='menu' onClick={() => router.push('/menu')}>Меню</Button>
                 </div>
               </div>
