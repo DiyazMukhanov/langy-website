@@ -1,7 +1,6 @@
 import { useRouter } from "next/router"
 import PhrasesLessonLayout from "../../everydayEnglish/PhrasesLessonLayout"
 import { CHAPTER_1 } from "../../everydayEnglish/shared/navRoutes"
-import { phrases } from "@/utils/lessonsMaterials/easyEnglish/lesson1/phrases"
 import EveryDayEnglishLayout from "../../everydayEnglish/shared/EverydayEnglishLayout/EverydayEnglishLayout"
 import { useLessonMaterials } from "../../shared/hooks/useLessonMaterials"
 import { getPhrases } from "./shared/api/getPhrases"
@@ -21,5 +20,4 @@ export default function PhrasesLesson() {
             </EveryDayEnglishLayout>
         </>
     }
-
 }
