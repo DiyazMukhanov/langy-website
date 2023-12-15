@@ -6,6 +6,7 @@ import EverydayEnglishNav from "../EverydayEnglishNav/index"
 import EverydayEnglishNextButtonSection from "../EverydayEnglishNextButtonSection/index"
 import { setCurrentLearningField } from "../../../shared/api/setCurrentLearningField"
 import { updateEverydayProgress } from "../api/updateEverydayProgress"
+import classNames from "classnames"
 
 type Props = {
     lessonNumber: number
@@ -40,7 +41,10 @@ export default function EveryDayEnglishLayout({ lessonNumber, children, chapter 
             adminNeeded={false}
         >
             <Header variant='white' isEasyEnglish={true} />
-            <div className={styles.container}>
+            <div className={classNames(
+                styles.container,
+                { [styles.dialogue]: chapter === 'dialogue' }
+            )}>
                 <div className={styles.top}>
                     <div className={styles.navContainer}>
                         <EverydayEnglishNav lessonNumber={lessonNumber} />
