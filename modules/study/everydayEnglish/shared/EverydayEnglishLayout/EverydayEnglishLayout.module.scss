@@ -1,23 +1,5 @@
 @import "styles/breakpoints";
 
-.container {
-    display: flex;
-    gap: 30px;
-    flex-direction: column;
-    justify-content: space-between;
-
-    @include size-tablet {
-        justify-content: space-between;
-        gap: 30px;
-    }
-}
-
-.dialogue {
-    @include size-tablet {
-        height: 140vh;
-    }
-}
-
 .top {
     display: flex;
 }
@@ -35,5 +17,13 @@
 
     @include size-tablet {
         gap: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
+}
+
+.rightBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
