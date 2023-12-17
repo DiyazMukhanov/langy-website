@@ -13,18 +13,19 @@ import { shuffleArray } from "../../lessons/utils/shuffleArray";
 import { BlocksData, BlockItem } from "./types";
 import UpdateButton from "@/modules/shared/UpdateButton";
 
-export default function BlocksLessonLayout() {
+export default function BlocksLessonLayout({ blocks }) {
     const sensorConfig = {
         activationConstraint: {
             distance: 8
         }
     }
+
     const mouseSensor = useSensor(MouseSensor, sensorConfig)
     const touchSensor = useSensor(TouchSensor, sensorConfig)
     const sensors = useSensors(mouseSensor, touchSensor)
     const [successAudioTrigger, setSuccessAudioTrigger] = useState(false)
-    const { updateIteration, iteration } = useIterate(blocksData)
-    const data = blocksData.filter(item => item.iteration === iteration)
+    const { updateIteration, iteration } = useIterate(blocks)
+    const data = blocks.filter(item => item.iteration === iteration)
 
     const { updateDroppedIds, droppedIds, resetDroppedItems } = useDroppedItems()
 
