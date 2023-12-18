@@ -49,8 +49,8 @@ export default function BlocksLessonLayout({ blocks }) {
         return newDroppables
     }
 
-    const droppables: BlocksData = useCallback(getDraggables(data), [iteration])
-    const draggables: BlocksData = useCallback(getNewDroppables(droppables), [droppables])
+    const droppables: BlocksData = getDraggables(data)
+    const draggables: BlocksData = getNewDroppables(droppables)
 
     const updateIterationsHandler = () => {
         resetDroppedItems()
