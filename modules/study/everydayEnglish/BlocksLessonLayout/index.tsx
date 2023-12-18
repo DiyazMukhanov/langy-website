@@ -1,12 +1,11 @@
 import { useIterate } from "../../shared/hooks/useIterate";
 import EverydayEnglishContainer from "../shared/EverydayEnglishContainer";
 import styles from "./BlocksLessonLayout.module.scss";
-import { blocksData } from "@/utils/lessonsMaterials/easyEnglish/lesson1/blocks";
 import { DndContext } from '@dnd-kit/core';
 import DroppableCard from '../../../shared/DragComponents/DroppableCard';
 import DraggableCard from '../../../shared/DragComponents/DraggableCard';
 import { MouseSensor, TouchSensor, useSensor, useSensors, DragEndEvent, } from '@dnd-kit/core';
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { useDroppedItems } from "../../shared/hooks/useDroppedItems";
 import AudioSuccess from "@/modules/shared/audioSuccess";
 import { shuffleArray } from "../../lessons/utils/shuffleArray";
