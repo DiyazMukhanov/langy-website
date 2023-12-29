@@ -47,7 +47,8 @@ export default function Menu() {
   const routingObject = {
     starter: beginnerProgress === null ? `/lessons/beginner/lesson1` : `/lessons/beginner/lesson${beginnerProgress?.currentLesson}`,
     higher: user?.currentLesson === 0 ? `/lessons/1/video` : `/lessons/${user?.currentLesson}/${user?.currentChapter}`,
-    everyday: everydayProgress === null ? `/lessons/everydayEnglish/1/phrases` : `/lessons/everydayEnglish/${everydayProgress?.currentLesson}/${everydayProgress?.currentChapter}`
+    everyday: everydayProgress === null ? `/lessons/everydayEnglish/1/phrases` : `/lessons/everydayEnglish/${everydayProgress?.currentLesson}/${everydayProgress?.currentChapter}`,
+    level: `/test/test`
   }
 
   const goToLearningFieldHandler = (learningField) => {
@@ -66,6 +67,7 @@ export default function Menu() {
             <LevelBlock onClick={() => goToLearningFieldHandler('everyday')}>Английский на каждый день</LevelBlock>
             <LevelBlock onClick={() => goToLearningFieldHandler('starter')}>Для начинающих</LevelBlock>
             <LevelBlock onClick={() => goToLearningFieldHandler('higher')}>Для продолжающих</LevelBlock>
+            <LevelBlock onClick={() => goToLearningFieldHandler('level')}>Узнай свой уровень</LevelBlock>
           </div>
         </div>
       </>
