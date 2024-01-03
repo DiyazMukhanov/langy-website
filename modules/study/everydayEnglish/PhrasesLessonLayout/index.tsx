@@ -77,7 +77,7 @@ export default function PhrasesLessonLayout({ data }: Props) {
                                 key={item.id}
                             >
                                 {item.en}
-                                <PlayAudioButton src='https://storage.googleapis.com/langy.su/audio/lesson1/apple.mp3' />
+                                <PlayAudioButton src={item.src} />
                             </DraggableCard>
                         ))}
                     </div>

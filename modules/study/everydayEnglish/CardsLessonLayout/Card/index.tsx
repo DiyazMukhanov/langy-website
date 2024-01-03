@@ -22,7 +22,7 @@ export default function Card({ phrase }) {
         }>
             <div className={styles.top}>
                 <p>{isEnglish ? phrase.en : phrase.ru}</p>
-                {isEnglish && <PlayAudioButton src='https://storage.googleapis.com/langy.su/audio/lesson1/bread.mp3' />}
+                {isEnglish && <PlayAudioButton src={phrase.src} />}
             </div>
             <p
                 className={classNames(
