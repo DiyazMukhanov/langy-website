@@ -1,7 +1,6 @@
 import { useIterate } from "../../shared/hooks/useIterate";
 import EverydayEnglishContainer from "../shared/EverydayEnglishContainer";
 import styles from "./SpeakingLessonLayout.module.scss";
-import { speakingQuestions } from "@/utils/lessonsMaterials/easyEnglish/lesson1/speaking";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useAudioRecorder } from 'react-audio-voice-recorder';
 import classNames from "classnames";
@@ -9,8 +8,13 @@ import Image from 'next/image'
 import Microphone from "./../../../../public/images/microphone.png"
 import Play from "./../../../../public/images/Play.svg"
 import { Button } from "@/ui-kit/Button";
+import { Speaking } from "./types/Speaking";
 
-export default function SpeakingLessonLayout() {
+type Props = {
+    speakingQuestions: Speaking[]
+}
+
+export default function SpeakingLessonLayout({ speakingQuestions }: Props) {
     const { iteration, updateIteration } = useIterate(speakingQuestions)
     const [audioUrl, setAudioUrl] = useState(null)
     const [showAnswer, setShowAnswer] = useState(false)
@@ -21,7 +25,7 @@ export default function SpeakingLessonLayout() {
         isRecording,
         recordingBlob
     } = useAudioRecorder()
-
+    console.log(speakingQuestions)
     const stopRecordingHandler = () => {
         stopRecording()
     }
@@ -88,7 +92,7 @@ export default function SpeakingLessonLayout() {
                     src={Play}
                     height={44}
                     className={styles.play}
-                    alt="microphone"
+                    alt="play"
                     onClick={play}
                 /> : ''}
             </div>
