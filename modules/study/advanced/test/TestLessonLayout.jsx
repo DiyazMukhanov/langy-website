@@ -123,6 +123,7 @@ export default function TestLessonLayout({ questions, nextUrl, currentLessonData
     const [results, setResults] = useState([])
     const [isCompleted, setIsCompleted] = useState(false)
     const [progress, setProgress] = useState(10)
+    const router = useRouter()
 
     const userCtx = useContext(UserContext)
 
@@ -164,9 +165,19 @@ export default function TestLessonLayout({ questions, nextUrl, currentLessonData
         }
     }
 
+    const setProgressHandler = async () => {
+        try {
+            const data = await setProgressData({ lessonNumber: lessonNumber, chapterCode: 'ts' })
+            if (data) {
+                router.push(nextUrl)
+            }
+        } catch (err) {
+            router.push(nextUrl)
+        }
+    }
+
     return (
         <>
-
             <LessonLayout chapter='test' withoutProgress={true} currentLessonData={currentLessonData} subscriptionIsNeeded={subscriptionIsNeeded}>
                 {!isCompleted ? (
                     <>
@@ -222,6 +233,7 @@ export default function TestLessonLayout({ questions, nextUrl, currentLessonData
                                 />
                             </div>
                         </div>
+                        <div className={styles.nextButtonInTest}><Button variant="standardNextContained" onClick={setProgressHandler}>Следующий урок</Button></div>
                     </>) : (
                     <ResultsShowing rightAnswers={rightAnswers} totalQuestions={totalQuestions} questionsArr={questionsArr} nextUrl={nextUrl} lessonNumber={lessonNumber} />
                 )}

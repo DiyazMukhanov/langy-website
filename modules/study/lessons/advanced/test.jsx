@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useLessonMaterials } from "../../shared/hooks/useLessonMaterials";
 import { getTestMaterials } from "./shared/api/getTestMaterials";
 import Loader from "../../../shared/Loader/index";
+import { checkIfSuscriptionIsNeeded } from "./shared/utils/checkIfSubscriptionNeeded";
 
 
 export default function Test() {
@@ -21,6 +22,8 @@ export default function Test() {
    }
    const nextUrl = nextLessonUrlGenerator(currentLessonData.currentChapter, Number(lessonNumber))
 
+   const subscriptionIsNeededStatus = checkIfSuscriptionIsNeeded(lessonNumber)
+
    if (isLoading) {
       return <Loader />
    } else {
@@ -29,7 +32,7 @@ export default function Test() {
          nextUrl={nextUrl}
          lessonNumber={lessonNumber}
          currentLessonData={currentLessonData}
-         subscriptionIsNeeded={false}
+         subscriptionIsNeeded={subscriptionIsNeededStatus}
       />
    }
 

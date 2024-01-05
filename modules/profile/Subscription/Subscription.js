@@ -40,16 +40,18 @@ export default function Subscription() {
     }
   };
 
-  const goToFreeLessonsHandler = async () => {
+  const handleResetProgress = async () => {
+
     setIsLoading(true)
     try {
-      // const response = await resetProgress()
-      // userCtx.setProgressData(null)
+      const response = await resetProgress()
+      userCtx.setProgressData(null)
       router.push('/menu')
     } catch (err) {
       alert('Что-то пошло не так. Повторите попытку')
       setIsLoading(false)
     }
+
   }
 
   const subscribeHandler = async (plan) => {
@@ -64,8 +66,6 @@ export default function Subscription() {
         localStorage.setItem('days', plan?.days)
 
         router.push(response?.data?.redirectUrl)
-        // setIsLoading(false)
-        // continueHandler()
       }
 
     } catch (error) {
@@ -78,7 +78,6 @@ export default function Subscription() {
   useEffect(() => {
     if (userCtx?.userData?.isSubscribed) {
       continueHandler()
-      // setIsLoading(false)
     } else {
       setIsLoading(false)
     }
@@ -91,7 +90,7 @@ export default function Subscription() {
       <ProtectPage>
         <Header variant='blue' />
         <div className={styles.backButtonContainer}>
-          <Button variant="standardLargeContained" className={styles.backButton} onClick={goToFreeLessonsHandler}>Вернуться на пробные уроки</Button>
+          <Button variant="standardLargeContained" className={styles.backButton} onClick={handleResetProgress}>Вернуться на пробные уроки</Button>
         </div>
 
         <div className={styles.container}>

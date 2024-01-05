@@ -15,15 +15,7 @@ export default function SubscriptionCard({ userData }) {
   const formattedDate = dateObject.toLocaleDateString('ru-RU', options)
 
   const continueHandler = () => {
-    if (!userData) {
-      router.push('authorization/registration')
-    } else {
-      if (userData?.currentLesson !== 0 && userData?.currentChapter !== 'no') {
-        router.push(`/lessons/lesson${userData?.currentLesson}/${userData?.currentChapter}`)
-      } else {
-        router.push('/test/level')
-      }
-    }
+    router.push('/menu')
   };
 
   return (

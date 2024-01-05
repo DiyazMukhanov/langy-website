@@ -6,6 +6,7 @@ import EverydayEnglishNav from "../EverydayEnglishNav/index"
 import EverydayEnglishNextButtonSection from "../EverydayEnglishNextButtonSection/index"
 import { setCurrentLearningField } from "../../../shared/api/setCurrentLearningField"
 import { updateEverydayProgress } from "../api/updateEverydayProgress"
+import { checkIfSuscriptionIsNeeded } from "@/modules/study/lessons/advanced/shared/utils/checkIfSubscriptionNeeded"
 
 type Props = {
     lessonNumber: number
@@ -33,10 +34,11 @@ export default function EveryDayEnglishLayout({ lessonNumber, children, chapter 
         updateEverydayData()
     }, [lessonNumber])
 
+    const subscriptionIsNeededStatus = checkIfSuscriptionIsNeeded(lessonNumber)
 
     return <>
         <ProtectPage
-            subscriptionIsNeeded={false}
+            subscriptionIsNeeded={subscriptionIsNeededStatus}
             adminNeeded={false}
         >
             <Header variant='white' isEasyEnglish={true} />

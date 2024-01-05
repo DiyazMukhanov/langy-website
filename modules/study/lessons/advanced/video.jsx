@@ -6,6 +6,7 @@ import { nextLessonUrlGenerator } from "../shared/nextLessonUrlGenerator";
 import { useLessonMaterials } from "../../shared/hooks/useLessonMaterials";
 import { getVideoMaterials } from "./shared/api/getVideoMaterials";
 import Loader from "../../../shared/Loader/index";
+import { checkIfSuscriptionIsNeeded } from "./shared/utils/checkIfSubscriptionNeeded";
 
 export default function Video() {
    const router = useRouter()
@@ -24,6 +25,8 @@ export default function Video() {
 
    const nextUrl = nextLessonUrlGenerator(currentLessonData.currentChapter, Number(lessonNumber))
 
+   const subscriptionIsNeededStatus = checkIfSuscriptionIsNeeded(lessonNumber)
+
    if (isLoading) {
       return <Loader />
    } else {
@@ -33,7 +36,7 @@ export default function Video() {
          nextUrl={nextUrl}
          lessonNumber={lessonNumber}
          currentLessonData={currentLessonData}
-         subscriptionIsNeeded={false}
+         subscriptionIsNeeded={subscriptionIsNeededStatus}
          topic={topic}
       />
    }

@@ -5,6 +5,7 @@ import { nextLessonUrlGenerator } from "../shared/nextLessonUrlGenerator";
 import { getAudioMaterials } from "./shared/api/getAudioMaterials"
 import Loader from "../../../shared/Loader/index";
 import { useLessonMaterials } from "../../shared/hooks/useLessonMaterials";
+import { checkIfSuscriptionIsNeeded } from "./shared/utils/checkIfSubscriptionNeeded";
 
 export default function Audio() {
    const router = useRouter()
@@ -23,6 +24,8 @@ export default function Audio() {
    const audioSrc = `/audio/lesson-${lessonNumber}.mp3`
    const textTitle = audioTexts[lessonNumber]
 
+   const subscriptionIsNeededStatus = checkIfSuscriptionIsNeeded(lessonNumber)
+
    if (isLoading) {
       return <Loader />
 
@@ -35,7 +38,7 @@ export default function Audio() {
          lessonNumber={lessonNumber}
          nextUrl={nextUrl}
          currentLessonData={currentLessonData}
-         subscriptionIsNeeded={false}
+         subscriptionIsNeeded={subscriptionIsNeededStatus}
          textTitle={textTitle}
       />
    }

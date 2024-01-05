@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { getLevel } from "../utils/getLevel";
 import { writingtasks } from "../utils/titles";
 import { nextLessonUrlGenerator } from "../shared/nextLessonUrlGenerator";
+import { checkIfSuscriptionIsNeeded } from "./shared/utils/checkIfSubscriptionNeeded";
 
 export default function Writing() {
    const router = useRouter()
@@ -20,11 +21,13 @@ export default function Writing() {
 
    const nextUrl = nextLessonUrlGenerator(currentLessonData.currentChapter, Number(lessonNumber))
 
+   const subscriptionIsNeededStatus = checkIfSuscriptionIsNeeded(lessonNumber)
+
    return <WritingLessonLayout
       writingTask={writingtask}
       nextUrl={nextUrl}
       lessonNumber={lessonNumber}
       currentLessonData={currentLessonData}
-      subscriptionIsNeeded={false}
+      subscriptionIsNeeded={subscriptionIsNeededStatus}
    />
 }
