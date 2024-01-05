@@ -109,7 +109,6 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
         formattedDate = dateObject.toLocaleDateString('ru-RU', options)
     }
 
-
     if (isLoading) {
         return <Loader />
     } else {

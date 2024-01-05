@@ -74,7 +74,7 @@
     align-items: center;
     gap: 10px;
     font-weight: 600;
-    
+
 
     @include size-tablet {
         flex-wrap: wrap;
@@ -139,7 +139,7 @@
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
-    
+
     @include size-tablet {
         flex-direction: column;
     }
@@ -152,7 +152,7 @@
 
     @include size-tablet {
         gap: 5px;
-        }
+    }
 }
 
 .resultText {
@@ -172,7 +172,7 @@
         width: fit-content;
         padding-left: 5px;
         padding-right: 5px;
-        }
+    }
 }
 
 .resultWordCardWrong {
@@ -188,7 +188,7 @@
         width: fit-content;
         padding-left: 5px;
         padding-right: 5px;
-        }
+    }
 }
 
 // .description {
@@ -234,4 +234,12 @@
 
 .secondShow {
     display: flex;
+}
+
+.nextButtonInTest {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }

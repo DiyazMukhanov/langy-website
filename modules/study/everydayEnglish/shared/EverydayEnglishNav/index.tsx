@@ -36,9 +36,9 @@ export default function EverydayEnglishNav({ lessonNumber }: Props) {
                                 className={
                                     classNames(
                                         { [styles.activeLink]: router.asPath === `${item.route}` },
-                                        { [styles.shown]: lessonNumber === topic.id },
-                                        { [styles.shown]: navItemsOpened.includes(topic.id) },
-                                        styles.hidden
+                                        // { [styles.shown]: lessonNumber === topic.id },
+                                        // { [styles.shown]: navItemsOpened.includes(topic.id) },
+                                        // styles.hidden
                                     )}
                                 onClick={() => router.push(item.route)}
                             >
