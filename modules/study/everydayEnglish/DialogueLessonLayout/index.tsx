@@ -6,7 +6,9 @@ export default function DialogueLessonLayout({ data }) {
 
     return (
         <div className={styles.container}>
-            <Audioplayer audioSrc={data.src} />
+            <div className={styles.audioContainer}>
+                <Audioplayer audioSrc={data.src} />
+            </div>
             <EverydayEnglishContainer className={styles.internalLayout}>
                 {data?.dialogue.map(item => (
                     <div key={item.id}>
