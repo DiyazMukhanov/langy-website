@@ -57,12 +57,12 @@ export const nextUrlGenerator = (lessonNumber: number, chapter: string) => {
 
     let nextUrl
 
-    if (chapter === CHAPTER_5) {
+    if (chapter === CHAPTER_5 && lessonNumber !== topics.length) {
         lessonNumber = nextLessonNumberForLastChapter
+    }
 
-        if (lessonNumber === topics.length) {
-            lessonNumber = 1
-        }
+    if (chapter === CHAPTER_5 && lessonNumber === topics.length) {
+        lessonNumber = 1
     }
 
     nextUrl = `${ROUTE}/${lessonNumber}/${nextChapters[chapter]}`

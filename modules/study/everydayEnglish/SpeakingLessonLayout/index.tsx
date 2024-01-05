@@ -67,7 +67,7 @@ export default function SpeakingLessonLayout({ speakingQuestions }: Props) {
 
     return (
         <EverydayEnglishContainer className={styles.internalLayout}>
-            <h2>{getQuestion().question}</h2>
+            <h2 className={styles.questionContainer}>{getQuestion().question}</h2>
             <div className={styles.recordingBlock}>
                 {isRecording && <div onClick={stopRecordingHandler} className={styles.stopRecordingButton}>
                 </div>
