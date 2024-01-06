@@ -1,0 +1,18 @@
+@import "styles/breakpoints";
+
+.container {
+    width: 60vw;
+    margin-left: 50px;
+    border: solid var(--color-grey) 3px;
+    border-radius: 16px;
+
+    @include size-tablet {
+        margin: 0;
+        width: 100vw;
+        height: 70vh;
+        gap: 20px;
+        padding-bottom: 50px;
+        padding-top: 0;
+        border: none;
+    }
+}

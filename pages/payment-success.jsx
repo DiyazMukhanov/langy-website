@@ -28,15 +28,7 @@ export default function PaymentSuccess() {
           localStorage.setItem('paymentId', '')
           const data = await saveSubscriptionInBd(bodyData)
           if (data) {
-            if (data?.data?.data?.levelChecked === true) {
-              if (data?.data?.data?.currentLesson !== 0 && data?.data?.data?.currentChapter !== 'no') {
-                router.push(`/lessons/lesson${data?.data?.data?.currentLesson}/${data?.data?.data?.currentChapter}`)
-                setIsLoading(false)
-              } else {
-                router.push('/lessons/lesson1/video')
-                setIsLoading(false)
-              }
-            }
+            router.push('/menu')
           }
         } catch (err) {
           setError(true)

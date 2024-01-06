@@ -1,0 +1,38 @@
+@import "styles/breakpoints";
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.internalLayout {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 30px;
+
+    & p {
+        margin: 0;
+    }
+
+    @include size-tablet {
+        width: 80vw;
+        height: 60vh;
+        padding: 20px;
+    }
+}
+
+.en {
+    color: var(--color-primary);
+}
+
+.ru {
+    color: var(--color-green);
+}
+
+.audioContainer {
+    width: 90%;
+}

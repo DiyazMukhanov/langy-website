@@ -1,0 +1,53 @@
+@import "styles/breakpoints";
+
+.card {
+    border: solid var(--color-grey-100) 1px;
+    border-radius: 6px;
+    height: 327px;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+
+    & p {
+        font-weight: bold;
+    }
+
+    @include size-tablet {
+        height: auto;
+    }
+
+}
+
+.changeBtn {
+    color: var(--color-primary);
+    border: solid var(--color-primary) 1px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & p {
+        text-align: center;
+    }
+}
+
+.ru {
+    transition: all 1s ease;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.ruBtn {
+
+    transition: all 1s ease;
+    color: var(--color-white);
+    border-color: var(--color-white);
+}

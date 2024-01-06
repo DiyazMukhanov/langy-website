@@ -5,12 +5,13 @@ import styles from './BeginnerHeader.module.scss'
 import Image from 'next/image'
 import ButtonClose from '../../../../../public/images/Button-close.svg'
 import SandwichBlack from '../../../../../public/images/Sandwich-black.svg'
-import Modal from '@/modules/landing/shared/Modal'
+import Modal from '@/modules/shared/Modal/Modal'
 import { useState, useContext } from 'react'
 import { useRouter } from 'next/router'
 import { UserContext } from '@/store/userContext'
 import { userLogout } from '@/modules/shared/api/userLogout'
 import BeginnerSidebar from '../BeginnerSideBar'
+import { Button } from '../../../../../ui-kit/Button/index'
 
 export default function BeginnerHeader({ variant, lessonsSummary, beginnerProgress }) {
   const [isModalOpened, setIsModalOpened] = useState(false)
@@ -125,9 +126,7 @@ export default function BeginnerHeader({ variant, lessonsSummary, beginnerProgre
                   <div className={styles.modalLogos} onClick={() => router.push('/profile')}>
                     <p className={styles.goToProfile}>Личный кабинет</p>
                   </div>
-                  <div className={styles.modalLogos} onClick={() => router.push('/menu')}>
-                    <p className={styles.goToProfile}>Меню</p>
-                  </div>
+                  <Button variant='menu' onClick={() => router.push('/menu')}>Меню</Button>
                 </div>
               </div>
               <Image

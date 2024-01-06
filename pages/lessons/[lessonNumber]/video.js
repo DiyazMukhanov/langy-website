@@ -1,0 +1,1 @@
+export { default } from '../../../modules/study/lessons/advanced/video'

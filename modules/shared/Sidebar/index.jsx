@@ -19,7 +19,7 @@ export default function Sidebar({ lessonsSummary, isBeginner }) {
         if (found) break
     }
 
-    const navigationHandler = (lessonNumber, lesson, level) => {
+    const navigationHandler = (lessonNumber, lesson) => {
         const lessonsIndexes = {
             gr: 'video',
             au: 'audio',
@@ -29,7 +29,7 @@ export default function Sidebar({ lessonsSummary, isBeginner }) {
         const chapterName = lessonsIndexes[lesson.chapterCode]
 
         if (!isBeginner) {
-            router.push(`/lessons/lesson${lessonNumber}/${chapterName}`)
+            router.push(`/lessons/${lessonNumber}/${chapterName}`)
         } else {
             router.push(`/lessons/beginner/lesson${lessonNumber}/${chapterName}`)
         }

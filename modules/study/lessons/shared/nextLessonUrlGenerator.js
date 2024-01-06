@@ -10,9 +10,9 @@ export const nextLessonUrlGenerator = (chapterName, lessonNumber) => {
         if (lessonNumber === 24) {
             lessonNumber = 1
         } else {
-        lessonNumber++
+            lessonNumber++
         }
     }
 
-    return `/lessons/lesson${lessonNumber}/${nextChapter[chapterName]}`
+    return `/lessons/${lessonNumber}/${nextChapter[chapterName]}`
 }
