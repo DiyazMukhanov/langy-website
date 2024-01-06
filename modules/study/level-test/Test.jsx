@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 import classNames from "classnames"
 import Result from "./Result"
 import ProtectPage from "@/modules/shared/ProtectPage"
-import { levelQuestions as questions} from "../shared/levelQuestions"
+import { levelQuestions as questions } from "../shared/levelQuestions"
 
 export default function Test() {
 
@@ -14,18 +14,18 @@ export default function Test() {
     const questionsLength = questions.reduce((total, item) => {
         if (item.level === 'beginner') {
             total[0].push(item)
-          }
+        }
         if (item.level === 'pre-intermediate') {
             total[1].push(item)
-          }
+        }
         if (item.level === 'intermediate') {
             total[2].push(item)
-          }
+        }
         if (item.level === 'advanced') {
             total[3].push(item)
-          }
+        }
         return total
-        }, [[], [], [], []])
+    }, [[], [], [], []])
 
     const [currentQuestion, setCurrentQuestion] = useState(1)
     const [progress, setProgress] = useState(initalProgress)
@@ -46,25 +46,25 @@ export default function Test() {
         const rightsLength = rightAnswerBlocks.reduce((result, item) => {
             if (item.level === 'beginner') {
                 result[0].push(item)
-              }
+            }
             if (item.level === 'pre-intermediate') {
                 result[1].push(item)
-              }
+            }
             if (item.level === 'intermediate') {
                 result[2].push(item)
-              }
+            }
             if (item.level === 'advanced') {
                 result[3].push(item)
-              }
+            }
             return result
-           }, [[], [], [], []])
-    
+        }, [[], [], [], []])
+
         setNumberOfRightAnswers([
-                  rightsLength[0].length * 100 /questionsLength[0].length,
-                  rightsLength[1].length * 100 /questionsLength[1].length,
-                  rightsLength[2].length * 100 /questionsLength[2].length,
-                  rightsLength[3].length * 100 /questionsLength[3].length
-                ])
+            rightsLength[0].length * 100 / questionsLength[0].length,
+            rightsLength[1].length * 100 / questionsLength[1].length,
+            rightsLength[2].length * 100 / questionsLength[2].length,
+            rightsLength[3].length * 100 / questionsLength[3].length
+        ])
 
         if (answerResults.length === questionsTotal) {
             setResultIsShowing(true)
@@ -96,7 +96,7 @@ export default function Test() {
             }
         }
     }
-    
+
     if (!resultIsShowing) {
         return (
             <ProtectPage>
@@ -147,10 +147,9 @@ export default function Test() {
                                 ))}
                             </div>
                         </div>
-
-                        <div className={styles.bottom}>
-                            <Button variant='standardLargeOutlined' onClick={nextQuestionHandler}>Далее</Button>
-                        </div>
+                    </div>
+                    <div className={styles.bottom}>
+                        <Button variant='standardLargeOutlined' onClick={nextQuestionHandler}>Далее</Button>
                     </div>
                 </div>
             </ProtectPage>
