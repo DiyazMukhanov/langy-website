@@ -73,7 +73,7 @@ export default function BeginnerLessonLayout({
     const exitBeginnerHandler = async () => {
         try {
             const response = await exitBeginnerProgress()
-            router.push('/lessons/lesson1/video')
+            router.push('/menu')
         } catch (err) {
             console.log(err)
         }
