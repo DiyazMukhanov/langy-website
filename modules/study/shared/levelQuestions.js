@@ -1261,7 +1261,7 @@ export const levelQuestions = [
             {
                 id: 1,
                 answer: "were",
-                isRight: false
+                isRight: true
             },
             {
                 id: 2,
@@ -1271,7 +1271,7 @@ export const levelQuestions = [
             {
                 id: 3,
                 answer: "had been",
-                isRight: true
+                isRight: false
             }
         ]
     },
