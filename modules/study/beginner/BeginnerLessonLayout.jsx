@@ -178,9 +178,6 @@ export default function BeginnerLessonLayout({
                                 Далее
                             </Button>
                         </div>
-
-
-                        {/* {children} */}
                     </div>
                 </div>
 
