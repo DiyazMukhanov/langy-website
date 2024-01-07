@@ -21,7 +21,13 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true
   },
   "include": [
     "next-env.d.ts",
@@ -30,7 +36,8 @@
     "pages/lessons/easyEnglish/dialogue.js",
     "modules/shared/ProtectPage/index.jsx",
     "modules/shared/Audioplayer/index.jsx",
-    "modules/shared/api/getEverydayProgress.js"
+    "modules/shared/api/getEverydayProgress.js",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
