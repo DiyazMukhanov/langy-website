@@ -33,7 +33,6 @@ import Loader from '@/modules/shared/Loader'
 import ChapterCard from './shared/ChapterCard'
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { getEverydayProgress } from '../shared/api/getEverydayProgress';
-import InstallButton from './shared/InstallButton/index';
 
 export default function Landing() {
   const [frequentOpenedId, setFrequentOpenedId] = useState(null)
@@ -43,6 +42,7 @@ export default function Landing() {
   const [isLoading, setIsLoading] = useState(true)
   const [currentBeginnerLesson, setCurrentBeginnerLesson] = useState(undefined)
   const [everydayProgress, setEverydayProgress] = useState(null)
+  const [installPromptEvent, setInstallPromptEvent] = useState(null);
 
   useEffect(() => {
 
@@ -67,7 +67,32 @@ export default function Landing() {
     }
 
     fetchUser()
+
+    const handleBeforeInstallPrompt = (event) => {
+      event.preventDefault();
+      setInstallPromptEvent(event);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
   }, [])
+
+  const installApp = () => {
+    if (installPromptEvent) {
+      installPromptEvent.prompt();
+      installPromptEvent.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        } else {
+          console.log('User dismissed the install prompt');
+        }
+        setInstallPromptEvent(null);
+      });
+    }
+  };
 
   const frequentQuestions = [
     {
@@ -212,7 +237,14 @@ export default function Landing() {
                 className={styles.logo}
               />
             </div>
-            <InstallButton />
+            <button
+              id="install-button"
+              className={styles.installBtn}
+              style={{ display: installPromptEvent ? 'block' : 'none' }}
+              onClick={installApp}
+            >
+              Установить приложение
+            </button>
             {!userCtx.userData ? (<div className={styles.topButtons}>
               <Typography element='p' className={styles.enterBtn} onClick={loginHandler}>Войти</Typography>
               <Button variant='outlined' className={styles.registrationBtn} onClick={registrationHandler}>Регистрация</Button>
