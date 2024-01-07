@@ -32,7 +32,7 @@ import { UserContext } from '@/store/userContext'
 import Loader from '@/modules/shared/Loader'
 import ChapterCard from './shared/ChapterCard'
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
-import { getEverydayProgress } from '../shared/api/getEverydayProgress'
+import { getEverydayProgress } from '../shared/api/getEverydayProgress';
 
 export default function Landing() {
   const [frequentOpenedId, setFrequentOpenedId] = useState(null)
@@ -42,6 +42,7 @@ export default function Landing() {
   const [isLoading, setIsLoading] = useState(true)
   const [currentBeginnerLesson, setCurrentBeginnerLesson] = useState(undefined)
   const [everydayProgress, setEverydayProgress] = useState(null)
+  const [installPromptEvent, setInstallPromptEvent] = useState(null);
 
   useEffect(() => {
 
@@ -67,7 +68,31 @@ export default function Landing() {
 
     fetchUser()
 
+    const handleBeforeInstallPrompt = (event) => {
+      event.preventDefault();
+      setInstallPromptEvent(event);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
   }, [])
+
+  const installApp = () => {
+    if (installPromptEvent) {
+      installPromptEvent.prompt();
+      installPromptEvent.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        } else {
+          console.log('User dismissed the install prompt');
+        }
+        setInstallPromptEvent(null);
+      });
+    }
+  };
 
   const frequentQuestions = [
     {
@@ -150,326 +175,335 @@ export default function Landing() {
     return <Loader />
   } else {
     return (
+      <>
 
-      <div className={styles.overlay}>
-        <Modal isOpen={isModalOpened} onClose={modalCloseHandler}>
-          <div className={styles.modalContainer}>
-            <div className={styles.modalLogos}>
+        <div className={styles.overlay}>
+          <Modal isOpen={isModalOpened} onClose={modalCloseHandler}>
+            <div className={styles.modalContainer}>
+              <div className={styles.modalLogos}>
+                <Image
+                  priority
+                  src={LogoBlue}
+                  height={38}
+                  width={80}
+                />
+                <Image
+                  priority
+                  src={LogoBlueBottom}
+                />
+              </div>
               <Image
                 priority
-                src={LogoBlue}
-                height={38}
-                width={80}
+                src={ButtonClose}
+                onClick={modalCloseHandler}
               />
+            </div>
+            <div className={styles.serviceModal} onClick={() => router.push('/service')}>
               <Image
                 priority
-                src={LogoBlueBottom}
+                src={ServiceBlue}
               />
+              <p>Служба поддержки</p>
             </div>
-            <Image
-              priority
-              src={ButtonClose}
-              onClick={modalCloseHandler}
-            />
-          </div>
-          <div className={styles.serviceModal} onClick={() => router.push('/service')}>
-            <Image
-              priority
-              src={ServiceBlue}
-            />
-            <p>Служба поддержки</p>
-          </div>
-          {userCtx.userData && (
-            <div className={styles.loggedInNavContainer}>
-              <p className={styles.profileLink} onClick={() => router.push('/profile')}>Личный кабинет</p>
-              <p className={styles.profileLink} onClick={() => router.push('/menu')}>Меню</p>
-            </div>
-          )}
-
-
-          {!userCtx.userData ?
-            (<div className={styles.modalButtons}>
-              <Button variant='standardLargeContained' onClick={continueHandler}>Регистрация</Button>
-              <Button variant='standardLargeOutlined' onClick={loginHandler}>Войти</Button>
-            </div>) : (
-              <div className={styles.modalButtons}>
-                <Button variant='standardLargeContained' onClick={continueHandler}>Продолжить</Button>
-                <Button variant='standardLargeOutlined' onClick={logOutHandler}>Выйти</Button>
+            {userCtx.userData && (
+              <div className={styles.loggedInNavContainer}>
+                <p className={styles.profileLink} onClick={() => router.push('/profile')}>Личный кабинет</p>
+                <p className={styles.profileLink} onClick={() => router.push('/menu')}>Меню</p>
               </div>
-            )
-          }
+            )}
 
-        </Modal>
 
-        <header className={styles.header} id='top'>
-          <div>
-            <Image
-              priority
-              src={Logo}
-              height={44}
-              width={101}
-              className={styles.logo}
-            />
-          </div>
-
-          {!userCtx.userData ? (<div className={styles.topButtons}>
-            <Typography element='p' className={styles.enterBtn} onClick={loginHandler}>Войти</Typography>
-            <Button variant='outlined' className={styles.registrationBtn} onClick={registrationHandler}>Регистрация</Button>
-          </div>) : (
-            <div className={styles.topButtons}>
-              <Typography element='p' className={styles.enterBtn} onClick={() => router.push('/profile')}>{userCtx?.userData?.email}</Typography>
-              <Button variant='outlined' className={styles.registrationBtn} onClick={logOutHandler}>Выйти</Button>
-            </div>
-          )}
-
-          <Image
-            priority
-            src={Sandwich}
-            className={styles.sandwich}
-            onClick={modalOpenHandler}
-          />
-
-        </header>
-
-        <main className={styles.main}>
-          <Typography element='h1' className={styles.mainHeading}>Aнглийский язык по современной методике</Typography>
-          <div className={styles.headerBottomBlock}>
-            {!userCtx.userData ? (<div className={styles.btnBlock}>
-              <Button variant='contained' className={styles.startBtn} onClick={continueHandler}>Начать обучение</Button>
-            </div>) : <div className={styles.btnBlock}>
-              <Button variant='contained' className={styles.startBtn} onClick={continueHandler}>Продолжить обучение</Button>
-              {!userCtx.userData && (<p className={styles.haveAccountBtn} onClick={() => router.push('/authorization/login')}>У меня уже есть аккаунт</p>)}
-
-            </div>}
-          </div>
-        </main>
-
-        <div className={styles.getSection}>
-          <h2>УЖЕ ЧЕРЕЗ 3 МЕСЯЦА ВЫ</h2>
-          <div className={styles.advantages}>
-            <div data-aos='fade-up'><Advantage text='НАУЧИТЕСЬ ПОНИМАТЬ РАЗГОВОРНУЮ РЕЧЬ' color='#7F5DC1' /></div>
-            <div data-aos='fade-up'><Advantage text='ПРИОБРЕТЕТЕ НАВЫКИ ОБЩЕНИЯ' color='#FF69B4' /></div>
-            <div data-aos='fade-up'><Advantage text='БЫСТРО ПОПОЛНИТЕ СВОЙ СЛОВАРНЫЙ ЗАПАС' color='#1676D8' /></div>
-            <div data-aos='fade-up'><Advantage text='ПРИОБРЕТЕТЕ НАВЫКИ ПИСЬМА' color='#E28731' /></div>
-          </div>
-        </div>
-
-        <section className={styles.middleSection}>
-          <ChapterCard chapterTitle='Аудио' imageSrc={Listening} color='green' />
-          <ChapterCard chapterTitle='Грамматика' imageSrc={Grammar} color='blue' />
-          <ChapterCard chapterTitle='Чтение' imageSrc={Reading} color='orange' />
-          <ChapterCard chapterTitle='Письмо' imageSrc={Writing} color='purple' />
-
-        </section>
-        <section className={styles.advantagesSection}>
-          <div className={styles.advantagesHeadingContainer}>
-            <Typography size='small' element='h2'>НАШИ ПРЕИМУЩЕСТВА</Typography>
-          </div>
-          <div className={styles.advantagesMain}>
-            <div className={styles.advantageCards}>
-              <div data-aos='fade-right'>
-                <AdvantageCard
-                  iconType='clock'
-                  textLineOne='Свободный график'
-                />
-              </div>
-              <div data-aos='fade-right'>
-                <AdvantageCard
-                  iconType='tick'
-                  textLineOne='Экономия'
-                />
-              </div>
-              <div data-aos='fade-right'>
-                <AdvantageCard
-                  iconType='pc'
-                  textLineOne='Легко и весело'
-                />
-              </div>
-            </div>
             {!userCtx.userData ?
-              (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Пробуй!</Button>) :
-              (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Продолжить обучение</Button>)
+              (<div className={styles.modalButtons}>
+                <Button variant='standardLargeContained' onClick={continueHandler}>Регистрация</Button>
+                <Button variant='standardLargeOutlined' onClick={loginHandler}>Войти</Button>
+              </div>) : (
+                <div className={styles.modalButtons}>
+                  <Button variant='standardLargeContained' onClick={continueHandler}>Продолжить</Button>
+                  <Button variant='standardLargeOutlined' onClick={logOutHandler}>Выйти</Button>
+                </div>
+              )
             }
 
-          </div>
-        </section>
+          </Modal>
 
-        <section className={styles.howWorks}>
-          <div className={styles.howHeading}>
-            <h2>ОБУЧАЯСЬ У НАС, ВЫ ПОЛУЧИТЕ</h2>
-          </div>
+          <header className={styles.header} id='top'>
+            <div>
+              <Image
+                priority
+                src={Logo}
+                height={44}
+                width={101}
+                className={styles.logo}
+              />
+            </div>
+            <button
+              id="install-button"
+              className={styles.installBtn}
+              style={{ display: installPromptEvent ? 'block' : 'none' }}
+              onClick={installApp}
+            >
+              Установить приложение
+            </button>
+            {!userCtx.userData ? (<div className={styles.topButtons}>
+              <Typography element='p' className={styles.enterBtn} onClick={loginHandler}>Войти</Typography>
+              <Button variant='outlined' className={styles.registrationBtn} onClick={registrationHandler}>Регистрация</Button>
+            </div>) : (
+              <div className={styles.topButtons}>
+                <Typography element='p' className={styles.enterBtn} onClick={() => router.push('/profile')}>{userCtx?.userData?.email}</Typography>
+                <Button variant='outlined' className={styles.registrationBtn} onClick={logOutHandler}>Выйти</Button>
+              </div>
+            )}
 
-          <div className={styles.whatGetContainer}>
-            <HowCard
-              number='1'
-              text='МЕНТАЛЬНЫЙ РОСТ'
-              color='blue'
-            />
-            <HowCard
-              number='2'
-              text='СВОБОДУ КОММУНИКАЦИИ ПО МИРУ'
-              color='orange'
-            />
-
-            <HowCard
-              number='3'
-              text='САМОУТВЕРЖДЕНИЕ'
-              color='purple'
-            />
-
-            <HowCard
-              number='4'
-              text='НЕЗАВИСИМОСТЬ'
-              color='blue'
-            />
-
-            <HowCard
-              number='5'
-              text='УСПЕХ В БИЗНЕСЕ И ИНВЕСТИЦИЯХ'
-              color='orange'
-            />
-
-            <HowCard
-              number='6'
-              text='САМОРАЗВИТИЕ'
-              color='purple'
+            <Image
+              priority
+              src={Sandwich}
+              className={styles.sandwich}
+              onClick={modalOpenHandler}
             />
 
-            <HowCard
-              number='7'
-              text='ВОЗМОЖНОСТЬ ИММИГРАЦИИ'
-              color='blue'
-            />
+          </header>
 
-            <HowCard
-              number='8'
-              text='ЦЕННОСТЬ НА РЫНКЕ ТРУДА'
-              color='orange'
-            />
-          </div>
+          <main className={styles.main}>
+            <Typography element='h1' className={styles.mainHeading}>Aнглийский язык по современной методике</Typography>
+            <div className={styles.headerBottomBlock}>
+              {!userCtx.userData ? (<div className={styles.btnBlock}>
+                <Button variant='contained' className={styles.startBtn} onClick={continueHandler}>Начать обучение</Button>
+              </div>) : <div className={styles.btnBlock}>
+                <Button variant='contained' className={styles.startBtn} onClick={continueHandler}>Продолжить обучение</Button>
+                {!userCtx.userData && (<p className={styles.haveAccountBtn} onClick={() => router.push('/authorization/login')}>У меня уже есть аккаунт</p>)}
 
-        </section>
+              </div>}
+            </div>
+          </main>
 
-        <section className={styles.cases}>
-          <h2>Наши кейсы</h2>
-          <div className={styles.caseContainer}>
-            <p className={classNames(styles.caseName, styles.orangeCase)}>Данияр</p>
-            <p className={styles.myCase}>"Благодаря английскому языку, я успешно прошел собеседование и устроился на работу в иностранную компанию за рубежом, где я отработал 4 года, получил международный опыт, завел много друзей. Сейчас работаю в ТШО старшим инженером электриком."</p>
+          <div className={styles.getSection}>
+            <h2>УЖЕ ЧЕРЕЗ 3 МЕСЯЦА ВЫ</h2>
+            <div className={styles.advantages}>
+              <div data-aos='fade-up'><Advantage text='НАУЧИТЕСЬ ПОНИМАТЬ РАЗГОВОРНУЮ РЕЧЬ' color='#7F5DC1' /></div>
+              <div data-aos='fade-up'><Advantage text='ПРИОБРЕТЕТЕ НАВЫКИ ОБЩЕНИЯ' color='#FF69B4' /></div>
+              <div data-aos='fade-up'><Advantage text='БЫСТРО ПОПОЛНИТЕ СВОЙ СЛОВАРНЫЙ ЗАПАС' color='#1676D8' /></div>
+              <div data-aos='fade-up'><Advantage text='ПРИОБРЕТЕТЕ НАВЫКИ ПИСЬМА' color='#E28731' /></div>
+            </div>
           </div>
 
-          <div className={styles.caseContainer}>
-            <p className={classNames(styles.caseName, styles.blueCase)}>Аслан</p>
-            <p className={styles.myCase}>"Английский мне помог изучить язык программирования и возможность работать онлайн по всему миру. На данный момент работаю в одном американском стартапе удаленно."</p>
-          </div>
+          <section className={styles.middleSection}>
+            <ChapterCard chapterTitle='Аудио' imageSrc={Listening} color='green' />
+            <ChapterCard chapterTitle='Грамматика' imageSrc={Grammar} color='blue' />
+            <ChapterCard chapterTitle='Чтение' imageSrc={Reading} color='orange' />
+            <ChapterCard chapterTitle='Письмо' imageSrc={Writing} color='purple' />
 
-          <div className={styles.caseContainer}>
-            <p className={classNames(styles.caseName, styles.purpleCase)}>Альбина</p>
-            <p className={styles.myCase}>"Я выучила английский и теперь сама обучаю этому языку других людей, получаю от этого удовольствие и еще на этом зарабатываю. А мои студенты получают высокие баллы и учатся в зарубежных вузах."</p>
-          </div>
-        </section>
-
-        <section className={styles.frequentQuestionsSection}>
-          <div className={styles.questionsHeading}>
-            <Typography size='small' element='h2'>Часто задаваемые вопросы </Typography>
-          </div>
-          <div className={styles.questionsContainer}>
-            {frequentQuestions.map(item => (
-              <div className={styles.questionBlock} key={item.id}>
-                <div className={styles.questionWithPlus}>
-                  <p className={styles.question}>{item.question}</p>
-
-                  <Image
-                    priority
-                    src={frequentOpenedId === item.id ? X : Plus}
-                    className={styles.questionButton}
-                    onClick={() => questionHandler(item.id)}
+          </section>
+          <section className={styles.advantagesSection}>
+            <div className={styles.advantagesHeadingContainer}>
+              <Typography size='small' element='h2'>НАШИ ПРЕИМУЩЕСТВА</Typography>
+            </div>
+            <div className={styles.advantagesMain}>
+              <div className={styles.advantageCards}>
+                <div data-aos='fade-right'>
+                  <AdvantageCard
+                    iconType='clock'
+                    textLineOne='Свободный график'
                   />
                 </div>
-                {frequentOpenedId === item.id && (
-                  <p className={styles.answer}>{item.answer}</p>
-                )}
+                <div data-aos='fade-right'>
+                  <AdvantageCard
+                    iconType='tick'
+                    textLineOne='Экономия'
+                  />
+                </div>
+                <div data-aos='fade-right'>
+                  <AdvantageCard
+                    iconType='pc'
+                    textLineOne='Легко и весело'
+                  />
+                </div>
               </div>
-            ))}
+              {!userCtx.userData ?
+                (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Пробуй!</Button>) :
+                (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Продолжить обучение</Button>)
+              }
+
+            </div>
+          </section>
+
+          <section className={styles.howWorks}>
+            <div className={styles.howHeading}>
+              <h2>ОБУЧАЯСЬ У НАС, ВЫ ПОЛУЧИТЕ</h2>
+            </div>
+
+            <div className={styles.whatGetContainer}>
+              <HowCard
+                number='1'
+                text='МЕНТАЛЬНЫЙ РОСТ'
+                color='blue'
+              />
+              <HowCard
+                number='2'
+                text='СВОБОДУ КОММУНИКАЦИИ ПО МИРУ'
+                color='orange'
+              />
+
+              <HowCard
+                number='3'
+                text='САМОУТВЕРЖДЕНИЕ'
+                color='purple'
+              />
+
+              <HowCard
+                number='4'
+                text='НЕЗАВИСИМОСТЬ'
+                color='blue'
+              />
+
+              <HowCard
+                number='5'
+                text='УСПЕХ В БИЗНЕСЕ И ИНВЕСТИЦИЯХ'
+                color='orange'
+              />
+
+              <HowCard
+                number='6'
+                text='САМОРАЗВИТИЕ'
+                color='purple'
+              />
+
+              <HowCard
+                number='7'
+                text='ВОЗМОЖНОСТЬ ИММИГРАЦИИ'
+                color='blue'
+              />
+
+              <HowCard
+                number='8'
+                text='ЦЕННОСТЬ НА РЫНКЕ ТРУДА'
+                color='orange'
+              />
+            </div>
+
+          </section>
+
+          <section className={styles.cases}>
+            <h2>Наши кейсы</h2>
+            <div className={styles.caseContainer}>
+              <p className={classNames(styles.caseName, styles.orangeCase)}>Данияр</p>
+              <p className={styles.myCase}>"Благодаря английскому языку, я успешно прошел собеседование и устроился на работу в иностранную компанию за рубежом, где я отработал 4 года, получил международный опыт, завел много друзей. Сейчас работаю в ТШО старшим инженером электриком."</p>
+            </div>
+
+            <div className={styles.caseContainer}>
+              <p className={classNames(styles.caseName, styles.blueCase)}>Аслан</p>
+              <p className={styles.myCase}>"Английский мне помог изучить язык программирования и возможность работать онлайн по всему миру. На данный момент работаю в одном американском стартапе удаленно."</p>
+            </div>
+
+            <div className={styles.caseContainer}>
+              <p className={classNames(styles.caseName, styles.purpleCase)}>Альбина</p>
+              <p className={styles.myCase}>"Я выучила английский и теперь сама обучаю этому языку других людей, получаю от этого удовольствие и еще на этом зарабатываю. А мои студенты получают высокие баллы и учатся в зарубежных вузах."</p>
+            </div>
+          </section>
+
+          <section className={styles.frequentQuestionsSection}>
+            <div className={styles.questionsHeading}>
+              <Typography size='small' element='h2'>Часто задаваемые вопросы </Typography>
+            </div>
+            <div className={styles.questionsContainer}>
+              {frequentQuestions.map(item => (
+                <div className={styles.questionBlock} key={item.id}>
+                  <div className={styles.questionWithPlus}>
+                    <p className={styles.question}>{item.question}</p>
+
+                    <Image
+                      priority
+                      src={frequentOpenedId === item.id ? X : Plus}
+                      className={styles.questionButton}
+                      onClick={() => questionHandler(item.id)}
+                    />
+                  </div>
+                  {frequentOpenedId === item.id && (
+                    <p className={styles.answer}>{item.answer}</p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className={styles.whyContainer}>
+            <h2>СОВЕТЫ ПО ИЗУЧЕНИЮ АНГЛИЙСКОГО</h2>
+            <p>Добавьте английский в свою повседневную жизнь. Установите английский язык на свой телефон, компьютер и магнитолу в автомобиле. </p>
+            <p>Через некоторое время ваше подсознание начнет свободно воспринимать английский язык на ваших гаджетах. </p>
+            <p>Также старайтесь читать много коротких и легких текстов, так как это очень помогает запоминать новые слова и правила грамматики автоматически.</p>
+          </section>
+
+          <section className={classNames(styles.whyContainer, styles.forgetContainer)}>
+            <p className={styles.forget}>Забудьте о старых учебниках и занудных уроках. Мы создали уникальную систему обучения, которая адаптируется под ваши потребности и уровень владения языком.</p>
+          </section>
+
+          <div className={styles.doBtn}>
+            {!userCtx.userData ?
+              (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Действуй!</Button>) :
+              (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Продолжить</Button>)
+            }
           </div>
-        </section>
 
-        <section className={styles.whyContainer}>
-          <h2>СОВЕТЫ ПО ИЗУЧЕНИЮ АНГЛИЙСКОГО</h2>
-          <p>Добавьте английский в свою повседневную жизнь. Установите английский язык на свой телефон, компьютер и магнитолу в автомобиле. </p>
-          <p>Через некоторое время ваше подсознание начнет свободно воспринимать английский язык на ваших гаджетах. </p>
-          <p>Также старайтесь читать много коротких и легких текстов, так как это очень помогает запоминать новые слова и правила грамматики автоматически.</p>
-        </section>
+          <div className={styles.contactsNav}>
+            <a
+              href='https://instagram.com/langy.su?igshid=MzRlODBiNWFlZA=='
+              target="_blank"
+            >
+              <div className={styles.instIcon}>
+                <FaInstagram />
+              </div>
+            </a>
 
-        <section className={classNames(styles.whyContainer, styles.forgetContainer)}>
-          <p className={styles.forget}>Забудьте о старых учебниках и занудных уроках. Мы создали уникальную систему обучения, которая адаптируется под ваши потребности и уровень владения языком.</p>
-        </section>
-
-        <div className={styles.doBtn}>
-          {!userCtx.userData ?
-            (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Действуй!</Button>) :
-            (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Продолжить</Button>)
-          }
-        </div>
-
-        <div className={styles.contactsNav}>
-          <a
-            href='https://instagram.com/langy.su?igshid=MzRlODBiNWFlZA=='
-            target="_blank"
-          >
-            <div className={styles.instIcon}>
-              <FaInstagram />
-            </div>
-          </a>
-
-          <a
-            href={`https://api.whatsapp.com/send?phone=+77078805125`}
-            target="_blank"
-          >
-            <div className={styles.whatsIcon}>
-              <FaWhatsapp />
-            </div>
-          </a>
-        </div>
-
-        <footer className={styles.footer}>
-          <div className={styles.footerTop}>
-            <Image
-              priority
-              src={Logo}
-              height={44}
-              width={101}
-            />
-            <div className={styles.service}>
-              <Image
-                priority
-                src={Service}
-              />
-              <p onClick={() => router.push('/service')}>Служба поддержки</p>
-            </div>
-
-
-            <a href='#top'>
-              <Image
-                priority
-                src={Up}
-                className={styles.up}
-              />
+            <a
+              href={`https://api.whatsapp.com/send?phone=+77078805125`}
+              target="_blank"
+            >
+              <div className={styles.whatsIcon}>
+                <FaWhatsapp />
+              </div>
             </a>
           </div>
-          <div className={styles.footerBottom}>
-            <p onClick={() => router.push('/agreement')}>Публичный договор-оферта</p>
-            <p onClick={() => router.push('/confindentiality')}>Политика конфиденциальности</p>
-            <p onClick={() => router.push('/procedure')}>Описание процедуры оплаты</p>
-            <p>email: admin@langy.su контактный телефон: +7 707 880 51 25</p>
-            <p>ИП Куанышева</p>
-            <Image
-              priority
-              src={Visa}
-              className={styles.visa}
-            />
-          </div>
-        </footer>
-      </div>
+
+          <footer className={styles.footer}>
+            <div className={styles.footerTop}>
+              <Image
+                priority
+                src={Logo}
+                height={44}
+                width={101}
+              />
+              <div className={styles.service}>
+                <Image
+                  priority
+                  src={Service}
+                />
+                <p onClick={() => router.push('/service')}>Служба поддержки</p>
+              </div>
+
+
+              <a href='#top'>
+                <Image
+                  priority
+                  src={Up}
+                  className={styles.up}
+                />
+              </a>
+            </div>
+            <div className={styles.footerBottom}>
+              <p onClick={() => router.push('/agreement')}>Публичный договор-оферта</p>
+              <p onClick={() => router.push('/confindentiality')}>Политика конфиденциальности</p>
+              <p onClick={() => router.push('/procedure')}>Описание процедуры оплаты</p>
+              <p>email: admin@langy.su контактный телефон: +7 707 880 51 25</p>
+              <p>ИП Куанышева</p>
+              <Image
+                priority
+                src={Visa}
+                className={styles.visa}
+              />
+            </div>
+          </footer>
+        </div>
+      </>
     )
   }
 }
