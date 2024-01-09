@@ -32,11 +32,7 @@ export default function Subscription() {
     if (!userCtx.userData) {
       router.push('authorization/registration')
     } else {
-      if (userCtx?.userData?.currentLesson !== 0 && userCtx?.userData?.currentChapter !== 'no') {
-        router.push(`/lessons/lesson${userCtx?.userData?.currentLesson}/${userCtx?.userData?.currentChapter}`)
-      } else {
-        router.push('/test/level')
-      }
+      router.push('/menu')
     }
   };
 
