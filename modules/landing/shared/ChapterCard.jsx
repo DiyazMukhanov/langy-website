@@ -1,6 +1,7 @@
 import styles from './ChapterCard.module.scss';
 import Image from 'next/image';
 import classNames from 'classnames';
+import { useRouter } from "next/router"
 
 export default function ChapterCard({ imageSrc, chapterTitle, color }) {
     const cardColorStyles = {
@@ -10,11 +11,16 @@ export default function ChapterCard({ imageSrc, chapterTitle, color }) {
         purple: styles.purple
     }
 
+    const router = useRouter()
+
     return (
-        <div className={classNames(
-            styles.container,
-            cardColorStyles[color]
-        )}>
+        <div
+            className={classNames(
+                styles.container,
+                cardColorStyles[color]
+            )}
+            onClick={() => router.push('/menu')}
+        >
             <div className={styles.chapterTitle}>{chapterTitle}</div>
             <Image
                 priority
