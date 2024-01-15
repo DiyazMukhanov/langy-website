@@ -277,7 +277,7 @@ export default function Landing() {
             </div>
           </main>
 
-          <div className={styles.getSection}>
+          {/* <div className={styles.getSection}>
             <h2>УЖЕ ЧЕРЕЗ 3 МЕСЯЦА ВЫ</h2>
             <div className={styles.advantages}>
               <div data-aos='fade-up'><Advantage text='НАУЧИТЕСЬ ПОНИМАТЬ РАЗГОВОРНУЮ РЕЧЬ' color='#7F5DC1' /></div>
@@ -285,14 +285,13 @@ export default function Landing() {
               <div data-aos='fade-up'><Advantage text='БЫСТРО ПОПОЛНИТЕ СВОЙ СЛОВАРНЫЙ ЗАПАС' color='#1676D8' /></div>
               <div data-aos='fade-up'><Advantage text='ПРИОБРЕТЕТЕ НАВЫКИ ПИСЬМА' color='#E28731' /></div>
             </div>
-          </div>
+          </div> */}
 
           <section className={styles.middleSection}>
             <ChapterCard chapterTitle='Аудио' imageSrc={Listening} color='green' />
             <ChapterCard chapterTitle='Грамматика' imageSrc={Grammar} color='blue' />
             <ChapterCard chapterTitle='Чтение' imageSrc={Reading} color='orange' />
             <ChapterCard chapterTitle='Письмо' imageSrc={Writing} color='purple' />
-
           </section>
           <section className={styles.advantagesSection}>
             <div className={styles.advantagesHeadingContainer}>
@@ -383,7 +382,7 @@ export default function Landing() {
 
           </section>
 
-          <section className={styles.cases}>
+          {/* <section className={styles.cases}>
             <h2>Наши кейсы</h2>
             <div className={styles.caseContainer}>
               <p className={classNames(styles.caseName, styles.orangeCase)}>Данияр</p>
@@ -399,7 +398,7 @@ export default function Landing() {
               <p className={classNames(styles.caseName, styles.purpleCase)}>Альбина</p>
               <p className={styles.myCase}>"Я выучила английский и теперь сама обучаю этому языку других людей, получаю от этого удовольствие и еще на этом зарабатываю. А мои студенты получают высокие баллы и учатся в зарубежных вузах."</p>
             </div>
-          </section>
+          </section> */}
 
           <section className={styles.frequentQuestionsSection}>
             <div className={styles.questionsHeading}>
@@ -426,12 +425,12 @@ export default function Landing() {
             </div>
           </section>
 
-          <section className={styles.whyContainer}>
+          {/* <section className={styles.whyContainer}>
             <h2>СОВЕТЫ ПО ИЗУЧЕНИЮ АНГЛИЙСКОГО</h2>
             <p>Добавьте английский в свою повседневную жизнь. Установите английский язык на свой телефон, компьютер и магнитолу в автомобиле. </p>
             <p>Через некоторое время ваше подсознание начнет свободно воспринимать английский язык на ваших гаджетах. </p>
             <p>Также старайтесь читать много коротких и легких текстов, так как это очень помогает запоминать новые слова и правила грамматики автоматически.</p>
-          </section>
+          </section> */}
 
           <section className={classNames(styles.whyContainer, styles.forgetContainer)}>
             <p className={styles.forget}>Забудьте о старых учебниках и занудных уроках. Мы создали уникальную систему обучения, которая адаптируется под ваши потребности и уровень владения языком.</p>

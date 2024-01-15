@@ -48,7 +48,8 @@
 
 .header {
     // border: solid red 1px;
-    background-color: #99ceff;
+    // background-color: #99ceff;
+    background-color: var(--color-primary);
     // padding: $header-padding-vertical $header-padding-horizontal;
     // padding: 2em 3.75em;
     padding-top: 12px;
@@ -111,8 +112,9 @@
 
 .main {
     // background-color: var(--color-primary);
-    background-image: url('../../public/images/students-3.png');
-    background-size: cover;
+    // background-image: url('../../public/images/students-3.png');
+    // background-size: cover;
+    background-color: var(--color-primary);
     height: 70vh;
     // margin-top: 0;
     padding: 3.125em 12.5em 9.375em 12.5em;
@@ -121,8 +123,8 @@
     align-items: center;
 
     @include size-tablet {
-        background-image: url('../../public/images/students-3.png');
-        background-size: cover;
+        // background-image: url('../../public/images/students-3.png');
+        // background-size: cover;
         padding: 20px 0 0 0;
         height: auto;
     }
