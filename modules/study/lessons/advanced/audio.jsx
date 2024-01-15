@@ -12,7 +12,7 @@ export default function Audio() {
    const lessonNumber = router.query.lessonNumber
 
    const { isLoading, lessonMaterials } = useLessonMaterials(getAudioMaterials, lessonNumber)
-   console.log(lessonMaterials)
+
    const currentLessonData = {
       currentChapter: 'audio',
       currentLesson: lessonNumber,
