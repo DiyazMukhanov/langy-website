@@ -113,7 +113,7 @@ export default function LessonLayout({ children, chapter, withoutProgress, curre
         return <Loader />
     } else {
         return (
-            <ProtectPage currentLesson={currentLessonData.currentLesson} currentChapter={currentLessonData.currentChapter} subscriptionIsNeeded={false}>
+            <ProtectPage currentLesson={currentLessonData.currentLesson} currentChapter={currentLessonData.currentChapter} subscriptionIsNeeded={subscriptionIsNeeded}>
                 <Header variant='white' lessonsSummary={lessonsSummary} />
                 <div className={styles.container}>
                     <SideBarDesktop lessonsSummary={lessonsSummary} expires={formattedDate} isBeginner={isBeginner} />
