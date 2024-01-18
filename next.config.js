@@ -1,18 +1,15 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {}
+// next.config.js
 
-const withPWA = require('next-pwa')({
-  dest: 'public'
-})
-
-module.exports = withPWA({
+module.exports = {
   typescript: {
     ignoreBuildErrors: true,
   },
   pwa: {
     dest: "public",
-    register: true,
-    skipWaiting: true
+    disable: true,
+    // register: true,
+    // skipWaiting: true,
+    // exclude: []
   },
   webpack: (
     nextConfig,
@@ -37,7 +34,6 @@ module.exports = withPWA({
       ],
     });
 
-    return nextConfig
+    return nextConfig;
   },
-})
-
+};
