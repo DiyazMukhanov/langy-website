@@ -3,7 +3,7 @@
     "background_color": "#f69435",
     "display": "browser",
     "scope": "/menu",
-    "start_url": "/",
+    "start_url": "/menu",
     "name": "Langy English",
     "short_name": "Langy",
     "description": "cool english app",
