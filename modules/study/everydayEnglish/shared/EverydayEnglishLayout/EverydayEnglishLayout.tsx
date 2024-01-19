@@ -38,7 +38,7 @@ export default function EveryDayEnglishLayout({ lessonNumber, children, chapter 
 
     return <>
         <ProtectPage
-            subscriptionIsNeeded={false}
+            subscriptionIsNeeded={subscriptionIsNeededStatus}
             adminNeeded={false}
         >
             <Header variant='white' isEasyEnglish={true} />
