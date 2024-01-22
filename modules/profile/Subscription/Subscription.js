@@ -18,13 +18,13 @@ export default function Subscription() {
 
   const monthBody = {
     days: 30,
-    amount: 980,
+    amount: 100,
     subscriptionType: 'month' // now 1 months
   }
 
   const yearBody = {
     days: 90,
-    amount: 1980,
+    amount: 200,
     subscriptionType: 'year' // now 3 months
   }
 
