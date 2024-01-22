@@ -15,7 +15,7 @@ export default function OptionCard({ type, onClick }) {
       <div className={classNames({ [styles.middle]: type === 'month' }, { [styles.middleYear]: type === 'year' })}>
         <div className={styles.price}>
           <span className={classNames({ [styles.blue]: type === 'month' }, { [styles.orange]: type === 'year' })}>
-            {type === 'month' ? 980 : 1980}
+            {type === 'month' ? 100 : 200}
           </span>
 
           <span>
