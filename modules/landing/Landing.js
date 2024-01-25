@@ -277,20 +277,14 @@ export default function Landing() {
           />
           <Typography element='h1' className={styles.mainHeading}>Онлайн - платформа для изучения английского языка</Typography>
           <div className={styles.headerBottomBlock}>
-            <Image
-              priority
-              src={DropOne}
-              className={styles.dropOne}
-            />
-            <div className={styles.btnBlock}>
+            {!userCtx.userData ? (<div className={styles.btnBlock}>
               <Button variant='contained' className={styles.startBtn} onClick={continueHandler}>Начать обучение</Button>
+            </div>) : <div className={styles.btnBlock}>
+              <Button variant='contained' className={styles.startBtn} onClick={continueHandler}>Продолжить обучение</Button>
               {!userCtx.userData && (<p className={styles.haveAccountBtn} onClick={() => router.push('/authorization/login')}>У меня уже есть аккаунт</p>)}
-            </div>
-            <Image
-              priority
-              src={DropTwo}
-              className={styles.dropTwo}
-            />
+
+            </div>}
+
           </div>
         </main>
 
@@ -369,7 +363,11 @@ export default function Landing() {
                 textLineThree='время!'
               />
             </div>
-            <Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Попробуйте сейчас</Button>
+            {!userCtx.userData ?
+              (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Пробуй!</Button>) :
+              (<Button variant='contained' className={styles.tryButton} onClick={continueHandler}>Продолжить обучение</Button>)
+            }
+
           </div>
         </section>
 
