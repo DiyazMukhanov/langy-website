@@ -11,8 +11,10 @@ module.exports = withPWA({
   },
   pwa: {
     dest: "public",
-    register: true,
-    skipWaiting: true
+    disable: true,
+    // register: true,
+    // skipWaiting: true,
+    // exclude: []
   },
   webpack: (
     nextConfig,
