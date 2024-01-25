@@ -29,6 +29,12 @@ import { useRouter } from "next/router"
 import Visa from '../../public/images/visa.png'
 import { UserContext } from '@/store/userContext'
 import Loader from '@/modules/shared/Loader'
+import { getBeginnerProgress } from '../shared/api/getBeginnerProgress'
+import { getMe } from '../shared/api/getMe'
+import { userLogout } from '../shared/api/userLogout'
+import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import { getEverydayProgress } from '../shared/api/getEverydayProgress';
+
 
 export default function Landing() {
   const [frequentOpenedId, setFrequentOpenedId] = useState(null)
@@ -430,6 +436,27 @@ export default function Landing() {
             ))}
           </div>
         </section>
+
+        <div className={styles.contactsNav}>
+          <a
+            href='https://instagram.com/langy.su?igshid=MzRlODBiNWFlZA=='
+            target="_blank"
+          >
+            <div className={styles.instIcon}>
+              <FaInstagram />
+            </div>
+          </a>
+
+          <a
+            href={`https://api.whatsapp.com/send?phone=+77078805125`}
+            target="_blank"
+          >
+            <div className={styles.whatsIcon}>
+              <FaWhatsapp />
+            </div>
+          </a>
+        </div>
+
 
         <footer className={styles.footer}>
           <div className={styles.footerTop}>
