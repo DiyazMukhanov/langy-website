@@ -1,0 +1,26 @@
+@import "styles/breakpoints";
+
+.top {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+
+    @include size-tablet {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+}
+
+.lessonsStatus {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-weight: 600;
+    cursor: pointer;
+
+    p {
+        color: white;
+        text-align: center;
+    }
+}
