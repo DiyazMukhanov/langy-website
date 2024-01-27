@@ -70,31 +70,31 @@ export default function Landing() {
 
     fetchUser()
 
-    const handleBeforeInstallPrompt = (event) => {
-      event.preventDefault();
-      setInstallPromptEvent(event);
-    };
+    // const handleBeforeInstallPrompt = (event) => {
+    //   event.preventDefault();
+    //   setInstallPromptEvent(event);
+    // };
 
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    // window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
 
-    return () => {
-      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-    };
+    // return () => {
+    //   window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    // };
   }, [])
 
-  const installApp = () => {
-    if (installPromptEvent) {
-      installPromptEvent.prompt();
-      installPromptEvent.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the install prompt');
-        } else {
-          console.log('User dismissed the install prompt');
-        }
-        setInstallPromptEvent(null);
-      });
-    }
-  };
+  // const installApp = () => {
+  //   if (installPromptEvent) {
+  //     installPromptEvent.prompt();
+  //     installPromptEvent.userChoice.then((choiceResult) => {
+  //       if (choiceResult.outcome === 'accepted') {
+  //         console.log('User accepted the install prompt');
+  //       } else {
+  //         console.log('User dismissed the install prompt');
+  //       }
+  //       setInstallPromptEvent(null);
+  //     });
+  //   }
+  // };
 
   const frequentQuestions = [
     {
@@ -239,14 +239,14 @@ export default function Landing() {
               className={styles.logo}
             />
           </div>
-          <button
+          {/* <button
             id="install-button"
             className={styles.installBtn}
             style={{ display: installPromptEvent ? 'block' : 'none' }}
             onClick={installApp}
           >
             Установить приложение
-          </button>
+          </button> */}
 
           {!userCtx.userData ? (<div className={styles.topButtons}>
             <Typography element='p' className={styles.enterBtn} onClick={loginHandler}>Войти</Typography>
@@ -371,12 +371,12 @@ export default function Landing() {
           </div>
         </section>
 
-        <section className={styles.howWorks}>
-          <div className={styles.howHeading}>
+        {/* <section className={styles.howWorks}> */}
+        {/* <div className={styles.howHeading}>
             <Typography size='small' element='h2'>Как работает платформа</Typography>
-          </div>
+          </div> */}
 
-          <div className={styles.manSection}>
+        {/* <div className={styles.manSection}>
             <HowCard
               number='1'
               text='Для того, чтобы взять бесплатный пробный урок вам не понадобиться ничего, кроме собственного желания. 
@@ -408,7 +408,7 @@ export default function Landing() {
             />
 
           </div>
-        </section>
+        </section> */}
 
         <section className={styles.frequentQuestionsSection}>
           <div className={styles.questionsHeading}>

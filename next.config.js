@@ -1,21 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {}
 
-const withPWA = require('next-pwa')({
-  dest: 'public'
-})
+// const withPWA = require('next-pwa')({
+//   dest: 'public'
+// })
 
-module.exports = withPWA({
+module.exports = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  pwa: {
-    dest: "public",
-    disable: true,
-    // register: true,
-    // skipWaiting: true,
-    // exclude: []
-  },
+  // pwa: {
+  //   dest: "public",
+  //   disable: true,
+  //   // register: true,
+  //   // skipWaiting: true,
+  //   // exclude: []
+  // },
   webpack: (
     nextConfig,
     options
@@ -41,5 +41,5 @@ module.exports = withPWA({
 
     return nextConfig
   },
-})
+}
 
