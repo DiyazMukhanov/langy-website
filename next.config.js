@@ -6,6 +6,9 @@ const nextConfig = {}
 // })
 
 module.exports = {
+  images: {
+    domains: ['storage.googleapis.com'],
+  },
   typescript: {
     ignoreBuildErrors: true,
   },
