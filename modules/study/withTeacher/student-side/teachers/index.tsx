@@ -3,8 +3,10 @@ import TeacherCard from "../shared/components/TeacherCard";
 import WithTeachersLayout from "../shared/withTeachersLayout";
 import { teachers } from "./fakeTeachers";
 import styles from "./Teachers.module.scss";
+import { useRouter } from "next/router";
 
 export default function Teachers() {
+    const router = useRouter()
 
     return (
         <WithTeachersLayout>
@@ -13,7 +15,7 @@ export default function Teachers() {
                 {teachers.map(teacher => (
                     <div className={styles.teacherBlock}>
                         <TeacherCard />
-                        <Button variant='teachersBook'>Забронировать урок</Button>
+                        <Button variant='teachersBook' onClick={() => router.push('/with-teachers/book-teacher/001')}>Забронировать урок</Button>
                     </div>
                 ))}
             </div>
