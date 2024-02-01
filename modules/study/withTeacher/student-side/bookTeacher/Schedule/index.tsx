@@ -1,4 +1,6 @@
 import styles from './Schedule.module.scss'
+import { formatRussianDate } from '../../shared/utils/formatRuDate'
+import classNames from 'classnames'
 
 export default function Schedule({ slots }) {
     const mondaySlots = slots.filter(slot => slot.day === 'Mon')
@@ -35,23 +37,33 @@ export default function Schedule({ slots }) {
     const fiveSlots = getSlots('17:00 - 17:45')
 
     const timeSlots = [nineSlots, tenSlots, elevenSlots, twevleSlots, oneSlots, twoSLots, threeSlots, fourSlots, fiveSlots]
-    console.log(nineSlots)
+
     return (
-        <table className={styles.container}>
-            <tr>
-                <th>Время</th>
-                {days.map(day => (
-                    <th>{day[0]?.day} {day[0]?.date}</th>
-                ))}
-            </tr>
-            {timeSlots.map((timeSlot) => (
+        <div className={styles.container}>
+            <table>
                 <tr>
-                    <td>
-                        {timeSlot[0].time}
-                    </td>
-                    {timeSlot.map(slot => <td>{slot.status}</td>)}
+                    <th>Время</th>
+                    {days.map(day => (
+                        <th>{formatRussianDate(day[0]?.date)}</th>
+                    ))}
                 </tr>
-            ))}
-        </table>
+                {timeSlots.map((timeSlot) => (
+                    <tr>
+                        <td>
+                            {timeSlot[0].time}
+                        </td>
+                        {timeSlot.map(slot => <td className={
+                            classNames(
+                                styles.book,
+                                { [styles.free]: slot.status === 'free', [styles.booked]: slot.status !== 'free' })}
+                        >
+                            {slot.status === 'free' ? 'Забронировать' : 'Занято'}
+                        </td>
+                        )
+                        }
+                    </tr>
+                ))}
+            </table>
+        </div>
     )
 }
