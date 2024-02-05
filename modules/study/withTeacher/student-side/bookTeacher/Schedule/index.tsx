@@ -1,8 +1,13 @@
 import styles from './Schedule.module.scss'
 import { formatRussianDate } from '../../shared/utils/formatRuDate'
 import classNames from 'classnames'
+import { useState } from 'react'
+import { Modal } from '@/ui-kit/ModalCommon'
+import Confirm from '../Confirm'
 
 export default function Schedule({ slots }) {
+    const [bookConfirmationShow, setBookConfirmationShow] = useState(false)
+
     const mondaySlots = slots.filter(slot => slot.day === 'Mon')
     const tuesdaySlots = slots.filter(slot => slot.day === 'Tue')
     const wednesdaySlots = slots.filter(slot => slot.day === 'Wed')
@@ -38,24 +43,37 @@ export default function Schedule({ slots }) {
 
     const timeSlots = [nineSlots, tenSlots, elevenSlots, twevleSlots, oneSlots, twoSLots, threeSlots, fourSlots, fiveSlots]
 
+
+    function getId() {
+        return Math.random() * 1000
+    }
+
     return (
         <div className={styles.container}>
+            <Modal
+                className={styles.confirm}
+                isOpened={bookConfirmationShow}
+                onClose={() => setBookConfirmationShow(false)}
+            >
+                <Confirm />
+            </Modal>
             <table>
                 <tr>
                     <th>Время</th>
                     {days.map(day => (
-                        <th>{formatRussianDate(day[0]?.date)}</th>
+                        <th key={getId()}>{formatRussianDate(day[0]?.date)}</th>
                     ))}
                 </tr>
                 {timeSlots.map((timeSlot) => (
-                    <tr>
-                        <td>
+                    <tr key={getId()}>
+                        <td key={getId()}>
                             {timeSlot[0].time}
                         </td>
-                        {timeSlot.map(slot => <td className={
+                        {timeSlot.map(slot => <td key={getId()} className={
                             classNames(
                                 styles.book,
                                 { [styles.free]: slot.status === 'free', [styles.booked]: slot.status !== 'free' })}
+                            onClick={() => setBookConfirmationShow(true)}
                         >
                             {slot.status === 'free' ? 'Забронировать' : 'Занято'}
                         </td>

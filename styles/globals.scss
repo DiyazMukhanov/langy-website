@@ -2,21 +2,20 @@
 @import "styles/breakpoints";
 
 html {
-    font-size: 16px;
-  }
-  
-  html,
-  body {
-    padding: 0;
-    margin: 0;
-    font-family: var(--brand-font);
-    transition: all 2s;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-  }
+  font-size: 16px;
+}
 
-  * {
-    -webkit-tap-highlight-color: transparent;
-  }
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: var(--brand-font);
+  transition: all 2s;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  height: 100%;
+}
 
-
+* {
+  -webkit-tap-highlight-color: transparent;
+}
