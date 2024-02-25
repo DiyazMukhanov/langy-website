@@ -5,11 +5,12 @@ import classNames from 'classnames';
 type Props = {
     children: ReactElement | string
     className?: string
+    onClick?: () => void
 }
 
-export const Paper = ({ children, className }: Props) => {
+export const Paper = ({ children, className, onClick }: Props) => {
     return (
-        <div className={classNames(styles.paper, className)}>
+        <div className={classNames(styles.paper, className)} onClick={onClick}>
             {children}
         </div>
     )

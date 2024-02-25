@@ -1,0 +1,27 @@
+.container {
+    background-color: var(--color-primary);
+    width: 250px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 20px;
+    border-radius: 6px;
+}
+
+.packageBlock {
+    width: 170px;
+    height: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    background-color: white;
+    border-radius: 6px;
+}
+
+.priceBlock {
+    color: white;
+}
