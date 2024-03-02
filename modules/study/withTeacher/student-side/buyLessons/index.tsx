@@ -1,5 +1,5 @@
 import { Button } from "@/ui-kit/Button";
-import { BuyLessonCard } from "../shared/components/BuyLessonCard";
+import { BuyLessonCard } from "./BuyLessonCard";
 import WithTeachersLayout from "../shared/withTeachersLayout";
 import styles from './BuyLessons.module.scss';
 import { PACKAGES } from "./packages";

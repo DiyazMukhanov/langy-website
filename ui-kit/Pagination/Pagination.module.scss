@@ -1,0 +1,20 @@
+.container {
+    width: 285px;
+    height: 37px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.item {
+    width: 39px;
+    height: 25px;
+    border-radius: 5px;
+    background-color: #DADADA;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
