@@ -1,22 +1,29 @@
 import styles from "./TeacherCard.module.scss";
-import Image from 'next/image';
+import Image from "next/image";
+import { Teacher } from "../../types/teacher";
 
-export default function TeacherCard() {
-    return (
-        <div className={styles.card}>
-            <Image
-                alt="teacher"
-                priority
-                src='https://storage.googleapis.com/langy.su/with-teachers/teachers-photos/teacher.png'
-                height={300}
-                width={250}
-                className={styles.image}
-            />
-            <div className={styles.description}>
-                <p>Артур Пирожков Львович</p>
-                <p>Суперский и опытный учитель</p>
-            </div>
-        </div>
-    )
+type Props = {
+  teacher: Teacher;
+};
+
+export default function TeacherCard({ teacher }: Props) {
+  console.log(teacher);
+  return (
+    <div className={styles.card}>
+      <Image
+        alt="teacher"
+        priority
+        src={teacher.photo}
+        height={300}
+        width={250}
+        className={styles.image}
+      />
+      <div className={styles.description}>
+        <p>
+          {teacher.name} {teacher.surname}
+        </p>
+        <p>{teacher.description}</p>
+      </div>
+    </div>
+  );
 }
-

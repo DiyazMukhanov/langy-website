@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {};
 
 // const withPWA = require('next-pwa')({
 //   dest: 'public'
@@ -7,7 +7,11 @@ const nextConfig = {}
 
 module.exports = {
   images: {
-    domains: ['storage.googleapis.com'],
+    domains: [
+      "storage.googleapis.com",
+      "cmfirstgroup.com",
+      "www.spencerclarkegroup.co.uk",
+    ],
   },
   typescript: {
     ignoreBuildErrors: true,
@@ -19,30 +23,26 @@ module.exports = {
   //   // skipWaiting: true,
   //   // exclude: []
   // },
-  webpack: (
-    nextConfig,
-    options
-  ) => {
+  webpack: (nextConfig, options) => {
     const { isServer } = options;
     nextConfig.module.rules.push({
       test: /\.(ogg|mp3|wav|mpe?g)$/i,
       exclude: nextConfig.exclude,
       use: [
         {
-          loader: require.resolve('url-loader'),
+          loader: require.resolve("url-loader"),
           options: {
             limit: nextConfig.inlineImageLimit,
-            fallback: require.resolve('file-loader'),
+            fallback: require.resolve("file-loader"),
             publicPath: `${nextConfig.assetPrefix}/_next/static/images/`,
-            outputPath: `${isServer ? '../' : ''}static/images/`,
-            name: '[name]-[hash].[ext]',
+            outputPath: `${isServer ? "../" : ""}static/images/`,
+            name: "[name]-[hash].[ext]",
             esModule: nextConfig.esModule || false,
           },
         },
       ],
     });
 
-    return nextConfig
+    return nextConfig;
   },
-}
-
+};
