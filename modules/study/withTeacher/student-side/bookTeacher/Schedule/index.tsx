@@ -11,11 +11,11 @@ import { TableBody } from "@/ui-kit/Table/TableBody";
 import { TableRow } from "@/ui-kit/Table/TableRow";
 import { getDateInGmtFive } from "@/utils/getDateGmt";
 import { getNextWeekDays } from "@/utils/getNextWeekDays";
+import { useBookLesson } from "../../shared/hooks/useBookLesson";
 
 const nextWeekDays = getNextWeekDays();
 nextWeekDays.unshift({ day: "Время", date: "урока" });
 
-// Define time slots
 const timeSlots: any[] = [];
 for (let hour = 9; hour <= 20; hour++) {
   let startTime = hour.toString().padStart(2, "0") + ":00";
@@ -23,19 +23,6 @@ for (let hour = 9; hour <= 20; hour++) {
   timeSlots.push(`${startTime} - ${endTime}`);
 }
 
-// Initialize rows with null for each day's lesson
-const rows = timeSlots.map((time) => ({
-  time: time,
-  mondayLesson: null,
-  tuesdayLesson: null,
-  wednesdayLesson: null,
-  thursdayLesson: null,
-  fridayLesson: null,
-  saturdayLesson: null,
-  sundayLesson: null,
-}));
-
-// Mapping weekdays to row properties
 const weekdays = [
   "sundayLesson",
   "mondayLesson",
@@ -57,10 +44,22 @@ const days = [
 ];
 
 export default function Schedule({ data }) {
-  console.log(data);
   const [bookConfirmationShow, setBookConfirmationShow] = useState(false);
+  // const [dataRows, setDataRows] = useState(rows)
 
-  // Assign lessons to corresponding slots
+  const rows = timeSlots.map((time) => ({
+    time: time,
+    mondayLesson: null,
+    tuesdayLesson: null,
+    wednesdayLesson: null,
+    thursdayLesson: null,
+    fridayLesson: null,
+    saturdayLesson: null,
+    sundayLesson: null,
+  }));
+
+  const { bookNewLesson } = useBookLesson();
+
   data.forEach((lesson: Lesson) => {
     const { weekday, hour } = getDateInGmtFive(lesson.lessonDate);
     if (hour >= 9 && hour <= 20) {
@@ -72,8 +71,6 @@ export default function Schedule({ data }) {
     }
   });
 
-  console.log(rows);
-
   return (
     <div className={styles.container}>
       <Modal
@@ -84,10 +81,10 @@ export default function Schedule({ data }) {
         <Confirm />
       </Modal>
 
-      <Table style={{ width: "100%" }}>
+      <Table>
         <TableHead>
           {nextWeekDays.map((day) => (
-            <TableCell style={{ width: "100%" }}>
+            <TableCell>
               <div>{day.day}</div>
               <div>{day.date}</div>
             </TableCell>
@@ -99,7 +96,16 @@ export default function Schedule({ data }) {
               <TableCell>{row.time}</TableCell>
               {days.map((weekDay) => (
                 <TableCell>
-                  {row[weekDay] ? <span>Забронировать</span> : <span>-</span>}
+                  {row[weekDay] && row[weekDay].bookedBy === null && (
+                    <span onClick={() => bookNewLesson(row[weekDay]._id)}>
+                      Забронировать
+                    </span>
+                  )}
+                  {row[weekDay] &&
+                    row[weekDay].bookedBy === "64f9d97a45bb8347919f18fc" && (
+                      <span>Ваш урок</span>
+                    )}
+                  {!row[weekDay] && <span>-</span>}
                 </TableCell>
               ))}
             </TableRow>
