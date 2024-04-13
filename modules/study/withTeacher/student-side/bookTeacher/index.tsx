@@ -17,20 +17,23 @@ export default function BookTeacher() {
 
   const router = useRouter();
   useEffect(() => {
-    if (window) {
-      if (!Array.isArray(router.query.teacherId))
-        setTeacherId(router.query.teacherId);
+    const id = router.query.teacherId;
+    if (!Array.isArray(id)) {
+      setTeacherId(id);
     }
-  }, []);
+  }, [router.query.teacherId]);
 
   const { isPending, error, data } = useQuery({
     queryKey: ["lessonsSchedule"],
     queryFn: () => getSchedule(teacherId),
+    enabled: !!teacherId,
   });
+
+  if (isPending) return "Loading...";
 
   return (
     <WithTeachersLayout>
-      <Schedule slots={data.data} />
+      <Schedule data={data?.data} />
     </WithTeachersLayout>
   );
 }

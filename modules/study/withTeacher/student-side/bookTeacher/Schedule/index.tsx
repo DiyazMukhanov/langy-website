@@ -1,87 +1,111 @@
 import styles from "./Schedule.module.scss";
-import { formatRussianDate } from "../../shared/utils/formatRuDate";
 import classNames from "classnames";
 import { useState } from "react";
 import { Modal } from "@/ui-kit/ModalCommon";
 import Confirm from "../Confirm";
+import { Lesson } from "../../shared/types/lesson";
+import { Table } from "@/ui-kit/Table/Table";
+import { TableHead } from "@/ui-kit/Table/TableHead";
+import { TableCell } from "@/ui-kit/Table/TableCell";
+import { TableBody } from "@/ui-kit/Table/TableBody";
+import { TableRow } from "@/ui-kit/Table/TableRow";
+import { getDateInGmtFive } from "@/utils/getDateGmt";
+import { getNextWeekDays } from "@/utils/getNextWeekDays";
 
-export default function Schedule({ slots }) {
-  console.log(slots);
-  // const [bookConfirmationShow, setBookConfirmationShow] = useState(false)
+const nextWeekDays = getNextWeekDays();
+nextWeekDays.unshift({ day: "Время", date: "урока" });
 
-  // const mondaySlots = slots.filter(slot => slot.day === 'Mon')
-  // const tuesdaySlots = slots.filter(slot => slot.day === 'Tue')
-  // const wednesdaySlots = slots.filter(slot => slot.day === 'Wed')
-  // const thursdaySlots = slots.filter(slot => slot.day === 'Thu')
-  // const fridaySlots = slots.filter(slot => slot.day === 'Fri')
-  // const saturdaySlots = slots.filter(slot => slot.day === 'Sat')
-  // const sundaySlots = slots.filter(slot => slot.day === 'Sun')
+// Define time slots
+const timeSlots: any[] = [];
+for (let hour = 9; hour <= 20; hour++) {
+  let startTime = hour.toString().padStart(2, "0") + ":00";
+  let endTime = hour.toString().padStart(2, "0") + ":45";
+  timeSlots.push(`${startTime} - ${endTime}`);
+}
 
-  // const days = [mondaySlots, tuesdaySlots, wednesdaySlots, thursdaySlots, fridaySlots, saturdaySlots, sundaySlots]
+// Initialize rows with null for each day's lesson
+const rows = timeSlots.map((time) => ({
+  time: time,
+  mondayLesson: null,
+  tuesdayLesson: null,
+  wednesdayLesson: null,
+  thursdayLesson: null,
+  fridayLesson: null,
+  saturdayLesson: null,
+  sundayLesson: null,
+}));
 
-  // const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+// Mapping weekdays to row properties
+const weekdays = [
+  "sundayLesson",
+  "mondayLesson",
+  "tuesdayLesson",
+  "wednesdayLesson",
+  "thursdayLesson",
+  "fridayLesson",
+  "saturdayLesson",
+];
 
-  // function getSlots(time) {
-  //     let result: any[] = []
+const days = [
+  "mondayLesson",
+  "tuesdayLesson",
+  "wednesdayLesson",
+  "thursdayLesson",
+  "fridayLesson",
+  "saturdayLesson",
+  "sundayLesson",
+];
 
-  //     for (let i = 0; i < daysOfWeek.length; i++) {
-  //         const slotToPush = slots.filter(slot => slot.day === daysOfWeek[i] && slot.time === time)
-  //         result.push(slotToPush[0])
-  //     }
+export default function Schedule({ data }) {
+  console.log(data);
+  const [bookConfirmationShow, setBookConfirmationShow] = useState(false);
 
-  //     return result
-  // }
+  // Assign lessons to corresponding slots
+  data.forEach((lesson: Lesson) => {
+    const { weekday, hour } = getDateInGmtFive(lesson.lessonDate);
+    if (hour >= 9 && hour <= 20) {
+      const timeSlotIndex = hour - 9;
+      const dayKey = weekdays[weekday];
+      if (!rows[timeSlotIndex][dayKey]) {
+        rows[timeSlotIndex][dayKey] = lesson;
+      }
+    }
+  });
 
-  // const nineSlots = getSlots('09:00 - 09:45')
-  // const tenSlots = getSlots('10:00 - 10:45')
-  // const elevenSlots = getSlots('11:00 - 11:45')
-  // const twevleSlots = getSlots('12:00 - 12:45')
-  // const oneSlots = getSlots('13:00 - 13:45')
-  // const twoSLots = getSlots('14:00 - 14:45')
-  // const threeSlots = getSlots('15:00 - 15:45')
-  // const fourSlots = getSlots('16:00 - 16:45')
-  // const fiveSlots = getSlots('17:00 - 17:45')
-
-  // const timeSlots = [nineSlots, tenSlots, elevenSlots, twevleSlots, oneSlots, twoSLots, threeSlots, fourSlots, fiveSlots]
-
-  // function getId() {
-  //     return Math.random() * 1000
-  // }
+  console.log(rows);
 
   return (
     <div className={styles.container}>
-      {/* <Modal
+      <Modal
         className={styles.confirm}
         isOpened={bookConfirmationShow}
         onClose={() => setBookConfirmationShow(false)}
       >
         <Confirm />
-      </Modal> */}
-      {/* <table>
-                <tr>
-                    <th>Время</th>
-                    {days.map(day => (
-                        <th key={getId()}>{formatRussianDate(day[0]?.date)}</th>
-                    ))}
-                </tr>
-                {timeSlots.map((timeSlot) => (
-                    <tr key={getId()}>
-                        <td key={getId()}>
-                            {timeSlot[0].time}
-                        </td>
-                        {timeSlot.map(slot => <td key={getId()} className={
-                            classNames(
-                                styles.book,
-                                { [styles.free]: slot.status === 'free', [styles.booked]: slot.status !== 'free' })}
-                            onClick={() => setBookConfirmationShow(true)}
-                        >
-                            {slot.status === 'free' ? 'Забронировать' : 'Занято'}
-                        </td>
-                        )
-                        }
-                    </tr>
-                ))}
-            </table> */}
+      </Modal>
+
+      <Table style={{ width: "100%" }}>
+        <TableHead>
+          {nextWeekDays.map((day) => (
+            <TableCell style={{ width: "100%" }}>
+              <div>{day.day}</div>
+              <div>{day.date}</div>
+            </TableCell>
+          ))}
+        </TableHead>
+        <TableBody style={{ width: "100%" }}>
+          {rows.map((row) => (
+            <TableRow>
+              <TableCell>{row.time}</TableCell>
+              {days.map((weekDay) => (
+                <TableCell>
+                  {row[weekDay] ? <span>Забронировать</span> : <span>-</span>}
+                </TableCell>
+              ))}
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </div>
   );
 }
