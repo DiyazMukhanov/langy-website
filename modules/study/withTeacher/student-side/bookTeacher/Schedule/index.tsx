@@ -43,7 +43,7 @@ const days = [
   "sundayLesson",
 ];
 
-export default function Schedule({ data }) {
+export default function Schedule({ data, bookNewLesson, cancelLesson }) {
   const [bookConfirmationShow, setBookConfirmationShow] = useState(false);
   // const [dataRows, setDataRows] = useState(rows)
 
@@ -58,18 +58,20 @@ export default function Schedule({ data }) {
     sundayLesson: null,
   }));
 
-  const { bookNewLesson } = useBookLesson();
-
-  data.forEach((lesson: Lesson) => {
-    const { weekday, hour } = getDateInGmtFive(lesson.lessonDate);
-    if (hour >= 9 && hour <= 20) {
-      const timeSlotIndex = hour - 9;
-      const dayKey = weekdays[weekday];
-      if (!rows[timeSlotIndex][dayKey]) {
-        rows[timeSlotIndex][dayKey] = lesson;
+  // const { bookNewLesson } = useBookLesson();
+  // console.log(data);
+  if (data) {
+    data.forEach((lesson: Lesson) => {
+      const { weekday, hour } = getDateInGmtFive(lesson.lessonDate);
+      if (hour >= 9 && hour <= 20) {
+        const timeSlotIndex = hour - 9;
+        const dayKey = weekdays[weekday];
+        if (!rows[timeSlotIndex][dayKey]) {
+          rows[timeSlotIndex][dayKey] = lesson;
+        }
       }
-    }
-  });
+    });
+  }
 
   return (
     <div className={styles.container}>
@@ -81,10 +83,10 @@ export default function Schedule({ data }) {
         <Confirm />
       </Modal>
 
-      <Table>
-        <TableHead>
+      <Table style={{ width: "100%" }}>
+        <TableHead style={{ width: "100%" }}>
           {nextWeekDays.map((day) => (
-            <TableCell>
+            <TableCell style={{ width: "auto" }}>
               <div>{day.day}</div>
               <div>{day.date}</div>
             </TableCell>
@@ -92,10 +94,10 @@ export default function Schedule({ data }) {
         </TableHead>
         <TableBody style={{ width: "100%" }}>
           {rows.map((row) => (
-            <TableRow>
-              <TableCell>{row.time}</TableCell>
+            <TableRow style={{ width: "auto" }}>
+              <TableCell style={{ width: "auto" }}>{row.time}</TableCell>
               {days.map((weekDay) => (
-                <TableCell>
+                <TableCell style={{ width: "auto" }}>
                   {row[weekDay] && row[weekDay].bookedBy === null && (
                     <span onClick={() => bookNewLesson(row[weekDay]._id)}>
                       Забронировать
@@ -103,7 +105,13 @@ export default function Schedule({ data }) {
                   )}
                   {row[weekDay] &&
                     row[weekDay].bookedBy === "64f9d97a45bb8347919f18fc" && (
-                      <span>Ваш урок</span>
+                      <div className={styles.myLessonBlock}>
+                        <span>{row[weekDay]._id}</span>
+                        <span>Мой урок</span>
+                        <span onClick={() => cancelLesson(row[weekDay]._id)}>
+                          Отменить урок
+                        </span>
+                      </div>
                     )}
                   {!row[weekDay] && <span>-</span>}
                 </TableCell>

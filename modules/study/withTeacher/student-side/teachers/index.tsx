@@ -1,7 +1,6 @@
 import { Button } from "@/ui-kit/Button";
 import TeacherCard from "../shared/components/TeacherCard";
 import WithTeachersLayout from "../shared/withTeachersLayout";
-// import { teachers } from "./fakeTeachers";
 import styles from "./Teachers.module.scss";
 import { useRouter } from "next/router";
 import { getTeachersAsStudent } from "../shared/api/getTeachers";
@@ -35,7 +34,7 @@ export default function Teachers() {
             <TeacherCard teacher={teacher} />
             <Button
               variant="teachersBook"
-              onClick={() => router.push("/with-teachers/book-teacher/001")}
+              onClick={() => router.push(`/with-teachers/book-teacher/${teacher._id}`)}
             >
               Забронировать урок
             </Button>
