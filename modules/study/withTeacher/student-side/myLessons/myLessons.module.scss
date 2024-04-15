@@ -1,0 +1,13 @@
+.lessonsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 10px;
+}
+
+.lessonBlock {
+  border: solid var(--color-primary) 1px;
+  width: fit-content;
+  padding: 5px;
+  border-radius: 5px;
+}

@@ -110,7 +110,12 @@ export default function Schedule({ data, bookNewLesson, cancelLesson, week }) {
                     row[weekDay].bookedBy === "64f9d97a45bb8347919f18fc" && (
                       <div className={styles.myLessonBlock}>
                         <span>{row[weekDay]._id}</span>
-                        <span>Мой урок</span>
+                        {lessonTimeStatus(row[weekDay].lessonDate)
+                          .alreadyFinished ? (
+                          <span>Прошедший урок</span>
+                        ) : (
+                          <span>Мой урок</span>
+                        )}
                         {!lessonTimeStatus(row[weekDay].lessonDate).isToday &&
                           !lessonTimeStatus(row[weekDay].lessonDate)
                             .alreadyFinished && (

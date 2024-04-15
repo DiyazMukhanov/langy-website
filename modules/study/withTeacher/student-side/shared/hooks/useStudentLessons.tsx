@@ -1,8 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
+import { getFutureLessonsAsStudent } from "../api/getFutureLessons";
 
-const useStudentLessons = () => {
+export const useStudentLessons = () => {
   const { isPending, error, data } = useQuery({
     queryKey: ["studentLessons"],
-    queryFn: () => getScheduleAsStudent(teacherId),
+    queryFn: () => getFutureLessonsAsStudent(),
   });
+
+  return { isPending, error, data };
 };

@@ -21,6 +21,12 @@ export default function WithTeachersLayout({ children }) {
         </Button>
         <Button
           variant="standardMiddleOutlined"
+          onClick={() => router.push("/with-teachers/teachers")}
+        >
+          Выбрать учителя
+        </Button>
+        <Button
+          variant="standardMiddleOutlined"
           onClick={() => router.push("/with-teachers/my-lessons")}
         >
           Мои запланированные уроки
