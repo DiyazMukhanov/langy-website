@@ -7,19 +7,32 @@ import { Paper } from "@/ui-kit/Paper";
 import { useRouter } from "next/router";
 
 export default function WithTeachersLayout({ children }) {
-    const router = useRouter()
+  const router = useRouter();
 
-    return (
-        <ProtectPage subscriptionIsNeeded={false} adminNeeded={false}>
-            <Header variant='blue' isEasyEnglish={false} />
-            <div className={styles.top}>
-                <Button variant="standardMiddleOutlined" onClick={() => router.push('/with-teachers/student-progress')}>Мой прогресс</Button>
-                <Card className={styles.lessonsStatus}>
-                    <Paper onClick={() => router.push('/with-teachers/buy-lessons')}>Пополнить уроки</Paper>
-                    <p>12 уроков</p>
-                </Card>
-            </div>
-            {children}
-        </ProtectPage>
-    )
+  return (
+    <ProtectPage subscriptionIsNeeded={false} adminNeeded={false}>
+      <Header variant="blue" isEasyEnglish={false} />
+      <div className={styles.top}>
+        <Button
+          variant="standardMiddleOutlined"
+          onClick={() => router.push("/with-teachers/student-progress")}
+        >
+          Мой прогресс
+        </Button>
+        <Button
+          variant="standardMiddleOutlined"
+          onClick={() => router.push("/with-teachers/my-lessons")}
+        >
+          Мои запланированные уроки
+        </Button>
+        <Card className={styles.lessonsStatus}>
+          <Paper onClick={() => router.push("/with-teachers/buy-lessons")}>
+            Пополнить уроки
+          </Paper>
+          <p>12 уроков</p>
+        </Card>
+      </div>
+      {children}
+    </ProtectPage>
+  );
 }

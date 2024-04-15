@@ -1,11 +1,12 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getScheduleAsStudent } from "../api/getSchedule";
+import { getNextWeekScheduleOfTeacherAsStudent } from "../api/getNextWeekSchedule";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { bookLesson } from "../api/bookLesson";
 import { studentCancelLesson } from "../api/studentCancelLesson";
 
-export const useLessons = () => {
+export const useLessons = (week: string) => {
   const [teacherId, setTeacherId] = useState<string | undefined | null>(null);
 
   const queryClient = useQueryClient();
@@ -13,14 +14,18 @@ export const useLessons = () => {
   const bookMutation = useMutation({
     mutationFn: bookLesson,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["lessonsSchedule"] });
+      queryClient.invalidateQueries({
+        queryKey: ["lessonsSchedule"],
+      });
     },
   });
 
   const cancelMutation = useMutation({
     mutationFn: studentCancelLesson,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["lessonsSchedule"] });
+      queryClient.invalidateQueries({
+        queryKey: ["lessonsSchedule"],
+      });
     },
   });
 
@@ -42,8 +47,11 @@ export const useLessons = () => {
   }, [router.query.teacherId]);
 
   const { isPending, error, data } = useQuery({
-    queryKey: ["lessonsSchedule", teacherId],
-    queryFn: () => getScheduleAsStudent(teacherId),
+    queryKey: ["lessonsSchedule", teacherId, week],
+    queryFn: () =>
+      week === "current"
+        ? getScheduleAsStudent(teacherId)
+        : getNextWeekScheduleOfTeacherAsStudent(teacherId),
     enabled: !!teacherId,
   });
 

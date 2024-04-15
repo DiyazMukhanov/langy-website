@@ -1,6 +1,6 @@
 import styles from "./Schedule.module.scss";
 import classNames from "classnames";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal } from "@/ui-kit/ModalCommon";
 import Confirm from "../Confirm";
 import { Lesson } from "../../shared/types/lesson";
@@ -11,10 +11,8 @@ import { TableBody } from "@/ui-kit/Table/TableBody";
 import { TableRow } from "@/ui-kit/Table/TableRow";
 import { getDateInGmtFive } from "@/utils/getDateGmt";
 import { getNextWeekDays } from "@/utils/getNextWeekDays";
-import { useBookLesson } from "../../shared/hooks/useBookLesson";
-
-const nextWeekDays = getNextWeekDays();
-nextWeekDays.unshift({ day: "Время", date: "урока" });
+import { getCurrentWeekDays } from "@/utils/getCurrentWeekDays";
+import { lessonTimeStatus } from "@/utils/lessonTimeStatus";
 
 const timeSlots: any[] = [];
 for (let hour = 9; hour <= 20; hour++) {
@@ -43,9 +41,12 @@ const days = [
   "sundayLesson",
 ];
 
-export default function Schedule({ data, bookNewLesson, cancelLesson }) {
+export default function Schedule({ data, bookNewLesson, cancelLesson, week }) {
   const [bookConfirmationShow, setBookConfirmationShow] = useState(false);
-  // const [dataRows, setDataRows] = useState(rows)
+
+  const weekDays =
+    week === "current" ? getCurrentWeekDays() : getNextWeekDays();
+  weekDays.unshift({ day: "Время", date: "урока" });
 
   const rows = timeSlots.map((time) => ({
     time: time,
@@ -58,8 +59,6 @@ export default function Schedule({ data, bookNewLesson, cancelLesson }) {
     sundayLesson: null,
   }));
 
-  // const { bookNewLesson } = useBookLesson();
-  // console.log(data);
   if (data) {
     data.forEach((lesson: Lesson) => {
       const { weekday, hour } = getDateInGmtFive(lesson.lessonDate);
@@ -85,7 +84,7 @@ export default function Schedule({ data, bookNewLesson, cancelLesson }) {
 
       <Table style={{ width: "100%" }}>
         <TableHead style={{ width: "100%" }}>
-          {nextWeekDays.map((day) => (
+          {weekDays.map((day) => (
             <TableCell style={{ width: "auto" }}>
               <div>{day.day}</div>
               <div>{day.date}</div>
@@ -98,19 +97,29 @@ export default function Schedule({ data, bookNewLesson, cancelLesson }) {
               <TableCell style={{ width: "auto" }}>{row.time}</TableCell>
               {days.map((weekDay) => (
                 <TableCell style={{ width: "auto" }}>
-                  {row[weekDay] && row[weekDay].bookedBy === null && (
-                    <span onClick={() => bookNewLesson(row[weekDay]._id)}>
-                      Забронировать
-                    </span>
-                  )}
+                  {row[weekDay] &&
+                    row[weekDay].bookedBy === null &&
+                    !lessonTimeStatus(row[weekDay].lessonDate).isToday &&
+                    !lessonTimeStatus(row[weekDay].lessonDate)
+                      .alreadyFinished && (
+                      <span onClick={() => bookNewLesson(row[weekDay]._id)}>
+                        Забронировать
+                      </span>
+                    )}
                   {row[weekDay] &&
                     row[weekDay].bookedBy === "64f9d97a45bb8347919f18fc" && (
                       <div className={styles.myLessonBlock}>
                         <span>{row[weekDay]._id}</span>
                         <span>Мой урок</span>
-                        <span onClick={() => cancelLesson(row[weekDay]._id)}>
-                          Отменить урок
-                        </span>
+                        {!lessonTimeStatus(row[weekDay].lessonDate).isToday &&
+                          !lessonTimeStatus(row[weekDay].lessonDate)
+                            .alreadyFinished && (
+                            <span
+                              onClick={() => cancelLesson(row[weekDay]._id)}
+                            >
+                              Отменить урок
+                            </span>
+                          )}
                       </div>
                     )}
                   {!row[weekDay] && <span>-</span>}
