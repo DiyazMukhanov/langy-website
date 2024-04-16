@@ -26,11 +26,7 @@ export default function StudentProgress() {
         <div className={styles.progressesContainer}>
           {data?.data?.data.map((item) => (
             <ProgressLessonCard
-              teacher={{
-                name: item.teacherId.name,
-                surname: item.teacherId.surname,
-                email: item.teacherId.email,
-              }}
+              teacher={item.teacher}
               dateStr={item.lessonDate}
             />
           ))}
