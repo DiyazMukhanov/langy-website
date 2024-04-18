@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+  background-color: var(--color-primary);
+  color: white;
+
+  & a {
+    cursor: pointer;
+  }
+}
+
+.rightBlock {
+  display: flex;
+  gap: 20px;
+}
