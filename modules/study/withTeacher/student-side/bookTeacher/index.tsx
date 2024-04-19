@@ -1,9 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
-import { getScheduleAsStudent } from "../shared/api/getSchedule";
 import WithTeachersLayout from "../shared/withTeachersLayout";
 import Schedule from "./Schedule";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/ui-kit/Button";
 import styles from "./BookTeacher.module.scss";
 import { useLessons } from "../shared/hooks/useLessons";
@@ -15,6 +12,8 @@ export default function BookTeacher() {
     useLessons(week);
 
   if (isPending) return "Loading...";
+
+  if (error) return "OOOPs, попробуйте еще раз...";
 
   return (
     <WithTeachersLayout>

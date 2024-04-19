@@ -7,10 +7,18 @@ import { useTeacherLessons } from "../shared/hooks/useTeacherLessons";
 
 export default function TeacherSchedule() {
   const [week, setWeek] = useState("current");
-  const { isPending, error, data, publishLesson, unpublishLesson } =
-    useTeacherLessons(week);
+  const {
+    isPending,
+    error,
+    data,
+    publishLesson,
+    unpublishLesson,
+    createScheduleHandler,
+  } = useTeacherLessons(week);
 
   if (isPending) return "Loading...";
+
+  if (error) return "ooops, попробуйте перезагрузить страницу";
 
   return (
     <TeacherLayout>
@@ -29,12 +37,27 @@ export default function TeacherSchedule() {
             Следующая неделя
           </Button>
         </div>
-        <TeacherScheduleComponent
-          week={week}
-          data={data?.data?.data}
-          publishLesson={publishLesson}
-          unpublishLesson={unpublishLesson}
-        />
+        {data?.data?.data.length > 0 ? (
+          <TeacherScheduleComponent
+            week={week}
+            data={data?.data?.data}
+            publishLesson={publishLesson}
+            unpublishLesson={unpublishLesson}
+          />
+        ) : (
+          <p>
+            У вас нет уроков на {week === "current" ? "этой" : "следующей"}{" "}
+            неделе
+          </p>
+        )}
+        {week === "next" && data?.data?.data.length < 1 && (
+          <Button
+            variant="newStandardNextContained"
+            onClick={createScheduleHandler}
+          >
+            Создать расписание на следующую неделю
+          </Button>
+        )}
       </div>
     </TeacherLayout>
   );

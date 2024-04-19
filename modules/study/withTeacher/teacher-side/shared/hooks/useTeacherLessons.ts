@@ -1,8 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getCurrentWeekLessonsAsTeacher } from "../api/getCurrentWeekLessonsAsTeacher";
-import { getNextWeekLessonsAsTeacher } from "../api/getNExtWeekLessonsAsTeacher";
+import { getNextWeekLessonsAsTeacher } from "../api/getNextWeekLessonsAsTeacher";
 import { publishLessons } from "../api/publishLessons";
 import { unpublishLessons } from "../api/unpublishLessons";
+import { createSchedule } from "../api/createSchedule";
 
 export const useTeacherLessons = (week: string) => {
   const queryClient = useQueryClient();
@@ -25,12 +26,25 @@ export const useTeacherLessons = (week: string) => {
     },
   });
 
+  const createScheduleMutation = useMutation({
+    mutationFn: createSchedule,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["teacherLessons"],
+      });
+    },
+  });
+
   const publishLesson = (lessonIds: string[]) => {
     publishMutation.mutate(lessonIds);
   };
 
   const unpublishLesson = (lessonIds: string[]) => {
     unpublishMutation.mutate(lessonIds);
+  };
+
+  const createScheduleHandler = () => {
+    createScheduleMutation.mutate();
   };
 
   const { isPending, error, data } = useQuery({
@@ -41,5 +55,12 @@ export const useTeacherLessons = (week: string) => {
         : getNextWeekLessonsAsTeacher(),
   });
 
-  return { isPending, error, data, publishLesson, unpublishLesson };
+  return {
+    isPending,
+    error,
+    data,
+    publishLesson,
+    unpublishLesson,
+    createScheduleHandler,
+  };
 };

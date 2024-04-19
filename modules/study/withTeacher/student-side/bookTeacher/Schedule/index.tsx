@@ -12,6 +12,8 @@ import { getNextWeekDays } from "@/utils/getNextWeekDays";
 import { getCurrentWeekDays } from "@/utils/getCurrentWeekDays";
 import { lessonTimeStatus } from "@/utils/lessonTimeStatus";
 import { UserContext } from "@/store/userContext";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 const timeSlots: any[] = [];
 for (let hour = 9; hour <= 20; hour++) {
@@ -66,8 +68,11 @@ export default function Schedule({
   week,
 }: Props) {
   const userCtx = useContext(UserContext);
+  const router = useRouter();
   const userId = userCtx?.userData?._id;
   const [bookConfirmationShow, setBookConfirmationShow] = useState(false);
+
+  const lessonsPackage = useSelector((state: any) => state.package.package);
 
   const weekDays =
     week === "current" ? getCurrentWeekDays() : getNextWeekDays();
@@ -109,27 +114,43 @@ export default function Schedule({
 
       <Table style={{ width: "100%" }}>
         <TableHead style={{ width: "100%" }}>
-          {weekDays.map((day) => (
-            <TableCell style={{ width: "auto" }}>
+          {weekDays.map((day, index) => (
+            <TableCell style={{ width: "auto" }} key={index}>
               <div>{day.day}</div>
               <div>{day.date}</div>
             </TableCell>
           ))}
         </TableHead>
         <TableBody style={{ width: "100%" }}>
-          {rows.map((row) => (
-            <TableRow style={{ width: "auto" }}>
+          {rows.map((row, index) => (
+            <TableRow style={{ width: "auto" }} key={index}>
               <TableCell style={{ width: "auto" }}>{row.time}</TableCell>
-              {days.map((weekDay) => (
-                <TableCell style={{ width: "auto" }}>
+              {days.map((weekDay, index) => (
+                <TableCell style={{ width: "auto" }} key={index}>
                   {row[weekDay] &&
                     row[weekDay].bookedBy === null &&
                     !lessonTimeStatus(row[weekDay].lessonDate).isToday &&
                     !lessonTimeStatus(row[weekDay].lessonDate)
                       .alreadyFinished &&
-                    bookNewLesson && (
+                    bookNewLesson &&
+                    lessonsPackage > 0 && (
                       <span onClick={() => bookNewLesson(row[weekDay]._id)}>
                         Забронировать
+                      </span>
+                    )}
+                  {row[weekDay] &&
+                    row[weekDay].bookedBy === null &&
+                    !lessonTimeStatus(row[weekDay].lessonDate).isToday &&
+                    !lessonTimeStatus(row[weekDay].lessonDate)
+                      .alreadyFinished &&
+                    bookNewLesson &&
+                    lessonsPackage < 1 && (
+                      <span
+                        onClick={() =>
+                          router.push("/with-teachers/buy-lessons")
+                        }
+                      >
+                        Пополните уроки
                       </span>
                     )}
                   {row[weekDay] && row[weekDay].bookedBy === userId && (
