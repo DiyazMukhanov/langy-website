@@ -1,0 +1,74 @@
+@import "styles/breakpoints";
+
+.container {
+  width: 100%;
+  overflow-x: auto;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+
+  @include size-tablet {
+    display: block;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  & table {
+    width: 90%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+
+  & th {
+    background-color: var(--color-primary);
+    color: white;
+    height: 40px;
+    width: 150px;
+  }
+
+  & td {
+    border: solid var(--color-grey) 1px;
+    height: 40px;
+    text-align: center;
+    min-width: 100px;
+  }
+}
+
+.book {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.free {
+  color: var(--color-green);
+}
+
+.booked {
+  color: black;
+}
+
+.myLessonBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.booked {
+  color: red;
+}
+
+.openedBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.green {
+  color: green;
+}
+
+.blue {
+  color: blue;
+  cursor: pointer;
+}
+
+.pointer {
+  cursor: pointer;
+}

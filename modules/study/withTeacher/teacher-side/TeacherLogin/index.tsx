@@ -17,7 +17,7 @@ export default function TeacherLogin() {
   const dispatch = useDispatch();
   const router = useRouter();
   const teacher = useSelector((state: any) => state.teacher.teacherData);
-  console.log(teacher);
+
   const {
     register,
     handleSubmit,

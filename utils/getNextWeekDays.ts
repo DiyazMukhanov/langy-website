@@ -1,15 +1,17 @@
 export function getNextWeekDays() {
   const today = new Date();
   const todayDayOfWeek = today.getDay(); // Sunday - 0, Monday - 1, ..., Saturday - 6
-  const daysUntilNextMonday = todayDayOfWeek === 1 ? 7 : 8 - todayDayOfWeek; // Calculate how many days until next Monday
+  // Adjust to ensure the calculation accounts for starting the next week on Monday
+  const daysUntilNextMonday = todayDayOfWeek === 0 ? 1 : 8 - todayDayOfWeek;
+
   const nextMonday = new Date(
     today.getFullYear(),
     today.getMonth(),
     today.getDate() + daysUntilNextMonday
   );
 
-  const days: any = [];
-  const dayNames = ["Пон", "Вт", "Ср", "Чт", "Пт", "Сб", "Вск"]; // Short names in Russian
+  const days = [];
+  const dayNames = ["Вск", "Пон", "Вт", "Ср", "Чт", "Пт", "Сб"]; // Short names in Russian
   const monthNames = [
     "января",
     "февраля",
@@ -31,7 +33,7 @@ export function getNextWeekDays() {
       nextMonday.getMonth(),
       nextMonday.getDate() + i
     );
-    const day = dayNames[date.getDay() - 1 >= 0 ? date.getDay() - 1 : 6]; // Adjust for array index (-1 because array starts at 0)
+    const day = dayNames[date.getDay()]; // Correctly fetches day name based on the day of week
     const dateStr = `${date.getDate()} ${monthNames[date.getMonth()]}`;
     days.push({ day: day, date: dateStr });
   }
