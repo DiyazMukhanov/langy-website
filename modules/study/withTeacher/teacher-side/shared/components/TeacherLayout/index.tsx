@@ -61,7 +61,9 @@ export const TeacherLayout = ({ children }) => {
   return (
     <>
       <div className={styles.header}>
-        <a>На главную</a>
+        <a onClick={() => router.push("/with-teachers/teacher-main")}>
+          На главную
+        </a>
         <div className={styles.rightBlock}>
           <span>{teacher?.name}</span>
           <span>{teacher?.surname}</span>

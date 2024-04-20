@@ -17,6 +17,10 @@ export const useLessons = (week: string) => {
       queryClient.invalidateQueries({
         queryKey: ["lessonsSchedule"],
       });
+
+      queryClient.invalidateQueries({
+        queryKey: ["package"],
+      });
     },
   });
 
@@ -25,6 +29,10 @@ export const useLessons = (week: string) => {
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["lessonsSchedule"],
+      });
+
+      queryClient.invalidateQueries({
+        queryKey: ["package"],
       });
     },
   });

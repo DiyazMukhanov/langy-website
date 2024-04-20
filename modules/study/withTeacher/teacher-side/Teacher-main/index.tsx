@@ -11,7 +11,9 @@ export default function TeacherMain() {
         <a onClick={() => router.push("/with-teachers/teacher-schedule")}>
           Раписание
         </a>
-        <a>Предстоящие уроки</a>
+        <a onClick={() => router.push("/with-teachers/teacher-future-lessons")}>
+          Предстоящие уроки
+        </a>
         <a>Мой кошелек</a>
       </div>
     </TeacherLayout>
