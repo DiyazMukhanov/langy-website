@@ -10,7 +10,7 @@ import { getPackage } from "../api/getPackage";
 import { useDispatch } from "react-redux";
 import { setPackage } from "@/store/student/packageSlice";
 
-export default function WithTeachersLayout({ children }) {
+export default function WithTeachersLayoutContent({ children }) {
   const dispatch = useDispatch();
   const router = useRouter();
 

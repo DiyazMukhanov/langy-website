@@ -1,13 +1,17 @@
 export function getCurrentWeekDays() {
-  const today = new Date();
-  const todayDayOfWeek = today.getDay(); // Sunday - 0, Monday - 1, ..., Saturday - 6
+  // Get the current UTC date and time
+  const now = new Date();
+  // Convert it to GMT+5 by adding 5 hours to UTC time
+  const localTime = new Date(now.getTime() + 5 * 60 * 60 * 1000);
+
+  const todayDayOfWeek = localTime.getDay(); // Sunday - 0, Monday - 1, ..., Saturday - 6
   // Correct the offset calculation to always land on Monday
   const daysUntilThisMonday = todayDayOfWeek === 0 ? -6 : 1 - todayDayOfWeek;
 
   const thisMonday = new Date(
-    today.getFullYear(),
-    today.getMonth(),
-    today.getDate() + daysUntilThisMonday
+    localTime.getFullYear(),
+    localTime.getMonth(),
+    localTime.getDate() + daysUntilThisMonday
   );
 
   const days = [];

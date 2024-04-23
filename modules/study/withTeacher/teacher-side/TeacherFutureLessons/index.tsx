@@ -22,6 +22,7 @@ export default function TeacherFutureLessons() {
       <div className={styles.futureLessonsContainer}>
         {data?.data?.data.map((lesson: Lesson) => (
           <div className={styles.lessonBlock}>
+            <div>{getDateAndTime(lesson.lessonDate).date}</div>
             <div>{getDateAndTime(lesson.lessonDate).time}</div>
             <Button variant="newStandardNextOutlined">Войти в урок</Button>
           </div>

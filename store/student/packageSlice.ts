@@ -1,10 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { PackageState } from "../types";
 
-export interface PackageState {
-  package: number | null;
-}
-
-const initialState: PackageState = {
+const initialState: PackageState | null = {
   package: null,
 };
 

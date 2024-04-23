@@ -1,21 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { TeacherState } from "../types";
 
-interface Teacher {
-  id: number;
-  name: string;
-  surname: string;
-  email: string;
-  photo: string;
-  gender: string;
-  description: string;
-  isLoggedIn: boolean;
+export interface TeacherInitialState {
+  teacherData: TeacherState | null;
 }
 
-export interface TeacherState {
-  teacherData: Teacher | null;
-}
-
-const initialState: TeacherState = {
+const initialState: TeacherInitialState = {
   teacherData: null,
 };
 
@@ -23,7 +13,7 @@ export const teacherSlice = createSlice({
   name: "teacher",
   initialState,
   reducers: {
-    setTeacher: (state, action: PayloadAction<Teacher>) => {
+    setTeacher: (state, action: PayloadAction<TeacherState>) => {
       state.teacherData = action.payload;
     },
     clearTeacher: (state) => {

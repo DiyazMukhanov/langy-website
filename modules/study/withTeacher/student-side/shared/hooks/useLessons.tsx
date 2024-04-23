@@ -22,6 +22,9 @@ export const useLessons = (week: string) => {
         queryKey: ["package"],
       });
     },
+    onError: (error: any) => {
+      alert(error?.response?.data?.message);
+    },
   });
 
   const cancelMutation = useMutation({

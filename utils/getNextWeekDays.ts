@@ -1,13 +1,17 @@
 export function getNextWeekDays() {
-  const today = new Date();
-  const todayDayOfWeek = today.getDay(); // Sunday - 0, Monday - 1, ..., Saturday - 6
-  // Adjust to ensure the calculation accounts for starting the next week on Monday
+  // Create a new date object for 'now'
+  const now = new Date();
+  // Manually adjust for GMT+5 timezone by adding 5 hours to UTC
+  const localTime = new Date(now.getTime() + 5 * 60 * 60 * 1000);
+
+  const todayDayOfWeek = localTime.getDay(); // Adjusted day of week for GMT+5
+  // Calculate days until next Monday
   const daysUntilNextMonday = todayDayOfWeek === 0 ? 1 : 8 - todayDayOfWeek;
 
   const nextMonday = new Date(
-    today.getFullYear(),
-    today.getMonth(),
-    today.getDate() + daysUntilNextMonday
+    localTime.getFullYear(),
+    localTime.getMonth(),
+    localTime.getDate() + daysUntilNextMonday
   );
 
   const days = [];
