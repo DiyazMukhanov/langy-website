@@ -43,8 +43,20 @@ export default function Student() {
         >
           Пакет уроков
         </a>
-        <a>Предстоящие уроки</a>
-        <a>Завершенные уроки</a>
+        <a
+          onClick={() =>
+            router.push(`/admin/student/student-next-lessons/${studentId}`)
+          }
+        >
+          Предстоящие уроки
+        </a>
+        <a
+          onClick={() =>
+            router.push(`/admin/student/student-past-lessons/${studentId}`)
+          }
+        >
+          Завершенные уроки
+        </a>
       </div>
     </AdminLayout>
   );

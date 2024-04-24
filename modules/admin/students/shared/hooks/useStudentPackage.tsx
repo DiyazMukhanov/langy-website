@@ -14,6 +14,8 @@ export const useStudentPackage = () => {
     queryFn: () => {
       if (studentId && !Array.isArray(studentId)) {
         return getStudentPackage(studentId);
+      } else {
+        return Promise.resolve(null);
       }
     },
   });
