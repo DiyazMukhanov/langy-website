@@ -53,7 +53,11 @@ export const useStudentLessons = (currentPage) => {
   });
 
   const cancelLesson = (lessonId: string) => {
-    cancelLessonMutation.mutate(lessonId);
+    const confirmCancel = window.confirm("Вы точно хотите отменить этот урок?");
+
+    if (confirmCancel) {
+      cancelLessonMutation.mutate(lessonId);
+    }
   };
 
   return {

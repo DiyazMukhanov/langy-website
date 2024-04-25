@@ -1,0 +1,26 @@
+.teachersContainer {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.teacher {
+  border: solid var(--color-primary) 1px;
+  width: 300px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.input {
+  margin: 20px;
+}
+
+.btn {
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.all {
+  margin-left: 20px;
+}

@@ -10,8 +10,8 @@ export const AdminLayout = ({ children }) => {
       <div className={styles.header}>
         <a onClick={() => router.push("/admin/main")}>Main Admin</a>
         <a onClick={() => router.push("/admin/students")}>Students</a>
-        <a>Teachers</a>
-        <a>Feedbacks</a>
+        <a onClick={() => router.push("/admin/teachers")}>Teachers</a>
+        <a onClick={() => router.push("/admin/feedbacks")}>Feedbacks</a>
       </div>
       {children}
     </ProtectPage>
