@@ -40,7 +40,15 @@ export default function Teachers() {
 
   return (
     <AdminLayout>
-      <h3 className={styles.all}>Всего учителей: {data?.data.totalCount}</h3>
+      <div>
+        <h3 className={styles.all}>Всего учителей: {data?.data.totalCount}</h3>
+        <a
+          className={styles.new}
+          onClick={() => router.push("/admin/teachers/new")}
+        >
+          Добавить нового учителя
+        </a>
+      </div>
       <input
         type="text"
         className={styles.input}

@@ -5,6 +5,7 @@ import { compensateTeacher } from "../api/compensateTeacher";
 import { getTeacherCompensations } from "../api/getTeacherCompensations";
 import { getTeachersFeedbacksByAdmin } from "../api/getTeachersFeedbacksByAdmin";
 import { updateTeacherFee } from "../api/updateTeacherFee";
+import { createTeacher } from "../api/createTeacher";
 
 export const useTeacher = (
   currentPage: number,
@@ -92,6 +93,19 @@ export const useTeacher = (
     updateTeacherFeeMutation.mutate({ teacherId, fee });
   };
 
+  const createTeacherMutation = useMutation({
+    mutationFn: createTeacher,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["teachers"],
+      });
+    },
+  });
+
+  const createTeacherHandler = (teacherData) => {
+    createTeacherMutation.mutate(teacherData);
+  };
+
   return {
     teacherIsPending,
     teacherError,
@@ -104,5 +118,7 @@ export const useTeacher = (
     feedbacksData,
     compensateTeacherHandler,
     updateTeacherFeeHandler,
+    createTeacherHandler,
+    createTeacherMutation,
   };
 };
