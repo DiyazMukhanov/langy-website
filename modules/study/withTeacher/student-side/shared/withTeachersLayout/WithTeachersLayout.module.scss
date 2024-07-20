@@ -2,7 +2,7 @@
 
 .top {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     margin-top: 20px;
 
     @include size-tablet {

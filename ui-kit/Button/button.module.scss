@@ -165,3 +165,19 @@
    border-radius: 15px;
    font-size: 16px;
 }
+
+.bottomOutlined {
+   color: #667085;
+   font-weight: 500;
+   background-color: transparent;
+   border: none;
+   border-bottom: solid #EAECF0 1px;
+   height: 44px;
+   width: 240px;
+
+   &:hover {
+      color:#0D559E;
+      background-color: #E6F2FF;
+      border-bottom: solid #1676D8 1px;
+   }
+}

@@ -31,29 +31,26 @@ export default function WithTeachersLayoutContent({ children }) {
         <Header variant="blue" isEasyEnglish={false} />
         <div className={styles.top}>
           <Button
-            variant="standardMiddleOutlined"
+            variant="bottomOutlined"
             onClick={() => router.push("/with-teachers/student-progress")}
           >
             Мой прогресс
           </Button>
           <Button
-            variant="standardMiddleOutlined"
+            variant="bottomOutlined"
             onClick={() => router.push("/with-teachers/teachers")}
           >
             Выбрать учителя
           </Button>
           <Button
-            variant="standardMiddleOutlined"
+            variant="bottomOutlined"
             onClick={() => router.push("/with-teachers/my-lessons")}
           >
-            Мои запланированные уроки
+            Запланированные уроки
           </Button>
-          <Card className={styles.lessonsStatus}>
-            <Paper onClick={() => router.push("/with-teachers/buy-lessons")}>
+            <Button variant="bottomOutlined" onClick={() => router.push("/with-teachers/buy-lessons")}>
               Пополнить уроки
-            </Paper>
-            <p>{data?.data?.data?.lessonsQuantity} уроков</p>
-          </Card>
+            </Button>
         </div>
         {children}
       </>
