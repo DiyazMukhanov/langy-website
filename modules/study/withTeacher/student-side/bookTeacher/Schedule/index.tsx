@@ -112,21 +112,47 @@ export default function Schedule({
         <Confirm />
       </Modal>
 
-      <Table style={{ width: "100%" }}>
-        <TableHead style={{ width: "100%" }}>
+      <Table style={{ width: "100%", borderCollapse: "collapse" }}>
+        <TableHead style={{ width: "100%", border: "none" }}>
           {weekDays.map((day, index) => (
-            <TableCell style={{ width: "auto" }} key={index}>
-              <div>{day.day}</div>
-              <div>{day.date}</div>
+            <TableCell
+              style={{
+                width: "auto",
+                border: "none",
+                borderBottom: "solid #EAECF0 1px",
+              }}
+              key={index}
+            >
+              <div className={styles.timeHeadContainer}>
+                <div className={styles.greyColor}>{day.day}</div>
+                <div className={styles.greyColor}>{day.date}</div>
+              </div>
             </TableCell>
           ))}
         </TableHead>
         <TableBody style={{ width: "100%" }}>
           {rows.map((row, index) => (
-            <TableRow style={{ width: "auto" }} key={index}>
-              <TableCell style={{ width: "auto" }}>{row.time}</TableCell>
+            <TableRow style={{ width: "auto", border: "none" }} key={index}>
+              <TableCell
+                style={{
+                  width: "auto",
+                  border: "none",
+                  borderBottom: "solid #EAECF0 1px",
+                  color: "#101828",
+                  fontWeight: 500,
+                }}
+              >
+                {row.time}
+              </TableCell>
               {days.map((weekDay, index) => (
-                <TableCell style={{ width: "auto" }} key={index}>
+                <TableCell
+                  style={{
+                    width: "auto",
+                    border: "none",
+                    borderBottom: "solid #EAECF0 1px",
+                  }}
+                  key={index}
+                >
                   {row[weekDay] &&
                     row[weekDay].bookedBy === null &&
                     !lessonTimeStatus(row[weekDay].lessonDate).isToday &&
@@ -134,7 +160,10 @@ export default function Schedule({
                       .alreadyFinished &&
                     bookNewLesson &&
                     lessonsPackage > 0 && (
-                      <span onClick={() => bookNewLesson(row[weekDay]._id)}>
+                      <span
+                        onClick={() => bookNewLesson(row[weekDay]._id)}
+                        className={styles.bookLessonLink}
+                      >
                         Забронировать
                       </span>
                     )}
@@ -155,18 +184,22 @@ export default function Schedule({
                     )}
                   {row[weekDay] && row[weekDay].bookedBy === userId && (
                     <div className={styles.myLessonBlock}>
-                      <span>{row[weekDay]._id}</span>
                       {lessonTimeStatus(row[weekDay].lessonDate)
                         .alreadyFinished ? (
                         <span>Прошедший урок</span>
                       ) : (
-                        <span>Мой урок</span>
+                        <span className={styles.enterLessonLink}>
+                          Войти в урок
+                        </span>
                       )}
                       {!lessonTimeStatus(row[weekDay].lessonDate).isToday &&
                         !lessonTimeStatus(row[weekDay].lessonDate)
                           .alreadyFinished &&
                         cancelLesson && (
-                          <span onClick={() => cancelLesson(row[weekDay]._id)}>
+                          <span
+                            onClick={() => cancelLesson(row[weekDay]._id)}
+                            className={styles.cancelLessonLink}
+                          >
                             Отменить урок
                           </span>
                         )}

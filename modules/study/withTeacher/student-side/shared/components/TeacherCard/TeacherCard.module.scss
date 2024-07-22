@@ -1,14 +1,67 @@
 .card {
-    background-color: var(--color-primary);
-    width: 250px;
-    border-radius: 20px;
-    height: 500px;
-    color: white;
-    font-size: 18px;
-    text-align: center;
+  background-color: #6ca9e9;
+  width: 240px;
+  border-radius: 20px;
+  height: 446px;
+  padding: 16px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .image {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+  border-radius: 12px;
+  width: 100%;
+  height: 170px;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.nameContainer {
+  height: 50px;
+  border-bottom: solid #ffffff 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+.descriptionContainer {
+  width: 100%;
+  font-size: 14px;
+  display: flex;
+  justify-content: flex-start;
+  height: 80px;
+}
+
+.opinionContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.scoreContainer {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.goToOpinionsLink {
+  cursor: pointer;
+
+  &:hover {
+    border-bottom: solid #ffffff 1px;
+  }
+}
+
+.bookBtn {
+  margin-top: 30px;
 }

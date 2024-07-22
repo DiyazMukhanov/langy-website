@@ -1,183 +1,184 @@
 @import "styles/breakpoints";
 
 .button {
-   cursor: pointer;
-   transition: all .25s ease-in-out;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
 }
 
 .contained {
-   border: none;
+  border: none;
 }
 
 .outlined {
-   background-color: transparent;
+  background-color: transparent;
 }
 
 .yellow {
-   background-color: var(--color-yellow);
+  background-color: var(--color-yellow);
 }
 
 .standardLargeContained {
-   width: 259px;
-   height: 51px;
-   background-color: var(--color-primary);
-   color: var(--color-white);
-   font-size: 18px;
-   border-radius: 10px;
-   border: none;
+  width: 259px;
+  height: 51px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
 }
 
 .standardLargeOutlined {
-   width: 259px;
-   height: 51px;
-   background-color: transparent;
-   color: var(--color-primary);
-   font-size: 18px;
-   border-radius: 10px;
-   border: solid var(--color-primary) 1px;
+  width: 259px;
+  height: 51px;
+  background-color: transparent;
+  color: var(--color-primary);
+  font-size: 18px;
+  border-radius: 10px;
+  border: solid var(--color-primary) 1px;
 }
 
 .standardMiddleOutlined {
-   width: 200px;
-   height: 51px;
-   background-color: transparent;
-   color: var(--color-primary);
-   font-size: 16px;
-   border-radius: 40px;
-   border: solid var(--color-primary) 1px;
+  width: 200px;
+  height: 51px;
+  background-color: transparent;
+  color: var(--color-primary);
+  font-size: 16px;
+  border-radius: 40px;
+  border: solid var(--color-primary) 1px;
 }
 
 .standardAuthOutlined {
-   width: 130px;
-   height: 40px;
-   background-color: transparent;
-   color: var(--color-black);
-   font-size: 16px;
-   border-radius: 10px;
-   border: solid var(--color-dark-grey) 1px;
+  width: 130px;
+  height: 40px;
+  background-color: transparent;
+  color: var(--color-black);
+  font-size: 16px;
+  border-radius: 10px;
+  border: solid var(--color-dark-grey) 1px;
 }
 
 .standardNextOutlined {
-   width: 130px;
-   height: 40px;
-   background-color: transparent;
-   color: var(--color-primary);
-   font-size: 16px;
-   border-radius: 40px;
-   border: solid var(--color-primary) 1px;
+  width: 130px;
+  height: 40px;
+  background-color: transparent;
+  color: var(--color-primary);
+  font-size: 16px;
+  border-radius: 40px;
+  border: solid var(--color-primary) 1px;
 }
 
 .newStandardNextOutlined {
-   width: 130px;
-   height: 40px;
-   background-color: transparent;
-   color: var(--color-primary);
-   font-size: 16px;
-   font-weight: bold;
-   border: solid var(--color-grey) 1px;
-   border-radius: 40px;
-   box-shadow: 1px 2px 2px 0px var(--color-grey);
+  width: 130px;
+  height: 40px;
+  background-color: transparent;
+  color: var(--color-primary);
+  font-size: 16px;
+  font-weight: bold;
+  border: solid var(--color-grey) 1px;
+  border-radius: 40px;
+  box-shadow: 1px 2px 2px 0px var(--color-grey);
 }
 
 .standardNextContained {
-   width: 200px;
-   height: 51px;
-   background-color: var(--color-primary);
-   color: var(--color-white);
-   font-size: 16px;
-   border-radius: 40px;
-   border: none;
+  width: 200px;
+  height: 51px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: 16px;
+  border-radius: 40px;
+  border: none;
 }
 
 .newStandardNextContained {
-   width: 130px;
-   height: 40px;
-   background-color: var(--color-primary);
-   color: var(--color-white);
-   font-size: 16px;
-   font-weight: bold;
-   border: solid var(--color-grey) 1px;
-   border-radius: 40px;
-   box-shadow: 1px 2px 2px 0px var(--color-grey);
+  width: 130px;
+  height: 40px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: bold;
+  border: solid var(--color-grey) 1px;
+  border-radius: 40px;
+  box-shadow: 1px 2px 2px 0px var(--color-grey);
 }
 
 .authLargeContained {
-   width: 305px;
-   height: 45px;
-   background-color: var(--color-primary);
-   color: var(--color-white);
-   font-size: 16px;
-   border-radius: 12px;
-   border: none;
+  width: 305px;
+  height: 45px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: 16px;
+  border-radius: 12px;
+  border: none;
 
-   @include size-laptop {
-      width: 255px;
-      height: 40px;
-   }
+  @include size-laptop {
+    width: 255px;
+    height: 40px;
+  }
 }
 
 .google {
-   width: 305px;
-   height: 45px;
-   background-color: transparent;
-   border-radius: 12px;
-   border: solid var(--color-grey-100) 1px;
-   display: flex;
-   justify-content: flex-start;
-   align-items: center;
-   padding-left: 20px;
-   gap: 20px;
-   color: var(--color-dark-grey);
-   font-size: 16px;
+  width: 305px;
+  height: 45px;
+  background-color: transparent;
+  border-radius: 12px;
+  border: solid var(--color-grey-100) 1px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 20px;
+  gap: 20px;
+  color: var(--color-dark-grey);
+  font-size: 16px;
 
-   @include size-laptop {
-      width: 255px;
-      height: 40px;
-   }
+  @include size-laptop {
+    width: 255px;
+    height: 40px;
+  }
 }
 
 .menu {
-   width: 110px;
-   height: 30px;
-   background-color: var(--color-primary);
-   border: none;
-   color: var(--color-white);
-   font-size: 16px;
-   font-weight: bold;
-   border-radius: 20px;
-   margin-top: 10px;
+  width: 110px;
+  height: 30px;
+  background-color: var(--color-primary);
+  border: none;
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 20px;
+  margin-top: 10px;
 }
 
 .teachers {
-   background-color: var(--color-primary);
-   color: var(--color-white);
-   border-radius: 5px;
-   border: none;
-   box-shadow: 1px 2px 2px 0px var(--color-grey);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: 5px;
+  border: none;
+  box-shadow: 1px 2px 2px 0px var(--color-grey);
 }
 
 .teachersBook {
-   background-color: var(--color-primary);
-   width: 200px;
-   height: 40px;
-   color: white;
-   border: none;
-   border-radius: 15px;
-   font-size: 16px;
+  background-color: var(--color-primary);
+  width: 200px;
+  height: 40px;
+  color: #1676d8;
+  background-color: #fcfcfc;
+  border: none;
+  border-radius: 40px;
+  font-size: 16px;
 }
 
 .bottomOutlined {
-   color: #667085;
-   font-weight: 500;
-   background-color: transparent;
-   border: none;
-   border-bottom: solid #EAECF0 1px;
-   height: 44px;
-   width: 240px;
+  color: #667085;
+  font-weight: 500;
+  background-color: transparent;
+  border: none;
+  border-bottom: solid #eaecf0 1px;
+  height: 44px;
+  width: 240px;
 
-   &:hover {
-      color:#0D559E;
-      background-color: #E6F2FF;
-      border-bottom: solid #1676D8 1px;
-   }
+  &:hover {
+    color: #0d559e;
+    background-color: #e6f2ff;
+    border-bottom: solid #1676d8 1px;
+  }
 }

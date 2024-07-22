@@ -5,12 +5,11 @@
   overflow-x: auto;
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 30px;
 
   @include size-tablet {
     display: block;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-top: 30px;
   }
 
   & table {
@@ -31,6 +30,38 @@
     text-align: center;
     min-width: 100px;
   }
+}
+
+.enterLessonLink {
+  color: #1676d8;
+  font-weight: 500;
+  margin: 4px;
+  cursor: pointer;
+}
+
+.cancelLessonLink {
+  color: #ff003e;
+  font-weight: 500;
+  margin: 4px;
+  cursor: pointer;
+}
+
+.bookLessonLink {
+  color: #63ad4a;
+  font-weight: 500;
+  margin: 4px;
+  cursor: pointer;
+}
+
+.timeHeadContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.greyColor {
+  color: #667085;
 }
 
 .book {

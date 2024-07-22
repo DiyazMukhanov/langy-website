@@ -32,25 +32,32 @@ export default function WithTeachersLayoutContent({ children }) {
         <div className={styles.top}>
           <Button
             variant="bottomOutlined"
+            className={styles.tabBtn}
             onClick={() => router.push("/with-teachers/student-progress")}
           >
             Мой прогресс
           </Button>
           <Button
             variant="bottomOutlined"
+            className={styles.tabBtn}
             onClick={() => router.push("/with-teachers/teachers")}
           >
             Выбрать учителя
           </Button>
           <Button
             variant="bottomOutlined"
+            className={styles.tabBtn}
             onClick={() => router.push("/with-teachers/my-lessons")}
           >
             Запланированные уроки
           </Button>
-            <Button variant="bottomOutlined" onClick={() => router.push("/with-teachers/buy-lessons")}>
-              Пополнить уроки
-            </Button>
+          <Button
+            variant="bottomOutlined"
+            className={styles.tabBtn}
+            onClick={() => router.push("/with-teachers/buy-lessons")}
+          >
+            Пополнить уроки
+          </Button>
         </div>
         {children}
       </>

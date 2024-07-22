@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/ui-kit/Button";
 import styles from "./BookTeacher.module.scss";
 import { useLessons } from "../shared/hooks/useLessons";
+import classNames from "classnames";
 
 export default function BookTeacher() {
   const [week, setWeek] = useState("current");
@@ -21,12 +22,20 @@ export default function BookTeacher() {
         <Button
           variant="standardMiddleOutlined"
           onClick={() => setWeek("current")}
+          className={classNames(
+            { [styles.notActualWeekBtn]: week === "next" },
+            styles.weekBtn
+          )}
         >
           Эта неделя
         </Button>
         <Button
           variant="standardMiddleOutlined"
           onClick={() => setWeek("next")}
+          className={classNames(
+            { [styles.notActualWeekBtn]: week === "current" },
+            styles.weekBtn
+          )}
         >
           Следующая неделя
         </Button>
