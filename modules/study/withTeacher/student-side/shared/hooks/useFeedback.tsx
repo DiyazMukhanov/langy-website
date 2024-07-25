@@ -3,21 +3,12 @@ import { createFeedback } from "../api/createFeedback";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-export const useFeedback = () => {
-  const [teacherId, setTeacherId] = useState<string | undefined | null>(null);
-
+export const useFeedback = (teacherId: string) => {
   const router = useRouter();
-
-  useEffect(() => {
-    const id = router.query.teacherId;
-    if (!Array.isArray(id)) {
-      setTeacherId(id);
-    }
-  }, [router.query.teacherId]);
 
   const queryClient = useQueryClient();
 
-  const { mutate, isPending, isSuccess } = useMutation({
+  const { mutate, isPending, isSuccess, isError } = useMutation({
     mutationFn: createFeedback,
     onSuccess: () => {
       queryClient.invalidateQueries({
@@ -26,11 +17,11 @@ export const useFeedback = () => {
     },
   });
 
-  const createNewFeedback = ({ teacherId, feedback }) => {
+  const createNewFeedback = ({ teacherId, feedback, rating }) => {
     if (teacherId) {
-      mutate({ teacherId, feedback });
+      mutate({ teacherId, feedback, rating });
     }
   };
 
-  return { createNewFeedback, teacherId, isPending, isSuccess };
+  return { createNewFeedback, teacherId, isPending, isSuccess, isError };
 };

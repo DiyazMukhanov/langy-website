@@ -4,6 +4,7 @@ import { Teacher } from "../../types/teacher";
 import { Button } from "@/ui-kit/Button";
 import { useRouter } from "next/router";
 import Star from "public/icons/star.svg";
+import Card from "../Card";
 
 type Props = {
   teacher: Teacher;
@@ -12,7 +13,7 @@ type Props = {
 export default function TeacherCard({ teacher }: Props) {
   const router = useRouter();
   return (
-    <div className={styles.card}>
+    <Card>
       <Image
         alt="teacher"
         priority
@@ -44,6 +45,6 @@ export default function TeacherCard({ teacher }: Props) {
       >
         Забронировать урок
       </Button>
-    </div>
+    </Card>
   );
 }
