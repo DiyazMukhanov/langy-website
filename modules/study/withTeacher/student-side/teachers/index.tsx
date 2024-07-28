@@ -25,7 +25,7 @@ export default function Teachers() {
   if (error) return "Ошибка, перезагрузите страницу";
 
   return (
-    <WithTeachersLayout>
+    <WithTeachersLayout tabName='chooseTeacher'>
       <div className={styles.teachersContainer}>
         {data?.data.map((teacher: Teacher) => (
           <div className={styles.teacherBlock}>

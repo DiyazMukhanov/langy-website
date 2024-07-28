@@ -111,7 +111,6 @@ export default function TeacherScheduleComponent({
               {days.map((weekDay) => (
                 <TableCell style={{ width: "auto" }}>
                   <div>{row[weekDay].bookedBy}</div>
-                  {/* <div>{row[weekDay]._id}</div> */}
                   <div>
                     {row[weekDay]?.isPublished &&
                       row[weekDay].bookedBy === null && (

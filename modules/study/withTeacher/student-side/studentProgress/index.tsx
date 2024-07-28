@@ -26,7 +26,7 @@ export default function StudentProgress() {
   if (isPending) return "Loading...";
 
   return (
-    <WithTeachersLayout>
+    <WithTeachersLayout tabName='progress'>
       <div className={styles.container}>
         <div className={styles.progressesContainer}>
           {data?.data?.data.map((item) => (

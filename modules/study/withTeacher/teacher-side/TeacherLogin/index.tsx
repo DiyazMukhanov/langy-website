@@ -55,23 +55,31 @@ export default function TeacherLogin() {
   };
 
   useEffect(() => {
-     if(teacher?.isLoggedIn) {
-      router.push('/with-teachers/teacher-main')
-     }
-  }, [teacher])
+    if (teacher?.isLoggedIn) {
+      router.push("/with-teachers/teacher-main");
+    }
+  }, [teacher]);
 
   return (
     <div className={styles.loginContainer}>
+      <h2>Вход</h2>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-        <input {...register("email", { required: true })} />
+        <input
+          {...register("email", { required: true })}
+          className={styles.input}
+        />
         {errors.email && <span>This field is required</span>}
-        <input {...register("password", { required: true })} />
+        <input
+          {...register("password", { required: true })}
+          className={styles.input}
+        />
         {errors.password && <span>This field is required</span>}
 
         <Button
           type="submit"
-          variant="teachersBook"
+          variant="teachers"
           disabled={mutation.isPending}
+          className={styles.enterBtn}
         >
           Войти
         </Button>
