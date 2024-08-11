@@ -1,0 +1,1 @@
+export { default } from '../../../modules/study/withTeacher/teacher-side/Teacher-main/index'

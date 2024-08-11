@@ -1,0 +1,70 @@
+@import "styles/breakpoints";
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  max-width: 600px;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+  border-radius: 20px;
+
+  @include size-tablet {
+    width: 80%;
+    height: 60%;
+  }
+}
+
+.feedbackContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  margin-top: 30px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  height: 70%;
+  margin-top: 30px;
+}
+
+.textArea {
+  height: 150px;
+  width: 80%;
+  border: solid #9c9c9c 1px;
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.starsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn {
+  width: 200px;
+  height: 40px;
+  border-radius: 40px;
+  font-size: 16px;
+}
+
+.comment {
+  margin-top: 20px;
+}

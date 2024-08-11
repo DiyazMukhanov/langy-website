@@ -1,7 +1,12 @@
-import styles from './Modal.module.scss';
+import styles from "./Modal.module.scss";
 
-export default function Modal({ isOpen, onClose, children }) {
-
+export default function Modal({
+  isOpen,
+  onClose,
+  children,
+  isCentral,
+  modalClassname,
+}) {
   return isOpen ? (
     <div
       className={styles.overlay}
@@ -10,8 +15,8 @@ export default function Modal({ isOpen, onClose, children }) {
       }}
     >
       <div
-        className={styles.modal}
-        onClick={e => {
+        className={isCentral ? modalClassname : styles.modal}
+        onClick={(e) => {
           e.stopPropagation();
         }}
       >
