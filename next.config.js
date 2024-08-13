@@ -43,6 +43,11 @@ module.exports = {
       ],
     });
 
+    nextConfig.module.rules.push({
+      test: /\.svg$/,
+      use: ["@svgr/webpack"],
+    });
+
     return nextConfig;
   },
 };

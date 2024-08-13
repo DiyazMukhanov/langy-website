@@ -1,55 +1,54 @@
 @import "styles/breakpoints";
 
 .lessonsListContainer {
-    height: 80vh;
-    overflow-y: scroll;
+  height: 80vh;
+  overflow-y: scroll;
+  background-color: #fcfcfc;
 
-    @include size-tablet {
-        margin-right: -30px;
-        margin-left: -50px;
-    }
+  @include size-tablet {
+    margin-right: -30px;
+    margin-left: -50px;
+  }
 }
 
 .activeLink {
-    background-color: var(--color-primary) !important;
-    color: var(--color-white);
+  background-color: var(--color-primary) !important;
+  color: var(--color-white);
 }
 
 .title {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 .navContainer {
-    background-color: var(--color-light-blue);
-    width: 250px;
-    border-left: solid var(--color-primary) 3px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+
+  & li {
+    list-style: none;
+    height: 44px;
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    padding-left: 32px;
+    gap: 12px;
+  }
 
-    & li {
-        list-style: none;
-        background-color: var(--color-light-blue);
-        height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-    }
-
-    & ul {
-        margin: 0;
-    }
+  & ul {
+    margin: 0;
+  }
 }
 
 .hidden {
-    visibility: hidden;
-    max-height: 0;
-    overflow: hidden;
-    transition: visibility .5s, max-height .5s;
+  visibility: hidden;
+  max-height: 0;
+  overflow: hidden;
+  transition: visibility 0.5s, max-height 0.5s;
 }
 
 .shown {
-    visibility: visible;
-    max-height: 100px;
+  visibility: visible;
+  max-height: 100px;
 }

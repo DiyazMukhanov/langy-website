@@ -1,29 +1,38 @@
 @import "styles/breakpoints";
 
+.background {
+  background-color: #ebf0f5;
+}
+
 .top {
-    display: flex;
+  display: flex;
+
+  @include size-tablet {
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .navContainer {
-    @include size-tablet {
-        display: none;
-    }
+  @include size-tablet {
+    display: none;
+  }
 }
 
 .mainSectionContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 
-    @include size-tablet {
-        gap: 0;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
+  @include size-tablet {
+    gap: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
 }
 
 .rightBlock {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

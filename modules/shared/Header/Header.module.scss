@@ -1,166 +1,167 @@
 @import "styles/breakpoints";
 
 .blueContainer {
-    background-color: var(--color-primary);
-    height: 86px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 30px;
-    padding-right: 30px;
+  background-color: var(--color-primary);
+  height: 86px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 30px;
 
-    & p {
-        color: var(--color-white);
-        cursor: pointer;
-    }
+  & p {
+    color: var(--color-white);
+    cursor: pointer;
+  }
 
-    @include size-tablet {
-        display: none;
-    }
+  @include size-tablet {
+    display: none;
+  }
 }
 
 .blueContainerMobile {
-    display: none;
+  display: none;
 
-    @include size-tablet {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 20px;
-        height: 100px;
+  @include size-tablet {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    height: 100px;
 
-        & p {
-            font-weight: bold;
-            color: var(--color-primary);
-        }
+    & p {
+      font-weight: bold;
+      color: var(--color-primary);
     }
+  }
 }
 
 .whiteContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+  background-color: #fcfcfc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 
-    & p {
-        font-size: 16px;
-        font-weight: 700;
-    }
+  & p {
+    font-size: 16px;
+    font-weight: 700;
+  }
 
-    @include size-tablet {
-        display: none;
-    }
+  @include size-tablet {
+    display: none;
+  }
 }
 
 .profile {
-    display: flex;
-    gap: 20px;
-    align-items: center;
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
 .logo {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
 }
 
 .circle {
-    background-color: var(--color-primary);
-    border: none;
-    border-radius: 100%;
-    height: 50px;
-    width: 50px;
-    color: var(--color-white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    font-weight: 700;
-    cursor: pointer;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 100%;
+  height: 50px;
+  width: 50px;
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .modalContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
 }
 
 .modalLogos {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .whiteContainerMobile {
-    display: none;
+  display: none;
 
-    @include size-tablet {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 20px;
-    }
+  @include size-tablet {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+  }
 }
 
 .sidebarContainer {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 .exit {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .pointer {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .headerRight {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .mobileHeaderRight {
-    display: flex;
-    gap: 20px;
-    align-items: center;
+  display: flex;
+  gap: 20px;
+  align-items: center;
 
-    & p {
-        font-weight: bold;
-        color: var(--color-primary);
-    }
+  & p {
+    font-weight: bold;
+    color: var(--color-primary);
+  }
 }
 
 .goToProfile {
-    cursor: pointer;
-    color: var(--color-primary);
-    font-weight: bold;
-    margin-left: 10px;
+  cursor: pointer;
+  color: var(--color-primary);
+  font-weight: bold;
+  margin-left: 10px;
 }
 
 .leftMenuContainer {
-    // border: solid red 1px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  // border: solid red 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .menuContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding-left: 10px;
-    padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-left: 10px;
+  padding-top: 10px;
 
-    & p {
-        margin: 0;
-    }
+  & p {
+    margin: 0;
+  }
 }

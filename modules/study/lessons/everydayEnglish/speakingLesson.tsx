@@ -14,6 +14,7 @@ export default function BlocksLesson() {
     if (isLoading) {
         return <Loader small={false} />
     }
+    
     return <>
         <EveryDayEnglishLayout lessonNumber={lessonNumber} chapter={CHAPTER_5}>
             <SpeakingLessonLayout speakingQuestions={lessonMaterials?.data} />

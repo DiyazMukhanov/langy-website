@@ -1,53 +1,59 @@
 @import "styles/breakpoints";
 
 .card {
-    border: solid var(--color-grey-100) 1px;
-    border-radius: 6px;
-    height: 327px;
-    width: 180px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 50px;
+  border: solid #1676d8 1px;
+  border-radius: 6px;
+  height: 327px;
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  padding-bottom: 10px;
 
-    & p {
-        font-weight: bold;
-    }
+  & p {
+    font-weight: bold;
+  }
 
-    @include size-tablet {
-        height: auto;
-    }
-
+  @include size-tablet {
+    height: auto;
+  }
 }
 
 .changeBtn {
-    color: var(--color-primary);
-    border: solid var(--color-primary) 1px;
-    padding: 5px;
-    cursor: pointer;
+  color: var(--color-primary);
+  border: solid var(--color-primary) 1px;
+  border-radius: 6px;
+  padding: 5px;
+  cursor: pointer;
+  width: 146px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .top {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
 
-    & p {
-        text-align: center;
-    }
+  & p {
+    text-align: center;
+  }
 }
 
 .ru {
-    transition: all 1s ease;
-    background-color: var(--color-primary);
-    color: var(--color-white);
+  transition: all 1s ease;
+  background-color: var(--color-primary);
+  color: var(--color-white);
 }
 
 .ruBtn {
-
-    transition: all 1s ease;
-    color: var(--color-white);
-    border-color: var(--color-white);
+  transition: all 1s ease;
+  color: var(--color-white);
+  border-color: var(--color-white);
 }
