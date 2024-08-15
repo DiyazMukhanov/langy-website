@@ -1,51 +1,77 @@
 @import "styles/breakpoints";
 
 .internalLayout {
-    padding: 10px;
-    height: 60vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
+  //   padding: 10px;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  //   justify-content: center;
+  align-items: center;
+  gap: 60px;
+  margin-top: 20px;
+  padding-left: 48px;
+  padding-top: 80px;
+  padding-bottom: 60px;
 
-    & h2 {
-        color: var(--color-primary);
-    }
+  @include size-tablet {
+    padding-left: 0;
+    padding-bottom: 100px;
+    height: 60vh;
+  }
+
+  & h2 {
+    color: var(--color-primary);
+  }
+}
+
+.h1 {
+  color: #0d0d0d;
+  font-weight: 600;
+  font-size: 28px;
+  margin: 0;
+
+  @include size-tablet {
+    margin-left: 0;
+    text-align: center;
+  }
 }
 
 .cards {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 
-    @include size-tablet {
-        width: 100vw;
-        padding: 5px;
-        gap: 5px;
-        flex-wrap: wrap;
-    }
+  @include size-tablet {
+    width: 100vw;
+    padding: 5px;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
 }
 
 .droppedContainer {
-    height: 30px;
+  height: 30px;
 }
 
 .block {
-    width: 100px;
-    height: 30px;
-    border: solid var(--color-dark-grey) 1px;
-    border-radius: 6px;
-    box-shadow: 1px 2px 2px 0px var(--color-grey);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100px;
+  height: 30px;
+  border-radius: 6px;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  background-color: #fcfcfc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    @include size-tablet {
-        width: 70px;
-        min-height: 30px;
-        height: auto;
-        padding: 2px;
-    }
+  @include size-tablet {
+    width: 70px;
+    min-height: 30px;
+    height: auto;
+    padding: 2px;
+  }
+}
+
+.draggableBlock {
+  cursor: pointer;
 }

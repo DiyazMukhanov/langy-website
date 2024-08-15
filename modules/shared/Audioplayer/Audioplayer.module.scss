@@ -1,80 +1,87 @@
 @import "styles/breakpoints";
 
 .time {
-    display: flex;
-    width: 54vw;
-    justify-content: flex-end;
+  display: flex;
+  width: 54vw;
+  justify-content: flex-end;
 
-    & span {
-        margin-right: 30px;
-    }
-
+  & span {
+    margin-right: 30px;
+  }
 }
 
 .play {
-    cursor: pointer;
+  cursor: pointer;
+  width: 50px;
 }
 
 .rangeContainer {
-    width: 54vw;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  width: 54vw;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
-    @include size-tablet {
-        width: 80vw;
-    }
+  @include size-tablet {
+    width: 80vw;
+    gap: 0;
+  }
 }
 
 .rangeSlider {
-    width: 50vw;
-    height: 17px;
-    border: solid var(--color-grey) 1px;
-    background-color: var(--color-white);
-    appearance: none;
-    outline: none;
-    background-image: linear-gradient(to right, #007bff 0%, #007bff calc((100% * var(--current-time)) / var(--duration)), var(--color-white) calc((100% * var(--current-time)) / var(--duration)), var(--color-white) 100%);
-    cursor: pointer;
+  width: 50vw;
+  height: 17px;
+  border: solid var(--color-grey) 1px;
+  background-color: var(--color-white);
+  appearance: none;
+  outline: none;
+  background-image: linear-gradient(
+    to right,
+    #007bff 0%,
+    #007bff calc((100% * var(--current-time)) / var(--duration)),
+    var(--color-white) calc((100% * var(--current-time)) / var(--duration)),
+    var(--color-white) 100%
+  );
+  cursor: pointer;
 
-    @include size-tablet {
-        width: 80vw;
-    }
+  @include size-tablet {
+    width: 80vw;
+  }
 }
 
 .rangeSlider::-webkit-slider-thumb {
-    appearance: none;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background-color: #007bff;
-    cursor: pointer;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #007bff;
+  cursor: pointer;
 
-    /* Hide the thumb */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    cursor: pointer;
+  /* Hide the thumb */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
 
-    /* Custom transparent background and no border for the thumb */
-    background: transparent;
-    border: none;
+  /* Custom transparent background and no border for the thumb */
+  background: transparent;
+  border: none;
 }
 
 .rangeSlider::-moz-range-thumb {
-    width: 16px;
-    height: 16px;
-    border: none;
-    border-radius: 50%;
-    background-color: #007bff;
-    cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border: none;
+  border-radius: 50%;
+  background-color: #007bff;
+  cursor: pointer;
 
-    /* Hide the thumb */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    cursor: pointer;
+  /* Hide the thumb */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
 
-    /* Custom transparent background and no border for the thumb */
-    background: transparent;
-    border: none;
+  /* Custom transparent background and no border for the thumb */
+  background: transparent;
+  border: none;
 }
