@@ -1,17 +1,18 @@
 @import "styles/breakpoints";
 
 .chapter {
-    height: 40px;
-    display: flex;
-    align-items: center;
-    font-weight: 600;
-    border: solid var(--color-grey) 1px;
-    padding-left: 20px;
-    cursor: pointer;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  // border: solid var(--color-grey) 1px;
+  padding-left: 20px;
+  cursor: pointer;
 }
 
 .currentChapter {
-  background-color: #ccffee;
+  background-color: #1676d8;
+  color: #fcfcfc;
 }
 
 .completed {
@@ -19,21 +20,24 @@
 }
 
 .lessonsListContainer {
-    // width: 300px;
-    border: solid var(--color-grey) 1px;
-    height: 80vh;
-    overflow: auto;
+  width: 260px;
+  // border: solid var(--color-grey) 1px;
+  height: 90vh;
+  overflow: auto;
+  background-color: #fcfcfc;
 }
 
 /* Styling for vertical scrollbar */
 .lessonsListContainer::-webkit-scrollbar {
-    width: 25px; /* Set the width of the scrollbar */
-  }
-  
-  .lessonsListContainer::-webkit-scrollbar-track {
-    background-color: var(color-white); /* Set the background color of the track */
-  }
-  
-  .lessonsListContainer::-webkit-scrollbar-thumb {
-    background-color: #EFEFEF; /* Set the color of the thumb (the draggable part of the scrollbar) */
-  }
+  width: 25px; /* Set the width of the scrollbar */
+}
+
+.lessonsListContainer::-webkit-scrollbar-track {
+  background-color: var(
+    color-white
+  ); /* Set the background color of the track */
+}
+
+.lessonsListContainer::-webkit-scrollbar-thumb {
+  background-color: #efefef; /* Set the color of the thumb (the draggable part of the scrollbar) */
+}

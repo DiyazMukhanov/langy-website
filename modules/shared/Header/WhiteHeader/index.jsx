@@ -30,9 +30,9 @@ export default function WhiteHeader({
             <Image priority src={LogoBlue} width={60} />
             <Image priority src={LogoBlueBottom} width={20} />
           </div>
-          <Button variant="menu" onClick={() => router.push("/menu")}>
+          <span onClick={() => router.push("/menu")} className={styles.menuBtn}>
             Меню
-          </Button>
+          </span>
         </div>
         <div className={styles.profile}>
           <p className={styles.exit} onClick={logOutHandler}>

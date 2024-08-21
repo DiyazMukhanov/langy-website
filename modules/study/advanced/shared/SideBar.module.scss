@@ -1,75 +1,84 @@
 @import "styles/breakpoints";
 
 .sideBar {
-    width: 300px;
-    padding: 40px 0 40px 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  width: 300px;
+  padding: 40px 0 40px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 
-    & p {
-        margin: 0;
-        color: var(--color-dark-grey);
-    }
+  & p {
+    margin: 0;
+  }
 
-    & h3 {
-        margin: 0;
-    }
+  & h3 {
+    margin: 0;
+  }
 
-    @include size-tablet {
-        display: none;
-    }
+  @include size-tablet {
+    display: none;
+  }
+}
+
+.titleLevel {
+  color: #1676d8;
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .text {
-    color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .lessonsListContainer {
-    // width: 300px;
-    border: solid var(--color-grey) 1px;
-    height: 80vh;
-    overflow: auto;
+  // width: 300px;
+  border: solid var(--color-grey) 1px;
+  height: 80vh;
+  overflow: auto;
 }
 
 /* Styling for vertical scrollbar */
 .lessonsListContainer::-webkit-scrollbar {
-    width: 25px; /* Set the width of the scrollbar */
-  }
-  
-  .lessonsListContainer::-webkit-scrollbar-track {
-    background-color: var(color-white); /* Set the background color of the track */
-  }
-  
-  .lessonsListContainer::-webkit-scrollbar-thumb {
-    background-color: #EFEFEF; /* Set the color of the thumb (the draggable part of the scrollbar) */
-  }
+  width: 25px; /* Set the width of the scrollbar */
+}
+
+.lessonsListContainer::-webkit-scrollbar-track {
+  background-color: var(
+    color-white
+  ); /* Set the background color of the track */
+}
+
+.lessonsListContainer::-webkit-scrollbar-thumb {
+  background-color: #efefef; /* Set the color of the thumb (the draggable part of the scrollbar) */
+}
 
 .title {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    font-weight: 600;
-    border: solid var(--color-grey) 1px;
-    padding-left: 20px;
-    cursor: pointer;
-    background-color: var(--color-light-grey);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  border: solid var(--color-grey) 1px;
+  padding-left: 20px;
+  cursor: pointer;
+  background-color: var(--color-light-grey);
 }
 
 .chapter {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    font-weight: 600;
-    border: solid var(--color-grey) 1px;
-    padding-left: 20px;
-    cursor: pointer;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  border: solid var(--color-grey) 1px;
+  padding-left: 20px;
+  cursor: pointer;
 }
 
 .current {
-    background-color: var(--color-green);
+  background-color: var(--color-green);
 }
 
 .currentChapter {
-    background-color: var(--color-light-blue);
+  background-color: var(--color-light-blue);
 }

@@ -187,16 +187,20 @@ export default function Landing() {
         <Modal isOpen={isModalOpened} onClose={modalCloseHandler}>
           <div className={styles.modalContainer}>
             <div className={styles.modalLogos}>
-              <Image priority src={LogoBlue} height={38} width={80} />
-              <Image priority src={LogoBlueBottom} />
+              {/* <Image priority src={LogoBlue} height={38} width={80} /> */}
+              <LogoBlue />
+              <LogoBlueBottom />
+              {/* <Image priority src={LogoBlueBottom} /> */}
             </div>
-            <Image priority src={ButtonClose} onClick={modalCloseHandler} />
+            {/* <Image priority src={ButtonClose} onClick={modalCloseHandler} /> */}
+            <ButtonClose onClick={modalCloseHandler} />
           </div>
           <div
             className={styles.serviceModal}
             onClick={() => router.push("/service")}
           >
-            <Image priority src={ServiceBlue} />
+            {/* <Image priority src={ServiceBlue} /> */}
+            <ServiceBlue />
             <p>Служба поддержки</p>
           </div>
           {userCtx.userData && (
@@ -245,13 +249,14 @@ export default function Landing() {
 
         <header className={styles.header} id="top">
           <div>
-            <Image
+            {/* <Image
               priority
               src={Logo}
               height={44}
               width={101}
               className={styles.logo}
-            />
+            /> */}
+            <Logo />
           </div>
           {/* <button
             id="install-button"
@@ -298,18 +303,20 @@ export default function Landing() {
             </div>
           )}
 
-          <Image
+          {/* <Image
             priority
             src={Sandwich}
             className={styles.sandwich}
             onClick={modalOpenHandler}
             //  height={44}
             //  width={101}
-          />
+          /> */}
+          <Sandwich onClick={modalOpenHandler} className={styles.sandwich} />
         </header>
 
         <main className={styles.main}>
-          <Image priority src={DropOne} className={styles.dropOneMobile} />
+          {/* <Image priority src={DropOne} className={styles.dropOneMobile} /> */}
+          <DropOne className={styles.dropOneMobile} />
           <Typography element="h1" className={styles.mainHeading}>
             Онлайн - платформа для изучения английского языка
           </Typography>
@@ -355,12 +362,13 @@ export default function Landing() {
 
         <section className={styles.middleSection}>
           <div className={styles.leftSideOfMiddleSection}>
-            <Image
+            {/* <Image
               priority
               src={LogoTwo}
               width={200}
               className={styles.logoTwo}
-            />
+            /> */}
+            <LogoTwo className={styles.logoTwo} />
             <div className={styles.leftSideText}>
               - платформа, предоставляющая изучение английского языка через
               интернет. Платформа открыта 24 часа в сутки, 12 месяцев в году. И
@@ -373,20 +381,23 @@ export default function Landing() {
               [styles.noShow]: isModalOpened,
             })}
           >
-            <Image
+            {/* <Image
               priority
               src={Laptop}
               width={300}
               className={styles.laptop}
-            />
-            <Image priority src={Cards} width={500} className={styles.cards} />
+            /> */}
+            <Laptop className={styles.laptop} />
+            {/* <Image priority src={Cards} width={500} className={styles.cards} /> */}
+            <Cards className={styles.cards} />
 
-            <Image
+            {/* <Image
               priority
               src={CardsVertical}
               //  width={500}
               className={styles.cardsMobile}
-            />
+            /> */}
+            <CardsVertical className={styles.cardsMobile} />
           </div>
         </section>
         <section className={styles.advantagesSection}>
@@ -489,12 +500,23 @@ export default function Landing() {
                 <div className={styles.questionWithPlus}>
                   <p className={styles.question}>{item.question}</p>
 
-                  <Image
+                  {/* <Image
                     priority
                     src={frequentOpenedId === item.id ? X : Plus}
                     className={styles.questionButton}
                     onClick={() => questionHandler(item.id)}
-                  />
+                  /> */}
+                  {frequentOpenedId === item.id ? (
+                    <X
+                      className={styles.questionButton}
+                      onClick={() => questionHandler(item.id)}
+                    />
+                  ) : (
+                    <Plus
+                      className={styles.questionButton}
+                      onClick={() => questionHandler(item.id)}
+                    />
+                  )}
                 </div>
                 {frequentOpenedId === item.id && (
                   <p className={styles.answer}>{item.answer}</p>
@@ -526,9 +548,12 @@ export default function Landing() {
 
         <footer className={styles.footer}>
           <div className={styles.footerTop}>
-            <Image priority src={Logo} height={44} width={101} />
+            {/* <Image priority src={Logo} height={44} width={101} /> */}
+            <Logo />
+
             <div className={styles.service}>
-              <Image priority src={Service} />
+              {/* <Image priority src={Service} /> */}
+              <Service />
               <p onClick={() => router.push("/service")}>Служба поддержки</p>
             </div>
             <Button
@@ -539,7 +564,8 @@ export default function Landing() {
               Действуй!
             </Button>
             <a href="#top">
-              <Image priority src={Up} className={styles.up} />
+              {/* <Image priority src={Up} className={styles.up} /> */}
+              <Up className={styles.up} />
             </a>
           </div>
           <div className={styles.footerBottom}>
@@ -553,7 +579,7 @@ export default function Landing() {
               Описание процедуры оплаты
             </p>
             <p>email: admin@langy.su контактный телефон: +7 707 880 51 25</p>
-            <p>ИП Куанышева</p>
+            <p>ИП Муханов</p>
             <Image priority src={Visa} className={styles.visa} />
           </div>
         </footer>

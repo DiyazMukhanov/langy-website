@@ -1,52 +1,55 @@
 .lessonsListContainer {
-    // width: 300px;
-    border: solid var(--color-grey) 1px;
-    height: 80vh;
-    overflow: auto;
+  // width: 300px;
+  border: solid var(--color-grey) 1px;
+  height: 80vh;
+  overflow: auto;
 }
 
 /* Styling for vertical scrollbar */
 .lessonsListContainer::-webkit-scrollbar {
-    width: 25px; /* Set the width of the scrollbar */
-  }
-  
-  .lessonsListContainer::-webkit-scrollbar-track {
-    background-color: var(color-white); /* Set the background color of the track */
-  }
-  
-  .lessonsListContainer::-webkit-scrollbar-thumb {
-    background-color: #EFEFEF; /* Set the color of the thumb (the draggable part of the scrollbar) */
-  }
+  width: 25px; /* Set the width of the scrollbar */
+}
+
+.lessonsListContainer::-webkit-scrollbar-track {
+  background-color: var(
+    color-white
+  ); /* Set the background color of the track */
+}
+
+.lessonsListContainer::-webkit-scrollbar-thumb {
+  background-color: #efefef; /* Set the color of the thumb (the draggable part of the scrollbar) */
+}
 
 .title {
-    height: 40px;
-    display: flex;
-    align-items: center;
-    font-weight: 600;
-    border: solid var(--color-grey) 1px;
-    padding-left: 20px;
-    background-color: var(--color-primary);
-    color: var(--color-white);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  border: solid var(--color-grey) 1px;
+  padding-left: 20px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
 }
 
 .chapter {
-    height: 40px;
-    display: flex;
-    align-items: center;
-    font-weight: 600;
-    border: solid var(--color-grey) 1px;
-    padding-left: 20px;
-    cursor: pointer;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  border: solid var(--color-grey) 1px;
+  padding-left: 20px;
+  cursor: pointer;
+  background-color: white;
 }
 
 .disabled {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .currentChapter {
-    background-color: #ccffee;
+  background-color: #67ce43;
 }
 
 .completed {
-  background-color: #ffccff;
+  background-color: #e2eaf3;
 }

@@ -277,12 +277,7 @@ export default function TestLessonLayout({
               </div>
 
               <div className={styles.buttonsContainer}>
-                <Image
-                  priority
-                  src={NextButton}
-                  className={styles.next}
-                  onClick={nextHandler}
-                />
+                <NextButton className={styles.next} onClick={nextHandler} />
               </div>
             </div>
             <div className={styles.nextButtonInTest}>

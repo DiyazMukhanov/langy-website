@@ -1,94 +1,144 @@
 @import "styles/breakpoints";
 
 .internalLayout {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 60vh;
-    gap: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+  //   justify-content: center;
+  height: 60vh;
+  //   gap: 20px;
+  //   border: solid red 1px;
+  margin-bottom: 100px;
 
-    & h2 {
-        color: var(--color-primary);
+  @include size-tablet {
+    margin-left: 0;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
 
-        @include size-tablet {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-left: 10px;
-        }
-    }
+.h1 {
+  color: #0d0d0d;
+  font-weight: 600;
+  font-size: 28px;
+  margin-top: 0;
+  //   border: solid red 1px;
+
+  @include size-tablet {
+    font-size: 20px;
+  }
 }
 
 .questionContainer {
-    text-align: center;
+  text-align: center;
 }
 
 .moreBtn {
-    background: none;
-    border: solid var(--color-primary) 1px;
-    color: var(--color-primary);
-    width: 100px;
-    height: 40px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
+  background: none;
+  border: solid var(--color-primary) 1px;
+  color: var(--color-primary);
+  width: 100px;
+  min-height: 40px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .microphone {
-    cursor: pointer;
+  cursor: pointer;
+}
+
+.questionBlock {
+  border: solid green 1px;
+  background-color: #fcfcfc;
+  border: none;
+  border-radius: 10px;
+  padding-top: 47px;
+  padding-bottom: 47px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.questionText {
+  color: #0d0d0d;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.recBtn {
+  cursor: pointer;
+  width: 287px;
+  min-height: 48px;
+  border: solid #1676d8 1px;
+  border-radius: 10px;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.btnText {
+  color: #1676d8;
+  font-weight: 600;
+  font-size: 17px;
 }
 
 .circle {
-    border-radius: 100%;
-    width: 20px;
-    height: 20px;
-    background-color: var(--color-red);
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+  background-color: var(--color-red);
 }
 
 .startRecording {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .isRecording {
-    background-color: var(--color-red);
-    animation: ease pulse 1s infinite;
+  background-color: var(--color-red);
+  animation: ease pulse 1s infinite;
 }
 
 .stopRecordingButton {
-    width: 30px;
-    height: 30px;
-    background: var(--color-primary);
-    cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background: var(--color-primary);
+  cursor: pointer;
 }
 
 .play {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .recordingBlock {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 .showingAnswer {
-    color: var(--color-primary);
-    font-size: 18px;
-    font-weight: bold;
+  color: var(--color-primary);
+  font-size: 18px;
+  font-weight: bold;
 }
 
 @keyframes pulse {
-    0% {
-        background-color: var(--color-red);
-    }
+  0% {
+    background-color: var(--color-red);
+  }
 
-    50% {
-        background-color: var(--color-white);
-    }
+  50% {
+    background-color: var(--color-white);
+  }
 
-    100% {
-        background-color: var(--color-red);
-    }
+  100% {
+    background-color: var(--color-red);
+  }
 }

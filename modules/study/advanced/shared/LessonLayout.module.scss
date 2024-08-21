@@ -1,83 +1,87 @@
 @import "styles/breakpoints";
 
 .container {
-    display: flex;
+  display: flex;
+  background-color: #ebf0f5;
+
+  @include size-tablet {
+    margin-top: 20px;
+  }
 }
 
 .progressContainer {
-    width: 80%;
-    height: 20px;
-    border: solid var(--color-grey) 1px;
-    height: 10px;
-    border-radius: 25px;
+  width: 80%;
+  height: 20px;
+  border: solid var(--color-grey) 1px;
+  border-radius: 25px;
 
-    @include size-tablet {
-        width: 80vw;
-    }
+  @include size-tablet {
+    width: 80vw;
+  }
 }
 
 .rightSide {
-    width: 80vw;
-    padding-top: 40px;
-    padding-left: 40px;
+  width: 80vw;
+  padding-top: 40px;
+  padding-left: 40px;
 }
 
 .links {
-    margin-top: 20px;
-    display: flex;
-    gap: 30px;
+  margin-top: 20px;
+  display: flex;
+  gap: 30px;
 
+  & p {
+    margin: 0;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  @include size-tablet {
     & p {
-        margin: 0;
-        font-weight: 600;
-        cursor: pointer;
+      margin: 0;
+      font-size: 14px;
+      cursor: pointer;
+      margin-top: 15px;
     }
-
-    @include size-tablet {
-        & p {
-            margin: 0;
-            font-size: 14px;
-            cursor: pointer;
-            margin-top: 15px;
-        }
-    }
+  }
 }
 
 .subscriptionPeriodMobileOnly {
-    @include size-tablet {
-        display: none;
-    }
+  @include size-tablet {
+    display: none;
+  }
 }
 
 .mobileViewOnly {
-    display: none;
+  display: none;
 
-    @include size-tablet {
-        display: block;
-    }
+  @include size-tablet {
+    display: block;
+  }
 }
 
 .currentLink {
-    color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .text {
-    color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .btnContainer {
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 350px;    
-    margin-bottom: 50px;
-    margin-top: 40px;
-    
-    // border: solid red 1px;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 350px;
+  margin-bottom: 50px;
+  margin-top: 40px;
 
-    @include size-tablet {
-        width: 80vw;
-        justify-content: center;
-        padding-right: 0; 
-        margin-top: 25px;
-    }
+  // border: solid red 1px;
+
+  @include size-tablet {
+    width: 80vw;
+    justify-content: center;
+    padding-right: 0;
+    margin-top: 25px;
+  }
 }

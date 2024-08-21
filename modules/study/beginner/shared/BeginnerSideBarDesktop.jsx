@@ -1,11 +1,17 @@
-import BeginnerSidebar from './BeginnerSideBar'
-import styles from '../../advanced/shared/SideBar.module.scss'
+import BeginnerSidebar from "./BeginnerSideBar";
+import styles from "../../advanced/shared/SideBar.module.scss";
 
-export default function BeginnerSideBarDesktop({ lessonsSummary, beginnerProgress }) {
-
-    return (
-        <div className={styles.sideBar} >
-            <BeginnerSidebar lessonsSummary={lessonsSummary} beginnerProgress={beginnerProgress} />
-        </div>
-    )
+export default function BeginnerSideBarDesktop({
+  lessonsSummary,
+  beginnerProgress,
+}) {
+  return (
+    <div className={styles.sideBar}>
+      <span className={styles.titleLevel}>Beginner</span>
+      <BeginnerSidebar
+        lessonsSummary={lessonsSummary}
+        beginnerProgress={beginnerProgress}
+      />
+    </div>
+  );
 }
