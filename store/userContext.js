@@ -34,6 +34,7 @@ const UserProvider = (props) => {
     if (progressData === null || progressData.length === 0) {
       return resetLessons();
     } else {
+      console.log("progressData:", progressData);
       updatedLessonsSummary = lessonsSummary.map((lesson) => {
         progressData.map((progressItem) => {
           if (progressItem.lesson === lesson.lessonNumber) {

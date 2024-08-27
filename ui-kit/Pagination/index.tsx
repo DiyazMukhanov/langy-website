@@ -24,11 +24,6 @@ export const Pagination = (props) => {
 
   const totalPages = Math.ceil(totalCount / pageSize);
 
-  // If there are less than 2 times in pagination range we shall not render the component
-  // if (currentPage === 0 || paginationRange.length < 2) {
-  //     return null;
-  // }
-
   const onNext = () => {
     if (currentPage < totalPages) {
       onPageChange(currentPage + 1);
@@ -51,7 +46,7 @@ export const Pagination = (props) => {
         })}
         onClick={onPrevious}
       >
-        <Image priority src={ArrowLeft} alt="left" />
+        <ArrowLeft />
       </div>
       {paginationRange.map((pageNumber) => {
         // If the pageItem is a DOT, render the DOTS unicode character
@@ -78,7 +73,7 @@ export const Pagination = (props) => {
         })}
         onClick={onNext}
       >
-        <Image priority src={ArrowRight} alt="right" />
+        <ArrowRight />
       </div>
     </div>
   );

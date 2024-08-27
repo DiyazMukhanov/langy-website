@@ -1,0 +1,50 @@
+@import "styles/breakpoints";
+
+.feedbacksContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+
+  @include size-tablet {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.feedbacksContainer {
+  //   height: 60vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.feedbacks {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  font-weight: 700;
+  color: #1676d8;
+}
+
+.feedback {
+  border: solid #1676d8 1px;
+  max-width: 500px;
+  width: auto;
+  min-height: 50px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}

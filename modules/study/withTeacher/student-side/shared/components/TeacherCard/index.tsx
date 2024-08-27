@@ -29,10 +29,17 @@ export default function TeacherCard({ teacher }: Props) {
         </div>
         <div className={styles.descriptionContainer}>{teacher.description}</div>
         <div className={styles.opinionContainer}>
-          <span className={styles.goToOpinionsLink}>Отзывы (5)</span>
+          <span
+            className={styles.goToOpinionsLink}
+            onClick={() =>
+              router.push(`/with-teachers/teacher-feedbacks/${teacher._id}`)
+            }
+          >
+            Отрыть отзывы
+          </span>
           <div className={styles.scoreContainer}>
-            <Image alt="star" priority src={Star} className={styles.star} />
-            <span>4.8</span>
+            <Star className={styles.star} />
+            <span>{Math.floor(teacher.averageRating)}</span>
           </div>
         </div>
       </div>

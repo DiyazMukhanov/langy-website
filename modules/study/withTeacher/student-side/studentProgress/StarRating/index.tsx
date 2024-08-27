@@ -19,13 +19,14 @@ export const StarRating = ({ register, setValue, name }) => {
   return (
     <div className={styles.starsContainer}>
       {[1, 2, 3, 4, 5].map((star) => (
-        <Image
-          key={star}
-          className={styles.star}
-          src={star <= rating ? StarRatingChosenIcon : StarRatingIcon}
-          onClick={() => handleClick(star)}
-          alt="star"
-        />
+        // <Image
+        //   key={star}
+        //   className={styles.star}
+        //   src={star <= rating ? StarRatingChosenIcon : StarRatingIcon}
+        //   onClick={() => handleClick(star)}
+        //   alt="star"
+        // />
+        star <= rating ? <StarRatingChosenIcon onClick={() => handleClick(star)} className={styles.star}/> : <StarRatingIcon onClick={() => handleClick(star)} className={styles.star}/>
       ))}
     </div>
   );

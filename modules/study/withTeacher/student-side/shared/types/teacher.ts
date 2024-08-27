@@ -5,4 +5,5 @@ export interface Teacher {
   photo: string;
   gender: string;
   description: string;
+  averageRating: number;
 }

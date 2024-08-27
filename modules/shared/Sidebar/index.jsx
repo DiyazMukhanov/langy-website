@@ -7,17 +7,17 @@ export default function Sidebar({ lessonsSummary, isBeginner }) {
   const router = useRouter();
   const currentLessonRef = useRef(null);
 
-  let found = false;
-  for (let i = 0; i < lessonsSummary.length; i++) {
-    for (let j = 0; j < lessonsSummary[i].lessons.length; j++) {
-      if (lessonsSummary[i].lessons[j].isCompleted === false) {
-        if (found) break;
-        lessonsSummary[i].lessons[j].isOpened = true;
-        found = true;
-      }
-    }
-    if (found) break;
-  }
+  // let found = false;
+  // for (let i = 0; i < lessonsSummary.length; i++) {
+  //   for (let j = 0; j < lessonsSummary[i].lessons.length; j++) {
+  //     if (lessonsSummary[i].lessons[j].isCompleted === false) {
+  //       if (found) break;
+  //       lessonsSummary[i].lessons[j].isOpened = true;
+  //       found = true;
+  //     }
+  //   }
+  //   if (found) break;
+  // }
 
   const navigationHandler = (lessonNumber, lesson) => {
     const lessonsIndexes = {
@@ -58,7 +58,7 @@ export default function Sidebar({ lessonsSummary, isBeginner }) {
               key={lesson.chapter}
               className={classNames(
                 styles.chapter,
-                { [styles.currentChapter]: lesson.isOpened },
+                { [styles.currentChapter]: lesson.isCurrent },
                 { [styles.completed]: lesson.isCompleted }
               )}
               ref={lesson.isCurrent ? currentLessonRef : null}

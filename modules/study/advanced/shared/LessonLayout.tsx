@@ -20,10 +20,11 @@ export default function LessonLayout({
   isBeginner,
 }) {
   const userCtx = useContext(UserContext);
+  console.log(userCtx);
   const [isLoading, setIsLoading] = useState(true);
-  const lessonsSummary = isBeginner
-    ? userCtx.getUpdatedBeginnerLessonsSummary()
-    : userCtx.getUpdatedLessonsSummary();
+  const [lessonsSummary, setLessonsSummary] = useState<any>(
+    userCtx.lessonsSummary
+  );
 
   let progressValue;
   if (currentLessonData.currentLesson < 9) {
@@ -42,6 +43,11 @@ export default function LessonLayout({
   }
 
   useEffect(() => {
+    if (isBeginner) {
+      setLessonsSummary(() => userCtx.getUpdatedBeginnerLessonsSummary());
+    } else {
+      setLessonsSummary(() => userCtx.getUpdatedLessonsSummary());
+    }
     const getProgress = async () => {
       const lessonsIndexes = {
         video: 0,
@@ -60,7 +66,7 @@ export default function LessonLayout({
       let indexOfCurrentLesson;
 
       const updatedLessonsSummary = lessonsSummary.map((lesson, index) => {
-        if (currentLessonData.currentLesson === index + 1) {
+        if (Number(currentLessonData.currentLesson) === index + 1) {
           lesson.lessons[
             lessonsIndexes[currentLessonData.currentChapter]
           ].isCurrent = true;
@@ -82,8 +88,8 @@ export default function LessonLayout({
         return lesson;
       });
 
-      userCtx.setLessonsSummary(updatedLessonsSummary);
-
+      setLessonsSummary(updatedLessonsSummary);
+      console.log(lessonsSummary);
       const bodyData = {
         currentLesson: currentLessonData.currentLesson,
         currentChapter: currentLessonData.currentChapter,
@@ -91,7 +97,6 @@ export default function LessonLayout({
 
       try {
         const progressData = await getProgressData();
-        console.log(progressData);
         if (progressData) {
           userCtx.setProgressData(progressData?.data?.data);
           setIsLoading(false);
@@ -106,7 +111,7 @@ export default function LessonLayout({
     };
 
     getProgress();
-  }, []);
+  }, [currentLessonData]);
 
   let dateObject;
   let options;

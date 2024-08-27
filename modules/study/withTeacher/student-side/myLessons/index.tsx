@@ -18,11 +18,13 @@ export default function MyLessons() {
           <div className={styles.lessonBlock}>
             <div className={styles.dateTimeBlock}>
               <div className={styles.dateTimeContainer}>
-                <Image alt="clock" priority src={Clock} />
+                {/* <Image alt="clock" priority src={Clock} /> */}
+                <Clock />
                 <span>{getDateAndTime(lesson.lessonDate).date}</span>
               </div>
               <div className={styles.dateTimeContainer}>
-                <Image alt="clock" priority src={Calendar} />
+                {/* <Image alt="clock" priority src={Calendar} /> */}
+                <Calendar />
                 <span>{getDateAndTime(lesson.lessonDate).time}</span>
               </div>
             </div>

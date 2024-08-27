@@ -45,6 +45,7 @@ export default function BookTeacher() {
         bookNewLesson={bookNewLesson}
         cancelLesson={cancelLesson}
         week={week}
+        isPending={isPending}
       />
     </WithTeachersLayout>
   );

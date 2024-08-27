@@ -11,9 +11,10 @@ import AdvancedEnglish from "./../../../public/images/advanced_english.jpg";
 import TestEnglish from "./../../../public/images/test_english.jpg";
 import TeacherEnglish from "./../../../public/images/teacher_english.jpg";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Loader from "@/modules/shared/Loader";
 import { Button } from "@/ui-kit/Button";
+import { UserContext } from "@/store/userContext";
 
 const LevelBlock = ({ onClick, title, description, image }) => {
   return (
@@ -46,13 +47,16 @@ export default function Menu() {
   const [user, setUser] = useState(null);
   const [beginnerProgress, setBeginnerProgress] = useState(null);
   const [everydayProgress, setEverydayProgress] = useState(null);
-
+  const userCtx = useContext(UserContext);
+  console.log(userCtx);
   useEffect(() => {
     setIsLoading(true);
     const fetchUser = async () => {
       try {
         const userData = await getMe();
+        userCtx.setUserData(userData.data.data);
         setUser(userData.data.data);
+
         const beginnerProgress = await getBeginnerProgress();
         setBeginnerProgress(beginnerProgress.data.data);
         const everydayProgress = await getEverydayProgress();

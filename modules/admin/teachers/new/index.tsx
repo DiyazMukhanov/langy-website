@@ -3,6 +3,7 @@ import { AdminLayout } from "../../AdminLayout";
 import styles from "./New.module.scss";
 import { Button } from "@/ui-kit/Button";
 import { useTeacher } from "../shared/hooks/useTeacher";
+import { useEffect } from "react";
 
 type CreateNewTeacherInputs = {
   name: string;
@@ -23,14 +24,18 @@ export default function New() {
     formState: { errors },
   } = useForm<CreateNewTeacherInputs>();
 
-  const onSubmit: SubmitHandler<CreateNewTeacherInputs> = (data) =>
+  const onSubmit: SubmitHandler<CreateNewTeacherInputs> = (data) => {
     createTeacherHandler(data);
+  };
 
   const { createTeacherHandler, createTeacherMutation } = useTeacher(1, 1);
 
-  if (createTeacherMutation.isSuccess) {
-    reset();
-  }
+  // Reset the form after successful mutation
+  useEffect(() => {
+    if (createTeacherMutation.isSuccess) {
+      reset();
+    }
+  }, [createTeacherMutation.isSuccess, reset]);
 
   return (
     <AdminLayout>

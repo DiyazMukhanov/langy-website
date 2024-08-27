@@ -6,7 +6,6 @@ export default function SideBarDesktop({
   expires,
   isBeginner,
 }) {
-  console.log(lessonsSummary);
   return (
     <div className={styles.sideBar}>
       {/* {expires && <p>подписка действует до {expires}</p>} */}

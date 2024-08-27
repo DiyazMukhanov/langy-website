@@ -39,11 +39,11 @@ export const ProgressLessonCard = ({
         </div>
         <div className={styles.dateTimeBlock}>
           <div className={styles.withIconBlock}>
-            <Image alt="clock" priority src={Clock} />
+            <Clock />
             <span>{date}</span>
           </div>
           <div className={styles.withIconBlock}>
-            <Image alt="clock" priority src={Calendar} />
+            <Calendar />
             <span>{time}</span>
           </div>
         </div>
