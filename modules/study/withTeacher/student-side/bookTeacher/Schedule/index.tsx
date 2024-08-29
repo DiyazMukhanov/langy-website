@@ -59,7 +59,7 @@ type Props = {
   bookNewLesson?: (id: string) => void;
   cancelLesson?: (id: string) => void;
   week: string;
-  isPending: boolean
+  isPending: boolean;
 };
 
 export default function Schedule({
@@ -67,7 +67,7 @@ export default function Schedule({
   bookNewLesson,
   cancelLesson,
   week,
-  isPending
+  isPending,
 }: Props) {
   const userCtx = useContext(UserContext);
   const router = useRouter();

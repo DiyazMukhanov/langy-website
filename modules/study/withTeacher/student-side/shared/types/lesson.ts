@@ -8,4 +8,5 @@ export interface Lesson {
   timeMilliseconds: number;
   weekStatus: string;
   _id: string;
+  meetingId?: string | null;
 }

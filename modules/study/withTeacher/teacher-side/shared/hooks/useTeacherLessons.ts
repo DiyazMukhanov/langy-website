@@ -4,6 +4,7 @@ import { getNextWeekLessonsAsTeacher } from "../api/getNextWeekLessonsAsTeacher"
 import { publishLessons } from "../api/publishLessons";
 import { unpublishLessons } from "../api/unpublishLessons";
 import { createSchedule } from "../api/createSchedule";
+import { updateLesson } from "../api/updateLesson";
 
 export const useTeacherLessons = (week: string) => {
   const queryClient = useQueryClient();
@@ -13,6 +14,15 @@ export const useTeacherLessons = (week: string) => {
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["teacherLessons"],
+      });
+    },
+  });
+
+  const updateMutation = useMutation({
+    mutationFn: updateLesson,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["teacherFutureLessons"],
       });
     },
   });
@@ -39,6 +49,10 @@ export const useTeacherLessons = (week: string) => {
     publishMutation.mutate(lessonIds);
   };
 
+  const updateLessonHandler = (lessonId, data) => {
+    updateMutation.mutate({ lessonId, data });
+  };
+
   const unpublishLesson = (lessonIds: string[]) => {
     unpublishMutation.mutate(lessonIds);
   };
@@ -62,5 +76,8 @@ export const useTeacherLessons = (week: string) => {
     publishLesson,
     unpublishLesson,
     createScheduleHandler,
+    updateLessonHandler,
+    updateMutationLoading: updateMutation.isPending,
+    updateMutationError: updateMutation.isError,
   };
 };
