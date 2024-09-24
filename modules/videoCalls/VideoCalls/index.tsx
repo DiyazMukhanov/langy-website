@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import {
   MeetingProvider,
   useMeeting,
@@ -11,61 +11,55 @@ import JoinScreen from "../JoinScreen";
 import { getAuthToken } from "@/modules/study/withTeacher/student-side/shared/api/getAuthToken";
 import { useDispatch, useSelector } from "react-redux";
 import { setMeetingId } from "../../../store/videoConference/videoConferenceSlice";
+import { UserContext } from "@/store/userContext";
+import { TeacherLayout } from "@/modules/study/withTeacher/teacher-side/shared/components/TeacherLayout";
+import WithTeachersLayout from "@/modules/study/withTeacher/student-side/shared/withTeachersLayout";
+import styles from "./VideoCalls.module.scss";
 
 const VideoCall = () => {
   const dispatch = useDispatch();
   const meetingId = useSelector((state) => state.videoConference.meetingId);
   const authToken = useSelector((state) => state.videoConference.authToken);
+  const userCtx = useContext(UserContext);
+
+  const [loading, setLoading] = useState(true);
   const isTeacherSide = useSelector(
     (state) => state.videoConference.isTeacherSide
   );
-  console.log(meetingId);
-  console.log(authToken);
-  //   const [authToken, setAuthToken] = useState(null);
-  //   const [loading, setLoading] = useState(true); // State to manage loading
+  const teacher = useSelector((state: any) => state.teacher.teacherData);
 
-  //   useEffect(() => {
-  //     const fetchAuthToken = async () => {
-  //       const tokenRes = await getAuthToken();
-  //       setAuthToken(tokenRes?.data?.token);
-  //       setLoading(false);
-  //     };
+  useEffect(() => {
+    if (meetingId && authToken) {
+      setLoading(false);
+    }
+  }, [meetingId, authToken]);
 
-  //     fetchAuthToken();
-  //   }, []);
-
-  //   //Getting the meeting id by calling the api we just wrote
-  //   const getMeetingAndToken = async (id) => {
-  //     const meetingId =
-  //       id == null ? await createMeeting({ token: authToken }) : id;
-  //     setMeetingId(meetingId);
-  //   };
-
-  //This will set Meeting Id to null when meeting is left or ended
   const onMeetingLeave = () => {
     dispatch(setMeetingId(null));
   };
 
-  //   if (loading) {
-  //     return <div>Loading...</div>; // Show loading screen while fetching token
-  //   }
+  if (loading) {
+    return <div>Loading...</div>; // Show loading screen while fetching token
+  }
 
   return (
-    <MeetingProvider
-      config={{
-        meetingId,
-        micEnabled: true,
-        webcamEnabled: true,
-        name: "C.V. Raman",
-      }}
-      token={authToken}
-    >
-      <MeetingView
-        meetingId={meetingId}
-        onMeetingLeave={onMeetingLeave}
-        isTeacherSide={isTeacherSide}
-      />
-    </MeetingProvider>
+    <div className={styles.container}>
+      <MeetingProvider
+        config={{
+          meetingId,
+          micEnabled: true,
+          webcamEnabled: true,
+          name: !isTeacherSide ? userCtx?.userData?.name : teacher?.name,
+        }}
+        token={authToken}
+      >
+        <MeetingView
+          meetingId={meetingId}
+          onMeetingLeave={onMeetingLeave}
+          isTeacherSide={isTeacherSide}
+        />
+      </MeetingProvider>
+    </div>
   );
 };
 

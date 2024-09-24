@@ -89,7 +89,7 @@ export default function LessonLayout({
       });
 
       setLessonsSummary(updatedLessonsSummary);
-      console.log(lessonsSummary);
+
       const bodyData = {
         currentLesson: currentLessonData.currentLesson,
         currentChapter: currentLessonData.currentChapter,

@@ -5,6 +5,7 @@ import {
   useParticipant,
 } from "@videosdk.live/react-sdk";
 import ReactPlayer from "react-player";
+import styles from "./ParticipantView.module.scss";
 
 export default function ParticipantView(props) {
   //Callback for when the participant starts a stream
@@ -55,12 +56,29 @@ export default function ParticipantView(props) {
 
   return (
     <div>
-      <p>
-        Participant: {displayName} | Webcam: {webcamOn ? "ON" : "OFF"} | Mic:{" "}
-        {micOn ? "ON" : "OFF"}
-      </p>
+      <div className={styles.controlIndicators}>
+        <span>
+          Участник: <span className={styles.name}>{displayName}</span>
+        </span>
+        <span>
+          Камера:{" "}
+          {webcamOn ? (
+            <span className={styles.green}>Включена</span>
+          ) : (
+            <span className={styles.red}>Выключена</span>
+          )}
+        </span>
+        <span>
+          Микрофон:{" "}
+          {micOn ? (
+            <span className={styles.green}>Включен</span>
+          ) : (
+            <span className={styles.red}>Выключен</span>
+          )}
+        </span>
+      </div>
       <audio ref={micRef} autoPlay playsInline muted={isLocal} />
-      {webcamOn && (
+      {webcamOn && props.presenterId !== props.participantId && (
         <ReactPlayer
           //
           playsinline // extremely crucial prop
@@ -71,9 +89,10 @@ export default function ParticipantView(props) {
           playing={true}
           //
           url={videoStream}
+          className={!isLocal ? styles.otherPlayer : styles.localPlayer}
           //
-          height={"300px"}
-          width={"300px"}
+          height={!isLocal ? "70%" : "20%"}
+          width={!isLocal ? "100%" : "20%"}
           onError={(err) => {
             console.log(err, "participant video error");
           }}

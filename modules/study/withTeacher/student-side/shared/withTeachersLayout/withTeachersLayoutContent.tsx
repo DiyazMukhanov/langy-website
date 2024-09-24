@@ -8,14 +8,17 @@ import { useDispatch } from "react-redux";
 import { setPackage } from "@/store/student/packageSlice";
 import classNames from "classnames";
 
-type TabName = 'progress' | 'chooseTeacher' | 'plannedLessons' | 'addLessons'
+type TabName = "progress" | "chooseTeacher" | "plannedLessons" | "addLessons";
 
 type Props = {
-  children: React.ReactNode
-  tabName?: TabName
-}
+  children: React.ReactNode;
+  tabName?: TabName;
+};
 
-export default function WithTeachersLayoutContent({ children, tabName }: Props) {
+export default function WithTeachersLayoutContent({
+  children,
+  tabName,
+}: Props) {
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -32,40 +35,48 @@ export default function WithTeachersLayoutContent({ children, tabName }: Props) 
     dispatch(setPackage(data?.data?.data?.lessonsQuantity));
 
     return (
-      <>
+      <div className={styles.content}>
         <Header variant="blue" isEasyEnglish={false} />
         <div className={styles.top}>
           <Button
             variant="bottomOutlined"
-            className={classNames(styles.tabBtn, {[styles.currentTab]: tabName === 'progress'})}
+            className={classNames(styles.tabBtn, {
+              [styles.currentTab]: tabName === "progress",
+            })}
             onClick={() => router.push("/with-teachers/student-progress")}
           >
             Мой прогресс
           </Button>
           <Button
             variant="bottomOutlined"
-            className={classNames(styles.tabBtn, {[styles.currentTab]: tabName === 'chooseTeacher'})}
+            className={classNames(styles.tabBtn, {
+              [styles.currentTab]: tabName === "chooseTeacher",
+            })}
             onClick={() => router.push("/with-teachers/teachers")}
           >
             Выбрать учителя
           </Button>
           <Button
             variant="bottomOutlined"
-            className={classNames(styles.tabBtn, {[styles.currentTab]: tabName === 'plannedLessons'})}
+            className={classNames(styles.tabBtn, {
+              [styles.currentTab]: tabName === "plannedLessons",
+            })}
             onClick={() => router.push("/with-teachers/my-lessons")}
           >
             Запланированные уроки
           </Button>
           <Button
             variant="bottomOutlined"
-            className={classNames(styles.tabBtn, {[styles.currentTab]: tabName === 'addLessons'})}
+            className={classNames(styles.tabBtn, {
+              [styles.currentTab]: tabName === "addLessons",
+            })}
             onClick={() => router.push("/with-teachers/buy-lessons")}
           >
             Пополнить уроки
           </Button>
         </div>
         {children}
-      </>
+      </div>
     );
   }
 }

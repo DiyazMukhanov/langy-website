@@ -3,6 +3,8 @@ import { useMeeting } from "@videosdk.live/react-sdk";
 import ParticipantView from "../ParticipantView";
 import Controls from "../Controls";
 import PresenterView from "../PresenterView";
+import { Button } from "@/ui-kit/Button";
+import styles from "./MeetingView.module.scss";
 
 export default function MeetingView({
   onMeetingLeave,
@@ -21,7 +23,7 @@ export default function MeetingView({
   }
 
   // Get the method to join the meeting and the list of participants
-  const { join, participants, presenterId } = useMeeting({
+  const { join, participants, presenterId, localParticipant } = useMeeting({
     onPresenterChanged,
     // Callback for when meeting is joined successfully
     onMeetingJoined: () => {
@@ -38,9 +40,28 @@ export default function MeetingView({
     join();
   };
 
+  // Effect to handle page refresh or close
+  useEffect(() => {
+    const handleBeforeUnload = (event) => {
+      // Attempt to leave the meeting before page unload
+      if (joined === "JOINED") {
+        onMeetingLeave(); // Ensure the user leaves the meeting before refresh/close
+      }
+
+      // Optional: Show a confirmation dialog to prevent accidental refresh
+      // event.preventDefault();
+      // event.returnValue = ''; // This will display the browser's default "Leave site?" prompt
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [joined, onMeetingLeave]);
+
   return (
-    <div className="container">
-      <h3>Meeting Id: {meetingId}</h3>
+    <div className={styles.container}>
       {joined && joined === "JOINED" ? (
         <div>
           <Controls isTeacherSide={isTeacherSide} />
@@ -49,20 +70,19 @@ export default function MeetingView({
             <ParticipantView
               participantId={participantId}
               key={participantId}
+              isTeacherSide={isTeacherSide}
+              presenterId={presenterId}
             />
           ))}
-          {/* Show presenter view if someone is sharing their screen */}
           {presenterId && <PresenterView presenterId={presenterId} />}
         </div>
       ) : joined && joined === "JOINING" ? (
         <p>Joining the meeting...</p>
       ) : (
-        <button onClick={joinMeeting}>Join</button>
+        <Button variant="standardLargeOutlined" onClick={joinMeeting}>
+          Войти в урок
+        </Button>
       )}
     </div>
   );
 }
-
-// function PresenterView({ presenterId }) {
-//   return <div>Presenter is sharing screen: {presenterId}</div>;
-// }

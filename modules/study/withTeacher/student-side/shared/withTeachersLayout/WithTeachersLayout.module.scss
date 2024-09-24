@@ -1,5 +1,9 @@
 @import "styles/breakpoints";
 
+.content {
+  min-height: calc(100vh - 360px); /* 360px — это высота footer */
+}
+
 .top {
   display: flex;
   justify-content: center;

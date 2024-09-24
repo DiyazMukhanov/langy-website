@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import { useSelector } from "react-redux";
+import styles from "./VideoCall.module.scss";
 
 // Dynamically import the VideoCall component and disable SSR
 const VideoCall = dynamic(() => import("./VideoCalls/index"), {
@@ -8,8 +8,7 @@ const VideoCall = dynamic(() => import("./VideoCalls/index"), {
 
 export default function VideoConference() {
   return (
-    <div>
-      <h1>Video Call</h1>
+    <div className={styles.container}>
       <VideoCall />
     </div>
   );

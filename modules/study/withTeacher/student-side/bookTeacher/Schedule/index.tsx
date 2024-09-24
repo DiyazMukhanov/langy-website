@@ -14,6 +14,7 @@ import { lessonTimeStatus } from "@/utils/lessonTimeStatus";
 import { UserContext } from "@/store/userContext";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import { useMeeting } from "@/modules/videoCalls/hooks/useMeeting";
 
 const timeSlots: any[] = [];
 for (let hour = 9; hour <= 20; hour++) {
@@ -73,6 +74,15 @@ export default function Schedule({
   const router = useRouter();
   const userId = userCtx?.userData?._id;
   const [bookConfirmationShow, setBookConfirmationShow] = useState(false);
+
+  const { getMeetingAndToken } = useMeeting();
+  const createOrJoinMeetingHandler = async (lessonMeetingId) => {
+    if (!lessonMeetingId) {
+      alert("Учитель еще не вошел в урок, попробуйте войти позже");
+      return;
+    }
+    await getMeetingAndToken(lessonMeetingId);
+  };
 
   const lessonsPackage = useSelector((state: any) => state.package.package);
 
@@ -190,7 +200,12 @@ export default function Schedule({
                         .alreadyFinished ? (
                         <span>Прошедший урок</span>
                       ) : (
-                        <span className={styles.enterLessonLink}>
+                        <span
+                          className={styles.enterLessonLink}
+                          onClick={() =>
+                            createOrJoinMeetingHandler(row[weekDay].meetingId)
+                          }
+                        >
                           Войти в урок
                         </span>
                       )}
