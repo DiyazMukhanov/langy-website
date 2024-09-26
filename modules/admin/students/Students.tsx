@@ -11,8 +11,10 @@ import { setProfile } from "@/store/admin/studentProfileSlice";
 
 export default function Students() {
   const emailRef = useRef(null);
-  const [emailInput, setEmailInput] = useState("");
+  const [emailInput, setEmailInput] = useState(null);
   const [email, setEmail] = useState(emailInput);
+  const [studentId, setStudentId] = useState(null);
+  const [studentIdValue, setStudentIdValue] = useState(studentId);
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
 
@@ -22,9 +24,13 @@ export default function Students() {
     setEmailInput(event.target.value);
   };
 
+  const idInputChangeHandler = (e) => {
+    setStudentIdValue(e.target.value);
+  };
+
   const { isPending, error, data } = useQuery({
-    queryKey: ["students", currentPage, email],
-    queryFn: () => getAllUsers(10, currentPage, email),
+    queryKey: ["students", currentPage, email, studentId],
+    queryFn: () => getAllUsers(10, currentPage, email, studentId),
   });
 
   const onPageChangeHandler = (newCurrentPage) => {
@@ -62,6 +68,15 @@ export default function Students() {
               onChange={inputChangeHandler}
             ></input>
             <button onClick={() => setEmail(emailInput)}>Search</button>
+          </div>
+          <div className={styles.searchCard}>
+            <p>Id</p>
+            <input
+              type="text"
+              ref={emailRef}
+              onChange={idInputChangeHandler}
+            ></input>
+            <button onClick={() => setStudentId(studentIdValue)}>Search</button>
           </div>
         </div>
       </div>

@@ -29,7 +29,7 @@ export default function StudentPackage() {
       <div className={styles.packageContainer}>
         <div>Количество уроков {data?.data?.data[0]?.lessonsQuantity}</div>
         <input type="text" onChange={(e) => setInputData(e.target.value)} />
-        <button onClick={updatePackageHandler}>Обновить количество</button>
+        <button onClick={updatePackageHandler}>Добавить уроки</button>
         {isMutationPending && <p>Обновляем пакет...</p>}
         {isMutationError && <p>Ошибка обновления...</p>}
       </div>

@@ -110,7 +110,7 @@ export default function TeacherScheduleComponent({
               <TableCell style={{ width: "auto" }}>{row.time}</TableCell>
               {days.map((weekDay) => (
                 <TableCell style={{ width: "auto" }}>
-                  <div>{row[weekDay].bookedBy}</div>
+                  <div>{row[weekDay]?.bookedBy}</div>
                   <div>
                     {row[weekDay]?.isPublished &&
                       row[weekDay].bookedBy === null && (

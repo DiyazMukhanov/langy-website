@@ -1,8 +1,15 @@
 .link {
-    cursor: pointer;
-    font-weight: bold;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .container {
-    margin: 20px;
+  margin: 20px;
+}
+
+.resetLessonsBlock {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  gap: 10px;
 }
