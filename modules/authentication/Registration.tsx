@@ -137,15 +137,13 @@ export default function Registration() {
         return;
       }
 
-      if (userData) {
-        try {
-          await updatePackageQuantity({ lessonsQuantity: 0 });
-          // setIsLoading(false);
-          router.push("/menu");
-        } catch (err) {
-          console.log(err);
-          setIsLoading(false);
-        }
+      try {
+        await updatePackageQuantity({ lessonsQuantity: 0 });
+        // setIsLoading(false);
+        router.push("/menu");
+      } catch (err) {
+        console.log(err);
+        setIsLoading(false);
       }
     } catch (error) {
       setIsLoading(false);
