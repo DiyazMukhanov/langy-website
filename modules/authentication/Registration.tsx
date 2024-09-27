@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { registerUser } from "./shared/api/registerUser";
 import classNames from "classnames";
 import validator from "validator";
+import { updatePackageQuantity } from "./shared/api/updatePackageQuantity";
 
 export default function Registration() {
   const [nameInputValue, setNameInputValue] = useState("");
@@ -129,6 +130,7 @@ export default function Registration() {
 
     try {
       const userData = await registerUser(body);
+
       if (userData?.data?.message === "User exists") {
         setUserExists(true);
         setIsLoading(false);
@@ -136,6 +138,7 @@ export default function Registration() {
       }
 
       if (userData) {
+        await updatePackageQuantity({ lessonsQuantity: 0 });
         setIsLoading(false);
         router.push("/menu");
       }

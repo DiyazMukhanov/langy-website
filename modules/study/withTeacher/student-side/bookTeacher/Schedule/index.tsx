@@ -85,7 +85,7 @@ export default function Schedule({
   };
 
   const lessonsPackage = useSelector((state: any) => state.package.package);
-
+  console.log(lessonsPackage);
   const weekDays =
     week === "current" ? getCurrentWeekDays() : getNextWeekDays();
   weekDays.unshift({ day: "Время", date: "урока" });
