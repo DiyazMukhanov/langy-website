@@ -13,7 +13,6 @@ export default function Main() {
 
   useEffect(() => {
     const createNewPackageHandler = async () => {
-      console.log("here");
       try {
         await createNewPackage();
         setIsLoading(false);

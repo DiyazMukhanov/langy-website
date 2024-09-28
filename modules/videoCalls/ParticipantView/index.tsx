@@ -89,7 +89,9 @@ export default function ParticipantView(props) {
           playing={true}
           //
           url={videoStream}
-          className={!isLocal ? styles.otherPlayer : styles.localPlayer}
+          className={`${!isLocal ? styles.otherPlayer : styles.localPlayer} ${
+            styles.mirror
+          }`}
           //
           height={!isLocal ? "70%" : "20%"}
           width={!isLocal ? "100%" : "20%"}

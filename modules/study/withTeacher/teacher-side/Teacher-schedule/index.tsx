@@ -4,6 +4,7 @@ import styles from "./TeacherSchedule.module.scss";
 import TeacherScheduleComponent from "../shared/components/TeacherScheduleComponent";
 import { useState } from "react";
 import { useTeacherLessons } from "../shared/hooks/useTeacherLessons";
+import classNames from "classnames";
 
 export default function TeacherSchedule() {
   const [week, setWeek] = useState("current");
@@ -14,6 +15,7 @@ export default function TeacherSchedule() {
     publishLesson,
     unpublishLesson,
     createScheduleHandler,
+    createScheduleLoading,
   } = useTeacherLessons(week);
 
   if (isPending) return "Loading...";
@@ -27,12 +29,20 @@ export default function TeacherSchedule() {
           <Button
             variant="standardMiddleOutlined"
             onClick={() => setWeek("current")}
+            className={classNames(
+              { [styles.notActualWeekBtn]: week === "next" },
+              styles.weekBtn
+            )}
           >
             Эта неделя
           </Button>
           <Button
             variant="standardMiddleOutlined"
             onClick={() => setWeek("next")}
+            className={classNames(
+              { [styles.notActualWeekBtn]: week === "current" },
+              styles.weekBtn
+            )}
           >
             Следующая неделя
           </Button>
@@ -54,6 +64,7 @@ export default function TeacherSchedule() {
           <Button
             variant="newStandardNextContained"
             onClick={createScheduleHandler}
+            disabled={createScheduleLoading}
           >
             Создать расписание на следующую неделю
           </Button>

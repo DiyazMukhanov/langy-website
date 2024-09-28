@@ -20,7 +20,6 @@ export default function LessonLayout({
   isBeginner,
 }) {
   const userCtx = useContext(UserContext);
-  console.log(userCtx);
   const [isLoading, setIsLoading] = useState(true);
   const [lessonsSummary, setLessonsSummary] = useState<any>(
     userCtx.lessonsSummary
@@ -32,8 +31,8 @@ export default function LessonLayout({
   }
 
   if (
-    (currentLessonData.currentLesson > 8) &
-    (currentLessonData.currentLesson < 17)
+    currentLessonData.currentLesson > 8 &&
+    currentLessonData.currentLesson < 17
   ) {
     progressValue = ((currentLessonData.currentLesson - 8) / 8) * 100;
   }

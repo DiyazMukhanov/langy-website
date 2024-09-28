@@ -48,7 +48,7 @@ export default function Menu() {
   const [beginnerProgress, setBeginnerProgress] = useState(null);
   const [everydayProgress, setEverydayProgress] = useState(null);
   const userCtx = useContext(UserContext);
-  console.log(userCtx);
+
   useEffect(() => {
     setIsLoading(true);
     const fetchUser = async () => {

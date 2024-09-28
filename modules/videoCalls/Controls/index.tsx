@@ -14,27 +14,21 @@ import ShareScreenOff from "./../../../public/icons/ShareScreenOff.svg";
 import ShareScreenOn from "./../../../public/icons/ShareScreenOn.svg";
 import { useRouter } from "next/router";
 
-export default function Controls({ isTeacherSide }) {
+export default function Controls({ isTeacherSide, participantId }) {
   const { leave, toggleMic, toggleWebcam, toggleScreenShare } = useMeeting();
-  const [micActive, setMicActive] = useState(true);
-  const [videoActive, setVideoActive] = useState(true);
-  const [screenActive, setScreenActive] = useState(true);
+  const { micOn, webcamOn, screenShareOn } = useParticipant(participantId);
   const router = useRouter();
 
-  // Toggle mic and update icon state
   const handleToggleMic = () => {
     toggleMic();
-    setMicActive((prev) => !prev);
   };
 
   const handleToggleVideo = () => {
     toggleWebcam();
-    setVideoActive((prev) => !prev);
   };
 
   const handleScreenSharing = () => {
     toggleScreenShare();
-    setScreenActive((prev) => !prev);
   };
 
   const leaveHandler = () => {
@@ -53,14 +47,14 @@ export default function Controls({ isTeacherSide }) {
         Выйти
       </button>
       <button onClick={handleToggleMic} className={styles.controlButton}>
-        {micActive ? <MicOn /> : <MicOff />}
+        {micOn ? <MicOn /> : <MicOff />}
       </button>
       <button onClick={handleToggleVideo} className={styles.controlButton}>
-        {videoActive ? <VideoOn /> : <VideoOff />}
+        {webcamOn ? <VideoOn /> : <VideoOff />}
       </button>
       {isTeacherSide && (
         <button onClick={handleScreenSharing} className={styles.controlButton}>
-          {screenActive ? <ShareScreenOn /> : <ShareScreenOff />}
+          {screenShareOn ? <ShareScreenOn /> : <ShareScreenOff />}
         </button>
       )}
     </div>

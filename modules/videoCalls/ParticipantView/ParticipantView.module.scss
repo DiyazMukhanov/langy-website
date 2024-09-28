@@ -33,3 +33,7 @@
   color: #1676d8;
   font-weight: 600;
 }
+
+.mirror {
+  transform: scaleX(-1); /* Apply the mirror effect */
+}

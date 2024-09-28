@@ -19,7 +19,5 @@ export const getAllUsers = async (
 
   let url = `${apiUrl}/users${finalPart}`;
 
-  console.log(url);
-  console.log(email);
   return await axios.get(url, options);
 };

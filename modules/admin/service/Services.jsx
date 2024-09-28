@@ -71,7 +71,6 @@ export default function Services() {
       setNoData(false);
       setIsLoading(true);
       const response = await getAllServices(page);
-      console.log(response?.data?.data);
       setData(response?.data?.data);
       setIsLoading(false);
     } catch (err) {

@@ -97,19 +97,19 @@ export default function TeacherScheduleComponent({
     <div className={styles.container}>
       <Table style={{ width: "100%" }}>
         <TableHead style={{ width: "100%" }}>
-          {weekDays.map((day) => (
-            <TableCell style={{ width: "auto" }}>
+          {weekDays.map((day, index) => (
+            <TableCell style={{ width: "auto" }} key={index}>
               <div>{day.day}</div>
               <div>{day.date}</div>
             </TableCell>
           ))}
         </TableHead>
         <TableBody style={{ width: "100%" }}>
-          {rows.map((row) => (
-            <TableRow style={{ width: "auto" }}>
+          {rows.map((row, index1) => (
+            <TableRow style={{ width: "auto" }} key={index1}>
               <TableCell style={{ width: "auto" }}>{row.time}</TableCell>
-              {days.map((weekDay) => (
-                <TableCell style={{ width: "auto" }}>
+              {days.map((weekDay, index2) => (
+                <TableCell style={{ width: "auto" }} key={index2}>
                   <div>{row[weekDay]?.bookedBy}</div>
                   <div>
                     {row[weekDay]?.isPublished &&

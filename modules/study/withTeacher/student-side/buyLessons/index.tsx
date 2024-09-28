@@ -9,7 +9,10 @@ export default function BuyLessons() {
     <WithTeachersLayout tabName="addLessons">
       <div className={styles.container}>
         {PACKAGES.map((packageItem) => (
-          <div className={styles.packageBlock}>
+          <div
+            className={styles.packageBlock}
+            style={{ borderColor: packageItem.color }}
+          >
             <BuyLessonCard
               packageText={packageItem.packageText}
               priceText={packageItem.priceText}

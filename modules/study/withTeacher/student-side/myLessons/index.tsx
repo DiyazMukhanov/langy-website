@@ -18,7 +18,6 @@ export default function MyLessons() {
     await getMeetingAndToken(lessonMeetingId);
   };
 
-  console.log(data);
   if (isPending) return "Loading...";
 
   if (error) {

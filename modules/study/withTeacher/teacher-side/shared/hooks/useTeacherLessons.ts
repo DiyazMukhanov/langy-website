@@ -58,6 +58,7 @@ export const useTeacherLessons = (week: string) => {
   };
 
   const createScheduleHandler = () => {
+    console.log("Creating clicked");
     createScheduleMutation.mutate();
   };
 
@@ -79,5 +80,6 @@ export const useTeacherLessons = (week: string) => {
     updateLessonHandler,
     updateMutationLoading: updateMutation.isPending,
     updateMutationError: updateMutation.isError,
+    createScheduleLoading: createScheduleMutation.isPending,
   };
 };

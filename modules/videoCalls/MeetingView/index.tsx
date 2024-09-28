@@ -64,7 +64,10 @@ export default function MeetingView({
     <div className={styles.container}>
       {joined && joined === "JOINED" ? (
         <div>
-          <Controls isTeacherSide={isTeacherSide} />
+          <Controls
+            isTeacherSide={isTeacherSide}
+            participantId={localParticipant?.id}
+          />
           {/* For rendering all the participants in the meeting */}
           {[...participants.keys()].map((participantId) => (
             <ParticipantView

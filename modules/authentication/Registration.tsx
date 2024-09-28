@@ -28,8 +28,6 @@ export default function Registration() {
   const [userExists, setUserExists] = useState(false);
   const [genderValue, setGenderValue] = useState("male");
 
-  console.log(genderValue);
-
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);

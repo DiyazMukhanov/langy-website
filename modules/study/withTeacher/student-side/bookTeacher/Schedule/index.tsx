@@ -85,7 +85,7 @@ export default function Schedule({
   };
 
   const lessonsPackage = useSelector((state: any) => state.package.package);
-  console.log(lessonsPackage);
+
   const weekDays =
     week === "current" ? getCurrentWeekDays() : getNextWeekDays();
   weekDays.unshift({ day: "Время", date: "урока" });
@@ -172,12 +172,12 @@ export default function Schedule({
                       .alreadyFinished &&
                     bookNewLesson &&
                     lessonsPackage > 0 && (
-                      <span
+                      <button
                         onClick={() => bookNewLesson(row[weekDay]._id)}
                         className={styles.bookLessonLink}
                       >
                         Забронировать
-                      </span>
+                      </button>
                     )}
                   {row[weekDay] &&
                     row[weekDay].bookedBy === null &&
@@ -200,25 +200,25 @@ export default function Schedule({
                         .alreadyFinished ? (
                         <span>Прошедший урок</span>
                       ) : (
-                        <span
+                        <button
                           className={styles.enterLessonLink}
                           onClick={() =>
                             createOrJoinMeetingHandler(row[weekDay].meetingId)
                           }
                         >
                           Войти в урок
-                        </span>
+                        </button>
                       )}
                       {!lessonTimeStatus(row[weekDay].lessonDate).isToday &&
                         !lessonTimeStatus(row[weekDay].lessonDate)
                           .alreadyFinished &&
                         cancelLesson && (
-                          <span
+                          <button
                             onClick={() => cancelLesson(row[weekDay]._id)}
                             className={styles.cancelLessonLink}
                           >
                             Отменить урок
-                          </span>
+                          </button>
                         )}
                     </div>
                   )}
