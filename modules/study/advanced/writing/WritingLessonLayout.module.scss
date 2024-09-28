@@ -1,74 +1,74 @@
 @import "styles/breakpoints";
 
 .lessonContainer {
-    @include size-tablet {
-        margin-left: -30px;
-    }
+  @include size-tablet {
+    margin-left: -30px;
+  }
 }
 
 .title {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .input {
-        /* Reset default styles */
-    border: none;
-    outline: none;
-    background-color: transparent;
+  /* Reset default styles */
+  border: none;
+  outline: none;
+  background-color: transparent;
 
-    /* Apply your custom styles */
-    border: solid var(--color-grey) 1px;
-    border-radius: 6px;
-    width: 40vw;
-    height: 20vh;
-    display: flex;
-    justify-content: flex-start;
-    resize: none;
-    font-size: 16px;
-    font-style: italic;
+  /* Apply your custom styles */
+  border: solid var(--color-grey) 1px;
+  border-radius: 6px;
+  width: 40vw;
+  height: 20vh;
+  display: flex;
+  justify-content: flex-start;
+  resize: none;
+  font-size: 16px;
+  font-style: italic;
 
-    @include size-tablet {
-        width: 92vw;
-    }
+  @include size-tablet {
+    width: 92vw;
+  }
 }
 
 .checkButtonContainer {
-    display: flex;
-    justify-content: center;
-    width: 40vw;
-    margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  width: 40vw;
+  margin-top: 30px;
 
-    @include size-tablet {
-        width: 92vw;
-        margin-top: 20px;
-    }
+  @include size-tablet {
+    width: 92vw;
+    margin-top: 20px;
+  }
 }
 
 .commentsContainer {
-    border: solid var(--color-grey) 1px;
-    width: 40vw;
-    height: 30vh;
-    resize: none;
-    font-size: 16px;
+  border: solid var(--color-grey) 1px;
+  width: 40vw;
+  height: 30vh;
+  resize: none;
+  font-size: 16px;
 
-    @include size-tablet {
-        width: 92vw;
-    }
+  @include size-tablet {
+    width: 92vw;
+  }
 }
 
 .nextButtonContainer {
-    display: flex;
-    justify-content: flex-end;
-    width: 60vw;
-    margin-top: 40px;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+  width: 60vw;
+  margin-top: 40px;
+  margin-bottom: 20px;
 
-    @include size-tablet {
-        width: 92vw;
-        justify-content: center;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
+  @include size-tablet {
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
 }
 
 // .input::placeholder {
