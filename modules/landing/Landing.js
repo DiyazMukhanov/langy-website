@@ -140,33 +140,6 @@ export default function Landing() {
   };
 
   const continueHandler = () => {
-    // if (!userCtx.userData) {
-    //   router.push("authorization/registration");
-    // } else {
-    //   //Check if currentLearningField is beginner
-    //   if (userCtx?.userData?.currentLearningField === "starter") {
-    //     router.push(`/lessons/beginner/lesson${currentBeginnerLesson}`);
-    //   }
-
-    //   //Check if currentLearningField is higher
-    //   if (userCtx?.userData?.currentLearningField === "higher") {
-    //     router.push(
-    //       `/lessons/${userCtx?.userData?.currentLesson}/${userCtx?.userData?.currentChapter}`
-    //     );
-    //   }
-
-    //   //Check if currentLearningField is everydayEnglish
-    //   if (userCtx?.userData?.currentLearningField === "everydayEnglish") {
-    //     router.push(
-    //       `/lessons/everydayEnglish/${everydayProgress.currentLesson}/${everydayProgress.currentChapter}`
-    //     );
-    //   }
-
-    //   //Check if user reloaded his progress
-    //   if (!userCtx?.userData?.currentLearningField) {
-    //     router.push("/menu");
-    //   }
-    // }
     if (!userCtx.userData) {
       router.push("authorization/login");
     } else {

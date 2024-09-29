@@ -139,7 +139,7 @@ export default function BeginnerHeader({
                   </Button>
                 </div>
               </div>
-              <Image priority src={ButtonClose} onClick={modalCloseHandler} />
+              <ButtonClose onClick={modalCloseHandler} />
             </div>
             <div className={styles.sidebarContainer}>
               <BeginnerSidebar

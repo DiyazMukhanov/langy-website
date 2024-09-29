@@ -1,290 +1,287 @@
 @import "styles/breakpoints";
 
 .noShow {
-    display: none;
+  display: none;
 
-    @include size-tablet {
-        display: none;
-    }
+  @include size-tablet {
+    display: none;
+  }
 }
 
 .installBtn {
-    padding: 15px;
-    border-radius: 10px;
-    border: none;
-    background-color: var(--color-green);
-    font-weight: 600;
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--color-green);
+  font-weight: 600;
 }
 
 .modalContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .modalLogos {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .serviceModal {
-    display: flex;
-    // border: solid red 1px;
-    align-items: center;
-    font-weight: bold;
-    gap: 10px;
-    cursor: pointer;
-    margin-top: 40px;
+  display: flex;
+  // border: solid red 1px;
+  align-items: center;
+  font-weight: bold;
+  gap: 10px;
+  cursor: pointer;
+  margin-top: 40px;
 }
 
 .modalButtons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    margin-top: 300px;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 300px;
+  // margin-bottom: 20px;
 }
 
 .header {
-    // border: solid red 1px;
-    // background-color: #99ceff;
-    background-color: var(--color-primary);
-    // padding: $header-padding-vertical $header-padding-horizontal;
-    // padding: 2em 3.75em;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    padding-left: 20px;
-    padding-right: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    // margin-bottom: 0;
-    // width: 200vw;
-    // @include size-tablet {
-    //     padding-left: 20px;
-    //     padding-right: 20px;
-    // }
+  // border: solid red 1px;
+  // background-color: #99ceff;
+  background-color: var(--color-primary);
+  // padding: $header-padding-vertical $header-padding-horizontal;
+  // padding: 2em 3.75em;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  // margin-bottom: 0;
+  // width: 200vw;
+  // @include size-tablet {
+  //     padding-left: 20px;
+  //     padding-right: 20px;
+  // }
 }
 
 .logo {
-    @include size-tablet {
-        width: 80px;
-    }
+  @include size-tablet {
+    width: 80px;
+  }
 }
 
 .topButtons {
-    display: flex;
-    // border: solid red 1px;
-    width: fit-content;
-    margin-bottom: 0.3125em;
-    gap: 3em;
-    align-items: center;
-    justify-content: flex-start;
+  display: flex;
+  // border: solid red 1px;
+  width: fit-content;
+  margin-bottom: 0.3125em;
+  gap: 3em;
+  align-items: center;
+  justify-content: flex-start;
 
-    @include size-tablet {
-        display: none;
-    }
+  @include size-tablet {
+    display: none;
+  }
 }
 
 .sandwich {
-    display: none;
+  display: none;
 
-    @include size-tablet {
-        display: flex;
-    }
+  @include size-tablet {
+    display: flex;
+  }
 }
 
 .registrationBtn {
-    color: var(--color-white);
-    width: 12.75em;
-    height: 3em;
-    font-size: 1.25em;
-    border-radius: 40px;
-    border: solid 1px var(--color-white);
+  color: var(--color-white);
+  width: 12.75em;
+  height: 3em;
+  font-size: 1.25em;
+  border-radius: 40px;
+  border: solid 1px var(--color-white);
 }
 
 .enterBtn {
-    color: var(--color-white);
-    cursor: pointer;
-    font-size: 1.25em;
+  color: var(--color-white);
+  cursor: pointer;
+  font-size: 1.25em;
 }
 
 .main {
-    // background-color: var(--color-primary);
+  // background-color: var(--color-primary);
+  // background-image: url('../../public/images/students-3.png');
+  // background-size: cover;
+  background-color: var(--color-primary);
+  height: 70vh;
+  // margin-top: 0;
+  padding: 3.125em 12.5em 9.375em 12.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include size-tablet {
     // background-image: url('../../public/images/students-3.png');
     // background-size: cover;
-    background-color: var(--color-primary);
-    height: 70vh;
-    // margin-top: 0;
-    padding: 3.125em 12.5em 9.375em 12.5em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    @include size-tablet {
-        // background-image: url('../../public/images/students-3.png');
-        // background-size: cover;
-        padding: 20px 0 0 0;
-        height: auto;
-    }
+    padding: 20px 0 0 0;
+    height: auto;
+  }
 }
 
 .mainHeading {
-    // border: solid red 1px;
-    width: fit-content;
-    font-size: 3.75em;
-    color: var(--color-white);
-    text-align: center;
+  // border: solid red 1px;
+  width: fit-content;
+  font-size: 3.75em;
+  color: var(--color-white);
+  text-align: center;
 
-    @include size-tablet {
-        font-size: 2em;
-        font-weight: normal;
-        // border: solid red 1px;
-        width: 300px;
-        text-align: center;
-    }
+  @include size-tablet {
+    font-size: 2em;
+    font-weight: normal;
+    // border: solid red 1px;
+    width: 300px;
+    text-align: center;
+  }
 }
 
 .headerBottomBlock {
-    display: flex;
-    width: 90vw;
-    justify-content: center;
-    margin-top: 80px;
+  display: flex;
+  width: 90vw;
+  justify-content: center;
+  margin-top: 80px;
 
-    @include size-tablet {
-        flex-direction: column;
-        padding-bottom: 70px;
-    }
-
+  @include size-tablet {
+    flex-direction: column;
+    padding-bottom: 70px;
+  }
 }
 
 .dropOne {
-    margin-top: 5em;
+  margin-top: 5em;
 
-    @include size-tablet {
-        display: none;
-    }
-
+  @include size-tablet {
+    display: none;
+  }
 }
 
 .dropTwo {
-    margin-top: 7.5em;
+  margin-top: 7.5em;
 
-    @include size-tablet {
-        display: none;
-    }
+  @include size-tablet {
+    display: none;
+  }
 }
 
 .btnBlock {
-    // border: solid red 1px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  // border: solid red 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .startBtn {
-    width: 16.25em;
-    height: 3.75em;
-    font-size: 1.125em;
-    color: var(--color-white);
-    background-color: var(--color-orange);
-    border-radius: 40px;
-    font-weight: bold;
-    margin-bottom: 0.9375em;
-    margin-top: 1.25em;
+  width: 16.25em;
+  height: 3.75em;
+  font-size: 1.125em;
+  color: var(--color-white);
+  background-color: var(--color-orange);
+  border-radius: 40px;
+  font-weight: bold;
+  margin-bottom: 0.9375em;
+  margin-top: 1.25em;
 
-    @include size-tablet {
-        width: 200px;
-    }
+  @include size-tablet {
+    width: 200px;
+  }
 }
 
 .haveAccountBtn {
-    font-size: 1.125em;
-    text-decoration: underline;
-    text-underline-offset: 0.5em;
-    color: var(--color-white);
-    cursor: pointer;
+  font-size: 1.125em;
+  text-decoration: underline;
+  text-underline-offset: 0.5em;
+  color: var(--color-white);
+  cursor: pointer;
 }
 
 .advantages {
-    padding-top: 3.125em;
-    padding-bottom: 3.125em;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
+  padding-top: 3.125em;
+  padding-bottom: 3.125em;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
 
-    @include size-tablet {
-        flex-direction: column;
-        align-items: center;
-    }
+  @include size-tablet {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .imageContainer {
-    position: relative;
-    width: 600px;
-    height: 400px;
+  position: relative;
+  width: 600px;
+  height: 400px;
 
-    @include size-tablet {
-        width: auto;
-        height: auto;
-        display: flex;
-        gap: 20px;
-    }
+  @include size-tablet {
+    width: auto;
+    height: auto;
+    display: flex;
+    gap: 20px;
+  }
 }
 
 .laptop,
 .cards {
-    position: absolute;
+  position: absolute;
 
-    @include size-tablet {
-        position: static;
-    }
+  @include size-tablet {
+    position: static;
+  }
 }
 
 .cards {
-    z-index: 2;
+  z-index: 2;
 
-    @include size-tablet {
-        display: none;
-    }
+  @include size-tablet {
+    display: none;
+  }
 }
 
 .cardsMobile {
-    display: none;
+  display: none;
 
-    @include size-tablet {
-        display: block;
-        padding-top: 50px;
-    }
-
+  @include size-tablet {
+    display: block;
+    padding-top: 50px;
+  }
 }
 
 .laptop {
-    z-index: 1;
-    left: 6.25em;
-    top: 2.5em;
+  z-index: 1;
+  left: 6.25em;
+  top: 2.5em;
 
-    @include size-tablet {
-        width: 200px;
-        left: 0;
-        top: 0;
-    }
+  @include size-tablet {
+    width: 200px;
+    left: 0;
+    top: 0;
+  }
 }
 
 .middleSection {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding-top: 4.375em;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 4.375em;
 
-    @include size-tablet {
-        flex-direction: column;
-        align-items: center;
-        font-size: 1.125em;
-        gap: 30px;
-    }
+  @include size-tablet {
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.125em;
+    gap: 30px;
+  }
 }
 
 // .leftSideOfMiddleSection {
@@ -292,347 +289,345 @@
 // }
 
 .leftSideText {
-    // border: solid red 1px;
-    width: 18.75em;
-    font-weight: bold;
+  // border: solid red 1px;
+  width: 18.75em;
+  font-weight: bold;
 
-    @include size-tablet {
-        margin-bottom: 0;
-    }
+  @include size-tablet {
+    margin-bottom: 0;
+  }
 }
 
 .logoTwo {
-    margin-left: -4.375em;
+  margin-left: -4.375em;
 
-    @include size-tablet {
-        margin: 0;
-    }
+  @include size-tablet {
+    margin: 0;
+  }
 }
 
 .advantagesSection {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .advantagesHeadingContainer {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 
-    @include size-tablet {
-        margin-top: 50px;
-    }
+  @include size-tablet {
+    margin-top: 50px;
+  }
 }
 
 .advantagesMain {
-    background-color: var(--color-light-blue);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 20px;
+  background-color: var(--color-light-blue);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
 
-    @include size-tablet {
-        // border: solid red 1px;
-        background-color: var(--color-white);
-    }
+  @include size-tablet {
+    // border: solid red 1px;
+    background-color: var(--color-white);
+  }
 }
 
 .advantageCards {
-    display: flex;
-    justify-content: center;
-    gap: 3.125em;
-    padding-top: 3.125em;
-    padding-bottom: 3.125em;
+  display: flex;
+  justify-content: center;
+  gap: 3.125em;
+  padding-top: 3.125em;
+  padding-bottom: 3.125em;
 
-    @include size-tablet {
-        flex-direction: column;
-    }
+  @include size-tablet {
+    flex-direction: column;
+  }
 }
 
 .tryButton {
-    background-color: var(--color-orange);
-    color: var(--color-white);
-    font-size: 1em;
-    width: 14.1875em;
-    height: 3.1875em;
-    border-radius: 40px;
-    margin-bottom: 3.125em;
-    font-weight: bold;
+  background-color: var(--color-orange);
+  color: var(--color-white);
+  font-size: 1em;
+  width: 14.1875em;
+  height: 3.1875em;
+  border-radius: 40px;
+  margin-bottom: 3.125em;
+  font-weight: bold;
 
-    @include size-tablet {
-        margin-bottom: 10px;
-    }
+  @include size-tablet {
+    margin-bottom: 10px;
+  }
 }
 
 .howHeading {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 6.25em;
-    font-size: 18px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 6.25em;
+  font-size: 18px;
 
-    @include size-tablet {
-        margin-top: 20px;
-        font-size: 12px;
-    }
+  @include size-tablet {
+    margin-top: 20px;
+    font-size: 12px;
+  }
 }
 
 .manSection {
-    display: flex;
-    // border: solid red 1px;
-    align-items: center;
-    justify-content: center;
-    gap: 2.5em;
+  display: flex;
+  // border: solid red 1px;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5em;
 }
 
 .man {
-    margin-top: -3.125em;
+  margin-top: -3.125em;
 
-    @include size-tablet {
-        display: none;
-    }
+  @include size-tablet {
+    display: none;
+  }
 }
 
 .twoThreeSection {
-    display: flex;
-    gap: 3.75em;
-    justify-content: center;
+  display: flex;
+  gap: 3.75em;
+  justify-content: center;
 
-    @include size-tablet {
-        flex-direction: column;
-        align-items: center;
-    }
+  @include size-tablet {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .whatGetContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    align-items: center;
-
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
 }
 
 .howWorks {
-    padding-bottom: 6.25em;
+  padding-bottom: 6.25em;
 
-    @include size-tablet {
-        display: flex;
-        flex-direction: column;
-    }
+  @include size-tablet {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .howcardTwo {
-    margin-top: 4.375em;
+  margin-top: 4.375em;
 }
 
 .questionsHeading {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 
-    @include size-tablet {
-        // border: solid red 1px;
-        width: 300px;
-        text-align: center;
-    }
+  @include size-tablet {
+    // border: solid red 1px;
+    width: 300px;
+    text-align: center;
+  }
 }
 
 .frequentQuestionsSection {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 50px;
-    margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+  margin-top: 100px;
 }
 
 .questionsContainer {
-    // border: solid red 1px;
-    width: 71.9375em;
+  // border: solid red 1px;
+  width: 71.9375em;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @include size-tablet {
+    width: 90vw;
     padding-left: 20px;
     padding-right: 20px;
-
-    @include size-tablet {
-        width: 90vw;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
+  }
 }
 
 .questionBlock {
-    border-bottom: solid var(--color-dark-grey) 1px;
+  border-bottom: solid var(--color-dark-grey) 1px;
 }
 
 .question {
-    font-size: 1.25em;
-    font-weight: bold;
+  font-size: 1.25em;
+  font-weight: bold;
 }
 
 .questionWithPlus {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .answer {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .questionButton {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .footer {
-    // height: 13.875em;
-    background-color: var(--color-primary);
-    // border: solid red 1px;
+  // height: 13.875em;
+  background-color: var(--color-primary);
+  // border: solid red 1px;
 
-    @include size-tablet {
-        height: auto;
-        padding-bottom: 30px;
-    }
+  @include size-tablet {
+    height: auto;
+    padding-bottom: 30px;
+  }
 }
 
 .footerTop {
-    display: flex;
-    justify-content: space-evenly;
-    padding-top: 3.125em;
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 3.125em;
 
-    @include size-tablet {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
+  @include size-tablet {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
 }
 
 .service {
-    display: flex;
-    // align-items: center;
-    justify-content: center;
-    gap: 0.625em;
+  display: flex;
+  // align-items: center;
+  justify-content: center;
+  gap: 0.625em;
 
-    & p {
-        color: var(--color-white);
-        margin-top: 0;
-        cursor: pointer;
-    }
+  & p {
+    color: var(--color-white);
+    margin-top: 0;
+    cursor: pointer;
+  }
 }
 
 .up {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .profileLink {
-    font-weight: bold;
-    cursor: pointer;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .footerBottom {
-    padding-left: 20px;
-    display: flex;
-    flex-direction: column;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 20px;
+  margin-bottom: 0;
+  color: white;
+
+  & p {
+    margin: 0;
+    cursor: pointer;
+    width: fit-content;
+  }
+
+  @include size-tablet {
+    margin-top: 20px;
     gap: 10px;
-    padding-bottom: 20px;
-    margin-bottom: 0;
-    color: white;
-
-
-    & p {
-        margin: 0;
-        cursor: pointer;
-        width: fit-content;
-    }
-
-    @include size-tablet {
-        margin-top: 20px;
-        gap: 10px;
-    }
+  }
 }
 
 .visa {
-    height: 100px;
-    width: 200px;
+  height: 100px;
+  width: 200px;
 }
 
 .loggedInNavContainer {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .whyContainer {
-    padding: 20px;
-    font-size: 20px;
-    background: linear-gradient(to left, #005580, #004d4d);
-    margin-left: 10px;
-    margin-right: 10px;
-    border-radius: 5px;
-    margin-top: 20px;
-    // margin-bottom: 50px;
-    color: var(--color-white);
+  padding: 20px;
+  font-size: 20px;
+  background: linear-gradient(to left, #005580, #004d4d);
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+  // margin-bottom: 50px;
+  color: var(--color-white);
 
-    & h2 {
-        color: var(--color-orange);
-    }
+  & h2 {
+    color: var(--color-orange);
+  }
 
-    & h3 {
-        color: var(--color-primary);
-    }
+  & h3 {
+    color: var(--color-primary);
+  }
 
-    & p {
-        font-style: italic;
-        font-weight: 600;
-    }
+  & p {
+    font-style: italic;
+    font-weight: 600;
+  }
 }
 
 .forgetContainer {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 }
 
 .getSection {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 30px;
-    padding-left: 10px;
-    padding-right: 10px;
-    // border: solid red 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  // border: solid red 1px;
 
-    & h2 {
-        margin-bottom: 0;
-    }
+  & h2 {
+    margin-bottom: 0;
+  }
 }
 
 .cases h2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 26px;
-    color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: var(--color-primary);
 }
 
 .caseContainer {
-    font-size: 22px;
-    padding-left: 30px;
-    padding-right: 30px;
+  font-size: 22px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .myCase {
-    font-style: italic;
+  font-style: italic;
 }
 
 .caseName {
-    font-weight: 600;
-    color: var(--color-orange);
+  font-weight: 600;
+  color: var(--color-orange);
 }
 
 .orangeCase {
-    color: var(--color-orange);
+  color: var(--color-orange);
 }
 
 .blueCase {
-    color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .purpleCase {
-    color: var(--color-purple);
+  color: var(--color-purple);
 }
 
 // .forget {
@@ -642,25 +637,25 @@
 // }
 
 .doBtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .instIcon {
-    font-size: 40px;
-    color: var(--color-primary);
+  font-size: 40px;
+  color: var(--color-primary);
 }
 
 .whatsIcon {
-    font-size: 40px;
-    color: green;
+  font-size: 40px;
+  color: green;
 }
 
 .contactsNav {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 30px;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }

@@ -1,7 +1,6 @@
 import styles from "./Login.module.scss";
 import ButtonClose from "../../public/images/Button-close.svg";
 import Google from "../../public/images/Google.svg";
-import Image from "next/image";
 import { Button } from "@/ui-kit/Button";
 import { Typography } from "@/ui-kit/Typography";
 import { useRef, useState } from "react";
@@ -129,13 +128,7 @@ export default function Login() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <Image
-          priority
-          src={ButtonClose}
-          width={15}
-          className={styles.close}
-          onClick={goToMainHandler}
-        />
+        <ButtonClose className={styles.close} onClick={goToMainHandler} />
         <Button variant="standardAuthOutlined" onClick={goToSignUpHandler}>
           Регистрация
         </Button>

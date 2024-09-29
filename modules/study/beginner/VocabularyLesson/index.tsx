@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import styles from "./VocabularyLesson.module.scss";
 import { DragDropContainer, DropTarget } from "react-drag-drop-container";
 import { Button } from "@/ui-kit/Button";
-import newPlay from "../../../../public/images/Play.svg";
+import NewPlay from "../../../../public/images/Play.svg";
 import Image from "next/image";
 import UpdateButton from "@/modules/shared/UpdateButton";
 
@@ -192,14 +192,7 @@ export default function VocabularyLesson({
                   <div className={styles.enContainer}>{words[0].enWord}</div>
                 </div>
               </DropTarget>
-              {/* <Image
-                            priority
-                            src={newPlay}
-                            width={30}
-                            onClick={() => playWord(1)}
-                            className={styles.play}
-                         /> */}
-              <newPlay />
+              <NewPlay onClick={() => playWord(1)} className={styles.play} />
             </div>
           )}
           {secondRight ? (
@@ -216,13 +209,7 @@ export default function VocabularyLesson({
                   <div className={styles.enContainer}>{words[1].enWord}</div>
                 </div>
               </DropTarget>
-              <Image
-                priority
-                src={newPlay}
-                width={30}
-                onClick={() => playWord(2)}
-                className={styles.play}
-              />
+              <NewPlay className={styles.play} onClick={() => playWord(2)} />
             </div>
           )}
           {thirdRight ? (
@@ -239,13 +226,7 @@ export default function VocabularyLesson({
                   <div className={styles.enContainer}>{words[2].enWord}</div>
                 </div>
               </DropTarget>
-              <Image
-                priority
-                src={newPlay}
-                width={30}
-                onClick={() => playWord(3)}
-                className={styles.play}
-              />
+              <NewPlay onClick={() => playWord(3)} className={styles.play} />
             </div>
           )}
         </div>

@@ -26,10 +26,6 @@ export default function WhiteHeader({
     <>
       <div className={styles.whiteContainer}>
         <div className={styles.leftMenuContainer}>
-          <div className={styles.logo} onClick={goToMainHandler}>
-            <Image priority src={LogoBlue} width={60} />
-            <Image priority src={LogoBlueBottom} width={20} />
-          </div>
           <span onClick={() => router.push("/menu")} className={styles.menuBtn}>
             Меню
           </span>
@@ -61,7 +57,7 @@ export default function WhiteHeader({
                 Меню
               </Button>
             </div>
-            <Image priority src={ButtonClose} onClick={modalCloseHandler} />
+            <ButtonClose onClick={modalCloseHandler} />
           </div>
           <div className={styles.sidebarContainer}>
             {!isEasyEnglish ? (

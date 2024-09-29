@@ -9,7 +9,6 @@ import { getBeginnerProgress } from "@/modules/shared/api/getBeginnerProgress";
 import { updateBeginnerProgress } from "./shared/api/updateBeginnerProgress";
 import { setCurrentLearningField } from "../shared/api/setCurrentLearningField";
 import BeginnerHeader from "./shared/BeginnerHeader";
-import TextLesson from "./TextLesson";
 import Loader from "@/modules/shared/Loader";
 import { useRouter } from "next/router";
 import VocabularyLesson from "./VocabularyLesson";
@@ -145,13 +144,13 @@ export default function BeginnerLessonLayout({
               />
             </div>
             {/* <h2>Lesson {lessonNumber}</h2> */}
-            {isTextLesson && (
+            {/* {isTextLesson && (
               <TextLesson
                 lessonNumber={lessonNumber}
                 text={text}
                 nextUrl={nextUrl}
               />
-            )}
+            )} */}
 
             {isVocabulary && (
               <VocabularyLesson

@@ -76,9 +76,9 @@ const ResultsShowing = ({
                 <div className={styles.answersAllContainer}>
                   <div className={styles.answerResult}>
                     {checkIsRight(question, question.chosenAnswer) ? (
-                      <Image priority src={RightTick} />
+                      <RightTick />
                     ) : (
-                      <Image priority src={WrongTick} />
+                      <WrongTick />
                     )}
                     <p>{question.id}.</p>
                     <p>{question.firstPart}</p>

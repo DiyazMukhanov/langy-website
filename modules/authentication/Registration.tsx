@@ -161,13 +161,7 @@ export default function Registration() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <Image
-          priority
-          src={ButtonClose}
-          width={15}
-          className={styles.close}
-          onClick={goToMainHandler}
-        />
+        <ButtonClose className={styles.close} onClick={goToMainHandler} />
         <Button variant="standardAuthOutlined" onClick={goToLoginHandler}>
           Войти
         </Button>
