@@ -2,7 +2,12 @@ import ProtectPage from "@/modules/shared/ProtectPage";
 import WithTeachersLayoutContent from "./withTeachersLayoutContent";
 import Footer from "@/modules/shared/Footer";
 
-type TabName = "progress" | "chooseTeacher" | "plannedLessons" | "addLessons";
+type TabName =
+  | "progress"
+  | "chooseTeacher"
+  | "plannedLessons"
+  | "addLessons"
+  | "download";
 
 type Props = {
   children: React.ReactNode;

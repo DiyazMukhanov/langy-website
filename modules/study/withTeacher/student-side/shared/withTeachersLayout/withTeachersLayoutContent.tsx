@@ -8,7 +8,12 @@ import { useDispatch } from "react-redux";
 import { setPackage } from "@/store/student/packageSlice";
 import classNames from "classnames";
 
-type TabName = "progress" | "chooseTeacher" | "plannedLessons" | "addLessons";
+type TabName =
+  | "progress"
+  | "chooseTeacher"
+  | "plannedLessons"
+  | "addLessons"
+  | "download";
 
 type Props = {
   children: React.ReactNode;
@@ -73,6 +78,15 @@ export default function WithTeachersLayoutContent({
             onClick={() => router.push("/with-teachers/buy-lessons")}
           >
             Пополнить уроки
+          </Button>
+          <Button
+            variant="bottomOutlined"
+            className={classNames(styles.tabBtn, {
+              [styles.currentTab]: tabName === "download",
+            })}
+            onClick={() => router.push("/with-teachers/download")}
+          >
+            Скачать материалы
           </Button>
         </div>
         {children}
