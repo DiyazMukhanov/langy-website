@@ -186,13 +186,14 @@ export default function Schedule({
                       .alreadyFinished &&
                     bookNewLesson &&
                     lessonsPackage < 1 && (
-                      <span
+                      <button
+                        className={styles.enterLessonLink}
                         onClick={() =>
                           router.push("/with-teachers/buy-lessons")
                         }
                       >
-                        Пополните уроки
-                      </span>
+                        Пополнить уроки
+                      </button>
                     )}
                   {row[weekDay] && row[weekDay].bookedBy === userId && (
                     <div className={styles.myLessonBlock}>
