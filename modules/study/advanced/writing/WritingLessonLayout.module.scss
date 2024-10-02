@@ -14,7 +14,7 @@
   /* Reset default styles */
   border: none;
   outline: none;
-  background-color: transparent;
+  background-color: white;
 
   /* Apply your custom styles */
   border: solid var(--color-grey) 1px;
@@ -50,6 +50,7 @@
   height: 30vh;
   resize: none;
   font-size: 16px;
+  background-color: transparent;
 
   @include size-tablet {
     width: 92vw;
