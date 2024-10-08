@@ -24,11 +24,11 @@ export const useMeeting = () => {
     fetchAuthToken();
   }, []);
 
-  const getMeetingAndToken = async (id) => {
+  const getMeetingAndToken = async (id, lessonId) => {
     const meetingId =
       id == null ? await createMeeting({ token: authToken }) : id;
     dispatch(setMeetingId(meetingId));
-    router.push("/video-call");
+    router.push(`/video-call/${lessonId}`);
   };
 
   return { getMeetingAndToken };

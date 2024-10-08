@@ -10,12 +10,12 @@ import { useMeeting } from "@/modules/videoCalls/hooks/useMeeting";
 export default function MyLessons() {
   const { isPending, error, data } = useStudentLessons();
   const { getMeetingAndToken } = useMeeting();
-  const createOrJoinMeetingHandler = async (lessonMeetingId) => {
+  const createOrJoinMeetingHandler = async (lessonMeetingId, lessonId) => {
     if (!lessonMeetingId) {
       alert("Учитель еще не вошел в урок, попробуйте войти позже");
       return;
     }
-    await getMeetingAndToken(lessonMeetingId);
+    await getMeetingAndToken(lessonMeetingId, lessonId);
   };
 
   if (isPending) return "Loading...";
@@ -58,7 +58,9 @@ export default function MyLessons() {
             </div>
             <button
               className={styles.enterBtn}
-              onClick={() => createOrJoinMeetingHandler(lesson.meetingId)}
+              onClick={() =>
+                createOrJoinMeetingHandler(lesson.meetingId, lesson?._id)
+              }
             >
               Войти в урок
             </button>

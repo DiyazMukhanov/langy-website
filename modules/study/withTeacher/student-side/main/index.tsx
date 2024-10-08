@@ -5,10 +5,16 @@ import { useRouter } from "next/router";
 import WithTeachersLayout from "../shared/withTeachersLayout";
 import { useEffect, useState } from "react";
 import { createNewPackage } from "../shared/api/createNewPackage";
+import { Return } from "./return";
+
+const returnText = `В случае несостоявшегося урока, обучающемуся следует сфотографировать или сделать скрин урока, в котором видно остутствие учителя и ID данного урока. Также должно быть видно настоящее время. Это необходимо на случай спорных ситуаций с преподавателем. Далее, необходимо обратиться в службу поддержки по телефону, whatsapp, либо по емайлу, и мы вернем несостоявишися урок в пакет ваших уроков.`;
+const cancelText = `Отменить предстоящий забронированный урок можно не позднее чем за 24 часа до начала урока`;
 
 export default function Main() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
+  const [isReturnShowing, setIsReturnShowing] = useState(false);
+  const [text, setText] = useState("");
 
   useEffect(() => {
     const createNewPackageHandler = async () => {
@@ -24,6 +30,16 @@ export default function Main() {
     createNewPackageHandler();
   }, []);
 
+  const returnHandler = () => {
+    setText(returnText);
+    setIsReturnShowing(true);
+  };
+
+  const cancelHandler = () => {
+    setText(cancelText);
+    setIsReturnShowing(true);
+  };
+
   if (isLoading) {
     return <>Loading...</>;
   }
@@ -31,6 +47,13 @@ export default function Main() {
   return (
     <WithTeachersLayout>
       <div className={styles.main}>
+        {isReturnShowing && (
+          <Return
+            isReturnShowing={isReturnShowing}
+            setIsReturnShowing={setIsReturnShowing}
+            text={text}
+          />
+        )}
         <Image
           priority
           src="/images/teacher.png"
@@ -53,12 +76,14 @@ export default function Main() {
         <Button
           variant="standardMiddleOutlined"
           className={styles.returnRulesBtn}
+          onClick={returnHandler}
         >
           Правила возврата уроков
         </Button>
         <Button
           variant="standardMiddleOutlined"
           className={styles.returnRulesBtn}
+          onClick={cancelHandler}
         >
           Правила отмены уроков
         </Button>

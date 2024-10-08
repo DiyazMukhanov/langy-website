@@ -47,9 +47,9 @@ export default function TeacherFutureLessons() {
   const createOrJoinMeetingHandler = async (lessonId, lessonMeetingId) => {
     if (!lessonMeetingId) {
       setLessonIdToUpdate(lessonId);
-      await getMeetingAndToken(lessonMeetingId);
+      await getMeetingAndToken(lessonMeetingId, lessonId);
     } else {
-      await getMeetingAndToken(lessonMeetingId);
+      await getMeetingAndToken(lessonMeetingId, lessonId);
     }
   };
 

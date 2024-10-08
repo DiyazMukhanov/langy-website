@@ -1,21 +1,19 @@
 import Header from "@/modules/shared/Header";
-import styles from "./Menu.module.scss";
+import styles from "./../Menu.module.scss";
 import { useRouter } from "next/router";
 import { getMe } from "@/modules/shared/api/getMe";
 import { getBeginnerProgress } from "@/modules/shared/api/getBeginnerProgress";
-import { getEverydayProgress } from "../../shared/api/getEverydayProgress";
 import Image from "next/image";
-import EverydayEnglish from "./../../../public/images/everyday_english.jpg";
-import Self from "./../../../public/images/self.jpg";
-import BeginnerEnglish from "./../../../public/images/beginner_english.webp";
-import AdvancedEnglish from "./../../../public/images/advanced_english.jpg";
-import TestEnglish from "./../../../public/images/test_english.jpg";
-import TeacherEnglish from "./../../../public/images/teacher_english.jpg";
+import EverydayEnglish from "./../../../../public/images/everyday_english.jpg";
+import BeginnerEnglish from "./../../../../public/images/beginner_english.webp";
+import AdvancedEnglish from "./../../../../public/images/advanced_english.jpg";
+import TestEnglish from "./../../../../public/images/test_english.jpg";
 
 import { useContext, useEffect, useState } from "react";
 import Loader from "@/modules/shared/Loader";
 import { Button } from "@/ui-kit/Button";
 import { UserContext } from "@/store/userContext";
+import { getEverydayProgress } from "@/modules/shared/api/getEverydayProgress";
 
 const LevelBlock = ({ onClick, title, description, image }) => {
   return (
@@ -103,18 +101,12 @@ export default function Menu() {
           <div className={styles.heading}>Выберите раздел</div>
           <div className={styles.levels}>
             <LevelBlock
-              onClick={() => goToLearningFieldHandler("teachers")}
-              title="С учителем"
-              image={TeacherEnglish}
-              description={["Выберите учителя", "Обучайтесь онлайн"]}
-            />
-            <LevelBlock
-              onClick={() => router.push("/menu/self-study")}
-              title="Самостоятельно"
-              image={Self}
+              onClick={() => goToLearningFieldHandler("everyday")}
+              title="Английский на каждый день"
+              image={EverydayEnglish}
               description={["Легкие фразы", "Слова на каждый день"]}
             />
-            {/* <LevelBlock
+            <LevelBlock
               onClick={() => goToLearningFieldHandler("starter")}
               title="Для начинающих"
               image={BeginnerEnglish}
@@ -134,7 +126,7 @@ export default function Menu() {
               title="Узнай свой уровень"
               image={TestEnglish}
               description={["Определите свой уровень", "Познайте себя"]}
-            /> */}
+            />
           </div>
         </div>
       </>

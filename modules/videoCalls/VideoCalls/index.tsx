@@ -15,12 +15,16 @@ import { UserContext } from "@/store/userContext";
 import { TeacherLayout } from "@/modules/study/withTeacher/teacher-side/shared/components/TeacherLayout";
 import WithTeachersLayout from "@/modules/study/withTeacher/student-side/shared/withTeachersLayout";
 import styles from "./VideoCalls.module.scss";
+import { useRouter } from "next/router";
 
 const VideoCall = () => {
   const dispatch = useDispatch();
   const meetingId = useSelector((state) => state.videoConference.meetingId);
   const authToken = useSelector((state) => state.videoConference.authToken);
   const userCtx = useContext(UserContext);
+
+  const router = useRouter(); // Get the router object
+  const { lessonId } = router.query; // Extract lessonId from the URL parameters
 
   const [loading, setLoading] = useState(true);
   const isTeacherSide = useSelector(
@@ -44,6 +48,7 @@ const VideoCall = () => {
 
   return (
     <div className={styles.container}>
+      <span>ID урока: {lessonId}</span>
       <MeetingProvider
         config={{
           meetingId,
