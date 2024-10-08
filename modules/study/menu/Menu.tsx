@@ -25,6 +25,7 @@ const LevelBlock = ({ onClick, title, description, image }) => {
         <div className={styles.advantages}>
           <span>{description[0]}</span>
           <span>{description[1]}</span>
+          <span>{description[2]}</span>
         </div>
       </div>
       <div className={styles.bottom}>
@@ -106,7 +107,11 @@ export default function Menu() {
               onClick={() => goToLearningFieldHandler("teachers")}
               title="С учителем"
               image={TeacherEnglish}
-              description={["Выберите учителя", "Обучайтесь онлайн"]}
+              description={[
+                "Выберите учителя",
+                "Обучайтесь онлайн",
+                "Короткие 20 минутные уроки",
+              ]}
             />
             <LevelBlock
               onClick={() => router.push("/menu/self-study")}

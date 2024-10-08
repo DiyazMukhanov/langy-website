@@ -19,7 +19,7 @@ import { useMeeting } from "@/modules/videoCalls/hooks/useMeeting";
 const timeSlots: any[] = [];
 for (let hour = 9; hour <= 20; hour++) {
   let startTime = hour.toString().padStart(2, "0") + ":00";
-  let endTime = hour.toString().padStart(2, "0") + ":45";
+  let endTime = hour.toString().padStart(2, "0") + ":25";
   timeSlots.push(`${startTime} - ${endTime}`);
 }
 
