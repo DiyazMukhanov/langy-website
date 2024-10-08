@@ -1,7 +1,14 @@
+// .image {
+//   border-radius: 12px;
+//   width: 100%;
+//   height: 170px;
+// }
+
 .image {
-  border-radius: 12px;
-  width: 100%;
-  height: 170px;
+  width: 100%; /* Ensures the image takes up the full width of its container */
+  height: 170px; /* Keeps the aspect ratio intact */
+  object-fit: cover; /* Ensures the image fills the space without distortion */
+  border-radius: 10px; /* Optional: add a rounded effect to match the card design */
 }
 
 .description {

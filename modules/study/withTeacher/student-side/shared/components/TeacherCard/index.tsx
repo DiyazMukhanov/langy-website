@@ -21,6 +21,7 @@ export default function TeacherCard({ teacher }: Props) {
         height={160}
         width={208}
         className={styles.image}
+        objectFit="cover"
       />
       <div className={styles.description}>
         <div className={styles.nameContainer}>
