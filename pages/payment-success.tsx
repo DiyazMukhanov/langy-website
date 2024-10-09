@@ -2,6 +2,16 @@ import Loader from "@/modules/shared/Loader";
 import { updateLessonsPackage } from "@/modules/study/shared/api/updateLessonsPackage";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import axios from "axios";
+import { apiUrl, options } from "@/modules/shared/api/common";
+
+export const removeTrial = async () => {
+  return await axios.patch(
+    `${apiUrl}/users/me`,
+    { usedTrialLesson: true },
+    options
+  );
+};
 
 // 1) click susbcribe on the suscribtion page
 // 2) if no active subscription (add in express server and remove in previous) and will go to the testPAyment method in server
@@ -28,6 +38,8 @@ export default function PaymentSuccess() {
         try {
           localStorage.setItem("paymentId", "");
           const data = await updateLessonsPackage(bodyData);
+          const response = await removeTrial();
+
           if (data) {
             !previusUrl
               ? router.push("/with-teachers/main")
