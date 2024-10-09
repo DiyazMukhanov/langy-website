@@ -9,6 +9,7 @@ type CreateNewTeacherInputs = {
   name: string;
   surname: string;
   email: string;
+  phoneNumber: string;
   password: string;
   gender: "male" | "female";
   description: string;
@@ -59,6 +60,12 @@ export default function New() {
             className={styles.input}
           />
           {errors.email && <span>This field is required</span>}
+          <label>Телефон</label>
+          <input
+            {...register("phoneNumber", { required: true })}
+            className={styles.input}
+          />
+          {errors.phoneNumber && <span>This field is required</span>}
           <label>Пароль</label>
           <input
             {...register("password", { required: true })}

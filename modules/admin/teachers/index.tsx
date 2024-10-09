@@ -11,6 +11,7 @@ type Teacher = {
   _id: string;
   name: string;
   surname: string;
+  phoneNumber: string;
   email: string;
   photo: string;
   gender: string;
@@ -80,6 +81,7 @@ export default function Teachers() {
             </div>
             <div>email: {teacher.email}</div>
             <div>пол: {teacher.gender}</div>
+            <div>телефон: {teacher.phoneNumber}</div>
           </div>
         ))}
         <Pagination

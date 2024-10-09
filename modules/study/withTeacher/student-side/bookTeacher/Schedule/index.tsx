@@ -78,12 +78,12 @@ export default function Schedule({
   const [bookConfirmationShow, setBookConfirmationShow] = useState(false);
 
   const { getMeetingAndToken } = useMeeting();
-  const createOrJoinMeetingHandler = async (lessonMeetingId) => {
+  const createOrJoinMeetingHandler = async (lessonMeetingId, lessonId) => {
     if (!lessonMeetingId) {
       alert("Учитель еще не вошел в урок, попробуйте войти позже");
       return;
     }
-    await getMeetingAndToken(lessonMeetingId);
+    await getMeetingAndToken(lessonMeetingId, lessonId);
   };
 
   const lessonsPackage = useSelector((state: any) => state.package.package);
@@ -208,7 +208,10 @@ export default function Schedule({
                         <button
                           className={styles.enterLessonLink}
                           onClick={() =>
-                            createOrJoinMeetingHandler(row[weekDay].meetingId)
+                            createOrJoinMeetingHandler(
+                              row[weekDay].meetingId,
+                              row[weekDay]._id
+                            )
                           }
                         >
                           Войти в урок
