@@ -68,7 +68,8 @@ export default function TeacherFutureLessons() {
           <div className={styles.lessonBlock}>
             <div>{getDateAndTime(lesson.lessonDate).date}</div>
             <div>{getDateAndTime(lesson.lessonDate).time}</div>
-            <span>Студент: {lesson.bookedBy}</span>
+            <span>Студент: {lesson.studentName}</span>
+            <span>Email студента: {lesson.studentEmail}</span>
             <span>Meeting ID: {lesson.meetingId}</span>
             <Button
               variant="newStandardNextOutlined"

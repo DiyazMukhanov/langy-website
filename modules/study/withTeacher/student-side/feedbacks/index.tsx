@@ -44,7 +44,9 @@ export default function Feedbacks() {
           <div className={styles.feedbacks}>
             {data && data.length > 0 ? (
               data.map((feedback) => (
-                <div className={styles.feedback}>{feedback.feedback}</div>
+                <div className={styles.feedback}>
+                  {feedback.student}: "{feedback.feedback}"
+                </div>
               ))
             ) : (
               <p>No feedbacks found</p>

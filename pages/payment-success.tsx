@@ -18,6 +18,7 @@ export default function PaymentSuccess() {
     if (typeof window !== "undefined") {
       const savedPaymentId = localStorage.getItem("paymentId");
       const lessons = localStorage.getItem("lessons");
+      const previusUrl = localStorage.getItem("previousUrl");
 
       const saveSubscribedToDbHandler = async () => {
         const bodyData = {
@@ -28,7 +29,9 @@ export default function PaymentSuccess() {
           localStorage.setItem("paymentId", "");
           const data = await updateLessonsPackage(bodyData);
           if (data) {
-            router.push("/with-teachers/main");
+            !previusUrl
+              ? router.push("/with-teachers/main")
+              : router.push(previusUrl);
           }
         } catch (err) {
           setError(true);
@@ -44,7 +47,7 @@ export default function PaymentSuccess() {
   }, [router.query?.pg_payment_id]);
 
   if (isLoading) {
-    return <Loader></Loader>;
+    return <Loader small={true}></Loader>;
   }
 
   if (error) {

@@ -51,7 +51,7 @@ export default function TeacherCard({ teacher }: Props) {
           router.push(`/with-teachers/book-teacher/${teacher._id}`)
         }
       >
-        Забронировать урок
+        Посмотреть расписание
       </Button>
     </Card>
   );

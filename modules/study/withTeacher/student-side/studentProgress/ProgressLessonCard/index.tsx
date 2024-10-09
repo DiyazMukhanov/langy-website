@@ -31,6 +31,7 @@ export const ProgressLessonCard = ({
           height={160}
           width={208}
           className={styles.image}
+          objectFit="cover"
         />
         <div className={styles.nameContainer}>
           <span>{teacher.name}</span>

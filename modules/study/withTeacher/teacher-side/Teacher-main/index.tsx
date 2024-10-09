@@ -17,6 +17,12 @@ export default function TeacherMain() {
         <a onClick={() => router.push("/with-teachers/teacher-money")}>
           Мой кошелек
         </a>
+        <a onClick={() => router.push("/with-teachers/teacher-passed-lessons")}>
+          Мои проведенные уроки
+        </a>
+        <a onClick={() => router.push("/with-teachers/teacher-compensations")}>
+          Мои полученные компенсации
+        </a>
       </div>
     </TeacherLayout>
   );

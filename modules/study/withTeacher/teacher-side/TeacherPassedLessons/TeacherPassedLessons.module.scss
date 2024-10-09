@@ -1,0 +1,22 @@
+.container {
+  padding: 20px;
+}
+
+.monthsContainer {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.lessonsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lessonContainer {
+  border: solid var(--color-primary) 1px;
+  width: 300px;
+  border-radius: 5px;
+  padding: 5px;
+}

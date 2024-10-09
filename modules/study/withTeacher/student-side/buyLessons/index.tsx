@@ -3,13 +3,20 @@ import { BuyLessonCard } from "./BuyLessonCard";
 import WithTeachersLayout from "../shared/withTeachersLayout";
 import styles from "./BuyLessons.module.scss";
 import { PACKAGES } from "./packages";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { subscribeMe } from "@/modules/profile/Subscription/shared/api/subscribeMe";
 import { useRouter } from "next/router";
+import { UserContext } from "@/store/userContext";
 
 export default function BuyLessons() {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const userCtx = useContext(UserContext); // Get the user context
+
+  // Filter out the "Пробный урок" if the user has already used the trial lesson
+  const availablePackages = userCtx?.userData?.usedTrialLesson
+    ? PACKAGES.filter((pkg) => pkg.packageText !== "Пробный урок")
+    : PACKAGES;
 
   const subscribeHandler = async (plan) => {
     setIsLoading(true);
@@ -30,7 +37,7 @@ export default function BuyLessons() {
   return (
     <WithTeachersLayout tabName="addLessons">
       <div className={styles.container}>
-        {PACKAGES.map((packageItem) => (
+        {availablePackages.map((packageItem) => (
           <div
             className={styles.packageBlock}
             style={{ borderColor: packageItem.color }}

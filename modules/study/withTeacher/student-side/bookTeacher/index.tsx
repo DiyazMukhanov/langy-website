@@ -1,6 +1,6 @@
 import WithTeachersLayout from "../shared/withTeachersLayout";
 import Schedule from "./Schedule";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/ui-kit/Button";
 import styles from "./BookTeacher.module.scss";
 import { useLessons } from "../shared/hooks/useLessons";
@@ -12,6 +12,12 @@ export default function BookTeacher() {
   const { isPending, error, data, bookNewLesson, cancelLesson } =
     useLessons(week);
 
+  // Store the current URL when the component is mounted
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("previousUrl", window.location.href); // Store the current URL
+    }
+  }, []); // Runs only on component mount
   if (isPending) return "Loading...";
 
   if (error) return "OOOPs, попробуйте еще раз...";

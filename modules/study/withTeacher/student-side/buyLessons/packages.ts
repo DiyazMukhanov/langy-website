@@ -1,5 +1,12 @@
 export const PACKAGES = [
   {
+    packageText: "Пробный урок",
+    priceText: "2 500 ₸",
+    lessonsQuantity: 1,
+    price: 2500,
+    color: "purple",
+  },
+  {
     packageText: "Пакет на 5 уроков",
     priceText: "3 999 ₸",
     lessonsQuantity: 5,

@@ -73,6 +73,8 @@ export default function Schedule({
   const userCtx = useContext(UserContext);
   const router = useRouter();
   const userId = userCtx?.userData?._id;
+  const usedTrialLesson = userCtx?.userData?.usedTrialLesson;
+
   const [bookConfirmationShow, setBookConfirmationShow] = useState(false);
 
   const { getMeetingAndToken } = useMeeting();
@@ -176,7 +178,7 @@ export default function Schedule({
                         onClick={() => bookNewLesson(row[weekDay]._id)}
                         className={styles.bookLessonLink}
                       >
-                        Забронировать
+                        Забронировать урок
                       </button>
                     )}
                   {row[weekDay] &&
@@ -192,7 +194,9 @@ export default function Schedule({
                           router.push("/with-teachers/buy-lessons")
                         }
                       >
-                        Пополнить уроки
+                        {!usedTrialLesson
+                          ? "Свободно. Приобрести пробный урок"
+                          : "Свободно. Приобрести уроки"}
                       </button>
                     )}
                   {row[weekDay] && row[weekDay].bookedBy === userId && (

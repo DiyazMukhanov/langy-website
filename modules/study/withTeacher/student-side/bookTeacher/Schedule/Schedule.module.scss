@@ -41,6 +41,11 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+  /* Ensure text wrapping */
+  white-space: normal; /* Allow text to wrap */
+  word-wrap: break-word; /* Break long words */
+  overflow-wrap: break-word; /* Ensures word break on overflow */
+  max-width: 150px;
 }
 
 .cancelLessonLink {
