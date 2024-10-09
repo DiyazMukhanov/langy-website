@@ -559,6 +559,9 @@ export default function Landing() {
             <p>email: admin@langy.su контактный телефон: +7 707 880 51 25</p>
             <p>ИП Муханов</p>
             <Image priority src={Visa} className={styles.visa} />
+            <p onClick={() => router.push("/with-teachers/teacher-main")}>
+              Учителям
+            </p>
           </div>
         </footer>
       </div>
