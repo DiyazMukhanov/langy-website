@@ -9,8 +9,15 @@ import classNames from "classnames";
 export default function BookTeacher() {
   const [week, setWeek] = useState("current");
 
-  const { isPending, error, data, bookNewLesson, cancelLesson } =
-    useLessons(week);
+  const {
+    isPending,
+    error,
+    data,
+    bookNewLesson,
+    bookPending,
+    cancelLesson,
+    cancelPending,
+  } = useLessons(week);
 
   // Store the current URL when the component is mounted
   useEffect(() => {
@@ -52,6 +59,8 @@ export default function BookTeacher() {
         cancelLesson={cancelLesson}
         week={week}
         isPending={isPending}
+        bookPending={bookPending}
+        cancelPending={cancelPending}
       />
     </WithTeachersLayout>
   );

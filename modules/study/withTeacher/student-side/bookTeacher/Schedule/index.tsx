@@ -61,6 +61,8 @@ type Props = {
   cancelLesson?: (id: string) => void;
   week: string;
   isPending: boolean;
+  bookPending: boolean;
+  cancelPending: boolean;
 };
 
 export default function Schedule({
@@ -69,6 +71,8 @@ export default function Schedule({
   cancelLesson,
   week,
   isPending,
+  bookPending,
+  cancelPending,
 }: Props) {
   const userCtx = useContext(UserContext);
   const router = useRouter();
@@ -114,6 +118,14 @@ export default function Schedule({
         }
       }
     });
+  }
+
+  if (bookPending) {
+    return (
+      <div style={{ margin: "30px" }}>
+        Идет бронирование. Подождите немного...
+      </div>
+    );
   }
 
   return (
@@ -173,7 +185,8 @@ export default function Schedule({
                     !lessonTimeStatus(row[weekDay].lessonDate)
                       .alreadyFinished &&
                     bookNewLesson &&
-                    lessonsPackage > 0 && (
+                    lessonsPackage > 0 &&
+                    !bookPending && (
                       <button
                         onClick={() => bookNewLesson(row[weekDay]._id)}
                         className={styles.bookLessonLink}
@@ -194,9 +207,7 @@ export default function Schedule({
                           router.push("/with-teachers/buy-lessons")
                         }
                       >
-                        {!usedTrialLesson
-                          ? "Свободно. Приобрести пробный урок"
-                          : "Свободно. Приобрести уроки"}
+                        {!usedTrialLesson ? "Свободно" : "Свободно"}
                       </button>
                     )}
                   {row[weekDay] && row[weekDay].bookedBy === userId && (
@@ -220,7 +231,8 @@ export default function Schedule({
                       {!lessonTimeStatus(row[weekDay].lessonDate).isToday &&
                         !lessonTimeStatus(row[weekDay].lessonDate)
                           .alreadyFinished &&
-                        cancelLesson && (
+                        cancelLesson &&
+                        !cancelPending && (
                           <button
                             onClick={() => cancelLesson(row[weekDay]._id)}
                             className={styles.cancelLessonLink}
@@ -228,6 +240,7 @@ export default function Schedule({
                             Отменить урок
                           </button>
                         )}
+                      {cancelPending && <span>Подождите...</span>}
                     </div>
                   )}
                   {!row[weekDay] && <span>-</span>}

@@ -66,5 +66,13 @@ export const useLessons = (week: string) => {
     enabled: !!teacherId,
   });
 
-  return { isPending, error, data, bookNewLesson, cancelLesson };
+  return {
+    isPending,
+    error,
+    data,
+    bookNewLesson,
+    bookPending: bookMutation.isPending,
+    cancelLesson,
+    cancelPending: cancelMutation.isPending,
+  };
 };
