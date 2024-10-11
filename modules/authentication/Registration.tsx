@@ -104,10 +104,10 @@ export default function Registration() {
 
     if (
       !onlyLatinCharacters(passwordInputValue) ||
-      passwordInputValue.length < 7
+      passwordInputValue.length < 1
     ) {
       setInvalidPassword(true);
-      alert("Используйте латинские буквы и цифры. Длина больше 8 символов.");
+      alert("Используйте латинские буквы и цифры. Длина больше 1 символа.");
       setIsLoading(false);
       return;
     }
