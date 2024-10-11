@@ -17,7 +17,7 @@ import { useRouter } from "next/router";
 import { useMeeting } from "@/modules/videoCalls/hooks/useMeeting";
 
 const timeSlots: any[] = [];
-for (let hour = 9; hour <= 20; hour++) {
+for (let hour = 9; hour <= 23; hour++) {
   let startTime = hour.toString().padStart(2, "0") + ":00";
   let endTime = hour.toString().padStart(2, "0") + ":25";
   timeSlots.push(`${startTime} - ${endTime}`);
@@ -110,7 +110,7 @@ export default function Schedule({
   if (data) {
     data.forEach((lesson: Lesson) => {
       const { weekday, hour } = getDateInGmtFive(lesson.lessonDate);
-      if (hour >= 9 && hour <= 20) {
+      if (hour >= 9 && hour <= 23) {
         const timeSlotIndex = hour - 9;
         const dayKey = weekdays[weekday];
         if (!rows[timeSlotIndex][dayKey]) {
