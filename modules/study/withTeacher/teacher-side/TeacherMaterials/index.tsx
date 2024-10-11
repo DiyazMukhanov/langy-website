@@ -1,15 +1,11 @@
-import { Button } from "@/ui-kit/Button";
-import WithTeachersLayout from "../shared/withTeachersLayout";
-import { useState } from "react";
 import { useRouter } from "next/router";
-import styles from "./Download.module.scss";
+import styles from "./TeacherMaterials.module.scss";
+import { TeacherLayout } from "../shared/components/TeacherLayout";
 
-export default function Download() {
-  const [isLoading, setIsLoading] = useState(false);
+const TeacherMaterials = () => {
   const router = useRouter();
-
   return (
-    <WithTeachersLayout tabName="download">
+    <TeacherLayout>
       <div className={styles.container}>
         <a
           href="https://storage.googleapis.com/langy.su/books/english_for_everyone_level_1_course_book_beginner.pdf"
@@ -36,6 +32,8 @@ export default function Download() {
           English for everyone - Уровень 4
         </a>
       </div>
-    </WithTeachersLayout>
+    </TeacherLayout>
   );
-}
+};
+
+export default TeacherMaterials;

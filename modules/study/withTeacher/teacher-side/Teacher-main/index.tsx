@@ -23,6 +23,9 @@ export default function TeacherMain() {
         <a onClick={() => router.push("/with-teachers/teacher-compensations")}>
           Мои полученные компенсации
         </a>
+        <a onClick={() => router.push("/with-teachers/teacher-materials")}>
+          Скачать учебные материалы
+        </a>
       </div>
     </TeacherLayout>
   );
