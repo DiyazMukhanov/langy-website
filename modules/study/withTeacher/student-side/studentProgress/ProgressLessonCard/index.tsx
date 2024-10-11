@@ -24,15 +24,17 @@ export const ProgressLessonCard = ({
   return (
     <Card>
       <div className={styles.container}>
-        <Image
-          alt="teacher"
-          priority
-          src={teacher.photo}
-          height={160}
-          width={208}
-          className={styles.image}
-          objectFit="cover"
-        />
+        <div className={styles.imageContainer}>
+          <Image
+            alt="teacher"
+            priority
+            src={teacher.photo}
+            height={160}
+            width={208}
+            className={styles.image}
+            objectFit="contain"
+          />
+        </div>
         <div className={styles.nameContainer}>
           <span>{teacher.name}</span>
           <span>{teacher.surname}</span>

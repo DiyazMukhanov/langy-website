@@ -10,10 +10,14 @@
   width: 170px;
 }
 
+.imageContainer {
+  border-radius: 10px;
+}
+
 .image {
   width: 100%; /* Ensures the image takes up the full width of its container */
   height: 170px; /* Keeps the aspect ratio intact */
-  object-fit: cover; /* Ensures the image fills the space without distortion */
+  object-fit: contain; /* Ensures the image fills the space without distortion */
   border-radius: 10px; /* Optional: add a rounded effect to match the card design */
 }
 

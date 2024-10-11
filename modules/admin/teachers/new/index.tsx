@@ -50,7 +50,7 @@ export default function New() {
           {errors.name && <span>This field is required</span>}
           <label>Фамилия</label>
           <input
-            {...register("surname", { required: true })}
+            {...register("surname", { required: false })}
             className={styles.input}
           />
           {errors.surname && <span>This field is required</span>}
