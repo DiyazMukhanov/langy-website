@@ -38,7 +38,7 @@
     "modules/shared/Audioplayer/index.jsx",
     "modules/shared/api/getEverydayProgress.js",
     ".next/types/**/*.ts"
-  ],
+, "modules/study/withTeacher/teacher-side/TeacherCompensations"  ],
   "exclude": [
     "node_modules"
   ]

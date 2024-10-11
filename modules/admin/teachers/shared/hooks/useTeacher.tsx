@@ -6,6 +6,8 @@ import { getTeacherCompensations } from "../api/getTeacherCompensations";
 import { getTeachersFeedbacksByAdmin } from "../api/getTeachersFeedbacksByAdmin";
 import { updateTeacherFee } from "../api/updateTeacherFee";
 import { createTeacher } from "../api/createTeacher";
+import { activateTeacher } from "../api/activateTeacher";
+import { inactivateTeacher } from "../api/inactivateTeacher";
 
 export const useTeacher = (
   currentPage: number,
@@ -89,8 +91,34 @@ export const useTeacher = (
     },
   });
 
+  const activateTeacherMutation = useMutation({
+    mutationFn: activateTeacher,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["teacher"],
+      });
+    },
+  });
+
+  const inactivateTeacherMutation = useMutation({
+    mutationFn: inactivateTeacher,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["teacher"],
+      });
+    },
+  });
+
   const updateTeacherFeeHandler = (fee: number) => {
     updateTeacherFeeMutation.mutate({ teacherId, fee });
+  };
+
+  const activateTeacherHandler = () => {
+    activateTeacherMutation.mutate({ teacherId });
+  };
+
+  const inactivateTeacherHandler = () => {
+    inactivateTeacherMutation.mutate({ teacherId });
   };
 
   const createTeacherMutation = useMutation({
@@ -120,5 +148,7 @@ export const useTeacher = (
     updateTeacherFeeHandler,
     createTeacherHandler,
     createTeacherMutation,
+    activateTeacherHandler,
+    inactivateTeacherHandler,
   };
 };

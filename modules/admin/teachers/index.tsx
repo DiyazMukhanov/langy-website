@@ -16,6 +16,7 @@ type Teacher = {
   photo: string;
   gender: string;
   description: string;
+  isActive: boolean;
 };
 
 export default function Teachers() {
@@ -82,6 +83,14 @@ export default function Teachers() {
             <div>email: {teacher.email}</div>
             <div>пол: {teacher.gender}</div>
             <div>телефон: {teacher.phoneNumber}</div>
+            <div>
+              активен:{" "}
+              {teacher.isActive ? (
+                <span style={{ color: "green" }}>Да</span>
+              ) : (
+                <span style={{ color: "red" }}>Нет</span>
+              )}
+            </div>
           </div>
         ))}
         <Pagination

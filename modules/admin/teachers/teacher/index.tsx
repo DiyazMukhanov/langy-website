@@ -22,6 +22,8 @@ export default function Teacher() {
     feedbacksData,
     compensateTeacherHandler,
     updateTeacherFeeHandler,
+    activateTeacherHandler,
+    inactivateTeacherHandler,
   } = useTeacher(currentPage, feedbacksCurrentPage);
 
   const onPageChangeHandler = (newCurrentPage: number) => {
@@ -39,6 +41,26 @@ export default function Teacher() {
 
     if (confirmCancel) {
       compensateTeacherHandler();
+    }
+  };
+
+  const activateHandler = () => {
+    const confirmActivate = window.confirm(
+      "Вы точно хотите активировать учителя?"
+    );
+
+    if (confirmActivate) {
+      activateTeacherHandler();
+    }
+  };
+
+  const inactivateHandler = () => {
+    const confirmInactivate = window.confirm(
+      "Вы точно хотите де-активировать учителя?"
+    );
+
+    if (confirmInactivate) {
+      inactivateTeacherHandler();
     }
   };
 
@@ -68,6 +90,13 @@ export default function Teacher() {
         </div>
         <div>Пол учителя: {teacherData?.data?.data.teacher.gender}</div>
         <div>Email учителя: {teacherData?.data?.data.teacher.email}</div>
+        <div>
+          Активный: {teacherData?.data?.data.teacher.isActive ? "Да" : "Нет"}
+        </div>
+        <div className={styles.activateBtns}>
+          <button onClick={activateHandler}>Активировать учителя</button>
+          <button onClick={inactivateHandler}>Де-активировать учителя</button>
+        </div>
       </div>
       <div className={styles.teacherAccount}>
         <h3>Счет учителя</h3>
