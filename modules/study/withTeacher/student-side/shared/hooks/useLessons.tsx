@@ -37,6 +37,10 @@ export const useLessons = (week: string) => {
       queryClient.invalidateQueries({
         queryKey: ["package"],
       });
+
+      queryClient.invalidateQueries({
+        queryKey: ["studentLessons"],
+      });
     },
   });
 

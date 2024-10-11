@@ -6,9 +6,12 @@ import Clock from "public/icons/clock.svg";
 import Calendar from "public/icons/calendar.svg";
 import Image from "next/image";
 import { useMeeting } from "@/modules/videoCalls/hooks/useMeeting";
+import { lessonTimeStatus } from "@/utils/lessonTimeStatus";
+import { useLessons } from "../shared/hooks/useLessons";
 
 export default function MyLessons() {
   const { isPending, error, data } = useStudentLessons();
+  const { cancelLesson } = useLessons("current");
   const { getMeetingAndToken } = useMeeting();
   const createOrJoinMeetingHandler = async (lessonMeetingId, lessonId) => {
     if (!lessonMeetingId) {
@@ -35,6 +38,12 @@ export default function MyLessons() {
       </WithTeachersLayout>
     );
   }
+
+  const cancelLessonHandler = (lessonId: string) => {
+    if (confirm("Вы точно хотите отменить урок?")) {
+      cancelLesson(lessonId);
+    }
+  };
 
   return (
     <WithTeachersLayout tabName="plannedLessons">
@@ -64,6 +73,14 @@ export default function MyLessons() {
             >
               Войти в урок
             </button>
+            {!lessonTimeStatus(lesson?.lessonDate).isToday && (
+              <button
+                onClick={() => cancelLessonHandler(lesson?._id)}
+                className={styles.cancelBtn}
+              >
+                Отменить урок
+              </button>
+            )}
           </div>
         ))}
       </div>
