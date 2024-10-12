@@ -32,9 +32,9 @@
   justify-content: space-between;
   // gap: 20px;
   padding-top: 20px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   width: 200px;
-  height: 200px;
+  height: 250px;
   border-radius: 20px;
 
   @include size-tablet {
@@ -68,6 +68,7 @@
   border: none;
   border-radius: 40px;
   cursor: pointer;
+  margin-top: 30px;
 }
 
 .cancelBtn {
