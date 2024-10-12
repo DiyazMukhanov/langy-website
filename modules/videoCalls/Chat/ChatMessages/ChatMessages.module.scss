@@ -1,0 +1,7 @@
+.messages {
+  height: 80%; /* Set the fixed height for the chat container */
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  padding: 10px;
+  border: 1px solid #ccc; /* Optional: Add a border for better visibility */
+  background-color: white; /* Optional: Set a background color */
+}

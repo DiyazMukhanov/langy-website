@@ -1,0 +1,16 @@
+.message {
+  margin-bottom: 10px;
+  & p {
+    margin: 0;
+  }
+}
+
+.withNameBlock {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.name {
+  color: green;
+}

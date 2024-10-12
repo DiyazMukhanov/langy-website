@@ -5,6 +5,7 @@ import Controls from "../Controls";
 import PresenterView from "../PresenterView";
 import { Button } from "@/ui-kit/Button";
 import styles from "./MeetingView.module.scss";
+import { ChatPanel } from "../Chat/ChatPanel";
 
 export default function MeetingView({
   onMeetingLeave,
@@ -12,6 +13,7 @@ export default function MeetingView({
   isTeacherSide,
 }) {
   const [joined, setJoined] = useState(null);
+  const [isPresenting, setIsPresenting] = useState(false);
 
   // Callback for when the presenter changes
   function onPresenterChanged(presenterId) {
@@ -23,61 +25,74 @@ export default function MeetingView({
   }
 
   // Get the method to join the meeting and the list of participants
-  const { join, participants, presenterId, localParticipant } = useMeeting({
-    onPresenterChanged,
-    // Callback for when meeting is joined successfully
-    onMeetingJoined: () => {
-      setJoined("JOINED");
-    },
-    // Callback for when meeting is left
-    onMeetingLeft: () => {
-      onMeetingLeave();
-    },
-  });
+  const { join, participants, presenterId, localParticipant, meeting } =
+    useMeeting({
+      onPresenterChanged,
+      // Callback for when meeting is joined successfully
+      onMeetingJoined: () => {
+        setJoined("JOINED");
+      },
+      // Callback for when meeting is left
+      onMeetingLeft: () => {
+        onMeetingLeave();
+      },
+    });
 
   const joinMeeting = () => {
     setJoined("JOINING");
     join();
   };
 
-  // Effect to handle page refresh or close
+  // Effect to handle browser navigation like back or reload
   useEffect(() => {
     const handleBeforeUnload = (event) => {
-      // Attempt to leave the meeting before page unload
       if (joined === "JOINED") {
-        onMeetingLeave(); // Ensure the user leaves the meeting before refresh/close
+        meeting?.leave(); // Ensure the user leaves the meeting before page unload
       }
+    };
 
-      // Optional: Show a confirmation dialog to prevent accidental refresh
-      // event.preventDefault();
-      // event.returnValue = ''; // This will display the browser's default "Leave site?" prompt
+    // Handle navigation or back button to clean up properly
+    const handlePopState = () => {
+      if (joined === "JOINED") {
+        meeting?.leave(); // Ensure the user leaves the meeting when the back button is pressed
+      }
     };
 
     window.addEventListener("beforeunload", handleBeforeUnload);
+    window.addEventListener("popstate", handlePopState);
 
     return () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
+      window.removeEventListener("popstate", handlePopState);
     };
-  }, [joined, onMeetingLeave]);
+  }, [joined, meeting]);
 
   return (
     <div className={styles.container}>
       {joined && joined === "JOINED" ? (
-        <div>
-          <Controls
-            isTeacherSide={isTeacherSide}
-            participantId={localParticipant?.id}
-          />
-          {/* For rendering all the participants in the meeting */}
-          {[...participants.keys()].map((participantId) => (
-            <ParticipantView
-              participantId={participantId}
-              key={participantId}
+        <div className={styles.classRoom}>
+          <div className={styles.leftSide}>
+            <Controls
               isTeacherSide={isTeacherSide}
-              presenterId={presenterId}
+              participantId={localParticipant?.id}
             />
-          ))}
-          {presenterId && <PresenterView presenterId={presenterId} />}
+            {/* For rendering all the participants in the meeting */}
+            {[...participants.keys()].map(
+              (participantId) =>
+                (isTeacherSide || !presenterId) && (
+                  <ParticipantView
+                    participantId={participantId}
+                    key={participantId}
+                    isTeacherSide={isTeacherSide}
+                    presenterId={presenterId}
+                  />
+                )
+            )}
+            {presenterId && <PresenterView presenterId={presenterId} />}
+          </div>
+          <div className={styles.chatSection}>
+            <ChatPanel panelHeight={500} />
+          </div>
         </div>
       ) : joined && joined === "JOINING" ? (
         <p>Joining the meeting...</p>

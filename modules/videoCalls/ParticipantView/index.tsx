@@ -55,28 +55,37 @@ export default function ParticipantView(props) {
   }, [micStream, micOn]);
 
   return (
-    <div>
-      <div className={styles.controlIndicators}>
-        <span>
-          Участник: <span className={styles.name}>{displayName}</span>
-        </span>
-        <span>
-          Камера:{" "}
-          {webcamOn ? (
-            <span className={styles.green}>Включена</span>
-          ) : (
-            <span className={styles.red}>Выключена</span>
-          )}
-        </span>
-        <span>
-          Микрофон:{" "}
-          {micOn ? (
-            <span className={styles.green}>Включен</span>
-          ) : (
-            <span className={styles.red}>Выключен</span>
-          )}
-        </span>
-      </div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: !isLocal ? "column" : "row",
+        gap: "10px",
+      }}
+    >
+      {isLocal && (
+        <div className={styles.controlIndicators}>
+          <span>
+            Участник: <span className={styles.name}>{displayName}</span>
+          </span>
+          <span>
+            Камера:{" "}
+            {webcamOn ? (
+              <span className={styles.green}>Включена</span>
+            ) : (
+              <span className={styles.red}>Выключена</span>
+            )}
+          </span>
+          <span>
+            Микрофон:{" "}
+            {micOn ? (
+              <span className={styles.green}>Включен</span>
+            ) : (
+              <span className={styles.red}>Выключен</span>
+            )}
+          </span>
+        </div>
+      )}
+
       <audio ref={micRef} autoPlay playsInline muted={isLocal} />
       {webcamOn && props.presenterId !== props.participantId && (
         <ReactPlayer
@@ -93,8 +102,8 @@ export default function ParticipantView(props) {
             styles.mirror
           }`}
           //
-          height={!isLocal ? "70%" : "20%"}
-          width={!isLocal ? "100%" : "20%"}
+          height={!isLocal && !props.isTeacherSide ? "70%" : "20%"}
+          width={!isLocal && !props.isTeacherSide ? "100%" : "20%"}
           onError={(err) => {
             console.log(err, "participant video error");
           }}
