@@ -68,6 +68,7 @@ export const useTeacherLessons = (week: string) => {
       week === "current"
         ? getCurrentWeekLessonsAsTeacher()
         : getNextWeekLessonsAsTeacher(),
+    refetchInterval: 10000,
   });
 
   return {

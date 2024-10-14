@@ -68,6 +68,7 @@ export const useLessons = (week: string) => {
         ? getScheduleAsStudent(teacherId)
         : getNextWeekScheduleOfTeacherAsStudent(teacherId),
     enabled: !!teacherId,
+    refetchInterval: 5000,
   });
 
   return {

@@ -77,17 +77,14 @@ export default function MeetingView({
               participantId={localParticipant?.id}
             />
             {/* For rendering all the participants in the meeting */}
-            {[...participants.keys()].map(
-              (participantId) =>
-                (isTeacherSide || !presenterId) && (
-                  <ParticipantView
-                    participantId={participantId}
-                    key={participantId}
-                    isTeacherSide={isTeacherSide}
-                    presenterId={presenterId}
-                  />
-                )
-            )}
+            {[...participants.keys()].map((participantId) => (
+              <ParticipantView
+                participantId={participantId}
+                key={participantId}
+                isTeacherSide={isTeacherSide}
+                presenterId={presenterId}
+              />
+            ))}
             {presenterId && <PresenterView presenterId={presenterId} />}
           </div>
           <div className={styles.chatSection}>

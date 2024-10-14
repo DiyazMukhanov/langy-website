@@ -43,7 +43,7 @@ export default function Registration() {
   const router = useRouter();
 
   function onlyLatinCharacters(str) {
-    return /^[a-zA-Z0-9]+$/.test(str);
+    return /^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~ ]+$/.test(str);
   }
 
   const nameNameInputHandler = (event) => {

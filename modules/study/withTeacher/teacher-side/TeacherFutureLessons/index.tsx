@@ -16,6 +16,7 @@ export default function TeacherFutureLessons() {
   const { isPending, error, data } = useQuery({
     queryKey: ["teacherFutureLessons"],
     queryFn: getTeacherFutureLessons,
+    refetchInterval: 10000,
   });
 
   const router = useRouter();
