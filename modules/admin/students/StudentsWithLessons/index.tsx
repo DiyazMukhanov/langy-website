@@ -46,7 +46,7 @@ export default function StudentsWithLessons() {
   return (
     <AdminLayout>
       <div className={styles.container}>
-        <h2>Студенты с уроками</h2>
+        <h2>Студенты с уроками всего: {data?.data?.totalCount}</h2>
       </div>
       <div className={styles.usersContainer}>
         {data?.data?.data.map((user: User) => (
