@@ -207,7 +207,7 @@ export default function Schedule({
                           router.push("/with-teachers/buy-lessons")
                         }
                       >
-                        {!usedTrialLesson ? "Свободно" : "Свободно"}
+                        Забронировать урок
                       </button>
                     )}
                   {row[weekDay] && row[weekDay].bookedBy === userId && (

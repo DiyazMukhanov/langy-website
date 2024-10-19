@@ -92,7 +92,7 @@ export default function MeetingView({
           </div>
         </div>
       ) : joined && joined === "JOINING" ? (
-        <p>Joining the meeting...</p>
+        <p>Идет вход в урок...</p>
       ) : (
         <Button variant="standardLargeOutlined" onClick={joinMeeting}>
           Войти в урок

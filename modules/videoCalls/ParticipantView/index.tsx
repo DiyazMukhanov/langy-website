@@ -62,29 +62,27 @@ export default function ParticipantView(props) {
         gap: "10px",
       }}
     >
-      {isLocal && (
-        <div className={styles.controlIndicators}>
-          <span>
-            Участник: <span className={styles.name}>{displayName}</span>
-          </span>
-          <span>
-            Камера:{" "}
-            {webcamOn ? (
-              <span className={styles.green}>Включена</span>
-            ) : (
-              <span className={styles.red}>Выключена</span>
-            )}
-          </span>
-          <span>
-            Микрофон:{" "}
-            {micOn ? (
-              <span className={styles.green}>Включен</span>
-            ) : (
-              <span className={styles.red}>Выключен</span>
-            )}
-          </span>
-        </div>
-      )}
+      <div className={styles.controlIndicators}>
+        <span>
+          Участник: <span className={styles.name}>{displayName}</span>
+        </span>
+        <span>
+          Камера:{" "}
+          {webcamOn ? (
+            <span className={styles.green}>Включена</span>
+          ) : (
+            <span className={styles.red}>Выключена</span>
+          )}
+        </span>
+        <span>
+          Микрофон:{" "}
+          {micOn ? (
+            <span className={styles.green}>Включен</span>
+          ) : (
+            <span className={styles.red}>Выключен</span>
+          )}
+        </span>
+      </div>
 
       <audio ref={micRef} autoPlay playsInline muted={isLocal} />
       {webcamOn && props.presenterId !== props.participantId && (
