@@ -178,6 +178,9 @@ export default function Login() {
             Войти
           </Button>
         </form>
+        <Button variant="authLargeContained" onClick={goToSignUpHandler}>
+          Регистрация
+        </Button>
         {/* <p>или</p> */}
         {/* <a href='http://localhost:3000/auth/google'> */}
         {/* <Button
