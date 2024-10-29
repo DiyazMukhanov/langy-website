@@ -16,6 +16,7 @@ import { useContext, useEffect, useState } from "react";
 import Loader from "@/modules/shared/Loader";
 import { Button } from "@/ui-kit/Button";
 import { UserContext } from "@/store/userContext";
+import { AskUs } from "../shared/AskUs";
 
 const LevelBlock = ({ onClick, title, description, image }) => {
   return (
@@ -101,6 +102,7 @@ export default function Menu() {
       <>
         <Header variant="blue" />
         <div className={styles.container}>
+          <AskUs />
           <div className={styles.heading}>Выберите раздел</div>
           <div className={styles.levels}>
             <LevelBlock
@@ -119,27 +121,6 @@ export default function Menu() {
               image={Self}
               description={["Легкие фразы", "Слова на каждый день"]}
             />
-            {/* <LevelBlock
-              onClick={() => goToLearningFieldHandler("starter")}
-              title="Для начинающих"
-              image={BeginnerEnglish}
-              description={["Английский с нуля", "Пополняйте словарный запас"]}
-            />
-            <LevelBlock
-              onClick={() => goToLearningFieldHandler("higher")}
-              title="Для продолжающих"
-              image={AdvancedEnglish}
-              description={[
-                "Углубитесь в английский язык",
-                "Оттачивайте ваши навыки",
-              ]}
-            />
-            <LevelBlock
-              onClick={() => goToLearningFieldHandler("level")}
-              title="Узнай свой уровень"
-              image={TestEnglish}
-              description={["Определите свой уровень", "Познайте себя"]}
-            /> */}
           </div>
         </div>
       </>

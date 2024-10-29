@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { getTeachersAsStudent } from "../shared/api/getTeachers";
 import { useQuery } from "@tanstack/react-query";
 import { Teacher } from "../shared/types/teacher";
+import { AskUs } from "@/modules/study/shared/AskUs";
 
 async function getTeachersRequest() {
   const response = await getTeachersAsStudent();
@@ -25,8 +26,9 @@ export default function Teachers() {
   if (error) return "Ошибка, перезагрузите страницу";
 
   return (
-    <WithTeachersLayout tabName='chooseTeacher'>
+    <WithTeachersLayout tabName="chooseTeacher">
       <div className={styles.teachersContainer}>
+        <AskUs />
         {data?.data.map((teacher: Teacher) => (
           <div className={styles.teacherBlock}>
             <TeacherCard teacher={teacher} />

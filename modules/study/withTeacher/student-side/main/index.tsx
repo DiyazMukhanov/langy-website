@@ -6,6 +6,7 @@ import WithTeachersLayout from "../shared/withTeachersLayout";
 import { useEffect, useState } from "react";
 import { createNewPackage } from "../shared/api/createNewPackage";
 import { Return } from "./return";
+import { AskUs } from "@/modules/study/shared/AskUs";
 
 const returnText = `В случае несостоявшегося урока, обучающемуся следует сфотографировать или сделать скрин урока, в котором видно остутствие учителя и ID данного урока. Также должно быть видно настоящее время. Это необходимо на случай спорных ситуаций с преподавателем. Далее, необходимо обратиться в службу поддержки по телефону, whatsapp, либо по емайлу, и мы вернем несостоявишися урок в пакет ваших уроков.`;
 const cancelText = `Отменить предстоящий забронированный урок можно не позднее чем за 24 часа до начала урока`;
@@ -54,6 +55,7 @@ export default function Main() {
             text={text}
           />
         )}
+        <AskUs />
         <Image
           priority
           src="/images/teacher.png"
