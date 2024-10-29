@@ -23,3 +23,19 @@
   color: #777676;
   border-color: #777676;
 }
+
+.lessonsContainer {
+  display: flex;
+  width: 80vw;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+
+  @include size-tablet {
+    flex-direction: column;
+    width: 100%;
+    flex-wrap: nowrap;
+  }
+}

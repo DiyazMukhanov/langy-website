@@ -5,6 +5,7 @@ export const PACKAGES = [
     lessonsQuantity: 1,
     price: 2500,
     color: "purple",
+    priceForOne: null,
   },
   {
     packageText: "Пакет на 3 урока",
@@ -12,6 +13,7 @@ export const PACKAGES = [
     lessonsQuantity: 3,
     price: 9000,
     color: "orange",
+    priceForOne: 3000,
   },
   {
     packageText: "Пакет на 5 уроков",
@@ -19,12 +21,14 @@ export const PACKAGES = [
     lessonsQuantity: 5,
     price: 13000,
     color: "blue",
+    priceForOne: 2600,
   },
   {
     packageText: "Пакет на 10 уроков",
     priceText: "23 000 ₸",
-    lessonsQuantity: 20,
+    lessonsQuantity: 10,
     price: 23000,
     color: "purple",
+    priceForOne: 2300,
   },
 ];

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { bookLesson } from "../api/bookLesson";
 import { studentCancelLesson } from "../api/studentCancelLesson";
+import { getFutureLessonsOfTeacher } from "../api/getFutureLessonsOfTeacher";
 
 export const useLessons = (week: string) => {
   const [teacherId, setTeacherId] = useState<string | undefined | null>(null);
@@ -66,7 +67,7 @@ export const useLessons = (week: string) => {
     queryFn: () =>
       week === "current"
         ? getScheduleAsStudent(teacherId)
-        : getNextWeekScheduleOfTeacherAsStudent(teacherId),
+        : getFutureLessonsOfTeacher(teacherId),
     enabled: !!teacherId,
     refetchInterval: 5000,
   });

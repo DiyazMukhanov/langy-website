@@ -46,6 +46,7 @@ export default function BuyLessons() {
               packageText={packageItem.packageText}
               priceText={packageItem.priceText}
               color={packageItem.color}
+              priceForOne={packageItem.priceForOne}
             />
             <Button
               variant="teachers"

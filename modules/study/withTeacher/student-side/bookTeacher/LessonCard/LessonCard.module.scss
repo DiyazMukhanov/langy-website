@@ -1,0 +1,47 @@
+.lessonContainer {
+  padding: 10px;
+  width: 200px;
+  height: 150px;
+  border: solid var(--color-primary) 2px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bookBtn {
+  padding: 10px;
+}
+
+.dateTimeBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  margin-left: 10px;
+}
+
+.cancelBtn {
+  background-color: orange;
+  font-weight: 700;
+}
+
+.enterBtn {
+  background-color: green;
+  font-weight: 700;
+}
+
+.dateTime {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.enterCancelBlock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
