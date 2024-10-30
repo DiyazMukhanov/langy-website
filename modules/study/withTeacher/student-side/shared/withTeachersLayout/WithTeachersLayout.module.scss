@@ -13,6 +13,8 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    display: none;
+    margin-top: 0;
   }
 }
 
@@ -37,4 +39,24 @@
   color: #0d559e;
   background-color: #e6f2ff;
   border-bottom: solid #1676d8 1px;
+}
+
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding-top: 30px;
+}
+
+.sandwich {
+  display: none;
+  border: solid var(--color-orange) 3px;
+  border-radius: 5px;
+  padding: 10px;
+
+  @include size-tablet {
+    display: flex;
+    margin-left: 30px;
+  }
 }

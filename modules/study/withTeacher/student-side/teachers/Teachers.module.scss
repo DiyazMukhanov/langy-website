@@ -1,3 +1,5 @@
+@import "styles/breakpoints";
+
 .teachersContainer {
   display: flex;
   gap: 50px;
@@ -7,6 +9,10 @@
   padding-left: 30px;
   padding-right: 30px;
   margin-top: 100px;
+
+  @include size-tablet {
+    margin-top: 10px;
+  }
 }
 
 .teachersHeader {

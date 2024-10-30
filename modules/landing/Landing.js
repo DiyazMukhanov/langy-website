@@ -332,10 +332,10 @@ export default function Landing() {
         </main>
 
         <div className={styles.advantages}>
+          <Advantage text="От 2300 тенге за урок обучения!" />
           <Advantage text="Все на одной платформе" />
           <Advantage text="Для тех, кто никогда не учил английский" />
-          <Advantage text="Бесплатный пробный урок" />
-          <Advantage text="Для любого возраста" />
+          <Advantage text="Вы не утомитесь. Проходите 20 минутные уроки" />
         </div>
 
         <section className={styles.middleSection}>
@@ -388,20 +388,20 @@ export default function Landing() {
             <div className={styles.advantageCards}>
               <AdvantageCard
                 iconType="tick"
-                textLineOne="Погрузитесь"
-                textLineTwo="в интерактивность"
+                textLineOne="Всего лишь от"
+                textLineTwo="2300 тенге за урок"
                 textLineThree="обучения!"
               />
 
               <AdvantageCard
-                iconType="tick"
+                iconType="pc"
                 textLineOne="Вы освоите"
                 textLineTwo="4 основных"
                 textLineThree="языковых навыка!"
               />
 
               <AdvantageCard
-                iconType="tick"
+                iconType="clock"
                 textLineOne="Занимайтесь в"
                 textLineTwo="удобное для вас"
                 textLineThree="время!"
