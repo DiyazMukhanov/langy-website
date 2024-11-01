@@ -89,6 +89,14 @@ export default function Students() {
             <span>{user.name} </span>
             <span>{user._id} </span>
             <span>{user.email} </span>
+            <span>
+              Потенциальный клиент:{" "}
+              {user.isActive ? (
+                <span style={{ color: "green" }}>Да</span>
+              ) : (
+                <span style={{ color: "red" }}>Нет</span>
+              )}{" "}
+            </span>
           </div>
         ))}
         <Pagination

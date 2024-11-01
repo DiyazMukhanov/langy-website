@@ -14,12 +14,14 @@ import { updatePackageQuantity } from "./shared/api/updatePackageQuantity";
 export default function Registration() {
   const [nameInputValue, setNameInputValue] = useState("");
   const [emailInputValue, setEmailInputValue] = useState("");
+  const [phoneInputValue, setPhoneInputValue] = useState("");
   const [passwordInputValue, setPasswordInputValue] = useState("");
   const [passwordConfirmInputValue, setPasswordConfirmInputValue] =
     useState("");
   const [invalidEmail, setInvalidEmail] = useState(false);
   const [nameEmpty, setNameEmpty] = useState(false);
   const [emailEmpty, setEmailEmpty] = useState(false);
+  const [phoneEmpty, setPhoneEmpty] = useState(false);
   const [passwordEmpty, setPasswordEmpty] = useState(false);
   const [passConfirmEmpty, setPassConfirmEmpty] = useState(false);
   const [invalidPassword, setInvalidPassword] = useState(false);
@@ -32,6 +34,7 @@ export default function Registration() {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const passwordConfirmRef = useRef(null);
+  const phoneRef = useRef(null);
 
   let serverUrl;
   if (process.env.NEXT_PUBLIC_ENVIRONMENT === "development") {
@@ -54,6 +57,10 @@ export default function Registration() {
     setEmailInputValue(event.target.value);
   };
 
+  const phoneInputHandler = (event) => {
+    setPhoneInputValue(event.target.value);
+  };
+
   const passwordInputHandler = (event) => {
     setPasswordInputValue(event.target.value);
   };
@@ -70,6 +77,7 @@ export default function Registration() {
       password: passwordRef.current.value,
       passwordConfirm: passwordConfirmRef.current.value,
       gender: genderValue,
+      phone: phoneRef.current.value,
     };
     setUserExists(false);
     setIsLoading(true);
@@ -77,6 +85,7 @@ export default function Registration() {
     setInvalidEmail(false);
     setNameEmpty(false);
     setEmailEmpty(false);
+    setPhoneEmpty(false);
     setPasswordEmpty(false);
     setPassConfirmEmpty(false);
     setInvalidPassword(false);
@@ -90,6 +99,12 @@ export default function Registration() {
     if (!emailInputValue) {
       setEmailEmpty(true);
       setIsLoading(false);
+    }
+
+    if (!phoneInputValue) {
+      setPhoneEmpty(true);
+      setIsLoading(false);
+      return;
     }
 
     if (!passwordInputValue) {
@@ -220,6 +235,16 @@ export default function Registration() {
               ref={passwordConfirmRef}
               name="passwordConfirm"
               autoComplete="new-password"
+            ></input>
+            <input
+              placeholder="Номер телефона"
+              type="text"
+              className={classNames(
+                { [styles.errorInput]: phoneEmpty },
+                { [styles.input]: !phoneEmpty }
+              )}
+              onChange={phoneInputHandler}
+              ref={phoneRef}
             ></input>
             <div className={styles.selectContainer}>
               <label>Ваш пол:</label>
