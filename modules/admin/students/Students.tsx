@@ -89,6 +89,7 @@ export default function Students() {
             <span>{user.name} </span>
             <span>{user._id} </span>
             <span>{user.email} </span>
+            <span>{user.phone} </span>
             <span>
               Потенциальный клиент:{" "}
               {user.isActive ? (

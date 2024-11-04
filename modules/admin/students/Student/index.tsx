@@ -38,6 +38,7 @@ export default function Student() {
         <div>email: {data?.data?.data.email}</div>
         <div>Пол: {data?.data?.data.gender}</div>
         <div>Активен: {data?.data?.data.isActive ? "Да" : "Нет"}</div>
+        <div>Телефон: {data?.data?.data.phone}</div>
         <button
           className={styles.deactivateBtn}
           onClick={() => deactivateMutation.mutate()}

@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Button } from "@/ui-kit/Button";
 import { Pagination } from "@/ui-kit/Pagination";
 import { useRouter } from "next/router";
+import { getTeachersWithFutureLessons } from "../shared/api/getTeachersWithFutureLessons";
 
 type Teacher = {
   _id: string;
@@ -22,6 +23,7 @@ type Teacher = {
 export default function Teachers() {
   const [email, setEmail] = useState<string | null>(null);
   const [emailInput, setEmailInput] = useState("");
+  const [iswithLessonsOnly, setIsWithLessonsOnly] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const router = useRouter();
 
@@ -30,15 +32,29 @@ export default function Teachers() {
   };
 
   const { isPending, error, data } = useQuery({
-    queryKey: ["teachers", currentPage, email],
+    queryKey: ["teachers", currentPage, email, iswithLessonsOnly],
     queryFn: () => {
-      return getTeachers(email, currentPage);
+      if (!iswithLessonsOnly) {
+        return getTeachers(email, currentPage);
+      }
+
+      return getTeachersWithFutureLessons();
     },
   });
 
   if (isPending) return "Teachers loading...";
 
   if (error) return "Ooops... please reload...";
+
+  const showByEmailHanlder = () => {
+    setIsWithLessonsOnly(false);
+    setEmail(emailInput);
+  };
+
+  const showAllHanlder = () => {
+    setIsWithLessonsOnly(false);
+    setEmail(null);
+  };
 
   return (
     <AdminLayout>
@@ -58,17 +74,24 @@ export default function Teachers() {
       />
       <Button
         variant="teachers"
-        onClick={() => setEmail(emailInput)}
+        onClick={showByEmailHanlder}
         className={styles.btn}
       >
         Найти по email
       </Button>
       <Button
         variant="teachers"
-        onClick={() => setEmail(null)}
+        onClick={showAllHanlder}
         className={styles.btn}
       >
         Показать всех
+      </Button>
+      <Button
+        variant="teachers"
+        onClick={() => setIsWithLessonsOnly(true)}
+        className={styles.btn}
+      >
+        Учителя с предстоящим уроками
       </Button>
       <div className={styles.teachersContainer}>
         {data?.data?.data.map((teacher: Teacher) => (
