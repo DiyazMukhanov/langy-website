@@ -5,6 +5,7 @@ import { Button } from "@/ui-kit/Button";
 import { useRouter } from "next/router";
 import Star from "public/icons/star.svg";
 import Card from "../Card";
+import { AskUs } from "@/modules/study/shared/AskUs";
 
 type Props = {
   teacher: Teacher;
@@ -31,7 +32,11 @@ export default function TeacherCard({ teacher }: Props) {
           <span>{teacher.surname}</span>
         </div>
         <div className={styles.descriptionContainer}>{teacher.description}</div>
-        <div className={styles.opinionContainer}>
+        <div>
+          <AskUs />
+        </div>
+
+        {/* <div className={styles.opinionContainer}>
           <span
             className={styles.goToOpinionsLink}
             onClick={() =>
@@ -44,9 +49,9 @@ export default function TeacherCard({ teacher }: Props) {
             <Star className={styles.star} />
             <span>{Math.floor(teacher.averageRating)}</span>
           </div>
-        </div>
+        </div> */}
       </div>
-      <Button
+      {/* <Button
         variant="teachersBook"
         className={styles.bookBtn}
         onClick={() =>
@@ -54,7 +59,7 @@ export default function TeacherCard({ teacher }: Props) {
         }
       >
         Посмотреть расписание
-      </Button>
+      </Button> */}
     </Card>
   );
 }

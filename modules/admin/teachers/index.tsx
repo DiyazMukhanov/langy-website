@@ -24,18 +24,18 @@ export default function Teachers() {
   const [email, setEmail] = useState<string | null>(null);
   const [emailInput, setEmailInput] = useState("");
   const [iswithLessonsOnly, setIsWithLessonsOnly] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
+  // const [currentPage, setCurrentPage] = useState(1);
   const router = useRouter();
 
-  const onPageChangeHandler = (newCurrentPage: number) => {
-    setCurrentPage(newCurrentPage);
-  };
+  // const onPageChangeHandler = (newCurrentPage: number) => {
+  //   setCurrentPage(newCurrentPage);
+  // };
 
   const { isPending, error, data } = useQuery({
-    queryKey: ["teachers", currentPage, email, iswithLessonsOnly],
+    queryKey: ["teachers", email, iswithLessonsOnly],
     queryFn: () => {
       if (!iswithLessonsOnly) {
-        return getTeachers(email, currentPage);
+        return getTeachers(email);
       }
 
       return getTeachersWithFutureLessons();
@@ -116,13 +116,13 @@ export default function Teachers() {
             </div>
           </div>
         ))}
-        <Pagination
+        {/* <Pagination
           onPageChange={onPageChangeHandler}
           totalCount={data?.data.totalCount}
           siblingCount={1}
           currentPage={currentPage}
           pageSize={5}
-        />
+        /> */}
       </div>
     </AdminLayout>
   );

@@ -57,7 +57,7 @@ export default function WithTeachersLayoutContent({
         <Modal isOpen={isModalOpened} onClose={modalCloseHandler}>
           <ButtonClose onClick={modalCloseHandler} />
           <div className={styles.modalContainer}>
-            <Button
+            {/* <Button
               variant="bottomOutlined"
               className={classNames(styles.tabBtn, {
                 [styles.currentTab]: tabName === "progress",
@@ -65,7 +65,7 @@ export default function WithTeachersLayoutContent({
               onClick={() => router.push("/with-teachers/student-progress")}
             >
               Мой прогресс
-            </Button>
+            </Button> */}
             <Button
               variant="bottomOutlined"
               className={classNames(styles.tabBtn, {
@@ -75,7 +75,7 @@ export default function WithTeachersLayoutContent({
             >
               Выбрать учителя
             </Button>
-            <Button
+            {/* <Button
               variant="bottomOutlined"
               className={classNames(styles.tabBtn, {
                 [styles.currentTab]: tabName === "plannedLessons",
@@ -83,8 +83,8 @@ export default function WithTeachersLayoutContent({
               onClick={() => router.push("/with-teachers/my-lessons")}
             >
               Запланированные уроки
-            </Button>
-            <Button
+            </Button> */}
+            {/* <Button
               variant="bottomOutlined"
               className={classNames(styles.tabBtn, {
                 [styles.currentTab]: tabName === "addLessons",
@@ -92,7 +92,7 @@ export default function WithTeachersLayoutContent({
               onClick={() => router.push("/with-teachers/buy-lessons")}
             >
               Пополнить уроки
-            </Button>
+            </Button> */}
             <Button
               variant="bottomOutlined"
               className={classNames(styles.tabBtn, {
@@ -107,7 +107,7 @@ export default function WithTeachersLayoutContent({
         <div className={styles.content}>
           <Header variant="blue" isEasyEnglish={false} />
           <div className={styles.top}>
-            <Button
+            {/* <Button
               variant="bottomOutlined"
               className={classNames(styles.tabBtn, {
                 [styles.currentTab]: tabName === "progress",
@@ -115,7 +115,7 @@ export default function WithTeachersLayoutContent({
               onClick={() => router.push("/with-teachers/student-progress")}
             >
               Мой прогресс
-            </Button>
+            </Button> */}
             <Button
               variant="bottomOutlined"
               className={classNames(styles.tabBtn, {
@@ -125,7 +125,7 @@ export default function WithTeachersLayoutContent({
             >
               Выбрать учителя
             </Button>
-            <Button
+            {/* <Button
               variant="bottomOutlined"
               className={classNames(styles.tabBtn, {
                 [styles.currentTab]: tabName === "plannedLessons",
@@ -133,8 +133,8 @@ export default function WithTeachersLayoutContent({
               onClick={() => router.push("/with-teachers/my-lessons")}
             >
               Запланированные уроки
-            </Button>
-            <Button
+            </Button> */}
+            {/* <Button
               variant="bottomOutlined"
               className={classNames(styles.tabBtn, {
                 [styles.currentTab]: tabName === "addLessons",
@@ -142,7 +142,7 @@ export default function WithTeachersLayoutContent({
               onClick={() => router.push("/with-teachers/buy-lessons")}
             >
               Пополнить уроки
-            </Button>
+            </Button> */}
             <Button
               variant="bottomOutlined"
               className={classNames(styles.tabBtn, {

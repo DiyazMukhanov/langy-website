@@ -74,7 +74,7 @@ export default function Main() {
         </Button>
       </div>
 
-      <div className={styles.bottom}>
+      {/* <div className={styles.bottom}>
         <Button
           variant="standardMiddleOutlined"
           className={styles.returnRulesBtn}
@@ -89,7 +89,7 @@ export default function Main() {
         >
           Правила отмены уроков
         </Button>
-      </div>
+      </div> */}
     </WithTeachersLayout>
   );
 }

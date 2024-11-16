@@ -32,7 +32,7 @@ import Loader from "@/modules/shared/Loader";
 import { getBeginnerProgress } from "../shared/api/getBeginnerProgress";
 import { getMe } from "../shared/api/getMe";
 import { userLogout } from "../shared/api/userLogout";
-import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaInstagram, FaWhatsapp, FaTelegram } from "react-icons/fa";
 import { getEverydayProgress } from "../shared/api/getEverydayProgress";
 
 export default function Landing() {
@@ -332,10 +332,10 @@ export default function Landing() {
         </main>
 
         <div className={styles.advantages}>
-          <Advantage text="От 2300 тенге за урок обучения!" />
+          <Advantage text="Учитесь в группе или самостоятельно" />
           <Advantage text="Все на одной платформе" />
           <Advantage text="Для тех, кто никогда не учил английский" />
-          <Advantage text="Вы не утомитесь. Проходите 20 минутные уроки" />
+          <Advantage text="Приятные цены" />
         </div>
 
         <section className={styles.middleSection}>
@@ -388,9 +388,9 @@ export default function Landing() {
             <div className={styles.advantageCards}>
               <AdvantageCard
                 iconType="tick"
-                textLineOne="Всего лишь от"
-                textLineTwo="2300 тенге за урок"
-                textLineThree="обучения!"
+                textLineOne="Занимайтесь"
+                textLineTwo="бесплатно"
+                textLineThree="самостоятельно"
               />
 
               <AdvantageCard
@@ -505,15 +505,22 @@ export default function Landing() {
         </section>
 
         <div className={styles.contactsNav}>
-          <a
+          {/* <a
             href="https://instagram.com/langy.su?igshid=MzRlODBiNWFlZA=="
             target="_blank"
           >
             <div className={styles.instIcon}>
               <FaInstagram />
             </div>
+          </a> */}
+          <a
+            href="https://t.me/diyaz_mukhanov" // Replace with your actual Telegram username
+            target="_blank"
+          >
+            <div className={styles.telegramIcon}>
+              <FaTelegram />
+            </div>
           </a>
-
           <a
             href={`https://api.whatsapp.com/send?phone=+77078805125`}
             target="_blank"

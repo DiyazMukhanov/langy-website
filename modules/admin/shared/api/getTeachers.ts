@@ -3,11 +3,11 @@ import { apiUrl, options } from "@/modules/shared/api/common";
 
 export const getTeachers = async (
   email: string | null,
-  currentPage: number
+  currentPage?: number
 ) => {
   const url = email
     ? `${apiUrl}/admin/teachers?email=${email}`
-    : `${apiUrl}/admin/teachers?limit=5&page=${currentPage}`;
+    : `${apiUrl}/admin/teachers`;
 
   return await axios.get(url, options);
 };
