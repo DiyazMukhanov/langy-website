@@ -15,7 +15,7 @@ export default function TeacherCard({ teacher }: Props) {
   const router = useRouter();
   return (
     <Card>
-      <div className={styles.imageContainer}>
+      {/* <div className={styles.imageContainer}>
         <Image
           alt="teacher"
           priority
@@ -25,7 +25,7 @@ export default function TeacherCard({ teacher }: Props) {
           className={styles.image}
           objectFit="contain"
         />
-      </div>
+      </div> */}
       <div className={styles.description}>
         <div className={styles.nameContainer}>
           <span>{teacher.name}</span>
