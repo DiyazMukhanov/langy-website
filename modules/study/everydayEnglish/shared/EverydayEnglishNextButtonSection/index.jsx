@@ -14,10 +14,6 @@ export default function EverydayEnglishNextButtonSection({
   const goNextHandler = async () => {
     try {
       if (chapter === "speaking") {
-        const data = await updateEverydayProgress({
-          completedLesson: lessonNumber,
-        });
-
         router.push(nextUrl);
       }
 

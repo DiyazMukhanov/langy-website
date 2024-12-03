@@ -135,16 +135,8 @@ export default function Landing() {
     router.push("authorization/login");
   };
 
-  const registrationHandler = () => {
-    router.push("authorization/registration");
-  };
-
   const continueHandler = () => {
-    if (!userCtx.userData) {
-      router.push("authorization/login");
-    } else {
-      router.push("/menu");
-    }
+    router.push("/menu/self-study");
   };
 
   const logOutHandler = async () => {
@@ -245,42 +237,6 @@ export default function Landing() {
             Установить приложение
           </button> */}
 
-          {!userCtx.userData ? (
-            <div className={styles.topButtons}>
-              <Typography
-                element="p"
-                className={styles.enterBtn}
-                onClick={loginHandler}
-              >
-                Войти
-              </Typography>
-              <Button
-                variant="outlined"
-                className={styles.registrationBtn}
-                onClick={registrationHandler}
-              >
-                Регистрация
-              </Button>
-            </div>
-          ) : (
-            <div className={styles.topButtons}>
-              <Typography
-                element="p"
-                className={styles.enterBtn}
-                onClick={() => router.push("/profile")}
-              >
-                {userCtx?.userData?.email}
-              </Typography>
-              <Button
-                variant="outlined"
-                className={styles.registrationBtn}
-                onClick={logOutHandler}
-              >
-                Выйти
-              </Button>
-            </div>
-          )}
-
           {/* <Image
             priority
             src={Sandwich}
@@ -299,35 +255,15 @@ export default function Landing() {
             Онлайн - платформа для изучения английского языка
           </Typography>
           <div className={styles.headerBottomBlock}>
-            {!userCtx.userData ? (
-              <div className={styles.btnBlock}>
-                <Button
-                  variant="contained"
-                  className={styles.startBtn}
-                  onClick={continueHandler}
-                >
-                  Начать обучение
-                </Button>
-              </div>
-            ) : (
-              <div className={styles.btnBlock}>
-                <Button
-                  variant="contained"
-                  className={styles.startBtn}
-                  onClick={continueHandler}
-                >
-                  Продолжить обучение
-                </Button>
-                {!userCtx.userData && (
-                  <p
-                    className={styles.haveAccountBtn}
-                    onClick={() => router.push("/authorization/login")}
-                  >
-                    У меня уже есть аккаунт
-                  </p>
-                )}
-              </div>
-            )}
+            <div className={styles.btnBlock}>
+              <Button
+                variant="contained"
+                className={styles.startBtn}
+                onClick={continueHandler}
+              >
+                Продолжить обучение
+              </Button>
+            </div>
           </div>
         </main>
 

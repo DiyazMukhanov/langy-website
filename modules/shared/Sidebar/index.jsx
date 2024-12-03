@@ -3,29 +3,24 @@ import { useEffect, useRef } from "react";
 import styles from "./Sidebar.module.scss";
 import classNames from "classnames";
 
+const lessonsIndexes = {
+  gr: "video",
+  au: "audio",
+  wr: "writing",
+  ts: "test",
+};
+
 export default function Sidebar({ lessonsSummary, isBeginner }) {
   const router = useRouter();
-  const currentLessonRef = useRef(null);
+  const sidebarRef = useRef(null); // Ref for the sidebar container
 
-  // let found = false;
-  // for (let i = 0; i < lessonsSummary.length; i++) {
-  //   for (let j = 0; j < lessonsSummary[i].lessons.length; j++) {
-  //     if (lessonsSummary[i].lessons[j].isCompleted === false) {
-  //       if (found) break;
-  //       lessonsSummary[i].lessons[j].isOpened = true;
-  //       found = true;
-  //     }
-  //   }
-  //   if (found) break;
-  // }
+  const { lessonNumber } = router.query;
+  const asPath = router.asPath; // Full path, e.g., /lessons/17/test
+  const pathSegments = asPath.split("/"); // Split into segments
+  const chapter = pathSegments[3]; // Extract test (chapter)
 
   const navigationHandler = (lessonNumber, lesson) => {
-    const lessonsIndexes = {
-      gr: "video",
-      au: "audio",
-      wr: "writing",
-      ts: "test",
-    };
+
     const chapterName = lessonsIndexes[lesson.chapterCode];
 
     if (!isBeginner) {
@@ -35,15 +30,23 @@ export default function Sidebar({ lessonsSummary, isBeginner }) {
     }
   };
 
-  useEffect(() => {
-    // Scroll to the current lesson when the component is first rendered
-    if (currentLessonRef.current) {
-      currentLessonRef.current.scrollIntoView({ behavior: "smooth" });
+  const handleScrollToLesson = (lessonIndex) => {
+    if (sidebarRef.current) {
+      const lessonHeight = 180; // Adjust based on your lesson block height
+      const scrollToPosition = lessonIndex * lessonHeight;
+      sidebarRef.current.scrollTo({
+        top: scrollToPosition,
+        behavior: "smooth", // Smooth scrolling effect
+      });
     }
-  }, []);
+  };
+
+  useEffect(() => {
+    handleScrollToLesson(lessonNumber);
+  }, [])
 
   return (
-    <div className={styles.lessonsListContainer}>
+    <div className={styles.lessonsListContainer} ref={sidebarRef}>
       {lessonsSummary.map((lessonBlock) => (
         <div className={styles.lessonBlock} key={lessonBlock.title}>
           <div
@@ -58,10 +61,10 @@ export default function Sidebar({ lessonsSummary, isBeginner }) {
               key={lesson.chapter}
               className={classNames(
                 styles.chapter,
-                { [styles.currentChapter]: lesson.isCurrent },
-                { [styles.completed]: lesson.isCompleted }
+                  {
+                    [styles.currentLesson]: Number(lessonBlock.lessonNumber) === Number(lessonNumber) && lessonsIndexes[lesson.chapterCode] === chapter, // Add class for current lesson
+                  },
               )}
-              ref={lesson.isCurrent ? currentLessonRef : null}
               onClick={() =>
                 navigationHandler(
                   lessonBlock.lessonNumber,
