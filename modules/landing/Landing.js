@@ -68,31 +68,31 @@ export default function Landing() {
 
     fetchUser();
 
-    // const handleBeforeInstallPrompt = (event) => {
-    //   event.preventDefault();
-    //   setInstallPromptEvent(event);
-    // };
+    const handleBeforeInstallPrompt = (event) => {
+      event.preventDefault();
+      setInstallPromptEvent(event);
+    };
 
-    // window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
 
-    // return () => {
-    //   window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-    // };
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
   }, []);
 
-  // const installApp = () => {
-  //   if (installPromptEvent) {
-  //     installPromptEvent.prompt();
-  //     installPromptEvent.userChoice.then((choiceResult) => {
-  //       if (choiceResult.outcome === 'accepted') {
-  //         console.log('User accepted the install prompt');
-  //       } else {
-  //         console.log('User dismissed the install prompt');
-  //       }
-  //       setInstallPromptEvent(null);
-  //     });
-  //   }
-  // };
+  const installApp = () => {
+    if (installPromptEvent) {
+      installPromptEvent.prompt();
+      installPromptEvent.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        } else {
+          console.log('User dismissed the install prompt');
+        }
+        setInstallPromptEvent(null);
+      });
+    }
+  };
 
   const frequentQuestions = [
     {
@@ -190,31 +190,31 @@ export default function Landing() {
             </div>
           )}
 
-          {!userCtx.userData ? (
-            <div className={styles.modalButtons}>
-              <Button
-                variant="standardLargeContained"
-                onClick={continueHandler}
-              >
-                Регистрация
-              </Button>
-              <Button variant="standardLargeOutlined" onClick={loginHandler}>
-                Войти
-              </Button>
-            </div>
-          ) : (
-            <div className={styles.modalButtons}>
-              <Button
-                variant="standardLargeContained"
-                onClick={continueHandler}
-              >
-                Продолжить обучение
-              </Button>
-              <Button variant="standardLargeOutlined" onClick={logOutHandler}>
-                Выйти
-              </Button>
-            </div>
-          )}
+          {/*{!userCtx.userData ? (*/}
+          {/*  <div className={styles.modalButtons}>*/}
+          {/*    <Button*/}
+          {/*      variant="standardLargeContained"*/}
+          {/*      onClick={continueHandler}*/}
+          {/*    >*/}
+          {/*      Регистрация*/}
+          {/*    </Button>*/}
+          {/*    <Button variant="standardLargeOutlined" onClick={loginHandler}>*/}
+          {/*      Войти*/}
+          {/*    </Button>*/}
+          {/*  </div>*/}
+          {/*) : (*/}
+          {/*  <div className={styles.modalButtons}>*/}
+          {/*    <Button*/}
+          {/*      variant="standardLargeContained"*/}
+          {/*      onClick={continueHandler}*/}
+          {/*    >*/}
+          {/*      Продолжить обучение*/}
+          {/*    </Button>*/}
+          {/*    <Button variant="standardLargeOutlined" onClick={logOutHandler}>*/}
+          {/*      Выйти*/}
+          {/*    </Button>*/}
+          {/*  </div>*/}
+          {/*)}*/}
         </Modal>
 
         <header className={styles.header} id="top">
@@ -228,14 +228,14 @@ export default function Landing() {
             /> */}
             <Logo />
           </div>
-          {/* <button
+          <button
             id="install-button"
             className={styles.installBtn}
             style={{ display: installPromptEvent ? 'block' : 'none' }}
             onClick={installApp}
           >
             Установить приложение
-          </button> */}
+          </button>
 
           {/* <Image
             priority
@@ -250,16 +250,25 @@ export default function Landing() {
 
         <main className={styles.main}>
           {/* <Image priority src={DropOne} className={styles.dropOneMobile} /> */}
-          <DropOne className={styles.dropOneMobile} />
+          <button
+              id="install-button"
+              className={styles.installBtn}
+              style={{display: installPromptEvent ? 'block' : 'none'}}
+              onClick={installApp}
+          >
+            Установить приложение
+          </button>
+          <DropOne className={styles.dropOneMobile}/>
+
           <Typography element="h1" className={styles.mainHeading}>
             Онлайн - платформа для изучения английского языка
           </Typography>
           <div className={styles.headerBottomBlock}>
             <div className={styles.btnBlock}>
               <Button
-                variant="contained"
-                className={styles.startBtn}
-                onClick={continueHandler}
+                  variant="contained"
+                  className={styles.startBtn}
+                  onClick={continueHandler}
               >
                 Продолжить обучение
               </Button>
@@ -268,9 +277,9 @@ export default function Landing() {
         </main>
 
         <div className={styles.advantages}>
-          <Advantage text="Учитесь в группе или самостоятельно" />
-          <Advantage text="Все на одной платформе" />
-          <Advantage text="Для тех, кто никогда не учил английский" />
+          <Advantage text="Учитесь в группе или самостоятельно"/>
+          <Advantage text="Все на одной платформе"/>
+          <Advantage text="Для тех, кто никогда не учил английский"/>
           <Advantage text="Приятные цены" />
         </div>
 

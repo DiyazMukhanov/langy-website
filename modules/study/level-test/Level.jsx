@@ -48,7 +48,7 @@ export default function Level() {
 
 
   return (
-    <ProtectPage>
+      <>
       <Header variant='blue'></Header>
       <div className={styles.container}>
         <Typography size='small' element='h3' className={styles.text}>Пройдите короткий тест.</Typography>
@@ -56,7 +56,7 @@ export default function Level() {
         <Button variant='authLargeContained' className={styles.levelBtn} onClick={() => router.push('/test/test')}>Определить мой уровень</Button>
         <Button variant='standardLargeOutlined' className={styles.levelBtnTwo} onClick={() => router.push('/test/choice')}>Я выберу программу самостоятельно</Button>
       </div>
-    </ProtectPage>
+      </>
   )
 }
 
