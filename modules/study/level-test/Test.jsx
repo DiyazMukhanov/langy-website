@@ -99,7 +99,7 @@ export default function Test() {
 
     if (!resultIsShowing) {
         return (
-            <ProtectPage>
+            <>
                 <Header variant='blue' />
                 <div className={styles.container}>
                     <div className={styles.progressContainer}>
@@ -152,7 +152,7 @@ export default function Test() {
                         <Button variant='standardLargeOutlined' onClick={nextQuestionHandler}>Далее</Button>
                     </div>
                 </div>
-            </ProtectPage>
+            </>
         )
     } else {
         return <Result level={numberOfRightAnswers}></Result>
