@@ -10,7 +10,6 @@ import { useRouter } from "next/router";
 import { Button } from "@/ui-kit/Button";
 import { resetProgress } from "../shared/api/resetProgress";
 
-
 export default function Subscription() {
   const [isLoading, setIsLoading] = useState(true)
   const userCtx = useContext(UserContext)
