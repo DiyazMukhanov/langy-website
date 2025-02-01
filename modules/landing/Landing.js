@@ -136,7 +136,7 @@ export default function Landing() {
   };
 
   const continueHandler = () => {
-    router.push("/menu/self-study");
+    router.push("/menu");
   };
 
   const logOutHandler = async () => {
