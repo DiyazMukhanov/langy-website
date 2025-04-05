@@ -105,16 +105,16 @@ export default function Menu() {
           <AskUs />
           <div className={styles.heading}>Выберите раздел</div>
           <div className={styles.levels}>
-            <LevelBlock
-              onClick={() => goToLearningFieldHandler("teachers")}
-              title="С учителем"
-              image={TeacherEnglish}
-              description={[
-                "Выберите учителя",
-                "Обучайтесь онлайн",
-                "Доступные цены",
-              ]}
-            />
+            {/*<LevelBlock*/}
+            {/*  onClick={() => goToLearningFieldHandler("teachers")}*/}
+            {/*  title="С учителем"*/}
+            {/*  image={TeacherEnglish}*/}
+            {/*  description={[*/}
+            {/*    "Выберите учителя",*/}
+            {/*    "Обучайтесь онлайн",*/}
+            {/*    "Доступные цены",*/}
+            {/*  ]}*/}
+            {/*/>*/}
             <LevelBlock
               onClick={() => router.push("/menu/self-study")}
               title="Самостоятельно"

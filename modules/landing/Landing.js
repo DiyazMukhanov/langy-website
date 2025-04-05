@@ -280,7 +280,7 @@ export default function Landing() {
           <Advantage text="Учитесь в группе или самостоятельно"/>
           <Advantage text="Все на одной платформе"/>
           <Advantage text="Для тех, кто никогда не учил английский"/>
-          <Advantage text="Приятные цены" />
+          <Advantage text="Абсолютно бесплатно" />
         </div>
 
         <section className={styles.middleSection}>
