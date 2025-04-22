@@ -1,0 +1,22 @@
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.sendBtn {
+  width: 200px;
+  height: 31px;
+  border: none;
+  background-color: #5ac8fa;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.input {
+  height: 38px;
+  width: 95%;
+  border: none;
+}

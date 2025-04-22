@@ -1,0 +1,84 @@
+@import "styles/breakpoints";
+
+.lessonsContainer {
+  display: flex;
+  gap: 40px;
+  padding-left: 10px;
+  margin-top: 60px;
+  margin-left: 60px;
+  margin-bottom: 300px;
+  flex-wrap: wrap;
+
+  @include size-tablet {
+    flex-direction: column;
+    margin-left: 0;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+}
+
+.noLessons {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.lessonBlock {
+  background-color: #1676d8;
+  color: #ffffff;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  // gap: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 200px;
+  height: 250px;
+  border-radius: 20px;
+
+  @include size-tablet {
+    // padding-top: 5px;
+    // padding-bottom: 5px;
+  }
+}
+
+.dateTimeBlock {
+  width: 100%;
+  padding-left: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.dateTimeContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+}
+
+.enterBtn {
+  background-color: #fcfcfc;
+  color: #1676d8;
+  font-weight: 600;
+  font-size: 14px;
+  width: 120px;
+  height: 32px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+.cancelBtn {
+  background-color: #fcfcfc;
+  color: red;
+  font-weight: 600;
+  font-size: 14px;
+  width: 120px;
+  height: 32px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+}

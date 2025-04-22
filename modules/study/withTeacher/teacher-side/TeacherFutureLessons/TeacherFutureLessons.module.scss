@@ -1,0 +1,21 @@
+.futureLessonsContainer {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lessonBlock {
+  border: solid var(--color-primary) 1px;
+  border-radius: 10px;
+  width: fit-content;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.heading {
+  margin-left: 10px;
+}

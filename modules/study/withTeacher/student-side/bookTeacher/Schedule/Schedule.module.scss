@@ -1,0 +1,102 @@
+@import "styles/breakpoints";
+
+.container {
+  width: 100%;
+  overflow-x: auto;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+
+  @include size-tablet {
+    display: block;
+    margin-top: 30px;
+  }
+
+  & table {
+    width: 90%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+
+  & th {
+    background-color: var(--color-primary);
+    color: white;
+    height: 40px;
+    width: 150px;
+  }
+
+  & td {
+    border: solid var(--color-grey) 1px;
+    height: 40px;
+    text-align: center;
+    min-width: 100px;
+  }
+}
+
+.enterLessonLink {
+  color: #63ad4a;
+  font-family: var(--brand-font);
+  font-size: 16px;
+  font-weight: 700;
+  margin: 4px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  /* Ensure text wrapping */
+  white-space: normal; /* Allow text to wrap */
+  word-wrap: break-word; /* Break long words */
+  overflow-wrap: break-word; /* Ensures word break on overflow */
+  max-width: 150px;
+}
+
+.cancelLessonLink {
+  color: #ff003e;
+  font-family: var(--brand-font);
+  font-size: 16px;
+  font-weight: 700;
+  margin: 4px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.bookLessonLink {
+  color: #63ad4a;
+  font-family: var(--brand-font);
+  font-size: 16px;
+  font-weight: 700;
+  margin: 4px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.timeHeadContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.greyColor {
+  color: #667085;
+}
+
+.book {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.free {
+  color: var(--color-green);
+}
+
+.booked {
+  color: black;
+}
+
+.myLessonBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

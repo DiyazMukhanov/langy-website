@@ -1,0 +1,33 @@
+@import "styles/breakpoints";
+
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+    // border: solid red 1px;
+
+
+    @include size-tablet {
+        
+            // border: solid red 1px;
+            flex-wrap: wrap;
+            margin-bottom: 5px;
+        
+    }
+}
+
+.wordPlay {
+    cursor: pointer;
+    margin-top: 0;
+} 
+
+.styleWord {
+    // border: solid red 1px;
+    display: flex;
+    align-items: center;
+    color: green;
+    font-weight: bold;
+    gap: 5px;
+}

@@ -1,0 +1,13 @@
+@import "styles/breakpoints";
+
+.container {
+  padding-left: 46px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @include size-tablet {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}

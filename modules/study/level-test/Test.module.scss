@@ -1,0 +1,119 @@
+@import "styles/breakpoints";
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 20px;
+}
+
+.progressContainer {
+    width: 80vw;
+    border: solid var(--color-grey) 1px;
+    height: 10px;
+    border-radius: 25px;
+}
+
+.questionsContainer {
+    width: 80vw;
+    height: 414px;
+    border: solid var(--color-grey) 1px;
+    border-radius: 12px;
+}
+
+.number {
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-primary);
+    border-radius: 100%;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.numberBlock {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.questionsHeading {
+    color: var(--color-primary);
+}
+
+.top {
+    padding-left: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 40px;
+}
+
+.question {
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.answers {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.circle {
+    border: solid var(--color-grey) 1px;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.rightChosenCircle {
+    border: solid var(--color-grey) 1px;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-green);
+}
+
+.wrongChosenCircle {
+    border: solid var(--color-grey) 1px;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-red);
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+.answerContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bottom {
+    // margin-top: 100px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 40px;
+
+    @include size-tablet {
+        padding-right: 0;
+        justify-content: center;
+    }
+}
+
+.middle {
+    padding-left: 30px;
+}
+
+.numberFrom {
+    color: var(--color-dark-grey);
+}
