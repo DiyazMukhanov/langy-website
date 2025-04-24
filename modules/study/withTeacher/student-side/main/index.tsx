@@ -74,22 +74,22 @@ export default function Main() {
         </Button>
       </div>
 
-      <div className={styles.bottom}>
-        <Button
-          variant="standardMiddleOutlined"
-          className={styles.returnRulesBtn}
-          onClick={returnHandler}
-        >
-          Правила возврата уроков
-        </Button>
-        <Button
-          variant="standardMiddleOutlined"
-          className={styles.returnRulesBtn}
-          onClick={cancelHandler}
-        >
-          Правила отмены уроков
-        </Button>
-      </div>
+      {/*<div className={styles.bottom}>*/}
+      {/*  <Button*/}
+      {/*    variant="standardMiddleOutlined"*/}
+      {/*    className={styles.returnRulesBtn}*/}
+      {/*    onClick={returnHandler}*/}
+      {/*  >*/}
+      {/*    Правила возврата уроков*/}
+      {/*  </Button>*/}
+      {/*  <Button*/}
+      {/*    variant="standardMiddleOutlined"*/}
+      {/*    className={styles.returnRulesBtn}*/}
+      {/*    onClick={cancelHandler}*/}
+      {/*  >*/}
+      {/*    Правила отмены уроков*/}
+      {/*  </Button>*/}
+      {/*</div>*/}
     </WithTeachersLayout>
   );
 }

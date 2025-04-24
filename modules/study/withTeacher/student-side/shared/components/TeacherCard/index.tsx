@@ -50,10 +50,11 @@ export default function TeacherCard({ teacher }: Props) {
         variant="teachersBook"
         className={styles.bookBtn}
         onClick={() =>
-          router.push(`/with-teachers/book-teacher/${teacher._id}`)
+            window.open("https://api.whatsapp.com/send?phone=77078805125", "_blank")
+          // router.push(`/with-teachers/book-teacher/${teacher._id}`)
         }
       >
-        Посмотреть расписание
+        Записаться в группу
       </Button>
     </Card>
   );
