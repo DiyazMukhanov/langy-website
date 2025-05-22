@@ -150,7 +150,7 @@ export default function Landing() {
   const logOutHandler = async () => {
     try {
       const response = await userLogout();
-      router.reload();
+      // router.reload();
     } catch (err) {
       console.log(err);
       alert("Произошла ошибка выхода");
@@ -435,7 +435,7 @@ export default function Landing() {
         {/* <div className={styles.manSection}>
             <HowCard
               number='1'
-              text='Для того, чтобы взять бесплатный пробный урок вам не понадобиться ничего, кроме собственного желания. 
+              text='Для того, чтобы взять бесплатный пробный урок вам не понадобиться ничего, кроме собственного желания.
           Вам нужно пройти регистрацию и по желанию пройти тест для определения уровня знания языка.'
               color='blue'
             />
