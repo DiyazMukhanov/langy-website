@@ -98,7 +98,6 @@ export default function Menu() {
       <>
         <Header variant="blue" />
         <div className={styles.container}>
-          <div className={styles.heading}>Выберите раздел</div>
           <div className={styles.levels}>
             <LevelBlock
               onClick={() => goToLearningFieldHandler("everyday")}

@@ -282,7 +282,7 @@ export default function TestLessonLayout({
             </div>
             <div className={styles.nextButtonInTest}>
               <Button
-                variant="standardNextContained"
+                variant="standardNextOutlined"
                 onClick={setProgressHandler}
               >
                 Следующий урок
