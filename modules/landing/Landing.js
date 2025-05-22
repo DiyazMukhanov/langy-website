@@ -150,7 +150,7 @@ export default function Landing() {
   const logOutHandler = async () => {
     try {
       const response = await userLogout();
-      // router.reload();
+      router.reload();
     } catch (err) {
       console.log(err);
       alert("Произошла ошибка выхода");
@@ -163,6 +163,7 @@ export default function Landing() {
     return (
       <div className={styles.overlay}>
         <Modal isOpen={isModalOpened} onClose={modalCloseHandler}>
+          <div className={styles.flexContainer}>
           <div className={styles.modalContainer}>
             <div className={styles.modalLogos}>
               {/* <Image priority src={LogoBlue} height={38} width={80} /> */}
@@ -223,6 +224,7 @@ export default function Landing() {
               </Button>
             </div>
           )}
+          </div>
         </Modal>
 
         <header className={styles.header} id="top">

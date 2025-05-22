@@ -8,6 +8,14 @@
   }
 }
 
+.flexContainer {
+  height: 90vh;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .installBtn {
   padding: 15px;
   border-radius: 10px;

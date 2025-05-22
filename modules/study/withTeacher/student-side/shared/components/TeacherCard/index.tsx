@@ -14,17 +14,17 @@ export default function TeacherCard({ teacher }: Props) {
   const router = useRouter();
   return (
     <Card>
-      <div className={styles.imageContainer}>
-        <Image
-          alt="teacher"
-          priority
-          src={teacher.photo}
-          height={160}
-          width={208}
-          className={styles.image}
-          objectFit="contain"
-        />
-      </div>
+      {/*<div className={styles.imageContainer}>*/}
+      {/*  <Image*/}
+      {/*    alt="teacher"*/}
+      {/*    priority*/}
+      {/*    src={teacher.photo}*/}
+      {/*    height={160}*/}
+      {/*    width={208}*/}
+      {/*    className={styles.image}*/}
+      {/*    objectFit="contain"*/}
+      {/*  />*/}
+      {/*</div>*/}
       <div className={styles.description}>
         <div className={styles.nameContainer}>
           <span>{teacher.name}</span>
@@ -32,18 +32,18 @@ export default function TeacherCard({ teacher }: Props) {
         </div>
         <div className={styles.descriptionContainer}>{teacher.description}</div>
         <div className={styles.opinionContainer}>
-          <span
-            className={styles.goToOpinionsLink}
-            onClick={() =>
-              router.push(`/with-teachers/teacher-feedbacks/${teacher._id}`)
-            }
-          >
-            Отрыть отзывы
-          </span>
-          <div className={styles.scoreContainer}>
-            <Star className={styles.star} />
-            <span>{Math.floor(teacher.averageRating)}</span>
-          </div>
+          {/*<span*/}
+          {/*  className={styles.goToOpinionsLink}*/}
+          {/*  onClick={() =>*/}
+          {/*    router.push(`/with-teachers/teacher-feedbacks/${teacher._id}`)*/}
+          {/*  }*/}
+          {/*>*/}
+          {/*  Отрыть отзывы*/}
+          {/*</span>*/}
+          {/*<div className={styles.scoreContainer}>*/}
+          {/*  <Star className={styles.star} />*/}
+          {/*  <span>{Math.floor(teacher.averageRating)}</span>*/}
+          {/*</div>*/}
         </div>
       </div>
       <Button
