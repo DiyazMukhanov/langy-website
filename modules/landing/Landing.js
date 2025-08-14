@@ -68,31 +68,31 @@ export default function Landing() {
 
     fetchUser();
 
-    // const handleBeforeInstallPrompt = (event) => {
-    //   event.preventDefault();
-    //   setInstallPromptEvent(event);
-    // };
+    const handleBeforeInstallPrompt = (event) => {
+      event.preventDefault();
+      setInstallPromptEvent(event);
+    };
 
-    // window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
 
-    // return () => {
-    //   window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-    // };
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
   }, []);
 
-  // const installApp = () => {
-  //   if (installPromptEvent) {
-  //     installPromptEvent.prompt();
-  //     installPromptEvent.userChoice.then((choiceResult) => {
-  //       if (choiceResult.outcome === 'accepted') {
-  //         console.log('User accepted the install prompt');
-  //       } else {
-  //         console.log('User dismissed the install prompt');
-  //       }
-  //       setInstallPromptEvent(null);
-  //     });
-  //   }
-  // };
+  const installApp = () => {
+    if (installPromptEvent) {
+      installPromptEvent.prompt();
+      installPromptEvent.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        } else {
+          console.log('User dismissed the install prompt');
+        }
+        setInstallPromptEvent(null);
+      });
+    }
+  };
 
   const frequentQuestions = [
     {
@@ -135,16 +135,8 @@ export default function Landing() {
     router.push("authorization/login");
   };
 
-  const registrationHandler = () => {
-    router.push("authorization/registration");
-  };
-
   const continueHandler = () => {
-    if (!userCtx.userData) {
-      router.push("authorization/login");
-    } else {
-      router.push("/menu");
-    }
+    router.push("/menu");
   };
 
   const logOutHandler = async () => {
@@ -198,31 +190,31 @@ export default function Landing() {
             </div>
           )}
 
-          {!userCtx.userData ? (
-            <div className={styles.modalButtons}>
-              <Button
-                variant="standardLargeContained"
-                onClick={continueHandler}
-              >
-                Регистрация
-              </Button>
-              <Button variant="standardLargeOutlined" onClick={loginHandler}>
-                Войти
-              </Button>
-            </div>
-          ) : (
-            <div className={styles.modalButtons}>
-              <Button
-                variant="standardLargeContained"
-                onClick={continueHandler}
-              >
-                Продолжить обучение
-              </Button>
-              <Button variant="standardLargeOutlined" onClick={logOutHandler}>
-                Выйти
-              </Button>
-            </div>
-          )}
+          {/*{!userCtx.userData ? (*/}
+          {/*  <div className={styles.modalButtons}>*/}
+          {/*    <Button*/}
+          {/*      variant="standardLargeContained"*/}
+          {/*      onClick={continueHandler}*/}
+          {/*    >*/}
+          {/*      Регистрация*/}
+          {/*    </Button>*/}
+          {/*    <Button variant="standardLargeOutlined" onClick={loginHandler}>*/}
+          {/*      Войти*/}
+          {/*    </Button>*/}
+          {/*  </div>*/}
+          {/*) : (*/}
+          {/*  <div className={styles.modalButtons}>*/}
+          {/*    <Button*/}
+          {/*      variant="standardLargeContained"*/}
+          {/*      onClick={continueHandler}*/}
+          {/*    >*/}
+          {/*      Продолжить обучение*/}
+          {/*    </Button>*/}
+          {/*    <Button variant="standardLargeOutlined" onClick={logOutHandler}>*/}
+          {/*      Выйти*/}
+          {/*    </Button>*/}
+          {/*  </div>*/}
+          {/*)}*/}
         </Modal>
 
         <header className={styles.header} id="top">
@@ -236,50 +228,14 @@ export default function Landing() {
             /> */}
             <Logo />
           </div>
-          {/* <button
+          <button
             id="install-button"
             className={styles.installBtn}
             style={{ display: installPromptEvent ? 'block' : 'none' }}
             onClick={installApp}
           >
             Установить приложение
-          </button> */}
-
-          {!userCtx.userData ? (
-            <div className={styles.topButtons}>
-              <Typography
-                element="p"
-                className={styles.enterBtn}
-                onClick={loginHandler}
-              >
-                Войти
-              </Typography>
-              <Button
-                variant="outlined"
-                className={styles.registrationBtn}
-                onClick={registrationHandler}
-              >
-                Регистрация
-              </Button>
-            </div>
-          ) : (
-            <div className={styles.topButtons}>
-              <Typography
-                element="p"
-                className={styles.enterBtn}
-                onClick={() => router.push("/profile")}
-              >
-                {userCtx?.userData?.email}
-              </Typography>
-              <Button
-                variant="outlined"
-                className={styles.registrationBtn}
-                onClick={logOutHandler}
-              >
-                Выйти
-              </Button>
-            </div>
-          )}
+          </button>
 
           {/* <Image
             priority
@@ -294,48 +250,37 @@ export default function Landing() {
 
         <main className={styles.main}>
           {/* <Image priority src={DropOne} className={styles.dropOneMobile} /> */}
-          <DropOne className={styles.dropOneMobile} />
+          <button
+              id="install-button"
+              className={styles.installBtn}
+              style={{display: installPromptEvent ? 'block' : 'none'}}
+              onClick={installApp}
+          >
+            Установить приложение
+          </button>
+          <DropOne className={styles.dropOneMobile}/>
+
           <Typography element="h1" className={styles.mainHeading}>
             Онлайн - платформа для изучения английского языка
           </Typography>
           <div className={styles.headerBottomBlock}>
-            {!userCtx.userData ? (
-              <div className={styles.btnBlock}>
-                <Button
+            <div className={styles.btnBlock}>
+              <Button
                   variant="contained"
                   className={styles.startBtn}
                   onClick={continueHandler}
-                >
-                  Начать обучение
-                </Button>
-              </div>
-            ) : (
-              <div className={styles.btnBlock}>
-                <Button
-                  variant="contained"
-                  className={styles.startBtn}
-                  onClick={continueHandler}
-                >
-                  Продолжить обучение
-                </Button>
-                {!userCtx.userData && (
-                  <p
-                    className={styles.haveAccountBtn}
-                    onClick={() => router.push("/authorization/login")}
-                  >
-                    У меня уже есть аккаунт
-                  </p>
-                )}
-              </div>
-            )}
+              >
+                Продолжить обучение
+              </Button>
+            </div>
           </div>
         </main>
 
         <div className={styles.advantages}>
-          <Advantage text="Учитесь в группе или самостоятельно" />
-          <Advantage text="Все на одной платформе" />
-          <Advantage text="Для тех, кто никогда не учил английский" />
-          <Advantage text="Приятные цены" />
+          <Advantage text="Учитесь в группе или самостоятельно"/>
+          <Advantage text="Все на одной платформе"/>
+          <Advantage text="Для тех, кто никогда не учил английский"/>
+          <Advantage text="Абсолютно бесплатно" />
         </div>
 
         <section className={styles.middleSection}>

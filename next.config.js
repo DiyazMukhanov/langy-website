@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {};
 
-// const withPWA = require('next-pwa')({
-//   dest: 'public'
-// })
+const withPWA = require('next-pwa')({
+  dest: 'public'
+})
 
 module.exports = {
   images: {
@@ -16,13 +16,13 @@ module.exports = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  // pwa: {
-  //   dest: "public",
-  //   disable: true,
-  //   // register: true,
-  //   // skipWaiting: true,
-  //   // exclude: []
-  // },
+  pwa: {
+    dest: "public",
+    disable: true,
+    // register: true,
+    // skipWaiting: true,
+    // exclude: []
+  },
   webpack: (nextConfig, options) => {
     const { isServer } = options;
     nextConfig.module.rules.push({

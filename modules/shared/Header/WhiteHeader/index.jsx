@@ -13,10 +13,7 @@ import { Button } from "@/ui-kit/Button";
 export default function WhiteHeader({
   modalCloseHandler,
   modalOpenHandler,
-  goToMainHandler,
-  logOutHandler,
   lessonsSummary,
-  firstLetterOfName,
   isModalOpened,
   isEasyEnglish,
 }) {
@@ -26,20 +23,12 @@ export default function WhiteHeader({
     <>
       <div className={styles.whiteContainer}>
         <div className={styles.leftMenuContainer}>
-          <span onClick={() => router.push("/menu")} className={styles.menuBtn}>
+          <span
+            onClick={() => router.push("/menu/self-study")}
+            className={styles.menuBtn}
+          >
             Меню
           </span>
-        </div>
-        <div className={styles.profile}>
-          <p className={styles.exit} onClick={logOutHandler}>
-            Выйти
-          </p>
-          <div
-            className={styles.circle}
-            onClick={() => router.push("/profile")}
-          >
-            {firstLetterOfName}
-          </div>
         </div>
       </div>
 
@@ -47,13 +36,10 @@ export default function WhiteHeader({
         <Modal isOpen={isModalOpened} onClose={modalCloseHandler}>
           <div className={styles.modalContainer}>
             <div className={styles.menuContainer}>
-              <div
-                className={styles.modalLogos}
-                onClick={() => router.push("/profile")}
+              <Button
+                variant="menu"
+                onClick={() => router.push("/menu/self-study")}
               >
-                <p className={styles.goToProfile}>Личный кабинет</p>
-              </div>
-              <Button variant="menu" onClick={() => router.push("/menu")}>
                 Меню
               </Button>
             </div>

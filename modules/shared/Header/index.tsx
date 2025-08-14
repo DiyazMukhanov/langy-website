@@ -14,8 +14,6 @@ export default function Header({ variant, isEasyEnglish }: Props) {
   const [isModalOpened, setIsModalOpened] = useState(false);
   const router = useRouter();
   const userCtx = useContext(UserContext);
-  const lessonsSummary = userCtx.getUpdatedLessonsSummary();
-  const firstLetterOfName = userCtx?.userData?.name[0].toUpperCase();
 
   const modalCloseHandler = () => {
     setIsModalOpened(false);
@@ -29,16 +27,6 @@ export default function Header({ variant, isEasyEnglish }: Props) {
     router.push("/");
   };
 
-  const logOutHandler = async () => {
-    try {
-      const response = await userLogout();
-      userCtx.setUserData(null);
-      router.push("/");
-    } catch (err) {
-      alert("Произошла ошибка выхода");
-    }
-  };
-
   if (variant === "blue") {
     return (
       <>
@@ -46,9 +34,6 @@ export default function Header({ variant, isEasyEnglish }: Props) {
           modalCloseHandler={modalCloseHandler}
           modalOpenHandler={modalOpenHandler}
           goToMainHandler={goToMainHandler}
-          logOutHandler={logOutHandler}
-          lessonsSummary={lessonsSummary}
-          firstLetterOfName={firstLetterOfName}
           isModalOpened={isModalOpened}
         />
       </>
@@ -62,11 +47,9 @@ export default function Header({ variant, isEasyEnglish }: Props) {
           modalCloseHandler={modalCloseHandler}
           modalOpenHandler={modalOpenHandler}
           goToMainHandler={goToMainHandler}
-          logOutHandler={logOutHandler}
-          lessonsSummary={lessonsSummary}
-          firstLetterOfName={firstLetterOfName}
           isModalOpened={isModalOpened}
           isEasyEnglish={isEasyEnglish}
+          lessonsSummary={userCtx.lessonsSummary}
         />
       </>
     );

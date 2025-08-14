@@ -1,7 +1,6 @@
 import styles from './OptionCard.module.scss'
 import classNames from 'classnames'
 
-
 export default function OptionCard({ type, onClick }) {
   return (
     <div className={styles.container} onClick={onClick}>
