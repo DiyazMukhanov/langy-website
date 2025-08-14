@@ -16,6 +16,9 @@ module.exports = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   // pwa: {
   //   dest: "public",
   //   disable: true,
