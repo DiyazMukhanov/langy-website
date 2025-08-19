@@ -3,23 +3,31 @@ import ButtonClose from "../../public/images/Button-close.svg";
 import Google from "../../public/images/Google.svg";
 import { Button } from "@/ui-kit/Button";
 import { Typography } from "@/ui-kit/Typography";
-import { useRef, useState } from "react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import classNames from "classnames";
 import { loginUser } from "./shared/api/loginUser";
 import { useRouter } from "next/router";
 
+interface LoginFormData {
+  email: string;
+  password: string;
+}
+
 export default function Login() {
-  const [emailInputValue, setEmailInputValue] = useState("");
-  const [passwordInputValue, setPasswordInputValue] = useState("");
-  const [emailEmpty, setEmailEmpty] = useState(false);
-  const [passwordEmpty, setPasswordEmpty] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [userNotExists, setUserNotExists] = useState(false);
-
   const router = useRouter();
 
-  const emailRef = useRef();
-  const passwordRef = useRef();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+  } = useForm<LoginFormData>();
+
+  const watchedEmail = watch("email");
+  const watchedPassword = watch("password");
 
   let serverUrl;
   if (process.env.NEXT_PUBLIC_ENVIRONMENT === "development") {
@@ -28,42 +36,12 @@ export default function Login() {
     serverUrl = process.env.NEXT_PUBLIC_SERVER_URL;
   }
 
-  const emailInputHandler = (event) => {
-    setEmailInputValue(event.target.value);
-  };
-
-  const passwordInputHandler = (event) => {
-    setPasswordInputValue(event.target.value);
-  };
-
-  const userLoginHandler = async (event) => {
-    event.preventDefault();
+  const onSubmit = async (data: LoginFormData) => {
     setUserNotExists(false);
     setIsLoading(true);
 
-    setPasswordEmpty(false);
-    setEmailEmpty(false);
-
-    const body = {
-      email: emailRef.current.value,
-      password: passwordRef.current.value,
-    };
-
-    if (!emailInputValue) {
-      setEmailEmpty(true);
-    }
-
-    if (!passwordInputValue) {
-      setPasswordEmpty(true);
-    }
-
-    if (!emailInputValue || !passwordInputValue) {
-      setIsLoading(false);
-      return;
-    }
-
     try {
-      const userData = await loginUser(body);
+      const userData = await loginUser(data);
 
       if (userData) {
         if (userData?.data?.data?.user?.role === "manager") {
@@ -72,7 +50,6 @@ export default function Login() {
         }
 
         if (userData?.data?.data?.user?.levelChecked === true) {
-          //Routing
           if (
             userData?.data?.data?.user?.currentLesson !== 0 &&
             userData?.data?.data?.user?.currentChapter !== "no"
@@ -84,25 +61,21 @@ export default function Login() {
           } else {
             if (userData?.data?.data?.user?.level === "preIntermediate") {
               router.push("/lessons/lesson9/video");
-
               setIsLoading(false);
             }
 
             if (userData?.data?.data?.user?.level === "intermediate") {
               router.push("/lessons/lesson17/video");
-
               setIsLoading(false);
             }
 
             if (userData?.data?.data?.user?.level === "elementary") {
               router.push("/lessons/lesson1/video");
-
               setIsLoading(false);
             }
 
             if (userData?.data?.data?.user?.level === "beginner") {
               router.push("/");
-
               setIsLoading(false);
             }
           }
@@ -135,70 +108,70 @@ export default function Login() {
       </div>
 
       <div className={styles.formContainer}>
-        <Typography size="small" element="h2" className={styles.formHeading}>
+        <Typography size="small" element="h2" className={styles.formHeading} onClick={() => {}}>
           Вход
         </Typography>
 
-        <form type="submit" onSubmit={userLoginHandler} className={styles.form}>
+        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <div className={styles.inputs}>
             <input
               placeholder="Email"
               type="email"
               id="user-text-field"
-              className={classNames(
-                { [styles.errorInput]: emailEmpty },
-                { [styles.input]: !emailEmpty }
-              )}
-              onChange={emailInputHandler}
+              className={classNames(styles.input, {
+                [styles.errorInput]: errors.email,
+              })}
+              {...register("email", {
+                required: "Введите email",
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "Введите валидный email",
+                },
+              })}
               name="email"
               autoComplete="email"
-              ref={emailRef}
-            ></input>
+            />
             <input
               placeholder="Пароль"
               type="password"
               id="password-text-field"
-              className={classNames(
-                { [styles.errorInput]: passwordEmpty },
-                { [styles.input]: !passwordEmpty }
-              )}
-              onChange={passwordInputHandler}
+              className={classNames(styles.input, {
+                [styles.errorInput]: errors.password,
+              })}
+              {...register("password", {
+                required: "Введите пароль",
+                minLength: {
+                  value: 6,
+                  message: "Пароль должен содержать минимум 6 символов",
+                },
+              })}
               name="password"
               autoComplete="current-password"
-              ref={passwordRef}
-            ></input>
+            />
           </div>
+          
+          {errors.email && (
+            <p className={styles.errorMessage}>{errors.email.message}</p>
+          )}
+          {errors.password && (
+            <p className={styles.errorMessage}>{errors.password.message}</p>
+          )}
+          
           <p
             className={styles.forgotPassword}
             onClick={() => router.push("/authorization/forgot")}
           >
             Забыли пароль
           </p>
-          <Button variant="authLargeContained" disabled={isLoading}>
+          
+          <Button type="submit" variant="authLargeContained" disabled={isLoading}>
             Войти
           </Button>
         </form>
+        
         <Button variant="authLargeContained" onClick={goToSignUpHandler}>
           Регистрация
         </Button>
-        {/* <p>или</p> */}
-        {/* <a href='http://localhost:3000/auth/google'> */}
-        {/* <Button
-          variant='google'
-          // onClick={testGoogleAuth}
-          onClick={() => router.push(`${serverUrl}/api/auth`)}
-        // onClick={() => router.push(`http://localhost:3000/auth`)}
-        // onClick={googleAuthHandler}
-        >
-          <Image
-            priority
-            src={Google}
-            width={15}
-            className={styles.close}
-          />
-          Google
-        </Button> */}
-        {/* </a> */}
       </div>
 
       <div className={styles.existContainer}>
